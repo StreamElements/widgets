@@ -1,0 +1,36 @@
+#main-container {
+    width: 100%;
+    height: 100%;
+}
+
+#image {
+    display: block;
+    width: 20px;
+    border-radius: 50px;
+    transition: width 300ms ease-in-out, height 300ms ease-in-out;
+}
+
+.pulsate {
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(.75);
+    }
+    20% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(.75);
+    }
+    60% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(.75);
+    }
+    100% {
+        transform: scale(.75);
+    }
+}
