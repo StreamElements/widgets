@@ -1,0 +1,130 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.event-follower {
+    background: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg') no-repeat;
+}
+
+.event-cheer {
+    background: url('https://cdn.streamelements.com/static/custom-event-list/bits.svg') no-repeat;
+}
+
+.event-host {
+    background: url('https://cdn.streamelements.com/static/custom-event-list/host.svg') no-repeat;
+}
+
+.event-raid {
+    background: url('https://cdn.streamelements.com/static/custom-event-list/raid.svg') no-repeat;
+}
+
+.event-sub {
+    background: url('https://cdn.streamelements.com/static/custom-event-list/sub.svg') no-repeat;
+}
+
+.event-tip {
+    background: url('https://cdn.streamelements.com/static/custom-event-list/tip.svg') no-repeat;
+}
+
+.event-redemption {
+    background: url('https://cdn.streamelements.com/static/custom-event-list/redemption.svg') no-repeat;
+}
+
+@keyframes slide-in {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes pop-in {
+    0% {
+        width: 0px;
+        height: 0px;
+        background-size: 0px 0px;
+        margin-top: 23px;
+        margin-left: 24px;
+    }
+    50% {
+        width: 0px;
+        height: 0px;
+        background-size: 0px 0px;
+        margin-top: 12px;
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-bottom: 12px
+    }
+    85% {
+        width: 23px;
+        height: 23px;
+        background-size: 23px 23px;
+        margin-top: 1px;
+        margin-left: 2px;
+        margin-right: 0px;
+        margin-bottom: 0px
+    }
+    100% {
+        width: 21px;
+        height: 21px;
+        background-size: 21px 21px;
+        margin-top: 2px;
+        margin-left: 3px;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.event-container {
+    width: 0px;
+    height: 25px;
+    display: flex;
+    justify-content: right;
+    background-color: rgba(36, 6, 73, 0.15);
+    border-radius: 14px;
+    margin-top: 3px;
+    animation: 0.6s slide-in;
+    animation-fill-mode: forwards;
+}
+
+.event-image {
+    animation: 0.7s pop-in;
+    animation-fill-mode: forwards;
+    object-fit: contain;
+    display: inline-block;
+    width: 20px;
+}
+
+.username-container {
+    animation: 1.2s fade-in;
+    animation-fill-mode: forwards;
+    display: inline-block;
+    width: 140px;
+    font-weight: 400;
+    margin-top: 4px;
+    margin-left: 3px;
+}
+
+.details-container {
+    position: absolute;
+    animation: 1.2s fade-in;
+    animation-fill-mode: forwards;
+    display: inline-block;
+    right: 0px;
+    font-weight: 700;
+    text-align: right;
+    margin-right: 15px;
+    margin-left: 85px;
+    margin-top: 3px;
+}
