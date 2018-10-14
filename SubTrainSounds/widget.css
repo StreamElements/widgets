@@ -1,0 +1,10 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 24px;
+    overflow: hidden;
+}
+
+.fa-clock, #user {
+    margin-left: 50px;
+}
