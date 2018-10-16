@@ -3,10 +3,11 @@ let userConfig = {
     "time": "1", //minutes
 };
 
+
 let sounds = {
     1: "https://cdn.streamelements.com/static/alertbox/default.ogg",
-    2: "https://www.soundboard.com/mediafiles/23/230223-316b7374-651a-46f4-a1c2-b0da0c0a72f8.mp3",
-    3: "https://www.soundboard.com/mediafiles/23/230223-316b7374-651a-46f4-a1c2-b0da0c0a72f8.mp3",
+    5: "https://www.soundboard.com/mediafiles/23/230223-316b7374-651a-46f4-a1c2-b0da0c0a72f8.mp3",
+    10: "https://www.soundboard.com/mediafiles/23/230223-316b7374-651a-46f4-a1c2-b0da0c0a72f8.mp3",
 };
 
 let amount = 0;
@@ -23,9 +24,10 @@ window.addEventListener('onEventReceived', function (obj) {
 
 function addToTrain(username) {
     amount++;
-    if (typeof sounds[amount] !== 'undefined') {
+    let sound = getSound(amount);
+    if (typeof sounds !== 'undefined') {
         audio[0].pause();
-        $("#audioSource").attr("src", sounds[amount]);
+        $("#audioSource").attr("src", sound);
         audio[0].load();
         audio[0].play();
     }
@@ -34,6 +36,17 @@ function addToTrain(username) {
     $("#user").html(`<span class="fa fa-user"></span> ${username}`);
     timer = userConfig.time * 60;
 
+}
+
+function getSound(number) {
+    var bestKey;
+    for (key in sounds) {
+        if (key > number) break;
+        if (sounds.hasOwnProperty(key)) {
+            bestKey = key;
+        }
+    }
+    return bestKey === undefined ? undefined : sounds[bestKey];
 }
 
 setInterval(
