@@ -1,0 +1,12 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    overflow: hidden;
+}
+.word{
+    display:inline-block;
+}
+.amount{
+    display:inline-block;
+}
