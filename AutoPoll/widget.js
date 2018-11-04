@@ -1,9 +1,9 @@
-var userOptions = {
+let userOptions = {
     channelName: "leeeeex",
     wordTimer: 120,
     wordsLimit: 5,
-    firstLetter: "#",
-    onlyUniqueUsers: true,
+    firstLetter: "#", //if you want to limit just to hashtags or username mentions use # or @
+    onlyUniqueUsers: true, //Allow users to have just one vote only
 };
 let words = [];
 let users = [];
@@ -18,9 +18,9 @@ let clientOptions = {
 
 const client = new TwitchJS.client(clientOptions);
 client.on('message', function (channel, userstate, message) {
-    if (message === '!resetpool' && (userstate.mod || userstate.badges.broadcaster)) {
+    if (message === '!resetpoll' && (userstate.mod || userstate.badges.broadcaster)) {
         words = [];
-        users=[];
+        users = [];
         return;
     }
     if (userOptions.onlyUniqueUsers && users.indexOf(userstate.username) !== -1) return false;
@@ -54,7 +54,7 @@ function poll(word) {
 
 client.connect();
 
-var t = setInterval(function () {
+let t = setInterval(function () {
     for (let key in words) {
         words[key]['timer'] = Math.max((words[key]['timer'] - 1), 0);
         if (words[key]['timer'] === 0) {
