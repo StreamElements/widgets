@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Hind:400,700|Montserrat:400,700');
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.counter {
+    font-size: 18px;
+}
+
+.value {
+    font-weight: bold;
+    font-size: 16px;
+}
