@@ -1,0 +1,48 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+#countdown {
+    z-index: 1000;
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+}
+
+.blinder {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: #ccc;
+    top: 0px;
+    z-index: 5;
+    transition: all .5s linear;
+}
+
+#blinder1 {
+    left: 0px;
+}
+
+#blinder2 {
+    right: 0px;
+}
+
+.hideBlinder {
+    width: 0px;
+}
+
+#message {
+    opacity: 0;
+    z-index: 1000;
+    position: absolute;
+    top: 65%;
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+    transition: all .5s linear;
+}
