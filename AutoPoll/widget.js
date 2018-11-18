@@ -1,5 +1,5 @@
 let userOptions = {
-    channelName: "leeeeex",
+    channelName: "",
     wordTimer: 120,
     wordsLimit: 5,
     firstLetter: "#", //if you want to limit just to hashtags or username mentions use # or @
@@ -7,6 +7,11 @@ let userOptions = {
 };
 let words = [];
 let users = [];
+
+
+window.addEventListener('onWidgetLoad', function(obj) {
+    userOptions["channelName"]=obj["detail"]["channel"]["username"];
+});
 let clientOptions = {
     connection: {
         reconnect: true,
@@ -14,8 +19,6 @@ let clientOptions = {
     },
     channels: [userOptions.channelName]
 };
-
-
 const client = new TwitchJS.client(clientOptions);
 client.on('message', function (channel, userstate, message) {
     if (message === '!resetpoll' && (userstate.mod || userstate.badges.broadcaster)) {

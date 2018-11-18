@@ -8,9 +8,12 @@ If you want other styling:
 
 */
 
-let channelName="YourChannelName";
-let timeToRefresh=60;
 
+let timeToRefresh=60;
+let channelName;
+window.addEventListener('onWidgetLoad', function(obj) {
+    channelName=obj["detail"]["channel"]["username"];
+});
 function getData(){
     $.get( "https://decapi.me/twitch/viewercount/"+channelName, function( data ) {
         $( ".odometer" ).html( data );

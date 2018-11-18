@@ -1,5 +1,5 @@
 var userOptions = {
-    channelName: "leeeeex",
+    channelName: "",
     sounds: {
         PogChamp: {
             amount: 20,
@@ -25,7 +25,9 @@ var userOptions = {
     }
 };
 
-
+window.addEventListener('onWidgetLoad', function(obj) {
+    userOptions["channelName"]=obj["detail"]["channel"]["username"];
+});
 let clientOptions = {
     connection: {
         reconnect: true,

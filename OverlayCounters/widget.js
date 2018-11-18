@@ -1,6 +1,5 @@
 var userOptions = {
     keyXYZ: "",
-    channelName: "yourChannel",
 };
 
 
@@ -26,7 +25,10 @@ values = {};
 
 var audio, name = '';
 
-const channel = userOptions.channelName;
+let channel;
+window.addEventListener('onWidgetLoad', function(obj) {
+    channel=obj["detail"]["channel"]["username"];
+});
 
 let clientOptions = {
     connection: {
