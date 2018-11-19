@@ -1,0 +1,29 @@
+* {
+    font-family: 'ABeeZee', sans-serif;
+    color: #ffffff;
+    font-size: 83px;
+    overflow: hidden;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 39%;
+}
+
+.stage2 {
+    /* other style here */
+}
+
+.stage3 {
+    /* third style here */
+}
