@@ -28,6 +28,17 @@ window.setInterval(function (t) {
         clearInterval(t);
     }
 }, 500);
+
+window.addEventListener('onWidgetLoad', function (obj) {
+    const fieldData = obj.detail.fieldData;
+    minutes = fieldData.introDuration;
+    includeIntro=(fieldData.includeIntro==="yes");
+    closeAfterIntro=(fieldData.closeAfterIntro==="yes");
+    hideCounter=(fieldData.hideCounter==="yes");
+    showMessage=(fieldData.showMessage==="yes");
+
+});
+
 $("document").ready(function () {
 
 

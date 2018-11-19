@@ -1,0 +1,26 @@
+{
+  "firstLetter": {
+    "type": "text",
+    "label": "Accept words starting with",
+    "value": "#"
+  },
+  "wordsLimit": {
+    "type": "number",
+    "label": "Number of words to be displayed",
+    "value": 5
+  },
+  "wordTimer": {
+    "type": "number",
+    "label": "Survey timeout after (seconds)",
+    "value": 120
+  },
+    "onlyUniqueUsers": {
+    "type": "dropdown",
+    "label": "Accept only first vote per user:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+}

@@ -1,16 +1,20 @@
 let userOptions = {
     channelName: "",
-    wordTimer: 120,
-    wordsLimit: 5,
-    firstLetter: "#", //if you want to limit just to hashtags or username mentions use # or @
-    onlyUniqueUsers: true, //Allow users to have just one vote only
+    wordTimer: "",
+    wordsLimit: "",
+    firstLetter: "", //if you want to limit just to hashtags or username mentions use # or @
+    onlyUniqueUsers: "", //Allow users to have just one vote only
 };
 let words = [];
 let users = [];
 
 
-window.addEventListener('onWidgetLoad', function(obj) {
-    userOptions["channelName"]=obj["detail"]["channel"]["username"];
+window.addEventListener('onWidgetLoad', function (obj) {
+    userOptions["channelName"] = obj["detail"]["channel"]["username"];
+    userOptions["wordTimer"] = obj["detail"]["fieldData"]["wordTimer"];
+    userOptions["wordsLimit"] = obj["detail"]["fieldData"]["wordsLimit"];
+    userOptions["firstLetter"] = obj["detail"]["fieldData"]["firstLetter"];
+    userOptions["onlyUniqueUsers"] = (obj["detail"]["fieldData"]["onlyUniqueUsers"] === "yes");
 });
 let clientOptions = {
     connection: {

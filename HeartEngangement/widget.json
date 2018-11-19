@@ -1,0 +1,47 @@
+{
+  "keyXYZ": {
+    "type": "text",
+    "label": "keyvalueXYZ key",
+    "value": ""
+  },
+  "bitsPoints": {
+    "type": "number",
+    "label": "Points per bit",
+    "value": 1
+  },
+  "followPoints": {
+    "type": "number",
+    "label": "Points per follower",
+    "value": 1
+  },
+  "hostPoints": {
+    "type": "number",
+    "label": "Points per viewer from host",
+    "value": 1
+  },
+  "subPoints": {
+    "type": "number",
+    "label": "Points per subscriber",
+    "value": 3
+  },
+  "donatePoints": {
+    "type": "number",
+    "label": "multiplied by amount",
+    "value": 2
+  },
+  "initialAmount": {
+    "type": "number",
+    "label": "Initial points",
+    "value": 1
+  },
+  "sizeLimit": {
+    "type": "number",
+    "label": "Size limit of containing box (percentage)",
+    "value": 80
+  },
+  "explosionTime": {
+    "type": "number",
+    "label": "Explosion duration (seconds)",
+    "value": 1
+  }
+}

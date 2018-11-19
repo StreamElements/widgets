@@ -1,0 +1,53 @@
+{
+  "introUrl": {
+    "type": "text",
+    "label": "URL to webm intro file",
+    "value": "https://URL-to-your.intro/file.webm"
+  },
+  "finalMessage": {
+    "type": "text",
+    "label": "Accept words starting with",
+    "value": "#"
+  },
+  "showMessage": {
+    "type": "dropdown",
+    "label": "Show message after countdown is complete:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "introDuration": {
+    "type": "number",
+    "label": "Intro duration in minutes",
+    "value": 5
+  },
+  "includeIntro": {
+    "type": "dropdown",
+    "label": "Play intro while countdown is in progress:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No - play after countdown is complete"
+    }
+  },
+  "closeAfterIntro": {
+    "type": "dropdown",
+    "label": "Close blinders after intro is complete:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No - freeze the last frame of intro video"
+    }
+  },
+  "hideCounter": {
+    "type": "dropdown",
+    "label": "Hide counter after countdown is complete:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+}

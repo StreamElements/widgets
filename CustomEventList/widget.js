@@ -1,4 +1,4 @@
-const eventsLimit = 5,
+let eventsLimit = 5,
     includeFollowers = true,
     includeRedemptions = true,
     includeHosts = true,
@@ -59,6 +59,20 @@ window.addEventListener('onWidgetLoad', function (obj) {
         return Date.parse(a.createdAt) - Date.parse(b.createdAt);
     });
     userCurrency = obj.detail.currency;
+    const fieldData = obj.detail.fieldData;
+    eventsLimit = fieldData.eventsLimit;
+    includeFollowers = (fieldData.includeFollowers === "yes");
+    includeRedemptions = (fieldData.includeRedemptions === "yes");
+    includeHosts = (fieldData.includeHosts === "yes");
+    minHost = fieldData.minHost;
+    includeRaids = (fieldData.includeRaids === "yes");
+    minRaid = fieldData.minRaid;
+    includeSubs = (fieldData.includeSubs === "yes");
+    includeTips = (fieldData.includeTips === "yes");
+    minTip = fieldData.minTip;
+    includeCheers = (fieldData.includeCheers === "yes");
+    minCheer = fieldData.minCheer;
+
 
     let starting = recents.length - eventsLimit;
     let eventIndex;

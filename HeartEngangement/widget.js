@@ -32,13 +32,23 @@ window.addEventListener('onEventReceived', function (obj) {
     }
 });
 window.addEventListener('onWidgetLoad', function (obj) {
+    const fieldData = obj.detail.fieldData;
+    bitsPoints = fieldData.bitsPoints;
+    followPoints = fieldData.followPoints;
+    hostPoints = fieldData.hostPoints;
+    subPoints = fieldData.subPoints;
+    donatePoints = fieldData.donatePoints; // multiplied by amount,
+    amount = fieldData.initialAmount; //Initial grow
+    limit = fieldData.sizeLimit; // Percentage of containing box, so value 80 is for 80%
+    explosionTime = fieldData.explosionTime * 1000;
+    keyXYZ = fieldData.keyXYZ;
     if (keyXYZ) {
         loadState();
     }
     else {
         $.post("https://api.keyvalue.xyz/new/StreamElements", function (data) {
             var parts = data.slice(1, -1).split("/");
-            $("#label").html('SET keyXYZ value in your JS tab to "' + parts[3] + '"');
+            $("#label").html('SET keyXYZ value in your config to "' + parts[3] + '"');
         });
     }
 });
