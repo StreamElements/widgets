@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    margin-left: -7%;
+    margin-top: -2%;
+}
+
+div.stat.time > * {
+    float: right;
+}
+
+.stat-container {
+    padding: 5px 5px 5px 5px;
+
+    background-image: url("http://i.imgur.com/E0ujQDL.jpg");
+    background-size: cover;
+    width: 446px;
+    height: 115px;
+    position: relative;
+    transform: scale(1);
+    -webkit-transform-origin: top left;
+}
+
+.games {
+    position: absolute;
+    top: 13px;
+    left: 35px;
+    width: 100px;
+}
+
+.winrate {
+    position: absolute;
+    top: 98px;
+    left: 35px;
+    width: 100px;
+}
+
+.kills {
+    position: absolute;
+    top: 98px;
+    left: 180px;
+    width: 90px;
+}
+
+.wins {
+    position: absolute;
+    top: 98px;
+    left: 125px;
+    width: 100px;
+}
+
+.top10 {
+    position: absolute;
+    top: 98px;
+    left: 258px;
+    width: 100px;
+}
+
+.top25 {
+    position: absolute;
+    top: 98px;
+    left: 348px;
+    width: 100px;
+}
+
+.time {
+    position: absolute;
+    top: 13px;
+    right: 33px;
+    width: 150px;
+}
+
+.stat {
+    clear: left;
+    color: #ffffff;
+    display: inline-block;
+    margin: 2px;
+    font-family: "Luckiest Guy", "Arial";
+    font-size: 12px;
+}
+
+.label {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+}
+
+.value {
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+}
