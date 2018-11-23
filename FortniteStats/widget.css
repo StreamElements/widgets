@@ -7,13 +7,9 @@
     margin-top: -2%;
 }
 
-div.stat.kills > * {
-    float: right;
-}
 
 .stat-container {
     padding: 5px 5px 5px 5px;
-
     background-image: url("http://i.imgur.com/E0ujQDL.jpg");
     background-size: cover;
     width: 446px;
@@ -40,7 +36,7 @@ div.stat.kills > * {
 .kd {
     position: absolute;
     top: 98px;
-    left: 180px;
+    left: 183px;
     width: 90px;
 }
 
@@ -70,6 +66,7 @@ div.stat.kills > * {
     top: 13px;
     right: 33px;
     width: 150px;
+    text-align: right;
 }
 
 .stat {
@@ -84,12 +81,10 @@ div.stat.kills > * {
 .label {
     display: inline-block;
     vertical-align: middle;
-    float: left;
 }
 
 .value {
     margin-left: 5px;
     display: inline-block;
     vertical-align: middle;
-    float: left;
 }
