@@ -1,0 +1,38 @@
+{
+  "username": {
+    "type": "text",
+    "label": "Fortnite username",
+    "value": ""
+  },
+  "platform": {
+    "type": "dropdown",
+    "label": "Platform",
+    "value": "pc",
+    "options": {
+      "pc": "PC",
+      "x1": "XBOX",
+      "ps4": "PS4"
+    }
+  },
+  "timeframe": {
+    "type": "dropdown",
+    "label": "Season window",
+    "value": "current",
+    "options": {
+      "current": "Current",
+      "alltime": "All time",
+      "season4": "Season 4",
+      "season5": "Season 5"
+    }
+  },
+  "gameType": {
+    "type": "dropdown",
+    "label": "Type of games",
+    "value": "solo",
+    "options": {
+      "solo": "Solo",
+      "duo": "Duo",
+      "squad": "Squad"
+    }
+  }
+}
