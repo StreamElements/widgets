@@ -18,11 +18,11 @@ window.addEventListener('onWidgetLoad', function (obj) {
 });
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
+    if (typeof obj["detail"]["session"][index] !== 'undefined') {
         if (fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip') {
-            count = obj["detail"]["session"]["data"][index]['amount'];
+            count = obj["detail"]["session"][index]['amount'];
         } else {
-            count = obj["detail"]["session"]["data"][index]['count'];
+            count = obj["detail"]["session"][index]['count'];
         }
     }
     updateBar(count);
