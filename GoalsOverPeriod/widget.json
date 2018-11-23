@@ -1,38 +1,69 @@
 {
-  "username": {
+  "goal": {
+    "type": "number",
+    "label": "Goal",
+    "value": 32
+  },
+  "titleText": {
     "type": "text",
-    "label": "Fortnite username",
-    "value": ""
+    "label": "Title text",
+    "value": "Follower goal:"
   },
-  "platform": {
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "titleSize": {
+    "type": "number",
+    "label": "Title font Size",
+    "value": 24
+  },
+  "eventType": {
     "type": "dropdown",
-    "label": "Platform",
-    "value": "pc",
+    "label": "Pick event type:",
+    "value": "follower",
     "options": {
-      "pc": "PC",
-      "x1": "XBOX",
-      "ps4": "PS4"
+      "follower": "Follower",
+      "subscriber": "Subscriber",
+      "tip": "Tip amount",
+      "cheer": "Bits amount"
     }
   },
-  "timeframe": {
+  "eventPeriod": {
     "type": "dropdown",
-    "label": "Season window",
-    "value": "current",
+    "label": "Pick period:",
+    "value": "session",
     "options": {
-      "current": "Current",
-      "alltime": "All time",
-      "season4": "Season 4",
-      "season5": "Season 5"
+      "session": "Session",
+      "week": "Week",
+      "month": "Month",
+      "total": "Total"
     }
   },
-  "gameType": {
-    "type": "dropdown",
-    "label": "Type of games",
-    "value": "solo",
-    "options": {
-      "solo": "Solo",
-      "duo": "Duo",
-      "squad": "Squad"
-    }
+  "backgroundColor": {
+    "type": "colorpicker",
+    "label": "Background color",
+    "value": "rgb(55, 55, 55)"
+  },
+  "barColor1": {
+    "type": "colorpicker",
+    "label": "Bar color",
+    "value": "rgb(63, 63, 195)"
+  },
+  "barColor2": {
+    "type": "colorpicker",
+    "label": "Bar color2",
+    "value": "rgb(85, 33, 195)"
+  },
+  "labelColor": {
+    "type": "colorpicker",
+    "label": "Label font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "labelSize": {
+    "type": "number",
+    "label": "Label font Size",
+    "value": 24
   }
 }

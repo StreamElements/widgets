@@ -1,36 +1,8 @@
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <div class="main-container">
-
-    <div class="stat-container">
-        <div class="username"></div>
-
-        <div class="stat games">
-            <div class="label">Games:</div>
-            <div class="value" id="stats-games"></div>
-        </div>
-        <div class="stat winrate">
-            <div class="label">Winrate:</div>
-            <div class="value" id="stats-winrate"></div>
-        </div>
-        <div class="stat kd">
-            <div class="label">KD:</div>
-            <div class="value" id="stats-kd"></div>
-        </div>
-        <div class="stat wins">
-            <div class="label"></div>
-            <div class="value" id="stats-wins"></div>
-        </div>
-        <div class="stat top10">
-            <div class="label">Top10:</div>
-            <div class="value" id="stats-top10"></div>
-        </div>
-        <div class="stat top25">
-            <div class="label">Top25:</div>
-            <div class="value" id="stats-top25"></div>
-        </div>
-        <div class="stat kills">
-
-            <div class="value" id="stats-kills"></div>
-            <div class="label">Kills:</div>
-        </div>
+    <div class="title">{{titleText}}</div>
+    <div class="meter">
+        <span id="bar" style="width: 25%"></span>
     </div>
+    <div class="legend"><span id="count"></span>/<span id="goal"></span></div>
 </div>
