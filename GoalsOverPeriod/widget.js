@@ -5,20 +5,25 @@ window.addEventListener('onWidgetLoad', function (obj) {
     goal = fieldData["goal"];
     $("#goal").html(goal);
     index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
-    if (fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip') {
-        count = obj["detail"]["session"]["data"][index]['amount'];
-    } else {
-        count = obj["detail"]["session"]["data"][index]['count'];
+    count = 0;
+    if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
+        if (fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip') {
+            count = obj["detail"]["session"]["data"][index]['amount'];
+        } else {
+            count = obj["detail"]["session"]["data"][index]['count'];
+        }
     }
     updateBar(count);
 
 });
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    if (fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip') {
-        count = obj["detail"]["session"]["data"][index]['amount'];
-    } else {
-        count = obj["detail"]["session"]["data"][index]['count'];
+    if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
+        if (fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip') {
+            count = obj["detail"]["session"]["data"][index]['amount'];
+        } else {
+            count = obj["detail"]["session"]["data"][index]['count'];
+        }
     }
     updateBar(count);
 });
