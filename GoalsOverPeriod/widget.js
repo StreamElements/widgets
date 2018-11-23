@@ -1,8 +1,9 @@
-let index, goal, fieldData;
+let index, goal, fieldData, currency;
 
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
     goal = fieldData["goal"];
+    currency = obj["detail"]["currency"]["symbol"];
     $("#goal").html(goal);
     index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
     count = 0;
@@ -12,6 +13,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
         } else {
             count = obj["detail"]["session"]["data"][index]['count'];
         }
+    }
+    if (fieldData['eventType'] === 'tip') {
+        $("#goal").prepend(currency);
     }
     updateBar(count);
 
@@ -32,4 +36,7 @@ function updateBar(count) {
     let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
     $("#bar").css('width', percentage + "%");
     $("#count").html(count);
+    if (fieldData['eventType'] === 'tip') {
+        $("#count").prepend(currency);
+    }
 }
