@@ -7,7 +7,7 @@
     margin-top: -2%;
 }
 
-div.stat.time > * {
+div.stat.kills > * {
     float: right;
 }
 
@@ -37,7 +37,7 @@ div.stat.time > * {
     width: 100px;
 }
 
-.kills {
+.kd {
     position: absolute;
     top: 98px;
     left: 180px;
@@ -65,7 +65,7 @@ div.stat.time > * {
     width: 100px;
 }
 
-.time {
+.kills {
     position: absolute;
     top: 13px;
     right: 33px;
