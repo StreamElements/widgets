@@ -14,9 +14,10 @@ window.addEventListener('onWidgetLoad', function (obj) {
         }
     }
     if (fieldData['eventType'] === 'tip') {
-        goal=goal.toLocaleString(undefined,{style: 'currency',currency:currency})
+        $("#goal").html(goal.toLocaleString(undefined, {style: 'currency', currency: currency}));
+    } else {
+        $("#goal").html(goal);
     }
-    $("#goal").html(goal);
     updateBar(count);
 });
 
@@ -35,7 +36,7 @@ function updateBar(count) {
     let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
     $("#bar").css('width', percentage + "%");
     if (fieldData['eventType'] === 'tip') {
-        count=count.toLocaleString(undefined,{style: 'currency',currency:currency})
+        count = count.toLocaleString(undefined, {style: 'currency', currency: currency})
     }
     $("#count").html(count);
 
