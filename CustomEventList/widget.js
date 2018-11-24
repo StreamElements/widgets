@@ -44,7 +44,7 @@ window.addEventListener('onEventReceived', function (obj) {
         }
     } else if (listener === 'tip') {
         if (includeTips && minTip <= event.amount) {
-            addEvent('tip', `${userCurrency.symbol}${event.amount.toLocaleString()}`, event.name);
+            addEvent('tip', event.amount.toLocaleString(undefined,{style: 'currency',currency:userCurrency.code}), event.name);
         }
     } else if (listener === 'raid') {
         if (includeRaids && minRaid <= event.amount) {
@@ -104,7 +104,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
             }
         } else if (event.type === 'tip') {
             if (includeTips && minTip <= event.amount) {
-                addEvent('tip', `${userCurrency.symbol}${event.amount.toLocaleString()}`, event.name);
+                addEvent('tip', event.amount.toLocaleString(undefined,{style: 'currency',currency:userCurrency.code}), event.name);
             }
         } else if (event.type === 'raid') {
             if (includeRaids && minRaid <= event.amount) {
