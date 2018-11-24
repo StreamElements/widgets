@@ -3,8 +3,7 @@ let index, goal, fieldData, currency;
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
     goal = fieldData["goal"];
-    currency = obj["detail"]["currency"]["symbol"];
-    $("#goal").html(goal);
+    currency = obj["detail"]["currency"]["code"];
     index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
     count = 0;
     if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
@@ -15,10 +14,10 @@ window.addEventListener('onWidgetLoad', function (obj) {
         }
     }
     if (fieldData['eventType'] === 'tip') {
-        $("#goal").prepend(currency);
+        goal=goal.toLocaleString(undefined,{style: 'currency',currency:currency})
     }
+    $("#goal").html(goal);
     updateBar(count);
-
 });
 
 window.addEventListener('onSessionUpdate', function (obj) {
@@ -35,8 +34,9 @@ window.addEventListener('onSessionUpdate', function (obj) {
 function updateBar(count) {
     let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
     $("#bar").css('width', percentage + "%");
-    $("#count").html(count);
     if (fieldData['eventType'] === 'tip') {
-        $("#count").prepend(currency);
+        count=count.toLocaleString(undefined,{style: 'currency',currency:currency})
     }
+    $("#count").html(count);
+
 }
