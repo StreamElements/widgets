@@ -1,0 +1,27 @@
+{
+  "keyXYZ": {
+    "type": "text",
+    "label": "keyvalueXYZ key",
+    "value": ""
+  },
+  "queue": {
+    "type": "text",
+    "label": "Add to queue command",
+    "value": "!queue"
+  },
+  "draw": {
+    "type": "text",
+    "label": "Draw command",
+    "value": "!draw"
+  },
+  "clear": {
+    "type": "text",
+    "label": "Remove results from screen command",
+    "value": "!clear"
+  },
+  "purge": {
+    "type": "text",
+    "label": "Empty queue",
+    "value": "!purge"
+  }
+}
