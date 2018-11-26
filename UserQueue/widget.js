@@ -1,22 +1,25 @@
 let keyXYZ = false;
 let channel = "";
 let users = [];
+let nicknames = [];
 let queueCommand, drawCommand, clearCommand, purgeCommand;
 let client;
 
-function addToQueue(user) {
+function addToQueue(user, nickname) {
     if (users.indexOf(user) !== -1) return false;
     users.push(user);
-    saveState(users);
+    nicknames.push(nickname);
+    saveState([users, nicknames]);
     return true;
 }
 
 function drawFromQueue(amount) {
-    for (i = 0; i < Math.min(users.length, amount); i++) {
-        $("#users").append(`<li>${users[i]}</li>`)
+    for (i = 0; i < Math.min(nicknames.length, amount); i++) {
+        $("#users").append(`<li>${users[i]}: ${nicknames[i]}</li>`)
     }
     users = users.slice(amount);
-    saveState(users);
+    nicknames = nicknames.slice(amount);
+    saveState([users, nicknames]);
 }
 
 function clearScreen() {
@@ -25,7 +28,8 @@ function clearScreen() {
 
 function purge() {
     users = [];
-    saveState(users);
+    nicknames = []
+    saveState([users, nicknames]);
 }
 
 function saveState(value) {
@@ -35,7 +39,11 @@ function saveState(value) {
 
 function loadState() {
     $.getJSON("https://api.keyvalue.xyz/" + keyXYZ + "/StreamElements", function (data) {
-        users = data;
+
+        if (data.length === 2) {
+            users = data[0];
+            nicknames = data[1];
+        }
     });
 
 }
@@ -70,8 +78,14 @@ function clientConnect() {
     client = new TwitchJS.client(clientOptions);
     client.on('message', function (channel, userstate, message) {
         let user = userstate["username"];
-        if (message === queueCommand) {
-            addToQueue(user);
+        if (message.indexOf(queueCommand) === 0) {
+            message = message.split(" ");
+            message = message.slice(1);
+            let nickname = user;
+            if (message.length > 0) {
+                nickname = message.join(" ");
+            }
+            addToQueue(user, nickname);
             return;
         }
         // Broadcaster commands only below
