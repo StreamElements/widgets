@@ -74,9 +74,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
     minCheer = fieldData.minCheer;
 
 
-    let starting = recents.length - eventsLimit;
+
     let eventIndex;
-    for (eventIndex = starting; eventIndex < recents.length; eventIndex++) {
+    for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
         const event = recents[eventIndex];
 
         if (event.type === 'follower') {

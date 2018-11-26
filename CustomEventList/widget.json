@@ -86,5 +86,10 @@
     "type": "number",
     "label": "Minimum amount of bits in Cheer:",
     "value": 1
+  },
+  "backgroundColor": {
+    "type": "colorpicker",
+    "label": "Background color",
+    "value": "rgba(36, 6, 73, 0.15)"
   }
 }
