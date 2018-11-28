@@ -24,13 +24,22 @@ values = {};
 
 
 var audio, name = '';
-
+let client;
 let channel;
+let clientOptions = {};
 window.addEventListener('onWidgetLoad', function(obj) {
     channel=obj["detail"]["channel"]["username"];
+    clientOptions = {
+        connection: {
+            reconnect: true,
+            secure: true,
+        },
+        channels: [channel]
+    };
+    clientStart();
 });
 
-let clientOptions = {
+clientOptions = {
     connection: {
         reconnect: true,
         secure: true,
@@ -42,54 +51,53 @@ $.each(commands, function (index, value) {
     values[index] = 0;
 });
 
+function clientStart() {
+    client = new TwitchJS.client(clientOptions);
 
-const client = new TwitchJS.client(clientOptions);
-
-client.on('message', function (channel, userstate, message) {
-    if (message.charAt(0) !== "!") {
-        return;
-    }
-
-    $.each(commands, function (index, value) {
-
-        // ADD
-
-        if (message == "!" + value.add) {
-            //  $("#debug").append(JSON.stringify(userstate));
-            if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
-                changeValue(index, "add");
-            }
-            return false;
+    client.on('message', function (channel, userstate, message) {
+        if (message.charAt(0) !== "!") {
+            return;
         }
-        else {
-            // REMOVE
 
-            if (message == "!" + value.remove) {
+        $.each(commands, function (index, value) {
 
+            // ADD
+
+            if (message == "!" + value.add) {
+                //  $("#debug").append(JSON.stringify(userstate));
                 if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
-                    changeValue(index, "remove");
+                    changeValue(index, "add");
                 }
                 return false;
-            }
-            else {
-                // RESET
+            } else {
+                // REMOVE
 
-                if (message == "!" + value.reset) {
+                if (message == "!" + value.remove) {
+
                     if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
-                        changeValue(index, "reset");
+                        changeValue(index, "remove");
                     }
                     return false;
+                } else {
+                    // RESET
+
+                    if (message == "!" + value.reset) {
+                        if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
+                            changeValue(index, "reset");
+                        }
+                        return false;
+                    }
+
+
                 }
-
-
             }
-        }
 
+
+        });
 
     });
-
-});
-
+    client.connect();
+}
 function changeValue(index, type) {
     if (type === "add") {
         values[index]++;
@@ -111,13 +119,12 @@ function updateOverlay(index, value) {
 
 function generateDivs() {
     $.each(values, function (index, value) {
-        $("#container").append(`<div class="counter">${commands[index]['description']}: <span class="value" id="${index}value">${value}</span>`);
+        $("#container").append(`<div class="counter">${commands[index]['description']}<span class="value" id="${index}value">${value}</span>`);
     });
 }
 
 if (userOptions.keyXYZ !== "") {
     loadState();
-    client.connect();
     generateDivs();
 
 }
