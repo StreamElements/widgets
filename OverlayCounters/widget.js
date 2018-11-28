@@ -20,15 +20,14 @@ var commands = {
     },
 
 };
-values = {};
+let values = {};
 
-
-var audio, name = '';
+let audio, name = '';
 let client;
 let channel;
 let clientOptions = {};
-window.addEventListener('onWidgetLoad', function(obj) {
-    channel=obj["detail"]["channel"]["username"];
+window.addEventListener('onWidgetLoad', function (obj) {
+    channel = obj["detail"]["channel"]["username"];
     clientOptions = {
         connection: {
             reconnect: true,
@@ -46,10 +45,11 @@ clientOptions = {
     },
     channels: [channel]
 };
-
+let emptyvalues={};
 $.each(commands, function (index, value) {
-    values[index] = 0;
+    emptyvalues[index] = 0;
 });
+values=emptyvalues;
 
 function clientStart() {
     client = new TwitchJS.client(clientOptions);
@@ -58,12 +58,19 @@ function clientStart() {
         if (message.charAt(0) !== "!") {
             return;
         }
-
+        if (message === "!fullreset") {
+            if (userstate.mod || userstate.badges.broadcaster) {
+                values=emptyvalues;
+                $("#container").empty();
+                generateDivs();
+            }
+            return false;
+        }
         $.each(commands, function (index, value) {
 
             // ADD
 
-            if (message == "!" + value.add) {
+            if (message === "!" + value.add) {
                 //  $("#debug").append(JSON.stringify(userstate));
                 if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
                     changeValue(index, "add");
@@ -72,7 +79,7 @@ function clientStart() {
             } else {
                 // REMOVE
 
-                if (message == "!" + value.remove) {
+                if (message === "!" + value.remove) {
 
                     if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
                         changeValue(index, "remove");
@@ -81,7 +88,7 @@ function clientStart() {
                 } else {
                     // RESET
 
-                    if (message == "!" + value.reset) {
+                    if (message === "!" + value.reset) {
                         if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
                             changeValue(index, "reset");
                         }
@@ -95,17 +102,17 @@ function clientStart() {
 
         });
 
+
     });
     client.connect();
 }
+
 function changeValue(index, type) {
     if (type === "add") {
         values[index]++;
-    }
-    else if (type === "remove") {
+    } else if (type === "remove") {
         values[index]--;
-    }
-    else if (type === "reset") {
+    } else if (type === "reset") {
         values[index] = 0;
     }
 //    $("#debug").append(index+" "+type);
@@ -127,8 +134,7 @@ if (userOptions.keyXYZ !== "") {
     loadState();
     generateDivs();
 
-}
-else {
+} else {
     $.post("https://api.keyvalue.xyz/new/StreamElements", function (data) {
         var parts = data.slice(1, -1).split("/");
         $("body").append('SET keyXYZ value in your JS tab to "' + parts[3] + '"');
@@ -148,8 +154,7 @@ function loadState() {
         success: function (data) {
             if (data.length > 3) {
                 values = JSON.parse(data);
-            }
-            else {
+            } else {
                 saveState(values);
             }
         }
