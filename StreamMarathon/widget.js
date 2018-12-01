@@ -17,14 +17,12 @@ let followSeconds = 1,
     donationSeconds = 60, //multiplied by amount of donation, for example [CURRENCY] 3 will add 3 minutes
     hostSeconds = 1; //multiplied by amount of viewers from host
 
-
-let minutes = 20; //initial timer script will go off
 let maxTime = '2019-06-18 10:45'; // Time cap you want to use
 
 
 //Starting to work like a machine does
-let seconds = minutes * 60;
-maxTime = new Date(maxTime);
+let seconds;
+
 let start;
 
 function countdown(seconds) {
@@ -62,12 +60,21 @@ window.addEventListener('onEventReceived', function (obj) {
     }
 });
 window.addEventListener('onWidgetLoad', function (obj) {
+    const fieldData = obj.detail.fieldData;
+    keyXYZ = fieldData.keyXYZ;
+    followSeconds = fieldData.followSeconds;
+    subSeconds = fieldData.subSeconds;
+    cheerSeconds = fieldData.cheerSeconds; //multiplied by amount of cheer
+    donationSeconds = fieldData.donationSeconds; //multiplied by amount of donation, for example [CURRENCY] 3 will add 3 minutes
+    hostSeconds = fieldData.hostSeconds;
+    seconds = fieldData.initialMinutes * 60;
+    maxTime = new Date(fieldData.maxTime);
     if (keyXYZ) {
         loadState();
     } else {
         $.post("https://api.keyvalue.xyz/new/SEMarathon", function (data) {
             let parts = data.slice(1, -1).split("/");
-            $("#countdown").html('SET keyXYZ value in your JS tab to "' + parts[3] + '"');
+            $("#countdown").html('SET keyXYZ value in your config to "' + parts[3] + '"');
         });
 
     }

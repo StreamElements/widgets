@@ -1,0 +1,42 @@
+{
+  "followSeconds": {
+    "type": "number",
+    "label": "Seconds per follower:",
+    "value": 1
+  },
+  "subSeconds": {
+    "type": "number",
+    "label": "Seconds per subscriber:",
+    "value": 60
+  },
+  "cheerSeconds": {
+    "type": "number",
+    "label": "Seconds per one bit:",
+    "value": 5
+  },
+  "donationSeconds": {
+    "type": "number",
+    "label": "Seconds multiplied by amount:",
+    "value": 300
+  },
+  "hostSeconds": {
+    "type": "number",
+    "label": "Seconds per viewer from host:",
+    "value": 1
+  },
+  "initialMinutes": {
+    "type": "number",
+    "label": "Initial time to go off:",
+    "value": 20
+  },
+  "maxTime": {
+    "type": "datetime-local",
+    "label": "Maximum time of marathon:",
+    "value": "2020-12-30 00:00:01"
+  },
+  "keyXYZ": {
+    "type": "text",
+    "label": "keyvalueXYZ key",
+    "value": ""
+  }
+}
