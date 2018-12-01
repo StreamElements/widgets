@@ -93,6 +93,7 @@ function loadState() {
 
         let amount = parseInt(data);
         if (amount > 0) {
+            amount=Math.max(amount,Date.now()-seconds*1000);
             start = new Date(amount);
             countdown(0);
 
