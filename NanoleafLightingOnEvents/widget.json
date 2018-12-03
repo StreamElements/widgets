@@ -1,0 +1,67 @@
+{
+  "ip": {
+    "type": "text",
+    "label": "Nanoleaf IP Address",
+    "value": "192.168.1.25"
+  },
+  "token": {
+    "type": "text",
+    "label": "Nanoleaf token",
+    "value": "abcd1234abcd1234"
+  },
+  "defaultEffect": {
+    "type": "text",
+    "label": "Default effect",
+    "value": "Fireworks"
+  },
+  "followerEffect": {
+    "type": "text",
+    "label": "Effect on Follow",
+    "value": "Fireworks"
+  },
+  "followerTime": {
+    "type": "number",
+    "label": "Follower effect time",
+    "value": 5
+  },
+  "subscriberEffect": {
+    "type": "text",
+    "label": "Effect on sub",
+    "value": "Fireworks"
+  },
+  "subscriberTime": {
+    "type": "number",
+    "label": "Sub effect time",
+    "value": 5
+  },
+  "tipEffect": {
+    "type": "text",
+    "label": "Effect on tip",
+    "value": "Fireworks"
+  },
+  "tipTime": {
+    "type": "number",
+    "label": "Tip effect time",
+    "value": 5
+  },
+  "hostEffect": {
+    "type": "text",
+    "label": "Effect on host",
+    "value": "Fireworks"
+  },
+  "hostTime": {
+    "type": "number",
+    "label": "Host effect time",
+    "value": 5
+  },
+  "cheerEffect": {
+    "type": "text",
+    "label": "Effect on Cheer",
+    "value": "Fireworks"
+  },
+  "cheerTime": {
+    "type": "number",
+    "label": "Cheer effect time",
+    "value": 5
+  }
+}
