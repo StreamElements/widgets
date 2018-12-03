@@ -25,11 +25,11 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
-    url = 'http://' + fieldData['ip'] + '/api/v1/' + fieldData['token'] + '/effects'; // your api url
+    url = 'http://' + fieldData['ip'] + ':16021/api/v1/' + fieldData['token'] + '/effects'; // your api url
 });
 
 function light(event, name = "") {
-    let effect = "", time=0;
+    let effect = "", time = 0;
     if (event === "redemption") {
         if (typeof items[name] === "undefined") return;
         effect = items[name]["effect"];
@@ -38,7 +38,7 @@ function light(event, name = "") {
         effect = fieldData[event + "Effect"];
         time = fieldData[event + "Time"];
     }
-    if (effect === "" || time===0) return;
+    if (effect === "" || time === 0) return;
     $.ajax({
         url: url,
         method: 'PUT',
