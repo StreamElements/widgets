@@ -87,6 +87,41 @@
     "label": "Minimum amount of bits in Cheer:",
     "value": 1
   },
+  "direction": {
+    "type": "dropdown",
+    "label": "Direction:",
+    "value": "top",
+    "options": {
+      "top": "Top",
+      "bottom": "Bottom"
+    }
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "theme": {
+    "type": "dropdown",
+    "label": "Background pattern:",
+    "value": "texture",
+    "options": {
+      "texture": "texture",
+      "diagonal-stripes": "Diagonal stripes",
+      "hexagons": "Hexagons",
+      "i-like-food": "I like food",
+      "tiny-checkers": "Tiny checkers",
+      "circuit-board": "Circuit board"
+    }
+  },
+  "backgroundOpacity": {
+    "type": "number",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "label": "Texture opacity",
+    "value": 50
+  },
   "backgroundColor": {
     "type": "colorpicker",
     "label": "Background color",

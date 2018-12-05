@@ -9,6 +9,7 @@ let eventsLimit = 5,
     includeTips = true,
     minTip = 0,
     includeCheers = true,
+    direction = "top",
     minCheer = 0;
 
 let userCurrency,
@@ -44,7 +45,10 @@ window.addEventListener('onEventReceived', function (obj) {
         }
     } else if (listener === 'tip') {
         if (includeTips && minTip <= event.amount) {
-            addEvent('tip', event.amount.toLocaleString(undefined,{style: 'currency',currency:userCurrency.code}), event.name);
+            addEvent('tip', event.amount.toLocaleString(undefined, {
+                style: 'currency',
+                currency: userCurrency.code
+            }), event.name);
         }
     } else if (listener === 'raid') {
         if (includeRaids && minRaid <= event.amount) {
@@ -72,7 +76,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     minTip = fieldData.minTip;
     includeCheers = (fieldData.includeCheers === "yes");
     minCheer = fieldData.minCheer;
-
+    direction = fieldData.direction;
 
 
     let eventIndex;
@@ -104,7 +108,10 @@ window.addEventListener('onWidgetLoad', function (obj) {
             }
         } else if (event.type === 'tip') {
             if (includeTips && minTip <= event.amount) {
-                addEvent('tip', event.amount.toLocaleString(undefined,{style: 'currency',currency:userCurrency.code}), event.name);
+                addEvent('tip', event.amount.toLocaleString(undefined, {
+                    style: 'currency',
+                    currency: userCurrency.code
+                }), event.name);
             }
         } else if (event.type === 'raid') {
             if (includeRaids && minRaid <= event.amount) {
@@ -118,11 +125,17 @@ function addEvent(type, text, username) {
     totalEvents += 1;
     const element = `
     <div class="event-container" id="event-${totalEvents}">
+		<div class="backgroundsvg"></div>
         <div class="event-image event-${type}"></div>
         <div class="username-container">${username}</div>
        <div class="details-container">${text}</div>
+	
     </div>`;
-    $('.main-container').append(element);
+    if (direction === "bottom") {
+        $('.main-container').append(element);
+    } else {
+        $('.main-container').prepend(element);
+    }
     if (totalEvents > eventsLimit) {
         removeEvent(totalEvents - eventsLimit);
     }
