@@ -6,31 +6,39 @@
 }
 
 .event-follower {
-    background: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg') no-repeat;
+    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg');
+    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg');
+
 }
 
 .event-cheer {
-    background: url('https://cdn.streamelements.com/static/custom-event-list/bits.svg') no-repeat;
+    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/bits.svg');
+    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/bits.svg');
 }
 
 .event-host {
-    background: url('https://cdn.streamelements.com/static/custom-event-list/host.svg') no-repeat;
+    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/host.svg');
+    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/host.svg');
 }
 
 .event-raid {
-    background: url('https://cdn.streamelements.com/static/custom-event-list/raid.svg') no-repeat;
+    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/raid.svg');
+    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/raid.svg');
 }
 
 .event-sub {
-    background: url('https://cdn.streamelements.com/static/custom-event-list/sub.svg') no-repeat;
+    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/sub.svg');
+    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/sub.svg');
 }
 
 .event-tip {
-    background: url('https://cdn.streamelements.com/static/custom-event-list/tip.svg') no-repeat;
+    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/tip.svg');
+    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/tip.svg');
 }
 
 .event-redemption {
-    background: url('https://cdn.streamelements.com/static/custom-event-list/redemption.svg') no-repeat;
+    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/redemption.svg');
+    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/redemption.svg');
 }
 
 @keyframes slide-in {
@@ -111,6 +119,9 @@
     object-fit: contain;
     display: inline-block;
     width: 20px;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    background-color:{{iconColor}};
     position:absolute;
 }
 

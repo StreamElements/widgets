@@ -126,5 +126,10 @@
     "type": "colorpicker",
     "label": "Background color",
     "value": "rgba(36, 6, 73, 0.15)"
+  },
+  "iconColor": {
+    "type": "colorpicker",
+    "label": "Icon Color",
+    "value": "rgb(255, 255, 255, 255)"
   }
 }

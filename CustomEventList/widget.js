@@ -16,6 +16,9 @@ let userCurrency,
     totalEvents = 0;
 
 window.addEventListener('onEventReceived', function (obj) {
+    if (typeof obj.detail.event.itemId!=="undefined") {
+        obj.detail.listener="redemption-latest"
+    }
     const listener = obj.detail.listener.split("-")[0];
     const event = obj.detail.event;
 
