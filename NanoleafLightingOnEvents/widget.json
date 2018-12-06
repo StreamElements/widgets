@@ -78,5 +78,20 @@
     "type": "number",
     "label": "Minimal amount of raid",
     "value": 20
+  },
+  "hostEffect": {
+    "type": "text",
+    "label": "Effect on host",
+    "value": "Fireworks"
+  },
+  "hostTime": {
+    "type": "number",
+    "label": "Host effect time",
+    "value": 5
+  },
+  "hostAmount": {
+    "type": "number",
+    "label": "Minimal amount of host",
+    "value": 20
   }
 }
