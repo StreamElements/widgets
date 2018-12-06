@@ -44,15 +44,10 @@
     "label": "Tip effect time",
     "value": 5
   },
-  "hostEffect": {
-    "type": "text",
-    "label": "Effect on host",
-    "value": "Fireworks"
-  },
-  "hostTime": {
+  "tipAmount": {
     "type": "number",
-    "label": "Host effect time",
-    "value": 5
+    "label": "Minimal amount of tip",
+    "value": 0
   },
   "cheerEffect": {
     "type": "text",
@@ -63,5 +58,25 @@
     "type": "number",
     "label": "Cheer effect time",
     "value": 5
+  },
+  "cheerAmount": {
+    "type": "number",
+    "label": "Minimal amount of cheer",
+    "value": 100
+  },
+  "raidEffect": {
+    "type": "text",
+    "label": "Effect on raid",
+    "value": "Fireworks"
+  },
+  "raidTime": {
+    "type": "number",
+    "label": "Raid effect time",
+    "value": 5
+  },
+  "raidAmount": {
+    "type": "number",
+    "label": "Minimal amount of raid",
+    "value": 20
   }
 }

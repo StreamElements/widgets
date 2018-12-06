@@ -31,6 +31,9 @@ window.addEventListener('onEventReceived', function (obj) {
         item = obj.detail.event.item;
         item = item.replace(/\W/g, '');
     }
+    if (listener[0] === 'cheer' || listener[0] === 'tip' || listener[0] === 'host' || listener[0] === 'raid') {
+        if (fieldData[listener[0] + "Amount"] > obj.detail.event.amount) return;
+    }
     light(listener[0], item);
 });
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -39,7 +42,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 });
 
 function light(event, name = "") {
-    let effect = "", time;
+    let effect = "", time = 0;
     if (event === "redemption") {
         if (typeof items[name] === "undefined") return;
         effect = items[name]["effect"];
@@ -49,8 +52,7 @@ function light(event, name = "") {
         time = fieldData[event + "Time"];
     }
 
-    if (effect === "") return;
-
+    if (effect === "" || time === 0) return;
     $.ajax({
         url: url,
         method: 'PUT',
