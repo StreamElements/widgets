@@ -1,4 +1,5 @@
 let eventsLimit = 5,
+    userLocale = "en-US",
     includeFollowers = true,
     includeRedemptions = true,
     includeHosts = true,
@@ -16,8 +17,8 @@ let userCurrency,
     totalEvents = 0;
 
 window.addEventListener('onEventReceived', function (obj) {
-    if (typeof obj.detail.event.itemId!=="undefined") {
-        obj.detail.listener="redemption-latest"
+    if (typeof obj.detail.event.itemId !== "undefined") {
+        obj.detail.listener = "redemption-latest"
     }
     const listener = obj.detail.listener.split("-")[0];
     const event = obj.detail.event;
@@ -48,8 +49,9 @@ window.addEventListener('onEventReceived', function (obj) {
         }
     } else if (listener === 'tip') {
         if (includeTips && minTip <= event.amount) {
-            addEvent('tip', event.amount.toLocaleString(undefined, {
+            addEvent('tip', event.amount.toLocaleString(userLocale, {
                 style: 'currency',
+                minimumFractionDigits: 0,
                 currency: userCurrency.code
             }), event.name);
         }
@@ -81,7 +83,6 @@ window.addEventListener('onWidgetLoad', function (obj) {
     minCheer = fieldData.minCheer;
     direction = fieldData.direction;
 
-
     let eventIndex;
     for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
         const event = recents[eventIndex];
@@ -95,6 +96,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
                 addEvent('redemption', 'Redeemed', event.name);
             }
         } else if (event.type === 'subscriber') {
+            if (!includeSubs) return;
             if (event.amount === 'gift') {
                 addEvent('sub', `Sub gift`, event.name);
             } else {
@@ -111,8 +113,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
             }
         } else if (event.type === 'tip') {
             if (includeTips && minTip <= event.amount) {
-                addEvent('tip', event.amount.toLocaleString(undefined, {
+                addEvent('tip', event.amount.toLocaleString(userLocale, {
                     style: 'currency',
+                    minimumFractionDigits: 0,
                     currency: userCurrency.code
                 }), event.name);
             }
@@ -124,6 +127,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     }
 });
 
+
 function addEvent(type, text, username) {
     totalEvents += 1;
     const element = `
@@ -132,7 +136,6 @@ function addEvent(type, text, username) {
         <div class="event-image event-${type}"></div>
         <div class="username-container">${username}</div>
        <div class="details-container">${text}</div>
-	
     </div>`;
     if (direction === "bottom") {
         $('.main-container').append(element);
