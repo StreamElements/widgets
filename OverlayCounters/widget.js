@@ -23,89 +23,82 @@ var commands = {
 let values = {};
 
 let audio, name = '';
-let client;
 let channel;
-let clientOptions = {};
+
 window.addEventListener('onWidgetLoad', function (obj) {
     channel = obj["detail"]["channel"]["username"];
-    clientOptions = {
-        connection: {
-            reconnect: true,
-            secure: true,
-        },
-        channels: [channel]
-    };
-    clientStart();
+
 });
 
-clientOptions = {
-    connection: {
-        reconnect: true,
-        secure: true,
-    },
-    channels: [channel]
-};
-let emptyvalues={};
+
+let emptyvalues = {};
 $.each(commands, function (index, value) {
     emptyvalues[index] = 0;
 });
-values=emptyvalues;
+values = emptyvalues;
 
-function clientStart() {
-    client = new TwitchJS.client(clientOptions);
-
-    client.on('message', function (channel, userstate, message) {
-        if (message.charAt(0) !== "!") {
-            return;
+window.addEventListener('onEventReceived', function (obj) {
+    if (obj.detail.listener !== "message") return;
+    let data = obj.detail.event.data;
+    let message = data["text"];
+    let user = data["displayName"];
+    let userstate = {
+        "mod": data.tags.mod,
+        "badges": {
+            "broadcaster": (user === channel)
         }
-        if (message === "!fullreset") {
-            if (userstate.mod || userstate.badges.broadcaster) {
-                values=emptyvalues;
-                $("#container").empty();
-                generateDivs();
+
+    };
+    if (message.charAt(0) !== "!") {
+        return;
+    }
+    if (message === "!fullreset") {
+        if (userstate.mod || userstate.badges.broadcaster) {
+            values = emptyvalues;
+            $("#container").empty();
+            generateDivs();
+        }
+        return false;
+    }
+    $.each(commands, function (index, value) {
+
+        // ADD
+
+        if (message === "!" + value.add) {
+            //  $("#debug").append(JSON.stringify(userstate));
+            if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
+                changeValue(index, "add");
             }
             return false;
-        }
-        $.each(commands, function (index, value) {
+        } else {
+            // REMOVE
 
-            // ADD
+            if (message === "!" + value.remove) {
 
-            if (message === "!" + value.add) {
-                //  $("#debug").append(JSON.stringify(userstate));
                 if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
-                    changeValue(index, "add");
+                    changeValue(index, "remove");
                 }
                 return false;
             } else {
-                // REMOVE
+                // RESET
 
-                if (message === "!" + value.remove) {
-
+                if (message === "!" + value.reset) {
                     if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
-                        changeValue(index, "remove");
+                        changeValue(index, "reset");
                     }
                     return false;
-                } else {
-                    // RESET
-
-                    if (message === "!" + value.reset) {
-                        if (!value.modsonly || (value.modsonly && (userstate.mod || userstate.badges.broadcaster))) {
-                            changeValue(index, "reset");
-                        }
-                        return false;
-                    }
-
-
                 }
+
+
             }
-
-
-        });
+        }
 
 
     });
-    client.connect();
-}
+
+
+});
+
 
 function changeValue(index, type) {
     if (type === "add") {

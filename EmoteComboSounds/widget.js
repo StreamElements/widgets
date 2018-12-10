@@ -25,21 +25,14 @@ var userOptions = {
     }
 };
 
-window.addEventListener('onWidgetLoad', function(obj) {
-    userOptions["channelName"]=obj["detail"]["channel"]["username"];
-});
-let clientOptions = {
-    connection: {
-        reconnect: true,
-        secure: true,
-    },
-    channels: [userOptions.channelName]
-};
 
 let queue = $("#placeholder");
 let emoticons = [];
 const client = new TwitchJS.client(clientOptions);
-client.on('message', function (channel, userstate, message) {
+window.addEventListener('onEventReceived', function (obj) {
+    if (obj.detail.listener !== "message") return;
+    let data = obj.detail.event.data;
+    let message = data["text"];
     let words = message.split(" ");
     let results = words.filter(value => -1 !== emoticons.indexOf(value));
     results = Array.from(new Set(results)); //getting unique emoticons

@@ -16,15 +16,19 @@ window.addEventListener('onWidgetLoad', function (obj) {
     userOptions["firstLetter"] = obj["detail"]["fieldData"]["firstLetter"];
     userOptions["onlyUniqueUsers"] = (obj["detail"]["fieldData"]["onlyUniqueUsers"] === "yes");
 });
-let clientOptions = {
-    connection: {
-        reconnect: true,
-        secure: true,
-    },
-    channels: [userOptions.channelName]
-};
-const client = new TwitchJS.client(clientOptions);
-client.on('message', function (channel, userstate, message) {
+
+window.addEventListener('onEventReceived', function (obj) {
+    if (obj.detail.listener !== "message") return;
+    let data = obj.detail.event.data;
+    let message = data["text"];
+    let user = data["displayName"];
+    let userstate = {
+        "mod": data.tags.mod,
+        "badges": {
+            "broadcaster": (user === userOptions["channelName"])
+        }
+
+    };
     if (message === '!resetpoll' && (userstate.mod || userstate.badges.broadcaster)) {
         words = [];
         users = [];
@@ -59,7 +63,7 @@ function poll(word) {
     return true;
 }
 
-client.connect();
+
 
 let t = setInterval(function () {
     for (let key in words) {

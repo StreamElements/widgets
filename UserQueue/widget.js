@@ -3,7 +3,7 @@ let channel = "";
 let users = [];
 let nicknames = [];
 let queueCommand, drawCommand, clearCommand, purgeCommand;
-let client;
+
 
 function addToQueue(user, nickname) {
     if (users.indexOf(user) !== -1) return false;
@@ -58,7 +58,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     keyXYZ = fieldData.keyXYZ;
     if (keyXYZ) {
         loadState();
-        clientConnect();
+
     } else {
         $.post("https://api.keyvalue.xyz/new/StreamElements", function (data) {
             var parts = data.slice(1, -1).split("/");
@@ -67,44 +67,37 @@ window.addEventListener('onWidgetLoad', function (obj) {
     }
 });
 
-function clientConnect() {
-    let clientOptions = {
-        connection: {
-            reconnect: true,
-            secure: true,
-        },
-        channels: [channel]
-    };
-    client = new TwitchJS.client(clientOptions);
-    client.on('message', function (channel, userstate, message) {
-        let user = userstate["username"];
-        if (message.indexOf(queueCommand) === 0) {
-            message = message.split(" ");
-            message = message.slice(1);
-            let nickname = user;
-            if (message.length > 0) {
-                nickname = message.join(" ");
-            }
-            addToQueue(user, nickname);
-            return;
+window.addEventListener('onEventReceived', function (obj) {
+    if (obj.detail.listener !== "message") return;
+    let data = obj.detail.event.data;
+    let message = data["text"];
+    let user = data["displayName"];
+    if (message.indexOf(queueCommand) === 0) {
+        message = message.split(" ");
+        message = message.slice(1);
+        let nickname = user;
+        if (message.length > 0) {
+            nickname = message.join(" ");
         }
-        // Broadcaster commands only below
-        if ('#' + user !== channel) return;
-        if (message.indexOf(drawCommand) === 0) {
-            message = message.split(" ");
-            drawFromQueue(message[1]);
-            return;
-        }
-        if (message === clearCommand) {
-            clearScreen();
-            return;
-        }
-        if (message === purgeCommand) {
-            clearScreen();
-            return;
-        }
+        addToQueue(user, nickname);
+        return;
+    }
+    // Broadcaster commands only below
+    if ('#' + user !== channel) return;
+    if (message.indexOf(drawCommand) === 0) {
+        message = message.split(" ");
+        drawFromQueue(message[1]);
+        return;
+    }
+    if (message === clearCommand) {
+        clearScreen();
+        return;
+    }
+    if (message === purgeCommand) {
+        clearScreen();
+        return;
+    }
 
 
-    });
-    client.connect();
-}
+});
+
