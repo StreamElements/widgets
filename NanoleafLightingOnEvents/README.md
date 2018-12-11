@@ -11,8 +11,11 @@
     --allow-running-insecure-content --disable-web-security
     ``` 
     So it looks like that:
- `"C:\Program Files (x86)\obs-studio\bin\64bit\obs64.exe" --allow-running-insecure-content --disable-web-security`
+    ```
+    "C:\Program Files (x86)\obs-studio\bin\64bit\obs64.exe" --allow-running-insecure-content --disable-web-security
+    ```
     May vary depending on your install path
+    
     <img src="https://i.imgur.com/UZdBS9C.png">
 
     Note: this widget will not work directly from browser, so you need to add it to OBS in order to test it 
