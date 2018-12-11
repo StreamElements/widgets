@@ -38,7 +38,7 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
-    url = 'http://' + fieldData['ip'] + '/api/v1/' + fieldData['token'] + '/effects'; // your api url
+    url = 'http://' + fieldData['ip'] + '/api/v1/' + fieldData['token'] + ':16021/effects'; // your api url
 });
 
 function light(event, name = "") {

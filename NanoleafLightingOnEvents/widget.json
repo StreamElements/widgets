@@ -12,12 +12,12 @@
   "defaultEffect": {
     "type": "text",
     "label": "Default effect",
-    "value": "Fireworks"
+    "value": "Inner Peace"
   },
   "followerEffect": {
     "type": "text",
     "label": "Effect on Follow",
-    "value": "Fireworks"
+    "value": "Forest"
   },
   "followerTime": {
     "type": "number",
@@ -27,7 +27,7 @@
   "subscriberEffect": {
     "type": "text",
     "label": "Effect on sub",
-    "value": "Fireworks"
+    "value": "Romantic"
   },
   "subscriberTime": {
     "type": "number",
@@ -37,7 +37,7 @@
   "tipEffect": {
     "type": "text",
     "label": "Effect on tip",
-    "value": "Fireworks"
+    "value": "Color Burst"
   },
   "tipTime": {
     "type": "number",
@@ -52,7 +52,7 @@
   "cheerEffect": {
     "type": "text",
     "label": "Effect on Cheer",
-    "value": "Fireworks"
+    "value": "Flames"
   },
   "cheerTime": {
     "type": "number",
@@ -67,7 +67,7 @@
   "raidEffect": {
     "type": "text",
     "label": "Effect on raid",
-    "value": "Fireworks"
+    "value": "Northern Lights"
   },
   "raidTime": {
     "type": "number",
@@ -82,7 +82,7 @@
   "hostEffect": {
     "type": "text",
     "label": "Effect on host",
-    "value": "Fireworks"
+    "value": "Snowfall"
   },
   "hostTime": {
     "type": "number",
