@@ -96,7 +96,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
                 addEvent('redemption', 'Redeemed', event.name);
             }
         } else if (event.type === 'subscriber') {
-            if (!includeSubs) return;
+            if (!includeSubs) continue;
             if (event.amount === 'gift') {
                 addEvent('sub', `Sub gift`, event.name);
             } else {
