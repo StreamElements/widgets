@@ -12,7 +12,9 @@ let keyXYZ = ""; //it should look like let keyXYZ="1234abcd"; after first run
 
 //MULTIPLIERS:
 let followSeconds = 1,
-    subSeconds = 10,
+    sub1Seconds = 10,
+    sub2Seconds = 20,
+    sub3Seconds = 30,
     cheerSeconds = 1, //multiplied by amount of cheer
     donationSeconds = 60, //multiplied by amount of donation, for example [CURRENCY] 3 will add 3 minutes
     hostSeconds = 1; //multiplied by amount of viewers from host
@@ -44,13 +46,18 @@ window.addEventListener('onEventReceived', function (obj) {
         const listener = obj.detail.listener;
         const data = obj.detail.event;
         if (listener === 'follower-latest') {
-
             countdown(followSeconds);
         } else if (listener === 'subscriber-latest') {
-            countdown(subSeconds);
+            if (data.tier === 2000) {
+                countdown(sub2Seconds);
+            } else if (data.tier === 3000) {
+                countdown(sub3Seconds);
+            } else {
+                countdown(sub1Seconds);
+            }
+
         } else if (listener === 'host-latest') {
             countdown(hostSeconds * data["amount"]);
-
         } else if (listener === 'cheer-latest') {
             countdown(cheerSeconds * data["amount"]);
         } else if (listener === 'tip-latest') {
@@ -63,7 +70,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
     const fieldData = obj.detail.fieldData;
     keyXYZ = fieldData.keyXYZ;
     followSeconds = fieldData.followSeconds;
-    subSeconds = fieldData.subSeconds;
+    sub1Seconds = fieldData.sub1Seconds;
+    sub2Seconds = fieldData.sub2Seconds;
+    sub3Seconds = fieldData.sub3Seconds;
     cheerSeconds = fieldData.cheerSeconds; //multiplied by amount of cheer
     donationSeconds = fieldData.donationSeconds; //multiplied by amount of donation, for example [CURRENCY] 3 will add 3 minutes
     hostSeconds = fieldData.hostSeconds;
@@ -93,7 +102,7 @@ function loadState() {
 
         let amount = parseInt(data);
         if (amount > 0) {
-            amount=Math.max(amount,Date.now()-seconds*1000);
+            amount = Math.max(amount, Date.now() - seconds * 1000);
             start = new Date(amount);
             countdown(0);
 

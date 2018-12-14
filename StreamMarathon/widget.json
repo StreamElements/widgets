@@ -4,10 +4,20 @@
     "label": "Seconds per follower:",
     "value": 1
   },
-  "subSeconds": {
+  "sub1Seconds": {
     "type": "number",
-    "label": "Seconds per subscriber:",
+    "label": "Seconds per T1 subscriber:",
     "value": 60
+  },
+  "sub2Seconds": {
+    "type": "number",
+    "label": "Seconds per T2 subscriber:",
+    "value": 120
+  },
+  "sub3Seconds": {
+    "type": "number",
+    "label": "Seconds per T3 subscriber:",
+    "value": 180
   },
   "cheerSeconds": {
     "type": "number",
