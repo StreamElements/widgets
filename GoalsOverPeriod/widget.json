@@ -27,12 +27,13 @@
       "follower": "Follower",
       "subscriber": "Subscriber",
       "tip": "Tip amount",
-      "cheer": "Bits amount"
+      "cheer": "Bits amount",
+      "subscriber-points":"Subscriber points"
     }
   },
   "eventPeriod": {
     "type": "dropdown",
-    "label": "Pick period:",
+    "label": "Pick period: (doesn't work with sub points)",
     "value": "session",
     "options": {
       "session": "Session",
@@ -65,5 +66,10 @@
     "type": "number",
     "label": "Label font Size",
     "value": 24
+  },
+  "userLocale": {
+    "type": "text",
+    "label": "User locale to display currency",
+    "value": "en-US"
   }
 }
