@@ -1,0 +1,30 @@
+{
+  "fontSize": {
+    "type": "number",
+    "label": "Font size:",
+    "value": 40
+  },
+  "eventType": {
+    "type": "dropdown",
+    "label": "Pick event type:",
+    "value": "follower",
+    "options": {
+      "follower": "Follower",
+      "subscriber": "Subscriber",
+      "tip": "Tip amount",
+      "cheer": "Bits amount",
+      "subscriber-points": "Subscriber points"
+    }
+  },
+  "eventPeriod": {
+    "type": "dropdown",
+    "label": "Pick period: (doesn't work with sub points)",
+    "value": "session",
+    "options": {
+      "session": "Session",
+      "week": "Week",
+      "month": "Month",
+      "total": "Total"
+    }
+  }
+}
