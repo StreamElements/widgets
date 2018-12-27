@@ -1,0 +1,28 @@
+.mySlides {
+    _display: none;
+    position: absolute;
+    top:0px;
+    left:0px;
+    display:none;
+    font-size: 30px;
+    padding: 20px;
+    color:{{fontColor}};
+}
+.icon {
+    text-align: center;
+    text-decoration: none;
+    float: left;
+}
+.username{
+
+    float:left;
+    padding-left:10px;
+    padding-top:2px;
+}
+.fa{
+    width: 45px;
+    padding: 5px;
+    border-radius: 50%;
+
+    color:#5e5e5e;
+}

@@ -1,0 +1,108 @@
+{
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font color",
+    "value": "#ff0000"
+  },
+  "timeIn": {
+    "type": "number",
+    "label": "Animation In time ms",
+    "value": 400
+  },
+  "timeDisplay": {
+    "type": "number",
+    "label": "Display time ms",
+    "value": 4000
+  },
+  "timeOut": {
+    "type": "number",
+    "label": "Animation Out time ms",
+    "value": 400
+  },
+  "delay": {
+    "type": "number",
+    "label": "delay ms",
+    "value": 1200
+  },
+  "animationIn": {
+    "type": "dropdown",
+    "label": "animationIn:",
+    "value": "none",
+    "options": {
+      "none": "None",
+      "bounceIn": "bounceIn",
+      "bounceInDown": "bounceInDown",
+      "bounceInLeft": "bounceInLeft",
+      "bounceInRight": "bounceInRight",
+      "bounceInUp": "bounceInUp",
+      "fadeIn": "fadeIn",
+      "fadeInDown": "fadeInDown",
+      "fadeInDownBig": "fadeInDownBig",
+      "fadeInLeft": "fadeInLeft",
+      "fadeInLeftBig": "fadeInLeftBig",
+      "fadeInRight": "fadeInRight",
+      "fadeInRightBig": "fadeInRightBig",
+      "fadeInUp": "fadeInUp",
+      "fadeInUpBig": "fadeInUpBig",
+      "flipInX": "flipInX",
+      "flipInY": "flipInY",
+      "lightSpeedIn": "lightSpeedIn",
+      "rotateIn": "rotateIn",
+      "rotateInDownLeft": "rotateInDownLeft",
+      "rotateInDownRight": "rotateInDownRight",
+      "rotateInUpLeft": "rotateInUpLeft",
+      "rotateInUpRight": "rotateInUpRight",
+      "slideInUp": "slideInUp",
+      "slideInDown": "slideInDown",
+      "slideInLeft": "slideInLeft",
+      "slideInRight": "slideInRight",
+      "zoomIn": "zoomIn",
+      "zoomInDown": "zoomInDown",
+      "zoomInLeft": "zoomInLeft",
+      "zoomInRight": "zoomInRight",
+      "zoomInUp": "zoomInUp",
+      "jackInTheBox": "jackInTheBox",
+      "rollIn": "rollIn"
+    }
+  },
+  "animationOut": {
+    "type": "dropdown",
+    "label": "animationIn:",
+    "value": "none",
+    "options": {
+      "none": "None",
+      "bounceOut": "bounceOut",
+      "bounceOutDown": "bounceOutDown",
+      "bounceOutLeft": "bounceOutLeft",
+      "bounceOutRight": "bounceOutRight",
+      "bounceOutUp": "bounceOutUp",
+      "fadeOut": "fadeOut",
+      "fadeOutDown": "fadeOutDown",
+      "fadeOutDownBig": "fadeOutDownBig",
+      "fadeOutLeft": "fadeOutLeft",
+      "fadeOutLeftBig": "fadeOutLeftBig",
+      "fadeOutRight": "fadeOutRight",
+      "fadeOutRightBig": "fadeOutRightBig",
+      "fadeOutUp": "fadeOutUp",
+      "fadeOutUpBig": "fadeOutUpBig",
+      "flipOutX": "flipOutX",
+      "flipOutY": "flipOutY",
+      "lightSpeedOut": "lightSpeedOut",
+      "rotateOut": "rotateOut",
+      "rotateOutDownLeft": "rotateOutDownLeft",
+      "rotateOutDownRight": "rotateOutDownRight",
+      "rotateOutUpLeft": "rotateOutUpLeft",
+      "rotateOutUpRight": "rotateOutUpRight",
+      "slideOutUp": "slideOutUp",
+      "slideOutDown": "slideOutDown",
+      "slideOutLeft": "slideOutLeft",
+      "slideOutRight": "slideOutRight",
+      "zoomOut": "zoomOut",
+      "zoomOutDown": "zoomOutDown",
+      "zoomOutLeft": "zoomOutLeft",
+      "zoomOutRight": "zoomOutRight",
+      "zoomOutUp": "zoomOutUp",
+      "rollOut": "rollOut"
+    }
+  }
+}
