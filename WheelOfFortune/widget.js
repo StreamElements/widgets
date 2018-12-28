@@ -28,6 +28,7 @@ let theWheel, channelName, spinCommand, accessLevel, cooldown, spins;
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
+    data['tags']['mod'] = parseInt(data['tags']['mod']);
     let message = data["text"];
     let user = data["nick"];
     if (message.toLowerCase() !== spinCommand.toLowerCase()) return;
