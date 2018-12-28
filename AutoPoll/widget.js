@@ -23,7 +23,7 @@ window.addEventListener('onEventReceived', function (obj) {
     let message = data["text"];
     let user = data["displayName"];
     let userstate = {
-        "mod": data.tags.mod,
+        "mod": parseInt(data.tags.mod),
         "badges": {
             "broadcaster": (user === userOptions["channelName"])
         }
