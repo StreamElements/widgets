@@ -1,0 +1,40 @@
+{
+  "spinCommand": {
+    "type": "text",
+    "label": "Spin Command",
+    "value": "!spin"
+  },
+  "wheelSize": {
+    "type": "number",
+    "label": "Wheel size",
+    "value": 412
+  },
+  "textSize": {
+    "type": "number",
+    "label": "Text Size",
+    "value": 20
+  },
+  "spins": {
+    "type": "number",
+    "label": "Number of spins",
+    "value": 5
+  },
+  "duration": {
+    "type": "slider",
+    "label": "Duration (s)",
+    "value": 3,
+    "min": 0,
+    "max": 10,
+    "steps": 1
+  },
+  "access": {
+    "type": "dropdown",
+    "label": "Allow users:",
+    "value": "broadcaster",
+    "options": {
+      "broadcaster": "Broadcaster",
+      "mods": "Mods+",
+      "everybody": "Everybody"
+    }
+  }
+}
