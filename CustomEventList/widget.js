@@ -82,6 +82,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     includeCheers = (fieldData.includeCheers === "yes");
     minCheer = fieldData.minCheer;
     direction = fieldData.direction;
+    userLocale=fieldData.locale;
 
     let eventIndex;
     for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
