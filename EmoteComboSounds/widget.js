@@ -23,6 +23,7 @@ let sounds = {
 };
 
 
+
 let queue = $("#placeholder");
 let emoticons = [];
 window.addEventListener('onEventReceived', function (obj) {
@@ -47,14 +48,22 @@ function checkPlay(index) {
         }
         if (sounds[index]['counter'] >= sounds[index]['amount']) {
             sounds[index]['cooldownEnd'] = (Date.now() / 1000) + sound.cooldown;
-            queue
-                .queue(function () {
+            let tmpaudio=new Audio(sound.soundFile);
+            tmpaudio.onloadeddata = function() {
+                console.log(`adding ${index} to queue after ${tmpaudio.duration}`);
 
-                    let audio = new Audio(sound.soundFile);
-                    audio.volume = sound.volume * .01;
-                    audio.play();
-                })
-                .delay(audio.duration * 1000);
+
+                queue
+                    .queue(function () {
+                        let audio = new Audio(sound.soundFile);
+                        audio.volume = sound.volume * .01;
+                        audio.play();
+                        $(this).delay(tmpaudio.duration*1000);
+                        $(this).dequeue();
+                    });
+
+
+            };
         }
     }
 }
