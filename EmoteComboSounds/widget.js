@@ -1,34 +1,30 @@
-var userOptions = {
-    channelName: "",
-    sounds: {
-        PogChamp: {
-            amount: 20,
-            soundFile: "https://d1490khl9dq1ow.cloudfront.net/sfx/mp3preview/casino-slot-machine_GJaIAh4d.mp3",
-            volume: 50,
-            timeout: 10, //seconds
-            cooldown: 240, //seconds
-        },
-        Kappa: {
-            amount: 2,
-            soundFile: "https://d1490khl9dq1ow.cloudfront.net/sfx/mp3preview/casino-slot-machine_GJaIAh4d.mp3",
-            volume: 50,
-            timeout: 10, //seconds
-            cooldown: 240, //seconds
-        },
-        PJSalt: {
-            amount: 2,
-            soundFile: "https://d1490khl9dq1ow.cloudfront.net/sfx/mp3preview/casino-slot-machine_GJaIAh4d.mp3",
-            volume: 50,
-            timeout: 3, //seconds
-            cooldown: 240, //seconds
-        },
-    }
+let sounds = {
+    PogChamp: {
+        amount: 20,
+        soundFile: "https://d1490khl9dq1ow.cloudfront.net/sfx/mp3preview/casino-slot-machine_GJaIAh4d.mp3",
+        volume: 50,
+        timeout: 10, //seconds
+        cooldown: 240, //seconds
+    },
+    Kappa: {
+        amount: 2,
+        soundFile: "https://d1490khl9dq1ow.cloudfront.net/sfx/mp3preview/casino-slot-machine_GJaIAh4d.mp3",
+        volume: 50,
+        timeout: 10, //seconds
+        cooldown: 240, //seconds
+    },
+    PJSalt: {
+        amount: 2,
+        soundFile: "https://d1490khl9dq1ow.cloudfront.net/sfx/mp3preview/casino-slot-machine_GJaIAh4d.mp3",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
 };
 
 
 let queue = $("#placeholder");
 let emoticons = [];
-const client = new TwitchJS.client(clientOptions);
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
@@ -43,14 +39,14 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 
 function checkPlay(index) {
-    let sound = userOptions['sounds'][index];
+    let sound = sounds[index];
     if (sound.cooldownEnd < Date.now() / 1000) {
-        userOptions['sounds'][index]['counter']++;
-        if (userOptions['sounds'][index]['timer'] === 0) {
-            userOptions['sounds'][index]['timer'] = userOptions['sounds'][index]['timeout'];
+        sounds[index]['counter']++;
+        if (sounds[index]['timer'] === 0) {
+            sounds[index]['timer'] = sounds[index]['timeout'];
         }
-        if (userOptions['sounds'][index]['counter'] >= userOptions['sounds'][index]['amount']) {
-            userOptions['sounds'][index]['cooldownEnd'] = (Date.now() / 1000) + sound.cooldown;
+        if (sounds[index]['counter'] >= sounds[index]['amount']) {
+            sounds[index]['cooldownEnd'] = (Date.now() / 1000) + sound.cooldown;
             queue
                 .queue(function () {
 
@@ -59,24 +55,22 @@ function checkPlay(index) {
                     audio.play();
                 })
                 .delay(audio.duration * 1000);
-
         }
     }
 }
 
-client.connect();
-for (let key in userOptions.sounds) {
+for (let key in sounds) {
     emoticons.push(key);
-    userOptions['sounds'][key]['counter'] = 0;
-    userOptions['sounds'][key]['cooldownEnd'] = 0;
-    userOptions['sounds'][key]['timer'] = 0;
+    sounds[key]['counter'] = 0;
+    sounds[key]['cooldownEnd'] = 0;
+    sounds[key]['timer'] = 0;
 }
 
-var t = setInterval(function () {
-    for (let key in userOptions.sounds) {
-        userOptions['sounds'][key]['timer'] = Math.max((userOptions['sounds'][key]['timer'] - 1), 0);
-        if (userOptions['sounds'][key]['timer'] === 0) {
-            userOptions['sounds'][key]['counter'] = 0;
+let t = setInterval(function () {
+    for (let key in sounds) {
+        sounds[key]['timer'] = Math.max((sounds[key]['timer'] - 1), 0);
+        if (sounds[key]['timer'] === 0) {
+            sounds[key]['counter'] = 0;
         }
     }
 }, 1000);
