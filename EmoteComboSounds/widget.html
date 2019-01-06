@@ -1,2 +1,381 @@
+<html><head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        bindEvent(window, 'message', function (event) {
+            const session = Object.assign({}, event.data.session);
+            delete event.data.session;
+
+            const e = new CustomEvent('onEventReceived', {
+                detail: event.data
+            });
+
+            const sessionEvent = new CustomEvent('onSessionUpdate', {
+                detail: {
+                    session: session
+                }
+            });
+
+            window.dispatchEvent(e);
+            window.dispatchEvent(sessionEvent)
+        });
+
+        window.addEventListener('load', function(event){
+            const initData = `{"session":{"data":{"follower-latest":{"name":"d3sti"},"follower-week":{"count":4},"follower-month":{"count":6},"follower-goal":{"amount":104},"follower-total":{"count":604},"subscriber-latest":{"name":"lalicel","amount":1,"tier":"1000","message":null,"sender":null,"gifted":null},"subscriber-week":{"count":0},"subscriber-month":{"count":0},"subscriber-goal":{"amount":100},"subscriber-total":{"count":0},"subscriber-points":{"amount":0},"host-latest":{"name":"cuda","amount":0},"raid-latest":{"name":"","amount":0},"cheer-week":{"amount":0},"cheer-month":{"amount":0},"cheer-total":{"amount":10719},"cheer-count":{"count":0},"cheer-goal":{"amount":100},"cheer-latest":{"name":"hecticsc","amount":2,"message":"kappa2"},"cheer-weekly-top-donation":{"name":"","amount":0},"cheer-monthly-top-donation":{"name":"","amount":0},"cheer-alltime-top-donation":{"name":"majorbubbly","amount":5000},"cheer-weekly-top-donator":{"name":"","amount":0},"cheer-monthly-top-donator":{"name":"","amount":0},"cheer-alltime-top-donator":{"name":"majorbubbly","amount":9899},"tip-latest":{"name":"testerino","amount":5,"message":"Testing the apostrophe&#39;s in message. I think it&#39;s fixed now but we&#39;ll see. !@#$%^&amp;*()-_=+[{]}\\|&#39;&quot;;:,&lt;.&gt;/?\`~"},"tip-weekly-top-donation":{"name":"asdf","amount":6},"tip-monthly-top-donation":{"name":"asdf","amount":6},"tip-alltime-top-donation":{"name":"relicia","amount":200},"tip-weekly-top-donator":{"name":"asdf","amount":21},"tip-monthly-top-donator":{"name":"asdf","amount":21},"tip-alltime-top-donator":{"name":"leshracftw","amount":630},"tip-week":{"amount":34},"tip-month":{"amount":34},"tip-total":{"amount":34},"tip-count":{"count":10},"tip-goal":{"amount":139},"merch-goal-orders":{"amount":0},"merch-goal-items":{"amount":0},"merch-goal-total":{"amount":0},"follower-recent":[{"name":"d3sti","createdAt":"2019-01-06T05:35:57.565Z","type":"follower"},{"name":"darthrib","createdAt":"2019-01-04T06:08:01.419Z","type":"follower"},{"name":"veiiplays","createdAt":"2019-01-03T23:53:05.068Z","type":"follower"},{"name":"thebutcherx","createdAt":"2018-11-23T18:04:59.569Z","type":"follower"},{"name":"cheesybytes23","createdAt":"2018-10-02T00:52:12.559Z","type":"follower"},{"name":"andromeda1022","createdAt":"2018-10-01T10:35:12.114Z","type":"follower"},{"name":"spanxmytwink","createdAt":"2018-09-29T21:11:31.158Z","type":"follower"},{"name":"vivisidian","createdAt":"2018-08-30T02:58:44.322Z","type":"follower"},{"name":"mrninjaone","createdAt":"2018-08-29T23:29:38.248Z","type":"follower"},{"name":"alleyezonme2323","createdAt":"2018-08-27T14:28:49.467Z","type":"follower"},{"name":"josegregor","createdAt":"2018-08-25T20:50:16.196Z","type":"follower"},{"name":"kushwaynold","createdAt":"2018-08-21T01:05:31.548Z","type":"follower"},{"name":"brannonhammer","createdAt":"2018-08-16T21:21:59.608Z","type":"follower"},{"name":"legendomg12","createdAt":"2018-08-13T02:20:22.970Z","type":"follower"},{"name":"feelskjeldman","createdAt":"2018-08-02T17:54:37.892Z","type":"follower"},{"name":"clawontwitch","createdAt":"2018-07-14T00:54:19.038Z","type":"follower"},{"name":"eroticduck","createdAt":"2018-06-25T02:52:41.507Z","type":"follower"},{"name":"truetriz1021","createdAt":"2018-06-17T19:25:36.918Z","type":"follower"},{"name":"seattackhunter","createdAt":"2018-06-16T02:00:45.318Z","type":"follower"},{"name":"showgreen","createdAt":"2018-06-14T22:24:08.629Z","type":"follower"},{"name":"freakdevil","createdAt":"2018-06-02T19:47:42.958Z","type":"follower"},{"name":"majesticsh33p","createdAt":"2018-06-01T06:08:44.555Z","type":"follower"},{"name":"omgitsjamesplay","createdAt":"2018-06-01T02:23:04.925Z","type":"follower"},{"name":"mumsuniverse","createdAt":"2018-05-01T02:08:29.925Z","type":"follower"},{"name":"whatsupjoebilly","createdAt":"2018-04-25T00:02:02.492Z","type":"follower"}],"subscriber-recent":[{"name":"lalicel","tier":"1000","amount":1,"createdAt":"2018-02-03T23:19:09.605Z","type":"subscriber"}],"host-recent":[{"name":"cuda","amount":0,"createdAt":"2018-06-24T03:57:28.121Z","type":"host"},{"name":"se_terrabuck","amount":1,"createdAt":"2018-06-20T17:44:50.122Z","type":"host"},{"name":"eroticduck","amount":0,"createdAt":"2018-06-20T17:44:20.148Z","type":"host"},{"name":"ohmegabot","amount":0,"createdAt":"2018-06-18T10:24:01.670Z","type":"host"},{"name":"tomathin","amount":0,"createdAt":"2018-06-02T17:31:34.796Z","type":"host"},{"name":"tomathin","amount":0,"createdAt":"2018-02-19T02:23:25.207Z","type":"host"},{"name":"Foremast","amount":8,"createdAt":"2018-02-04T01:23:04.501Z","type":"host"},{"name":"ohhellosara","amount":5,"createdAt":"2018-01-15T06:11:11.931Z","type":"host"},{"name":"ohhellosara","amount":3,"createdAt":"2017-11-26T20:27:04.551Z","type":"host"},{"name":"Lord_Scalper","amount":3,"createdAt":"2017-11-22T07:00:45.619Z","type":"host"},{"name":"ohhellosara","amount":10,"createdAt":"2017-11-22T06:02:16.604Z","type":"host"},{"name":"ohhellosara","amount":6,"createdAt":"2017-11-19T20:18:35.701Z","type":"host"},{"name":"Neilgr1","amount":0,"createdAt":"2017-11-08T02:21:07.064Z","type":"host"},{"name":"ohhellosara","amount":0,"createdAt":"2017-11-04T17:45:14.264Z","type":"host"},{"name":"tomathin","amount":0,"createdAt":"2017-11-04T17:40:13.295Z","type":"host"},{"name":"foremast","amount":3,"createdAt":"2017-10-20T00:22:17.929Z","type":"host"}],"raid-recent":[],"cheer-recent":[{"name":"hecticsc","amount":2,"createdAt":"2018-07-26T09:43:29.982Z","type":"cheer"},{"name":"leeeeex","amount":1,"createdAt":"2018-07-26T09:42:09.507Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T09:36:18.809Z","type":"cheer"},{"name":"leeeeex","amount":3,"createdAt":"2018-07-26T09:29:52.361Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T09:29:09.376Z","type":"cheer"},{"name":"leeeeex","amount":5,"createdAt":"2018-07-26T09:26:19.190Z","type":"cheer"},{"name":"hecticsc","amount":4,"createdAt":"2018-07-26T09:25:14.654Z","type":"cheer"},{"name":"hecticsc","amount":3,"createdAt":"2018-07-26T09:21:37.695Z","type":"cheer"},{"name":"leeeeex","amount":2,"createdAt":"2018-07-26T09:21:11.379Z","type":"cheer"},{"name":"leeeeex","amount":1,"createdAt":"2018-07-26T09:20:31.790Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T09:20:02.604Z","type":"cheer"},{"name":"leeeeex","amount":2,"createdAt":"2018-07-26T08:41:14.943Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T08:40:05.645Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T08:39:46.942Z","type":"cheer"},{"name":"hecticsc","amount":2,"createdAt":"2018-07-26T08:07:09.385Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T08:04:50.588Z","type":"cheer"},{"name":"se_attackhunter","amount":3,"createdAt":"2018-07-26T08:03:17.503Z","type":"cheer"},{"name":"se_attackhunter","amount":1,"createdAt":"2018-07-26T08:02:30.362Z","type":"cheer"},{"name":"hecticsc","amount":3,"createdAt":"2018-07-26T08:02:03.778Z","type":"cheer"},{"name":"hecticsc","amount":2,"createdAt":"2018-07-26T08:01:09.577Z","type":"cheer"},{"name":"se_attackhunter","amount":1,"createdAt":"2018-07-26T08:00:12.956Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T07:57:02.002Z","type":"cheer"},{"name":"onslaught","amount":1,"createdAt":"2018-03-21T16:24:35.548Z","type":"cheer"},{"name":"round3r86","amount":6,"createdAt":"2017-11-23T04:07:15.104Z","type":"cheer"},{"name":"gamerdude216","amount":5,"createdAt":"2017-11-23T02:10:34.265Z","type":"cheer"}],"tip-recent":[{"name":"testerino","amount":5,"createdAt":"2018-11-28T21:07:04.627Z","type":"tip"},{"name":"SE_TerraBuck","amount":1,"createdAt":"2018-11-17T23:32:37.435Z","type":"tip"},{"name":"SE_TerraBuck","amount":1,"createdAt":"2018-11-17T23:32:22.098Z","type":"tip"},{"name":"Anonymous","amount":1,"createdAt":"2018-11-17T23:29:24.738Z","type":"tip"},{"name":"adsf","amount":5,"createdAt":"2018-11-08T09:20:52.127Z","type":"tip"},{"name":"asdf","amount":6,"createdAt":"2018-11-06T03:08:01.016Z","type":"tip"},{"name":"asdf","amount":5,"createdAt":"2018-11-06T03:04:26.011Z","type":"tip"},{"name":"asdf","amount":5,"createdAt":"2018-11-06T03:04:10.774Z","type":"tip"},{"name":"asdf","amount":5,"createdAt":"2018-11-06T03:03:48.090Z","type":"tip"},{"name":"test","amount":5,"createdAt":"2018-10-18T20:24:34.469Z","type":"tip"},{"name":"asdf","amount":4,"createdAt":"2018-07-23T00:16:59.617Z","type":"tip"},{"name":"onslaught","amount":25,"createdAt":"2017-11-01T18:10:13.187Z","type":"tip"}],"merch-recent":[],"subscriber-alltime-gifter":{"amount":0,"name":""},"subscriber-gifted-latest":{"amount":0,"message":"","name":""},"subscriber-new-latest":{"amount":0,"message":"","name":""},"subscriber-resub-latest":{"amount":0,"message":"","name":""},"cheer-session":{"amount":0},"cheer-session-top-donation":{"amount":0,"name":""},"cheer-session-top-donator":{"amount":0,"name":""},"follower-session":{"count":4},"subscriber-gifted-session":{"count":0},"subscriber-new-session":{"count":0},"subscriber-resub-session":{"count":0},"subscriber-session":{"count":0},"tip-session":{"amount":34},"tip-session-top-donation":{"name":"asdf","amount":6},"tip-session-top-donator":{"name":"asdf","amount":21},"merch-latest":{"amount":0,"items":[],"name":""}}},"recents":[{"name":"testerino","amount":5,"createdAt":"2018-11-28T21:07:04.627Z","type":"tip"},{"name":"SE_TerraBuck","amount":1,"createdAt":"2018-11-17T23:32:37.435Z","type":"tip"},{"name":"SE_TerraBuck","amount":1,"createdAt":"2018-11-17T23:32:22.098Z","type":"tip"},{"name":"Anonymous","amount":1,"createdAt":"2018-11-17T23:29:24.738Z","type":"tip"},{"name":"adsf","amount":5,"createdAt":"2018-11-08T09:20:52.127Z","type":"tip"},{"name":"asdf","amount":6,"createdAt":"2018-11-06T03:08:01.016Z","type":"tip"},{"name":"asdf","amount":5,"createdAt":"2018-11-06T03:04:26.011Z","type":"tip"},{"name":"asdf","amount":5,"createdAt":"2018-11-06T03:04:10.774Z","type":"tip"},{"name":"asdf","amount":5,"createdAt":"2018-11-06T03:03:48.090Z","type":"tip"},{"name":"test","amount":5,"createdAt":"2018-10-18T20:24:34.469Z","type":"tip"},{"name":"asdf","amount":4,"createdAt":"2018-07-23T00:16:59.617Z","type":"tip"},{"name":"onslaught","amount":25,"createdAt":"2017-11-01T18:10:13.187Z","type":"tip"},{"name":"lalicel","tier":"1000","amount":1,"createdAt":"2018-02-03T23:19:09.605Z","type":"subscriber"},{"name":"d3sti","createdAt":"2019-01-06T05:35:57.565Z","type":"follower"},{"name":"darthrib","createdAt":"2019-01-04T06:08:01.419Z","type":"follower"},{"name":"veiiplays","createdAt":"2019-01-03T23:53:05.068Z","type":"follower"},{"name":"thebutcherx","createdAt":"2018-11-23T18:04:59.569Z","type":"follower"},{"name":"cheesybytes23","createdAt":"2018-10-02T00:52:12.559Z","type":"follower"},{"name":"andromeda1022","createdAt":"2018-10-01T10:35:12.114Z","type":"follower"},{"name":"spanxmytwink","createdAt":"2018-09-29T21:11:31.158Z","type":"follower"},{"name":"vivisidian","createdAt":"2018-08-30T02:58:44.322Z","type":"follower"},{"name":"mrninjaone","createdAt":"2018-08-29T23:29:38.248Z","type":"follower"},{"name":"alleyezonme2323","createdAt":"2018-08-27T14:28:49.467Z","type":"follower"},{"name":"josegregor","createdAt":"2018-08-25T20:50:16.196Z","type":"follower"},{"name":"kushwaynold","createdAt":"2018-08-21T01:05:31.548Z","type":"follower"},{"name":"brannonhammer","createdAt":"2018-08-16T21:21:59.608Z","type":"follower"},{"name":"legendomg12","createdAt":"2018-08-13T02:20:22.970Z","type":"follower"},{"name":"feelskjeldman","createdAt":"2018-08-02T17:54:37.892Z","type":"follower"},{"name":"clawontwitch","createdAt":"2018-07-14T00:54:19.038Z","type":"follower"},{"name":"eroticduck","createdAt":"2018-06-25T02:52:41.507Z","type":"follower"},{"name":"truetriz1021","createdAt":"2018-06-17T19:25:36.918Z","type":"follower"},{"name":"seattackhunter","createdAt":"2018-06-16T02:00:45.318Z","type":"follower"},{"name":"showgreen","createdAt":"2018-06-14T22:24:08.629Z","type":"follower"},{"name":"freakdevil","createdAt":"2018-06-02T19:47:42.958Z","type":"follower"},{"name":"majesticsh33p","createdAt":"2018-06-01T06:08:44.555Z","type":"follower"},{"name":"omgitsjamesplay","createdAt":"2018-06-01T02:23:04.925Z","type":"follower"},{"name":"mumsuniverse","createdAt":"2018-05-01T02:08:29.925Z","type":"follower"},{"name":"whatsupjoebilly","createdAt":"2018-04-25T00:02:02.492Z","type":"follower"},{"name":"hecticsc","amount":2,"createdAt":"2018-07-26T09:43:29.982Z","type":"cheer"},{"name":"leeeeex","amount":1,"createdAt":"2018-07-26T09:42:09.507Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T09:36:18.809Z","type":"cheer"},{"name":"leeeeex","amount":3,"createdAt":"2018-07-26T09:29:52.361Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T09:29:09.376Z","type":"cheer"},{"name":"leeeeex","amount":5,"createdAt":"2018-07-26T09:26:19.190Z","type":"cheer"},{"name":"hecticsc","amount":4,"createdAt":"2018-07-26T09:25:14.654Z","type":"cheer"},{"name":"hecticsc","amount":3,"createdAt":"2018-07-26T09:21:37.695Z","type":"cheer"},{"name":"leeeeex","amount":2,"createdAt":"2018-07-26T09:21:11.379Z","type":"cheer"},{"name":"leeeeex","amount":1,"createdAt":"2018-07-26T09:20:31.790Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T09:20:02.604Z","type":"cheer"},{"name":"leeeeex","amount":2,"createdAt":"2018-07-26T08:41:14.943Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T08:40:05.645Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T08:39:46.942Z","type":"cheer"},{"name":"hecticsc","amount":2,"createdAt":"2018-07-26T08:07:09.385Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T08:04:50.588Z","type":"cheer"},{"name":"se_attackhunter","amount":3,"createdAt":"2018-07-26T08:03:17.503Z","type":"cheer"},{"name":"se_attackhunter","amount":1,"createdAt":"2018-07-26T08:02:30.362Z","type":"cheer"},{"name":"hecticsc","amount":3,"createdAt":"2018-07-26T08:02:03.778Z","type":"cheer"},{"name":"hecticsc","amount":2,"createdAt":"2018-07-26T08:01:09.577Z","type":"cheer"},{"name":"se_attackhunter","amount":1,"createdAt":"2018-07-26T08:00:12.956Z","type":"cheer"},{"name":"hecticsc","amount":1,"createdAt":"2018-07-26T07:57:02.002Z","type":"cheer"},{"name":"onslaught","amount":1,"createdAt":"2018-03-21T16:24:35.548Z","type":"cheer"},{"name":"round3r86","amount":6,"createdAt":"2017-11-23T04:07:15.104Z","type":"cheer"},{"name":"gamerdude216","amount":5,"createdAt":"2017-11-23T02:10:34.265Z","type":"cheer"},{"name":"cuda","amount":0,"createdAt":"2018-06-24T03:57:28.121Z","type":"host"},{"name":"se_terrabuck","amount":1,"createdAt":"2018-06-20T17:44:50.122Z","type":"host"},{"name":"eroticduck","amount":0,"createdAt":"2018-06-20T17:44:20.148Z","type":"host"},{"name":"ohmegabot","amount":0,"createdAt":"2018-06-18T10:24:01.670Z","type":"host"},{"name":"tomathin","amount":0,"createdAt":"2018-06-02T17:31:34.796Z","type":"host"},{"name":"tomathin","amount":0,"createdAt":"2018-02-19T02:23:25.207Z","type":"host"},{"name":"Foremast","amount":8,"createdAt":"2018-02-04T01:23:04.501Z","type":"host"},{"name":"ohhellosara","amount":5,"createdAt":"2018-01-15T06:11:11.931Z","type":"host"},{"name":"ohhellosara","amount":3,"createdAt":"2017-11-26T20:27:04.551Z","type":"host"},{"name":"Lord_Scalper","amount":3,"createdAt":"2017-11-22T07:00:45.619Z","type":"host"},{"name":"ohhellosara","amount":10,"createdAt":"2017-11-22T06:02:16.604Z","type":"host"},{"name":"ohhellosara","amount":6,"createdAt":"2017-11-19T20:18:35.701Z","type":"host"},{"name":"Neilgr1","amount":0,"createdAt":"2017-11-08T02:21:07.064Z","type":"host"},{"name":"ohhellosara","amount":0,"createdAt":"2017-11-04T17:45:14.264Z","type":"host"},{"name":"tomathin","amount":0,"createdAt":"2017-11-04T17:40:13.295Z","type":"host"},{"name":"foremast","amount":3,"createdAt":"2017-10-20T00:22:17.929Z","type":"host"}],"currency":{"code":"USD","name":"U.S. Dollar","symbol":"$"},"channel":{"username":"terrabuck"},"fieldData":{"someText":"Default text","someTextField":"Default other text","someColor":"#ff0000","someColorPicker":"#0000FF","someNumber":10,"someSlider":10,"something":"blue","someFinal":"Default other text"}}`
+
+            const e = new CustomEvent('onWidgetLoad', {
+                detail: JSON.parse(initData)
+            });
+
+            window.dispatchEvent(e);
+        });
+
+        var eval=function(){throw"eval is not allowed"};window.console.dubug=function(){},window.console.info=function(){},window.console.warn=function(){},window.console.error=function(){},window.onclick=function(o){o.stopImmediatePropagation()},document.addEventListener("click",function(o){o.preventDefault(),o.stopPropagation(),o.stopImmediatePropagation()}),window.open=function(){};var $_console$$=console;Object.defineProperty(window,"console",{get:function(){if($_console$$._commandLineAPI)throw" ";return $_console$$},set:function(o){$_console$$=o}});
+    </script>
+    <style>#image {
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }</style>
+</head>
+<body style="width:{iframeSize.width};height:180px;">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div id="placeholder"></div>
+<div id="image"></div>
+<script>let userConfig = [
+    {
+        emote: "RaccAttack",
+        amount: 1,
+        soundFile: "https://cdn.streamelements.com/uploads/dfc73433-d771-4b95-b9a4-a67593cd21ba.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 10, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "ricardoFlick",
+        amount: 1,
+        soundFile: "https://cdn.streamelements.com/uploads/9a7c1c15-6ba5-4c6b-93aa-b08df448a6f2.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 10, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "greekSleeper",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/4b044185-0cb2-4a88-9d9b-920c9dfca653.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "EZ",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/592473a5-c892-4a01-89c9-25bec8a7aa14.mp3",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote:"4Head",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/c2234f91-72cf-469a-bcc5-1b05bdd9eec0.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "WeebsOut",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/84948516-f249-433e-b6b1-5778135a2a42.mp3",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "OMEGALUL",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/41fdf10e-73fc-4925-a5c6-1848b5228d68.mp3",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "ZULUL",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/0f8a6667-0b33-44e6-92be-175d06b9d55a.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "peepoBlanket",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/12fbc314-1b85-4f82-b1d4-d17f092ec2a5.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "peepoHappy",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/0e7f1bf5-bdc7-4ae2-ae5b-32d58b1394e4.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "peepoJAM",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/82f20dfd-1fc9-4bbb-ae04-0beaa0d411ed.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "POGGERS",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/b2cf871e-ef1e-4222-99fc-229d8d23718c.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "greekLouder",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/ab2c86f6-3ae5-496a-afe8-1f1168fe08d9.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "NaM",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/1b29f9f8-f287-4686-8356-5212330f80d2.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 60, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "KKomrade",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/8cd54d75-767a-4bf0-bcc6-0ab0a1a46053.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "monkaW",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/b9e573f7-9f74-42d6-9733-3a16b2d73ce0.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "PepeLaugh",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/6f8eda5d-9add-433b-babb-742453c38199.mp3",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "forsenBee",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/f0e2bc42-d10d-4765-83c8-75a1d85ffe0e.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 20,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "greekCall",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/05e8be4b-00ce-4f5a-bb60-746b0e4b30de.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "OhMyDog",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/9725f21f-7547-4b3f-bf33-649876fea579.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "forsenCD",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/1db194cb-8021-4aa7-ad0a-b5c4bf5522a3.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "Gnomed",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/b7feaece-ab5b-49c0-868d-15170d30cca2.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "PepeHands",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/0e784440-41fc-4d58-83e4-7f2c9f295856.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "D:",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/85eb14ff-30da-4813-beb0-d06ea3b1dcca.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "Dance",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/9e3de351-5945-4316-ac3a-2760c14e3b1c.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "AYAYA",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/1f53291c-ab61-4b35-92eb-fb6a4948b2a7.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    {
+        emote: "greekBruh",
+        amount: 2,
+        soundFile: "https://cdn.streamelements.com/uploads/8cf607f1-b145-4cdb-84dd-678d8bb2f0c0.ogg",
+        imageFile: "https://cdn.streamelements.com/uploads/ee48a3bb-bb7c-4e32-a799-3aaa19e777b1.gif",
+        volume: 50,
+        timeout: 3, //seconds
+        cooldown: 240, //seconds
+    },
+    /*      	{
+                emote:"",
+                amount: 2,
+                soundFile: "",
+                volume: 50,
+                timeout: 3, //seconds
+                cooldown: 240, //seconds
+            },
+              */
+];
+
+
+let queue = $("#placeholder");
+let emoticons = [];
+window.addEventListener('onEventReceived', function (obj) {
+    if (obj.detail.listener !== "message") return;
+    let data = obj.detail.event.data;
+    let message = data["text"];
+    let words = message.split(" ");
+    let results = words.filter(value => -1 !== emoticons.indexOf(value));
+    results = Array.from(new Set(results)); //getting unique emoticons
+    for (let i in results) {
+        index = userConfig.findIndex(x => x.emote === results[i]);
+        if (index!==-1) {
+            checkPlay(index);
+        }
+    }
+
+});
+
+function checkPlay(index) {
+    let sound = userConfig[index];
+
+
+    if (sound.cooldownEnd < Date.now() / 1000) {
+        userConfig[index]['counter']++;
+        if (userConfig[index]['timer'] === 0) {
+            userConfig[index]['timer'] = userConfig[index]['timeout'];
+        }
+        if (userConfig[index]['counter'] >= userConfig[index]['amount']) {
+            userConfig[index]['cooldownEnd'] = (Date.now() / 1000) + sound.cooldown;
+            let tmpaudio = new Audio(sound.soundFile);
+            tmpaudio.onloadeddata = function () {
+                console.log(`adding ${index} to queue after ${tmpaudio.duration}`);
+
+                queue
+                    .queue(function () {
+                        let audio = new Audio(sound.soundFile);
+                        audio.volume = sound.volume * .01;
+                        audio.play();
+                        if (sound.imageFile.length > 10) {
+                            $("#image").css('background-image', 'url(' + sound.imageFile + ')');
+                            setTimeout(function () {
+                                $("#image").css('background-image', '');
+                            }, tmpaudio.duration * 1000);
+                        }
+                        $(this).delay(tmpaudio.duration * 1000);
+                        $(this).dequeue();
+                    });
+
+
+            };
+
+        }
+    }
+}
+
+for (let key in userConfig) {
+    emoticons.push(userConfig[key]["emote"]);
+    userConfig[key]['counter'] = 0;
+    userConfig[key]['cooldownEnd'] = 0;
+    userConfig[key]['timer'] = 0;
+}
+
+let t = setInterval(function () {
+    for (let key in userConfig) {
+        userConfig[key]['timer'] = Math.max((userConfig[key]['timer'] - 1), 0);
+        if (userConfig[key]['timer'] === 0) {
+            userConfig[key]['counter'] = 0;
+        }
+    }
+}, 1000);
+</script>
+
+</body></html>
