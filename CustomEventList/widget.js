@@ -11,6 +11,7 @@ let eventsLimit = 5,
     minTip = 0,
     includeCheers = true,
     direction = "top",
+    textOrder="nameFirst",
     minCheer = 0;
 
 let userCurrency,
@@ -83,6 +84,8 @@ window.addEventListener('onWidgetLoad', function (obj) {
     minCheer = fieldData.minCheer;
     direction = fieldData.direction;
     userLocale=fieldData.locale;
+    textOrder=fieldData.textOrder;
+    fadeoutTime=fieldData.fadeoutTime;
 
     let eventIndex;
     for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
@@ -131,17 +134,32 @@ window.addEventListener('onWidgetLoad', function (obj) {
 
 function addEvent(type, text, username) {
     totalEvents += 1;
-    const element = `
+    let element;
+    if (textOrder==="actionFirst"){
+        element = `
+    <div class="event-container" id="event-${totalEvents}">
+		<div class="backgroundsvg"></div>
+        <div class="event-image event-${type}"></div>
+        <div class="username-container">${text}</div>
+       <div class="details-container">${username}</div>
+    </div>`;
+    }
+    else {
+        element = `
     <div class="event-container" id="event-${totalEvents}">
 		<div class="backgroundsvg"></div>
         <div class="event-image event-${type}"></div>
         <div class="username-container">${username}</div>
        <div class="details-container">${text}</div>
     </div>`;
+    }
     if (direction === "bottom") {
-        $('.main-container').append(element);
+        $('.main-container').showremoveClass("fadeOutClass").show().append(element);
     } else {
-        $('.main-container').prepend(element);
+        $('.main-container').removeClass("fadeOutClass").show().prepend(element);
+    }
+    if (fadeoutTime!==999){
+        $('.main-container').addClass("fadeOutClass");
     }
     if (totalEvents > eventsLimit) {
         removeEvent(totalEvents - eventsLimit);

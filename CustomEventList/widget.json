@@ -96,6 +96,21 @@
       "bottom": "Bottom"
     }
   },
+  "textOrder":{
+    "type": "dropdown",
+    "label": "Text order:",
+    "value": "nameFirst",
+    "options": {
+      "nameFirst": "Name first",
+      "actionFirst": "Action first"
+    }
+  },
+  "fadeoutTime": {
+    "type": "number",
+    "label": "Fadeout after action in seconds, 999 to disable:",
+    "value": 999
+  },
+
   "fontColor": {
     "type": "colorpicker",
     "label": "Font color",

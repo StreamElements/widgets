@@ -4,7 +4,19 @@
     font-size: 14px;
     overflow: hidden;
 }
-
+.fadeOutClass{
+    animation: fadeOut 1s;
+    animation-delay:{{fadeoutTime}}s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 .event-follower {
     mask-image: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg');
     -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg');
