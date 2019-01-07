@@ -1,4 +1,9 @@
 {
+  "eventLabel": {
+    "type": "text",
+    "label": "Label text",
+    "value": "Recent Subscriber: "
+  },
   "eventType": {
     "type": "dropdown",
     "label": "Event type:",
@@ -507,11 +512,6 @@
       "700": "Bold (700)",
       "900": "Black (900)"
     }
-  },
-  "fontColor": {
-    "type": "colorpicker",
-    "label": "Font Color",
-    "value": "rgba(255,255,255,1)"
   },
   "strokeColor": {
     "type": "colorpicker",
