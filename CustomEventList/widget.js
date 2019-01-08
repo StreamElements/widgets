@@ -11,7 +11,7 @@ let eventsLimit = 5,
     minTip = 0,
     includeCheers = true,
     direction = "top",
-    textOrder="nameFirst",
+    textOrder = "nameFirst",
     minCheer = 0;
 
 let userCurrency,
@@ -50,11 +50,19 @@ window.addEventListener('onEventReceived', function (obj) {
         }
     } else if (listener === 'tip') {
         if (includeTips && minTip <= event.amount) {
-            addEvent('tip', event.amount.toLocaleString(userLocale, {
-                style: 'currency',
-                minimumFractionDigits: 0,
-                currency: userCurrency.code
-            }), event.name);
+            if (event.amount === parseInt(event.amount)) {
+                addEvent('tip', event.amount.toLocaleString(userLocale, {
+                    style: 'currency',
+                    minimumFractionDigits: 0,
+                    currency: userCurrency.code
+                }), event.name);
+            } else {
+                addEvent('tip', event.amount.toLocaleString(userLocale, {
+                    style: 'currency',
+                    currency: userCurrency.code
+                }), event.name);
+            }
+
         }
     } else if (listener === 'raid') {
         if (includeRaids && minRaid <= event.amount) {
@@ -83,9 +91,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
     includeCheers = (fieldData.includeCheers === "yes");
     minCheer = fieldData.minCheer;
     direction = fieldData.direction;
-    userLocale=fieldData.locale;
-    textOrder=fieldData.textOrder;
-    fadeoutTime=fieldData.fadeoutTime;
+    userLocale = fieldData.locale;
+    textOrder = fieldData.textOrder;
+    fadeoutTime = fieldData.fadeoutTime;
 
     let eventIndex;
     for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
@@ -117,11 +125,18 @@ window.addEventListener('onWidgetLoad', function (obj) {
             }
         } else if (event.type === 'tip') {
             if (includeTips && minTip <= event.amount) {
-                addEvent('tip', event.amount.toLocaleString(userLocale, {
-                    style: 'currency',
-                    minimumFractionDigits: 0,
-                    currency: userCurrency.code
-                }), event.name);
+                if (event.amount === parseInt(event.amount)) {
+                    addEvent('tip', event.amount.toLocaleString(userLocale, {
+                        style: 'currency',
+                        minimumFractionDigits: 0,
+                        currency: userCurrency.code
+                    }), event.name);
+                } else {
+                    addEvent('tip', event.amount.toLocaleString(userLocale, {
+                        style: 'currency',
+                        currency: userCurrency.code
+                    }), event.name);
+                }
             }
         } else if (event.type === 'raid') {
             if (includeRaids && minRaid <= event.amount) {
@@ -135,7 +150,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 function addEvent(type, text, username) {
     totalEvents += 1;
     let element;
-    if (textOrder==="actionFirst"){
+    if (textOrder === "actionFirst") {
         element = `
     <div class="event-container" id="event-${totalEvents}">
 		<div class="backgroundsvg"></div>
@@ -143,8 +158,7 @@ function addEvent(type, text, username) {
         <div class="username-container">${text}</div>
        <div class="details-container">${username}</div>
     </div>`;
-    }
-    else {
+    } else {
         element = `
     <div class="event-container" id="event-${totalEvents}">
 		<div class="backgroundsvg"></div>
@@ -158,7 +172,7 @@ function addEvent(type, text, username) {
     } else {
         $('.main-container').removeClass("fadeOutClass").show().prepend(element);
     }
-    if (fadeoutTime!==999){
+    if (fadeoutTime !== 999) {
         $('.main-container').addClass("fadeOutClass");
     }
     if (totalEvents > eventsLimit) {
