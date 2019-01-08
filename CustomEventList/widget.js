@@ -154,7 +154,7 @@ function addEvent(type, text, username) {
     </div>`;
     }
     if (direction === "bottom") {
-        $('.main-container').showremoveClass("fadeOutClass").show().append(element);
+        $('.main-container').removeClass("fadeOutClass").show().append(element);
     } else {
         $('.main-container').removeClass("fadeOutClass").show().prepend(element);
     }
