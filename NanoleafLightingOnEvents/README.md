@@ -18,4 +18,8 @@
     
     <img src="https://i.imgur.com/UZdBS9C.png">
 
-    Note: this widget will not work directly from browser, so you need to add it to OBS in order to test it 
+    Note: this widget will not work directly from browser, so you need to add it to OBS in order to test it
+    
+    Known issues:
+     * Nanoleaf Rhytm Music & Sound module acts as master controller of Nanoleaf so if you want to use effects on alerts, please unplug it (also check Rhythm > api > settings) 
+     
