@@ -7,17 +7,19 @@ let userConfig = [
         soundFile: "https://cdn.streamelements.com/uploads/OMEGALUL.mp3",
         imageFile: "https://cdn.streamelements.com/uploads/OMEGALUL_ANIMATED.gif",
         volume: 50,
-        timeout: 10, //seconds
+        timeout: 10, //seconds for triggering combo (amount occurrences within timeout seconds)
         cooldown: 240, //seconds
+        caseSensitive: true,
     },
     {
-        emote: "Kappa",
+        emote: "hello",
         amount: 2,
         soundFile: "https://cdn.streamelements.com/uploads/Kappa.ogg",
         imageFile: "",
         volume: 50,
-        timeout: 10, //seconds
+        timeout: 10, //seconds for triggering combo (amount occurrences within timeout seconds)
         cooldown: 240, //seconds
+        caseSensitive: false,
     }
 ];
 
@@ -29,12 +31,14 @@ window.addEventListener('onEventReceived', function (obj) {
     let data = obj.detail.event.data;
     let message = data["text"];
     let words = message.split(" ");
-    let results = words.filter(value => -1 !== emoticons.indexOf(value));
-    results = Array.from(new Set(results)); //getting unique emoticons
+    let results = words.filter(value => -1 !== emoticons.indexOf(value.toLowerCase()));
+    console.log(results);
+    results = Array.from(new Set(results)); //getting unique words
     for (let i in results) {
-        index = userConfig.findIndex(x => x.emote === results[i]);
+        index = userConfig.findIndex(x => x.emote.toLowerCase() === results[i].toLowerCase());
         if (index !== -1) {
-            checkPlay(index);
+            if (!userConfig[index]['caseSensitive'] || userConfig[index]['emote'] === results[i])
+                checkPlay(index);
         }
     }
 
@@ -78,7 +82,7 @@ function checkPlay(index) {
 }
 
 for (let key in userConfig) {
-    emoticons.push(userConfig[key]["emote"]);
+    emoticons.push(userConfig[key]["emote"].toLowerCase());
     userConfig[key]['counter'] = 0;
     userConfig[key]['cooldownEnd'] = 0;
     userConfig[key]['timer'] = 0;
