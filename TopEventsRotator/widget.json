@@ -26,7 +26,7 @@
   },
   "animationIn": {
     "type": "dropdown",
-    "label": "Animation Out:",
+    "label": "Animation In:",
     "value": "none",
     "options": {
       "none": "None",
