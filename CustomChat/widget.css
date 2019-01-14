@@ -1,0 +1,45 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    overflow: hidden;
+}
+.main-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height:98%;
+    margin-bottom:10px;
+}
+.message-row{
+    width:100%;
+    margin-bottom:5px;
+    background-color:{{rowBg}};
+    padding:5px;
+}
+.badge{
+    display:inline;
+    height:20px;
+}
+
+.user-box{
+    display:inline;
+    font-size:20px;
+}
+.user-box > span{
+    font-size:20px;
+}
+
+.user-message{
+    display:inline;
+    font-size:20px;
+}
+
+.emote{
+    height:20px;
+}
+.action{
+    font-style: italic;
+}
