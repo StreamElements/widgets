@@ -61,7 +61,7 @@ function addEvent(username, badges, message, isAction) {
     </div>`);
     if (hideAfter !== 999) {
         $(element).appendTo('.main-container').delay(hideAfter * 1000).queue(function () {
-            $(this).removeClass(animationIn).addClass(animationOut).delay(500).queue(function () {
+            $(this).removeClass(animationIn).addClass(animationOut).delay(1000).queue(function () {
                 $(this).remove()
             }).dequeue();
         });
@@ -82,7 +82,7 @@ function removeRow(id) {
         if (hideAfter !== 999) {
             $(`#msg-${id}`).dequeue();
         } else {
-            $(`#msg-${id}`).addClass(animationOut).delay(500).queue(function () {
+            $(`#msg-${id}`).addClass(animationOut).delay(1000).queue(function () {
                 $(this).remove().dequeue()
             });
 
