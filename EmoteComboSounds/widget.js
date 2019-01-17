@@ -1,5 +1,6 @@
 // URLs in userConfig are not real, please replace them with your URLs for sounds/images
 // Sound files are mandatory, image files are optional
+let globalCooldown = 60; //seconds
 let userConfig = [
     {
         emote: "OMEGALUL",
@@ -43,6 +44,7 @@ window.addEventListener('onEventReceived', function (obj) {
     }
 
 });
+let cooldown = 0;
 
 function checkPlay(index) {
     let sound = userConfig[index];
@@ -53,6 +55,7 @@ function checkPlay(index) {
         if (userConfig[index]['timer'] === 0) {
             userConfig[index]['timer'] = userConfig[index]['timeout'];
         }
+        if (cooldown) return;
         if (userConfig[index]['counter'] >= userConfig[index]['amount']) {
             userConfig[index]['cooldownEnd'] = (Date.now() / 1000) + sound.cooldown;
             let tmpaudio = new Audio(sound.soundFile);
@@ -76,7 +79,7 @@ function checkPlay(index) {
 
 
             };
-
+            cooldown = globalCooldown;
         }
     }
 }
@@ -89,6 +92,7 @@ for (let key in userConfig) {
 }
 
 let t = setInterval(function () {
+    cooldown--;
     for (let key in userConfig) {
         userConfig[key]['timer'] = Math.max((userConfig[key]['timer'] - 1), 0);
         if (userConfig[key]['timer'] === 0) {
