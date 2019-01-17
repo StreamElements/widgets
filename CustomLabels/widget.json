@@ -15,8 +15,6 @@
       "cheer-latest": "Latest cheer",
       "host-latest": "Latest host",
       "raid-latest": "Latest raid",
-      "tip-alltime-top-donation": "Top donator",
-      "subscriber-gifted-latest": "Subscriber Gifted latest",
       "subscriber-new-latest": "(new)Subscriber latest",
       "subscriber-resub-latest": "(resub)Subscriber latest",
       "subscriber-gifted-latest": "(gifted)Subscriber latest",
@@ -512,6 +510,11 @@
       "700": "Bold (700)",
       "900": "Black (900)"
     }
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font Color",
+    "value": "rgba(255,255,255,1)"
   },
   "strokeColor": {
     "type": "colorpicker",
