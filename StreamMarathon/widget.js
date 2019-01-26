@@ -1,29 +1,22 @@
-/*
-ReadMe:
-1) create Custom Event list within your layer on StreamElements
-2) replace content of each section with code provided below
-3) Click done
-4) There will be keyXYZ displayed within widget, 
-5) go to CSS Editor again and replace it in JS tab, 
-6) Change multipliers to fit your needs, 
-*/
-
-let keyXYZ = ""; //it should look like let keyXYZ="1234abcd"; after first run
-
 //MULTIPLIERS:
 let followSeconds = 1,
     sub1Seconds = 10,
     sub2Seconds = 20,
     sub3Seconds = 30,
-    cheerSeconds = 1, //multiplied by amount of cheer
-    donationSeconds = 60, //multiplied by amount of donation, for example [CURRENCY] 3 will add 3 minutes
-    hostSeconds = 1; //multiplied by amount of viewers from host
-
-let maxTime = '2019-06-18 10:45'; // Time cap you want to use
+    cheerSeconds = 60, //multiplied by every 100 amount of cheer
+    minCheer = 100, // minimum value of cheer
+    tipSeconds = 60, //multiplied by amount of tip, for example [CURRENCY] 3 will add 3 minutes
+    minTip = 1, //minimum amount of tip
+    hostSeconds = 1, //multiplied by amount of viewers from host
+    hostMin = 100,//minimum viewers in host
+    raidSeconds = 1,//multiplied by amount of viewers from raid
+    raidMin = 100; // minimum viewers in raid
+let keyXYZ = "";
+let maxTime = '2040-06-18 10:45'; // Time cap you want to use
+let minTime = '2019-01-29 12:00';
 
 
 //Starting to work like a machine does
-let seconds;
 
 let start;
 
@@ -46,22 +39,36 @@ window.addEventListener('onEventReceived', function (obj) {
         const listener = obj.detail.listener;
         const data = obj.detail.event;
         if (listener === 'follower-latest') {
-            countdown(followSeconds);
+            if (followSeconds > 0) countdown(followSeconds);
         } else if (listener === 'subscriber-latest') {
             if (data.tier === 2000) {
-                countdown(sub2Seconds);
+                if (sub2Seconds > 0) countdown(sub2Seconds);
             } else if (data.tier === 3000) {
-                countdown(sub3Seconds);
+                if (sub3Seconds > 0) countdown(sub3Seconds);
             } else {
-                countdown(sub1Seconds);
+                if (sub1Seconds > 0) countdown(sub1Seconds);
             }
 
         } else if (listener === 'host-latest') {
+            if (data['amount'] < hostMin || hostSeconds < 0) {
+                return;
+            }
             countdown(hostSeconds * data["amount"]);
+        } else if (listener === 'raid-latest') {
+            if (data['amount'] < raidMin || raidSeconds < 0) {
+                return;
+            }
+            countdown(raidSeconds * data["amount"]);
         } else if (listener === 'cheer-latest') {
-            countdown(cheerSeconds * data["amount"]);
+            if (data['amount'] < minCheer || cheerSeconds < 0) {
+                return;
+            }
+            countdown(parseInt(cheerSeconds * data["amount"] / 100));
         } else if (listener === 'tip-latest') {
-            countdown(donationSeconds * data["amount"]);
+            if (data['amount'] < minTip || tipSeconds < 0) {
+                return;
+            }
+            countdown(parseInt(tipSeconds * data["amount"]));
         }
         saveState();
     }
@@ -74,10 +81,12 @@ window.addEventListener('onWidgetLoad', function (obj) {
     sub2Seconds = fieldData.sub2Seconds;
     sub3Seconds = fieldData.sub3Seconds;
     cheerSeconds = fieldData.cheerSeconds; //multiplied by amount of cheer
-    donationSeconds = fieldData.donationSeconds; //multiplied by amount of donation, for example [CURRENCY] 3 will add 3 minutes
+    tipSeconds = fieldData.tipSeconds; //multiplied by amount of tip, for example [CURRENCY] 3 will add 3 minutes
     hostSeconds = fieldData.hostSeconds;
-    seconds = fieldData.initialMinutes * 60;
+    hostMin = fieldData.hostMin;
+    raidMin = fieldData.raidMin;
     maxTime = new Date(fieldData.maxTime);
+    minTime = new Date(fieldData.minTime);
     if (keyXYZ) {
         loadState();
     } else {
@@ -93,24 +102,20 @@ window.addEventListener('onWidgetLoad', function (obj) {
 function saveState() {
     let value = Date.parse(start);
     $.post("https://api.keyvalue.xyz/" + keyXYZ + "/SEMarathon/" + value, function (data) {
+        console.log("Saved new time");
     });
 }
 
 function loadState() {
     $.get("https://api.keyvalue.xyz/" + keyXYZ + "/SEMarathon", function (data) {
-
-
         let amount = parseInt(data);
         if (amount > 0) {
-            amount = Math.max(amount, Date.now() - seconds * 1000);
+            amount = Math.max(amount, minTime.getTime());
             start = new Date(amount);
             countdown(0);
-
         } else {
-            start = new Date();
-            countdown(seconds);
+            start = minTime;
+            countdown(0);
         }
-
-
     });
 }

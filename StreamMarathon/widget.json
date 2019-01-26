@@ -1,52 +1,125 @@
 {
-  "followSeconds": {
-    "type": "number",
-    "label": "Seconds per follower:",
-    "value": 1
-  },
-  "sub1Seconds": {
-    "type": "number",
-    "label": "Seconds per T1 subscriber:",
-    "value": 60
-  },
-  "sub2Seconds": {
-    "type": "number",
-    "label": "Seconds per T2 subscriber:",
-    "value": 120
-  },
-  "sub3Seconds": {
-    "type": "number",
-    "label": "Seconds per T3 subscriber:",
-    "value": 180
-  },
-  "cheerSeconds": {
-    "type": "number",
-    "label": "Seconds per one bit:",
-    "value": 5
-  },
-  "donationSeconds": {
-    "type": "number",
-    "label": "Seconds multiplied by amount:",
-    "value": 300
-  },
-  "hostSeconds": {
-    "type": "number",
-    "label": "Seconds per viewer from host:",
-    "value": 1
-  },
-  "initialMinutes": {
-    "type": "number",
-    "label": "Initial time to go off:",
-    "value": 20
+  "minTime": {
+    "type": "datetime-local",
+    "label": "Initial end date of marathon  :",
+    "value": "2019-01-26T12:21:00.000Z"
   },
   "maxTime": {
     "type": "datetime-local",
     "label": "Maximum time of marathon:",
-    "value": "2020-12-30 00:00:01"
+    "value": "2020-01-26T12:21:00.000Z"
+  },
+  "followSeconds": {
+    "type": "number",
+    "label": "Seconds per follower (-1 to disable):",
+    "value": 1
+  },
+  "sub1Seconds": {
+    "type": "number",
+    "label": "Seconds per T1/Prime subscriber (-1 to disable):",
+    "value": 60
+  },
+  "sub2Seconds": {
+    "type": "number",
+    "label": "Seconds per T2 subscriber (-1 to disable):",
+    "value": 120
+  },
+  "sub3Seconds": {
+    "type": "number",
+    "label": "Seconds per T3 subscriber (-1 to disable):",
+    "value": 180
+  },
+  "cheerSeconds": {
+    "type": "number",
+    "label": "Seconds per 100 Bits (-1 to disable):",
+    "value": 60
+  },
+  "cheerMin": {
+    "type": "number",
+    "label": "Minimum bits to trigger:",
+    "value": 100
+  },
+  "tipSeconds": {
+    "type": "number",
+    "label": "Seconds multiplied by amount (-1 to disable):",
+    "value": 300
+  },
+  "tipMin": {
+    "type": "number",
+    "label": "Minimum tip to trigger:",
+    "value": 1
+  },
+  "hostSeconds": {
+    "type": "number",
+    "label": "Seconds per viewer from host (-1 to disable):",
+    "value": 1
+  },
+  "hostMin": {
+    "type": "number",
+    "label": "Minimum viewers in host:",
+    "value": 100
+  },
+  "raidSeconds": {
+    "type": "number",
+    "label": "Seconds per viewer from raid (-1 to disable):",
+    "value": 1
+  },
+  "raidMin": {
+    "type": "number",
+    "label": "Minimum viewers in raid:",
+    "value": 100
+  },
+  "textAlign": {
+    "label": "Text align",
+    "type": "dropdown",
+    "value": "left",
+    "options": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    }
+  },
+  "fontName": {
+    "type": "text",
+    "label": "Font name",
+    "value": "Montserrat"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font size",
+    "value": 24
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    }
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font Color",
+    "value": "rgba(255,255,255,1)"
+  },
+  "strokeColor": {
+    "type": "colorpicker",
+    "label": "Stroke Color",
+    "value": "rgba(255,0,0,0)"
+  },
+  "strokeSize": {
+    "type": "number",
+    "label": "Stroke size",
+    "value": 2
   },
   "keyXYZ": {
     "type": "text",
     "label": "keyvalueXYZ key",
-    "value": ""
+    "value": "bc22298d"
   }
 }
