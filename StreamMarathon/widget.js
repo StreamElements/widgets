@@ -41,9 +41,9 @@ window.addEventListener('onEventReceived', function (obj) {
         if (listener === 'follower-latest') {
             if (followSeconds > 0) countdown(followSeconds);
         } else if (listener === 'subscriber-latest') {
-            if (data.tier === 2000) {
+            if (parseInt(data.tier) === 2000) {
                 if (sub2Seconds > 0) countdown(sub2Seconds);
-            } else if (data.tier === 3000) {
+            } else if (parseInt(data.tier) === 3000) {
                 if (sub3Seconds > 0) countdown(sub3Seconds);
             } else {
                 if (sub1Seconds > 0) countdown(sub1Seconds);
