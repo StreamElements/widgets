@@ -1,7 +1,7 @@
-#<a id="Stream_Elements_Variable_list_0"></a>Stream Elements Variable list
+# Stream Elements Variable list
 In each of paragraph you will find information, what variables you can use, to achieve expected result.
-##<a id="Fields_4"></a>Fields
-###<a id="HTML_6"></a>HTML
+## Fields
+### HTML
 You can use any HTML tags possible, you can even import external JS if you feel such need. For example if you want to have `$("#selector").toggle('explode');` from jQueryUI, just add
 ```HTML
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
@@ -14,16 +14,16 @@ This also can be done within CSS Field by importing stylesheet
 ```css
 @import url('https://fonts.googleapis.com/css?family=Chelsea+Market');
 ```
-###CSS
+### CSS
 You can use regular CSS syntax - including animations, transitions
-###JS
+### JS
 You can use pure JavaScript or include external libraries/frameworks to ease your work, however everything will be running in protected sandbox, so you won’t be able to access cookies, `console.*` methods or IndexedDB storage.
-###JSON
+### JSON
 You can create custom variables, so enduser doesn’t have to interact with code, those fields will be displayed under “OPEN EDITOR” in left panel.<br>
 This data can be also called by `{{variableName}}` or `{variableName}` within HTML/CSS/JS code (however for better readibility we suggest using those calls only in HTML/CSS)<br>
 At this point we support all of HTML5 input types (except of file and date/datetime-local)
-####Example
-#####JSON
+#### Example
+##### JSON
 ```JSON
 {
   "someText": {
@@ -61,7 +61,7 @@ At this point we support all of HTML5 input types (except of file and date/datet
      }
 }
 ```
-#####Input on left panel construction
+##### Input on left panel construction
 Input field on left panel will look like:
 ```html
 <input type="TYPE_FROM_JSON" name="FIELD_NAME" value="USER_VALUE_OR_DEFAULT_VALUE"/>
@@ -74,20 +74,20 @@ or for  dropdown (based on example above)
     <option value="7">Lucky number</option>
 </select>
 ```
-#####Usage example
+##### Usage example
 Result of those custom fields can be used like:
-######HTML
+###### HTML
 ```html
 <div class="message">{{someDropDown}} is an option for today!<span id="additional">{{someText}}</span></div>
 ```
-######CSS
+###### CSS
 ```css
 .message {
     font-size:{{someSlider}}px;
     color: {{someColorPicker}};
 }
 ```
-######JS
+###### JS
 ```javascript
 let someVariable,magicNumber;
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -97,7 +97,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     magicNumber=fieldData.someNumber;    
 });
 ```
-##Alert widget
+## Alert widget
 `{{name}}` - will be replaced with a person who is in subject of event. For example `{{name}} just followed stream!`<br>
 `{{amount}}` - will be replaced with amount if event supports it - amount of bits, months (as resub), viewers (when hosted, raided). For example `{{name}} just cheered with 1000 bits!`<br>
 `{{message}}` - message attached to event (sub, cheer, tip). For example `{name} is our sub for {amount} months, and he wanted to say {{message}}`<br>
@@ -105,12 +105,12 @@ window.addEventListener('onWidgetLoad', function (obj) {
 `{{currency}}` - replaced with currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
 `{{image}}` - replaced with image attached to alert URL. For example `&lt;img src="{{image}}"/&gt;`<br>
 `{{video}}` - will be replaced with video attached to alert URL. For example `&lt;video id="video" playsinline autoplay muted style="width:100%; height:100%"&gt;&lt;source id="webm" src="{{video}}" type="video/webm"&gt;&lt;/video&gt;`
-##Custom Widget
+## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
 Note:
 > You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api), so you could use it via AJAX calls. We tried keyvalue.xyz and it works.
 
-###On event:
+### On event:
 ```javascript
 window.addEventListener('onEventReceived', function (obj) {
     // fancy stuff here
@@ -150,7 +150,7 @@ window.addEventListener('onEventReceived', function (obj) {
     document.getElementById("amount").innerHTML=data["amount"]
 });
 ```
-###On Widget load
+### On Widget load
 ```javascript
 window.addEventListener('onWidgetLoad', function (obj) {
     //fancy stuff here
