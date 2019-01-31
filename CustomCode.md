@@ -110,6 +110,20 @@ This is the most powerful tool in SE Overlay editor. You can do a lot of things 
 Note:
 > You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api), so you could use it via AJAX calls. We tried keyvalue.xyz and it works.
 
+### SE API
+A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more advanced functionality.
+
+```javascript
+SE_API.init('custom widget name'); // call this first to enable the api
+SE_API.store.set('keyName', obj); // stores an object into our database under this keyName (multiple widgets using the same keyName will share the same data).
+SE_API.store.get('keyName').then(obj => {
+    // obj is the object stored in the db, must be a simple object
+});
+SE_API.counters.get('counterName').then(counter => {
+    // counter is of the format { counter, value }
+});
+```
+
 ### On event:
 ```javascript
 window.addEventListener('onEventReceived', function (obj) {
