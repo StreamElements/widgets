@@ -19,9 +19,15 @@ You can use regular CSS syntax - including animations, transitions
 ### JS
 You can use pure JavaScript or include external libraries/frameworks to ease your work, however everything will be running in protected sandbox, so you won’t be able to access cookies, `console.*` methods or IndexedDB storage.
 ### JSON
-You can create custom variables, so enduser doesn’t have to interact with code, those fields will be displayed under “OPEN EDITOR” in left panel.<br>
-This data can be also called by `{{variableName}}` or `{variableName}` within HTML/CSS/JS code (however for better readibility we suggest using those calls only in HTML/CSS)<br>
-At this point we support all of HTML5 input types (except of file and date/datetime-local)
+You can create custom variables, so enduser doesn’t have to interact with code, those fields will be displayed under “OPEN EDITOR” in left panel.
+
+This data can be also called by `{{variableName}}` or `{variableName}` within HTML/CSS/JS code (however for better readibility we suggest using those calls only in HTML/CSS).
+
+At this point we support all of HTML5 input types (except of file and date/datetime-local).
+
+There are some reserved field names (all future reserved words will start with `widget`):
+* `widgetName` - Used to set the display name of the widget
+* `widgetAuthor` - Set the author name of the widget (adds a "(by Author)" to the widget name)
 #### Example
 ##### JSON
 ```JSON
@@ -29,36 +35,40 @@ At this point we support all of HTML5 input types (except of file and date/datet
   "someText": {
     "type": "text",
     "label": "Some Text",
-    "value": "Default text"
+    "value": "Default text",
   },
-   "someColorPicker": {
-      "type": "colorpicker",
-      "label": "Some color",
-      "value": "#0000FF"
-    },
-    "someNumber": {
-        "type": "number",
-        "label": "Count",
-        "value": 10
-      },
-   "someSlider": {
-      "type": "slider",
-      "label": "Counter",
-      "value": 10,
-      "min": 0,
-      "max": 100,
-      "steps": 1
-    },
-    "someDropdown": {
-        "type": "dropdown",
-        "label": "Choose an option:",
-        "value": "blue",
-        "options": {
-          "blue": "Blue thing",
-          "apple": "Some apple",
-          "7": "Lucky number"
-        }
-     }
+  "someColorPicker": {
+    "type": "colorpicker",
+    "label": "Some color",
+    "value": "#0000FF"
+  },
+  "someNumber": {
+    "type": "number",
+    "label": "Count",
+    "value": 10
+  },
+  "someSlider": {
+    "type": "slider",
+    "label": "Counter",
+    "value": 10,
+    "min": 0,
+    "max": 100,
+    "steps": 1
+  },
+  "someDropdown": {
+    "type": "dropdown",
+    "label": "Choose an option:",
+    "value": "blue",
+    "options": {
+      "blue": "Blue thing",
+      "apple": "Some apple",
+      "7": "Lucky number"
+    }
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "My Custom Widget"
+  }
 }
 ```
 ##### Input on left panel construction
@@ -114,7 +124,6 @@ Note:
 A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more advanced functionality.
 
 ```javascript
-SE_API.init('custom widget name'); // call this first to enable the api
 SE_API.store.set('keyName', obj); // stores an object into our database under this keyName (multiple widgets using the same keyName will share the same data).
 SE_API.store.get('keyName').then(obj => {
     // obj is the object stored in the db, must be a simple object
