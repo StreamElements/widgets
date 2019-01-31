@@ -163,6 +163,8 @@ window.addEventListener('onWidgetLoad', function (obj) {
     let recents=obj["detail"]["recents"];
     let currency=obj["detail"]["currency"];
     let channelName=obj["detail"]["channel"]["username"];
+    let apiToken=obj["detail"]["channel"]["apiToken"];
+    let fieldData=obj["detail"]["fieldData"];
 });
 ```
 Possible keys within `data`:
@@ -266,8 +268,9 @@ There is a difference between:
 `donator` stands for cumulative amount of all events by this user.
 
 Example for better understanding:
-User|Amount
-----|------
+
+User | Amount
+-----|-------
 UserA|10
 UserB|15
 UserA|10
@@ -328,7 +331,7 @@ The last element of `obj` is currency, which contains:
 * `name` - currency name (for example "U.S. Dollar)
 * `symbol` - currency symbol (for example “$”)
 
-###On Session Update
+### On Session Update
 ```javascript
 window.addEventListener('onSessionUpdate', function (obj) {
     const data = obj.detail.session;
