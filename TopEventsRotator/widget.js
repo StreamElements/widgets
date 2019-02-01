@@ -1,4 +1,5 @@
 let userCurrency;
+let userLocale = "en-US";
 let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let box;
@@ -21,8 +22,9 @@ function showSlide(i) {
     $(box[i])
 
         .addClass(animationIn + ' animated', timeIn)
-        .show(0, timeIn)
+        .show(0, timeIn + timeOut)
         .removeClass(animationIn, timeDisplay)
+        //.delay(timeDisplay)
         .addClass(animationOut, timeOut)
         .removeClass(animationOut + " animated", timeOut + 500)
         .hide(0, timeOut)
@@ -58,7 +60,10 @@ window.addEventListener('onWidgetLoad', function (obj) {
     timeDisplay = fieldData['timeDisplay'];
     timeOut = fieldData['timeOut'];
     delay = fieldData['delay'];
-    timeBetween = fieldData['timeBetween'];
+    timeBetween = fieldData['delay'];
+    userCurrency = obj.detail.currency;
+
+    slideTime = timeIn + timeDisplay + timeOut;
     $("#recent-donator").text(data["tip-latest"]["name"] + " - " + data["tip-latest"]["amount"]);
     $("#top-donator").text(data["tip-session-top-donator"]["name"] + " - " + data["tip-session-top-donator"]["amount"]);
     $("#top-cheerer").text(data["cheer-session-top-donator"]["name"] + " - " + data["cheer-session-top-donator"]["amount"]);
