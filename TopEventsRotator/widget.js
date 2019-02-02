@@ -19,28 +19,26 @@ $(document).ready(function () {
 
 
 function showSlide(i) {
+    next++;
     $(box[i])
-
         .addClass(animationIn + ' animated', timeIn)
         .show(0, timeIn + timeOut)
         .removeClass(animationIn, timeDisplay)
-        //.delay(timeDisplay)
         .addClass(animationOut, timeOut)
         .removeClass(animationOut + " animated", timeOut + 500)
         .hide(0, timeOut)
+        .queue(function () {
+            if (next >= amount) {
+                next = 0;
+                setTimeout(function () {
+                    showSlide(next)
+                }, delay);
+            } else {
+                showSlide(next)
+            }
+            $(this).dequeue();
+        })
     ;
-    next++;
-
-    if (next >= amount) {
-        next = 0;
-        setTimeout(function () {
-            showSlide(next)
-        }, slideTime + delay);
-    } else {
-        setTimeout(function () {
-            showSlide(next)
-        }, slideTime);
-    }
 
 }
 
