@@ -34,10 +34,8 @@ let next = 0;
 let timeIn = 400;
 let timeDisplay = 2500;
 let timeOut = 500;
-let delay = 5000;
-let timeBetween = 500;
-let slideTime = timeIn + timeDisplay + timeOut + timeBetween;
 
+let slideTime = timeIn + timeDisplay + timeOut;
 
 function showSlide(i) {
     next++;
@@ -51,12 +49,8 @@ function showSlide(i) {
         .queue(function () {
             if (next >= amount) {
                 next = 0;
-                setTimeout(function () {
-                    showSlide(next)
-                }, delay);
-            } else {
-                showSlide(next)
             }
+            showSlide(next);
             $(this).dequeue();
         })
     ;
@@ -93,8 +87,8 @@ window.addEventListener('onWidgetLoad', function (obj) {
     timeIn = fieldData['timeIn'];
     timeDisplay = fieldData['timeDisplay'];
     timeOut = fieldData['timeOut'];
-    delay = fieldData['delay'];
-    timeBetween = fieldData['delay'];
+
+
     userCurrency = obj.detail.currency;
 
     slideTime = timeIn + timeDisplay + timeOut;

@@ -19,11 +19,6 @@
     "label": "Animation Out time ms",
     "value": 400
   },
-  "delay": {
-    "type": "number",
-    "label": "delay ms",
-    "value": 1200
-  },
   "animationIn": {
     "type": "dropdown",
     "label": "Animation In:",
