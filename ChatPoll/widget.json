@@ -1,0 +1,107 @@
+{
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font color",
+    "value": "#ffffff"
+  },
+  "background": {
+    "type": "colorpicker",
+    "label": "Background color",
+    "value": "#2883c2"
+  },
+  "borderColor": {
+    "type": "colorpicker",
+    "label": "Border color",
+    "value": "#ffffff"
+  },
+  "outerBorder": {
+    "type": "colorpicker",
+    "label": "Outer Border",
+    "value": "#2883c2"
+  },
+  "rowBG": {
+    "type": "colorpicker",
+    "label": "Row Background",
+    "value": "#0084c2"
+  },
+  "progressColor": {
+    "type": "colorpicker",
+    "label": "Progress color",
+    "value": "#1cc28f"
+  },
+  "ignoreVoteCommand": {
+    "type": "dropdown",
+    "label": "Format of answer",
+    "value": "no",
+    "options": {
+      "yes": "Text/number only",
+      "no": "!command text/number"
+    }
+  },
+  "voteCommand": {
+    "type": "text",
+    "label": "Command to vote",
+    "value": "!vote"
+  },
+  "startCommand": {
+    "type": "text",
+    "label": "Command to start poll",
+    "value": "!startpoll"
+  },
+  "endCommand": {
+    "type": "text",
+    "label": "Command to end poll",
+    "value": "!endpoll"
+  },
+  "addWordCommand": {
+    "type": "text",
+    "label": "Command to add word",
+    "value": "!add"
+  },
+  "wordsLimit": {
+    "type": "number",
+    "label": "Number of words to be displayed",
+    "value": 5
+  },
+  "wordTimer": {
+    "type": "number",
+    "label": "Survey fadeout after (seconds)",
+    "value": 20
+  },
+  "managePermissions": {
+    "type": "dropdown",
+    "label": "Who can manage poll:",
+    "value": "mods",
+    "options": {
+      "streamer": "Streamer",
+      "mods": "Mods"
+    }
+  },
+  "participants": {
+    "type": "dropdown",
+    "label": "Who can participate:",
+    "value": "everybody",
+    "options": {
+      "everybody": "Everybody",
+      "subs": "Subs"
+    }
+  },
+  "scoresDisplay": {
+    "type": "dropdown",
+    "label": "Scores should be displayed:",
+    "value": "after",
+    "options": {
+      "after": "When poll is closed",
+      "live": "Live"
+    }
+  },
+  "onlyUniqueUsers": {
+    "type": "dropdown",
+    "label": "Accept only first vote per user:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+}
