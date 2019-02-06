@@ -31,6 +31,7 @@ window.addEventListener('onEventReceived', function (obj) {
             let question = message.replace(userOptions['startCommand'] + ' ', '');
             if (!question.length) return;
             $('#question').html(question);
+            $('#words').html('');
             $("#help").html("To vote type " + userOptions['voteCommand'] + " number/text (e.g. !vote 1, !vote answer)");
             if (userOptions['ignoreVoteCommand'] === "yes") {
                 $("#help").append(" or just number/text (e.g. 1 or answer)");
