@@ -27,6 +27,15 @@
     "label": "Font Color",
     "value": "rgba(255,255,255,1)"
   },
+  "alignMessages": {
+    "label": "Align Messages",
+    "type": "dropdown",
+    "flex": "end",
+    "options": {
+      "flex": "Bottom",
+      "block": "Top"
+    }
+  },
   "messagesLimit": {
     "type": "number",
     "label": "Messages limit",

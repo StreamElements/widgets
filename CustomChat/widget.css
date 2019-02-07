@@ -1,13 +1,13 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
-@import url('https://fonts.googleapis.com/css?family={{fontFamily}}');
+@import url('https://fonts.googleapis.com/css?family={{fontName}}');
 * {
-    font-family: '{{fontFamily}}', sans-serif;
+    font-family: '{{fontName}}', sans-serif;
     color: {{fontColor}};
     overflow: hidden;
     font-weight: {{fontWeight}};
 }
 .main-container{
-    display:flex;
+    display:{{alignMessages}};
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
