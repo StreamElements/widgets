@@ -1,44 +1,49 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family={{fontFamily}}');
 * {
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff;
-    font-size: 14px;
+    font-family: '{{fontFamily}}', sans-serif;
+    color: {{fontColor}};
     overflow: hidden;
+    font-weight: {{fontWeight}};
 }
 .main-container{
     display:flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: flex-start;
+    align-content: flex-start;
     height:98%;
     margin-bottom:10px;
+    box-sizing: border-box;
 }
 .message-row{
+    flex: 0 0 auto;
     width:100%;
     margin-bottom:5px;
     background-color:{{rowBg}};
     padding:5px;
+    vertical-align: baseline;
 }
 .badge{
     display:inline;
-    height:20px;
+    height:{{fontSize}}px;
 }
 
 .user-box{
     display:inline;
-    font-size:20px;
+    font-size:{{fontSize}}px;
 }
 .user-box > span{
-    font-size:20px;
+    font-size:{{fontSize}}px;
 }
 
 .user-message{
     display:inline;
-    font-size:20px;
+    font-size:{{fontSize}}px;
 }
 
 .emote{
-    height:20px;
+    height:{{fontSize}}px;
 }
 .action{
     font-style: italic;
