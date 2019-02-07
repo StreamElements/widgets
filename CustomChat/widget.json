@@ -30,7 +30,7 @@
   "alignMessages": {
     "label": "Align Messages",
     "type": "dropdown",
-    "flex": "end",
+    "value": "end",
     "options": {
       "flex": "Bottom",
       "block": "Top"
@@ -46,6 +46,15 @@
     "label": "Hide after seconds (999 to disable)",
     "value": 999
   },
+  "hideCommands": {
+    "label": "Hide lines starting with ! (!command)",
+    "type": "dropdown",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "no"
+    }
+  },
   "nickColor": {
     "type": "dropdown",
     "label": "Nickname color:",
@@ -59,7 +68,6 @@
     "type": "colorpicker",
     "label": "Background color:",
     "value": "rgba(0,0,0,0)"
-
   },
   "animationIn": {
     "type": "dropdown",

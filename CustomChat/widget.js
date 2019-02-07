@@ -2,10 +2,11 @@ let totalMessages = 0, messagesLimit = 0, nickColor = "user";
 let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let hideAfter = 60;
+let hideCommands = "no";
 window.addEventListener('onEventReceived', function (obj) {
-    console.log(obj.detail);
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
+    if (data.message.text.startsWith("!") && hideCommands === "yes") return;
     let message = attachEmotes(data);
     let badges = "", badge;
     for (var i = 0; i < data.badges.length; i++) {
@@ -27,6 +28,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     hideAfter = fieldData.hideAfter;
     messagesLimit = fieldData.messagesLimit;
     nickColor = fieldData.nickColor;
+    hideCommands = fieldData.hideCommands;
 });
 
 function attachEmotes(message) {
