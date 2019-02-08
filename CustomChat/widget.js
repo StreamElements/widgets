@@ -6,10 +6,10 @@ let hideCommands = "no";
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
-    if (data.message.text.startsWith("!") && hideCommands === "yes") return;
+    if (data.text.startsWith("!") && hideCommands === "yes") return;
     let message = attachEmotes(data);
     let badges = "", badge;
-    for (var i = 0; i < data.badges.length; i++) {
+    for (let i = 0; i < data.badges.length; i++) {
         badge = data.badges[i];
         badges += `<img alt="" src="${badge.url}" class="badge"> `;
     }
@@ -38,7 +38,7 @@ function attachEmotes(message) {
         .replace(
             /([^\s]*)/gi,
             function (m, key) {
-                var result = data.filter(emote => {
+                let result = data.filter(emote => {
                     return emote.name === key
                 });
                 if (typeof result[0] !== "undefined") {
