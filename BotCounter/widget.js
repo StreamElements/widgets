@@ -1,8 +1,6 @@
 let count = 0;
 let container;
-const jwt = '';
-const counter = 'wins';
-const channel = '';
+let counter = 'wins';
 const threshold1 = 10;
 const threshold2 = 30;
 
@@ -19,7 +17,7 @@ function setText(value) {
     }
 }
 
-window.addEventListener('onEventReceived', function(obj) {
+window.addEventListener('onEventReceived', function (obj) {
     const listener = obj.detail.listener;
     const data = obj.detail.event;
 
@@ -28,12 +26,17 @@ window.addEventListener('onEventReceived', function(obj) {
     }
 });
 
-window.addEventListener('onWidgetLoad', function() {
+window.addEventListener('onWidgetLoad', function (obj) {
     container = $('.main-container');
-    fetch(`//api.streamelements.com/kappa/v2/bot/${channel}/counters/${counter}`, {
-        headers:{
-            'Authorization': `Bearer ${jwt}`
-        }
-    }).then(response => response.json())
-        .then(data => setText(data.value));
+    counter = obj.detail.fieldData.counterName;
+    let apiKey = obj.detail.channel.apiToken;
+    let channel = obj.detail.channel.username;
+    container = $('.main-container');
+    fetch(`//api.streamelements.com/kappa/v2/channels/${channel}/`, {}).then(response => response.json()).then(function (channelData) {
+        let channelId = channelData._id;
+        fetch(`//api.streamelements.com/kappa/v2/bot/${channelId}/counters/${counter}`, {
+
+        }).then(response => response.json())
+            .then(data => setText(data.value));
+    });
 });
