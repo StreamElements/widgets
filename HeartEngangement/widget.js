@@ -1,9 +1,8 @@
 /*
-1) Change keyXYZ value below to look like let keyXYZ="abc1234"
-2) Change URL of img in HTML section if you want another heart beating
-3) If you want to, buy me a beer at https://paypal.me/ThisIsLex
+1) Change URL of img in HTML section if you want another heart beating
+2) If you want to, buy me a beer at https://paypal.me/ThisIsLex
 */
-let keyXYZ = false;
+
 //SIZE MULTIPLIERS. 1 = 1 pixel
 let bitsPoints = 1,
     followPoints = 1,
@@ -14,7 +13,7 @@ let bitsPoints = 1,
     limit = 80, // Percentage of containing box, so value 80 is for 80%
     explosionTime = 1200; //miliseconds
 window.addEventListener('onEventReceived', function (obj) {
-    if (keyXYZ) {
+
         const listener = obj.detail.listener;
         const data = obj.detail.event;
         if (listener === 'follower-latest') {
@@ -29,7 +28,7 @@ window.addEventListener('onEventReceived', function (obj) {
         } else if (listener === 'tip-latest') {
             announceAction(data["name"], 'donation', data["amount"] * donatePoints);
         }
-    }
+
 });
 window.addEventListener('onWidgetLoad', function (obj) {
     const fieldData = obj.detail.fieldData;
@@ -41,16 +40,10 @@ window.addEventListener('onWidgetLoad', function (obj) {
     amount = fieldData.initialAmount; //Initial grow
     limit = fieldData.sizeLimit; // Percentage of containing box, so value 80 is for 80%
     explosionTime = fieldData.explosionTime * 1000;
-    keyXYZ = fieldData.keyXYZ;
-    if (keyXYZ) {
+
+
         loadState();
-    }
-    else {
-        $.post("https://api.keyvalue.xyz/new/StreamElements", function (data) {
-            var parts = data.slice(1, -1).split("/");
-            $("#label").html('SET keyXYZ value in your config to "' + parts[3] + '"');
-        });
-    }
+
 });
 
 function announceAction(user, action, amount) {
@@ -73,13 +66,12 @@ function updateHeart(amount) {
 }
 
 function saveState(value) {
-    $.post("https://api.keyvalue.xyz/" + keyXYZ + "/StreamElements/" + value, function (data) {
-    });
+    SE_API.store.set('heartEngangement', {width:value});
 }
 
 function loadState() {
-    $.get("https://api.keyvalue.xyz/" + keyXYZ + "/StreamElements", function (data) {
-        $("#image").css('width', parseFloat(data) + '%');
+    SE_API.store.get('heartEngangement').then(obj => {
+        $("#image").css('width', parseFloat(obj.width) + '%');
     });
 }
 

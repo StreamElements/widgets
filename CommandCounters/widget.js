@@ -1,8 +1,3 @@
-var userOptions = {
-    keyXYZ: "",
-};
-
-
 var commands = {
     "wins": {
         description: "Current win counter",
@@ -22,7 +17,7 @@ var commands = {
 };
 let values = {};
 
-let audio, name = '';
+let name = '';
 let channel;
 
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -123,33 +118,25 @@ function generateDivs() {
     });
 }
 
-if (userOptions.keyXYZ !== "") {
-    loadState();
-    generateDivs();
 
-} else {
-    $.post("https://api.keyvalue.xyz/new/StreamElements", function (data) {
-        var parts = data.slice(1, -1).split("/");
-        $("body").append('SET keyXYZ value in your JS tab to "' + parts[3] + '"');
-    });
-}
+loadState();
+
 
 function saveState(obj) {
-    value = JSON.stringify(obj);
-    $.post("https://api.keyvalue.xyz/" + userOptions.keyXYZ + "/StreamElements/" + value, function (data) {
-    });
+    SE_API.store.set('commandCounters', obj);
 }
 
+
 function loadState() {
-    $.get({
-        url: "https://api.keyvalue.xyz/" + userOptions.keyXYZ + "/StreamElements",
-        async: false,
-        success: function (data) {
-            if (data.length > 3) {
-                values = JSON.parse(data);
-            } else {
-                saveState(values);
-            }
+    SE_API.store.get('commandCounters').then(obj => {
+        console.log(obj);
+        if (obj !== null && typeof obj !== "undefined") {
+            values = obj;
+        } else {
+            saveState(values);
         }
+        generateDivs();
     });
+
 }
+

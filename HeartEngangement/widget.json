@@ -1,9 +1,4 @@
 {
-  "keyXYZ": {
-    "type": "text",
-    "label": "keyvalueXYZ key",
-    "value": ""
-  },
   "bitsPoints": {
     "type": "number",
     "label": "Points per bit",

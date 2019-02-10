@@ -1,4 +1,3 @@
-let keyXYZ = false;
 let channel = "";
 let users = [];
 let nicknames = [];
@@ -28,22 +27,22 @@ function clearScreen() {
 
 function purge() {
     users = [];
-    nicknames = []
+    nicknames = [];
     saveState([users, nicknames]);
 }
 
 function saveState(value) {
-    $.post("https://api.keyvalue.xyz/" + keyXYZ + "/StreamElements/" + JSON.stringify(value), function (data) {
-    });
+    SE_API.store.set('userQueue', value);
+
 }
 
 function loadState() {
-    $.getJSON("https://api.keyvalue.xyz/" + keyXYZ + "/StreamElements", function (data) {
+    SE_API.store.get('userQueue').then(obj => {
 
-        if (data.length === 2) {
+        if (obj !== null) {
             users = data[0];
             nicknames = data[1];
-        }
+        } else SE_API.store.set('userQueue', [users, nicknames])
     });
 
 }
@@ -55,16 +54,11 @@ window.addEventListener('onWidgetLoad', function (obj) {
     drawCommand = fieldData["draw"];
     purgeCommand = fieldData["purge"];
     clearCommand = fieldData["clear"];
-    keyXYZ = fieldData.keyXYZ;
-    if (keyXYZ) {
-        loadState();
 
-    } else {
-        $.post("https://api.keyvalue.xyz/new/StreamElements", function (data) {
-            var parts = data.slice(1, -1).split("/");
-            $("#users").html('SET keyXYZ value in your config to "' + parts[3] + '"');
-        });
-    }
+
+    loadState();
+
+
 });
 
 window.addEventListener('onEventReceived', function (obj) {

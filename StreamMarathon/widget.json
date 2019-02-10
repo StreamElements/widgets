@@ -116,10 +116,5 @@
     "type": "number",
     "label": "Stroke size",
     "value": 2
-  },
-  "keyXYZ": {
-    "type": "text",
-    "label": "keyvalueXYZ key",
-    "value": "bc22298d"
   }
 }

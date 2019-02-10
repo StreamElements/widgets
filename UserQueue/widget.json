@@ -1,9 +1,4 @@
 {
-  "keyXYZ": {
-    "type": "text",
-    "label": "keyvalueXYZ key",
-    "value": ""
-  },
   "queue": {
     "type": "text",
     "label": "Add to queue command",

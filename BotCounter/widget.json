@@ -1,0 +1,7 @@
+{
+  "counterName": {
+    "type": "text",
+    "label": "Counter name",
+    "value": "wins"
+  }
+}
