@@ -49,11 +49,16 @@
   "hideCommands": {
     "label": "Hide lines starting with ! (!command)",
     "type": "dropdown",
-    "value": "no",
+    "value": "yes",
     "options": {
       "yes": "Yes",
-      "no": "no"
+      "no": "No"
     }
+  },
+  "ignoredUsers": {
+    "label": "Ignored users (comma separated)",
+    "type": "text",
+    "value": "StreamElements,OtherBot"
   },
   "nickColor": {
     "type": "dropdown",

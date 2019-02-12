@@ -3,10 +3,12 @@ let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let hideAfter = 60;
 let hideCommands = "no";
+let ignoredUsers = [];
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
     if (data.text.startsWith("!") && hideCommands === "yes") return;
+    if (ignoredUsers.indexOf(data.nick) !== -1) return;
     let message = attachEmotes(data);
     let badges = "", badge;
     for (let i = 0; i < data.badges.length; i++) {
@@ -29,6 +31,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     messagesLimit = fieldData.messagesLimit;
     nickColor = fieldData.nickColor;
     hideCommands = fieldData.hideCommands;
+    ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
 });
 
 function attachEmotes(message) {
