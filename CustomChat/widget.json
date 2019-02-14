@@ -30,7 +30,7 @@
   "alignMessages": {
     "label": "Align Messages",
     "type": "dropdown",
-    "value": "end",
+    "value": "flex",
     "options": {
       "flex": "Bottom",
       "block": "Top"
