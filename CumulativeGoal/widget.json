@@ -1,0 +1,62 @@
+{
+  "goal": {
+    "type": "number",
+    "label": "Points goal",
+    "value": 3000
+  },
+  "pointsPerFollow": {
+    "type": "number",
+    "label": "Points per Follow",
+    "value": 3
+  },
+  "pointsPerSub": {
+    "type": "number",
+    "label": "Points per sub",
+    "value": 6
+  },
+  "pointsPerTip": {
+    "type": "number",
+    "label": "Points per 1 currency",
+    "value": 1
+  },
+  "pointsPerBit": {
+    "type": "number",
+    "label": "Points per Bit",
+    "value": 0.01
+  },
+  "fontName": {
+    "type": "text",
+    "label": "Font Name",
+    "value": "Roboto"
+  },
+  "barHeight": {
+    "type": "number",
+    "label": "Bar Thickness",
+    "value": 25
+  },
+  "backgroundColor": {
+    "type": "colorpicker",
+    "label": "Background color",
+    "value": "rgb(55, 55, 55)"
+  },
+  "barColor1": {
+    "type": "colorpicker",
+    "label": "Bar color",
+    "value": "rgb(63, 63, 195)"
+  },
+  "labelColor": {
+    "type": "colorpicker",
+    "label": "Label font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "labelSize": {
+    "type": "number",
+    "label": "Label font Size",
+    "value": 24
+  },
+  "labelStroke": {
+    "type": "number",
+    "label": "Label stroke size",
+    "value": 1
+  }
+}
