@@ -24,7 +24,7 @@ function countdown(seconds) {
     //$("#countdown").countdown('destroy');
 
     let toCountDown = start;
-    toCountDown.setSeconds(toCountDown.getSeconds()+seconds);
+    toCountDown.setSeconds(toCountDown.getSeconds() + seconds);
 
     let a = [toCountDown, maxTime];
     a.sort(function (a, b) {
@@ -103,11 +103,16 @@ function saveState() {
 
 function loadState() {
     SE_API.store.get('marathon').then(obj => {
-        let amount = new Date(obj.amount);
-        if (amount > 0) {
-            amount = Math.max(amount, minTime);
-            start = new Date(amount);
-            countdown(0);
+        if (obj !== null) {
+            let amount = new Date(obj.amount);
+            if (amount > 0) {
+                amount = Math.max(amount, minTime);
+                start = new Date(amount);
+                countdown(0);
+            } else {
+                start = minTime;
+                countdown(0);
+            }
         } else {
             start = minTime;
             countdown(0);
