@@ -91,7 +91,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
     raidMin = fieldData.raidMin;
     maxTime = new Date(fieldData.maxTime);
     minTime = new Date(fieldData.minTime);
-
+    if (fieldData.resetTimer) {
+        SE_API.store.set('marathon', {amount: minTime});
+    }
     loadState();
 
 });

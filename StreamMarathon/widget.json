@@ -9,6 +9,11 @@
     "label": "Maximum time of marathon:",
     "value": "2020-01-26T12:21:00.000Z"
   },
+  "resetTimer": {
+    "type": "checkbox",
+    "label": "Reset timer",
+    "value":false
+  },
   "followSeconds": {
     "type": "number",
     "label": "Seconds per follower (-1 to disable):",
