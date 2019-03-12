@@ -27,7 +27,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 
 window.addEventListener('onSessionUpdate', function (obj) {
     if (typeof obj["detail"]["session"][index] !== 'undefined') {
-        if (fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
+        if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
             count = obj["detail"]["session"][index]['amount'];
         } else {
             count = obj["detail"]["session"][index]['count'];
