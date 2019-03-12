@@ -39,7 +39,8 @@
       "session": "Session",
       "week": "Week",
       "month": "Month",
-      "total": "Total"
+      "total": "Total",
+      "goal": "Amount from goal data"
     }
   },
   "backgroundColor": {

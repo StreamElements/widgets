@@ -11,7 +11,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     }
     count = 0;
     if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
-        if (fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
+        if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
             count = obj["detail"]["session"]["data"][index]['amount'];
         } else {
             count = obj["detail"]["session"]["data"][index]['count'];
