@@ -20,7 +20,7 @@
     flex: 0 0 auto;
     width:100%;
     margin-bottom:5px;
-    background-color:{{rowBg}};
+    background-color:{{backgroundColor}};
     padding:5px;
     vertical-align: baseline;
 }
