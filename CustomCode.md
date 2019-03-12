@@ -35,7 +35,7 @@ There are some reserved field names (all future reserved words will start with `
   "someText": {
     "type": "text",
     "label": "Some Text",
-    "value": "Default text",
+    "value": "Default text"
   },
   "someColorPicker": {
     "type": "colorpicker",
@@ -113,8 +113,8 @@ window.addEventListener('onWidgetLoad', function (obj) {
 `{{message}}` - message attached to event (sub, cheer, tip). For example `{name} is our sub for {amount} months, and he wanted to say {{message}}`<br>
 `{{sender}}` - if an action is a sub, `{sender}` is replaced with a person who gave it. For example `{{sender}} just gifted a sub for {{name}}`<br>
 `{{currency}}` - replaced with currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
-`{{image}}` - replaced with image attached to alert URL. For example `&lt;img src="{{image}}"/&gt;`<br>
-`{{video}}` - will be replaced with video attached to alert URL. For example `&lt;video id="video" playsinline autoplay muted style="width:100%; height:100%"&gt;&lt;source id="webm" src="{{video}}" type="video/webm"&gt;&lt;/video&gt;`
+`{{image}}` - replaced with image attached to alert URL. For example `<img src="{{image}}"/>`<br>
+`{{video}}` - will be replaced with video attached to alert URL. For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`
 ## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
 Note:
@@ -147,8 +147,11 @@ In the example above you have obj forwarded to that function, which has two inte
     * `cheer-latest` - New cheer
     * `tip-latest` - New tip
     * `raid-latest` - New raid
+    * `message` - New chat message received
+    * `event:skip` - User clicked "skip alert" button in activity feed
+    * `bot:counter` - Update to bot counter
 
-* `obj.detail.event`: Will provide you information about event details. It contains few keys:
+* `obj.detail.event`: Will provide you information about event details. It contains few keys. For `-latest` events it is:
     * `.name` - user who triggered action
     * `.amount` - amount of action
     * `.message` - if there was a message attached to it
@@ -173,6 +176,74 @@ window.addEventListener('onEventReceived', function (obj) {
     document.getElementById("amount").innerHTML=data["amount"]
 });
 ```
+#### Message
+For every message on Twitch chat there is an object forwarded with every details there:
+```json
+{
+  "time": 1552400352142,
+  "tags": {
+    "badges": "broadcaster/1",
+    "color": "#641FEF",
+    "display-name": "SenderName",
+    "emotes": "25:5-9",
+    "flags": "",
+    "id": "885d1f33-8387-4206-a668-e9b1409a998b",
+    "mod": "0",
+    "room-id": "85827806",
+    "subscriber": "0",
+    "tmi-sent-ts": "1552400351927",
+    "turbo": "0",
+    "user-id": "85827806",
+    "user-type": ""
+  },
+  "nick": "sendername",
+  "userId": "123123",
+  "displayName": "senderName",
+  "displayColor": "#641FEF",
+  "badges": [
+    {
+      "type": "broadcaster",
+      "version": "1",
+      "url": "https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/3",
+      "description": "Broadcaster"
+    }
+  ],
+  "channel": "channelname",
+  "text": "Test Kappa test",
+  "isAction": false,
+  "emotes": [
+    {
+      "type": "twitch",
+      "name": "Kappa",
+      "id": "25",
+      "gif": false,
+      "urls": {
+        "1": "https://static-cdn.jtvnw.net/emoticons/v1/25/1.0",
+        "2": "https://static-cdn.jtvnw.net/emoticons/v1/25/2.0",
+        "4": "https://static-cdn.jtvnw.net/emoticons/v1/25/4.0"
+      },
+      "start": 5,
+      "end": 9
+    }
+  ],
+  "msgId": "885d1f33-8387-4206-a668-e9b1409a99Xb"
+}
+```
+Every emote displayed on chat is within array of objects `emotes` with start/end index of `text` you can replace with image
+
+#### Bot counter
+Contains two elements counter name (`counter`) and current value (`value`)
+```javascript
+window.addEventListener('onEventReceived', function (obj) {
+    const listener = obj.detail.listener;
+    const data = obj.detail.event;
+
+    if (listener === 'bot:counter' && data.counter === counter) {
+        document.getElementById("mycounter").innerHTML=data.value;
+    }
+});
+```
+
 ### On Widget load
 ```javascript
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -373,3 +444,4 @@ window.addEventListener('onSessionUpdate', function (obj) {
 });
 ```
 `data` is the same as in `onWidgetLoad` so every property is listed in section above.
+
