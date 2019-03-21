@@ -1,0 +1,37 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 34px;
+    overflow: hidden;
+}
+
+.desc {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+}
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+img {
+    position: absolute;
+    bottom: 0px;
+    transition: all .5s linear;
+}
+
+#optiona {
+    left: 0px;
+    height: 50%;
+}
+
+#optionb {
+    right: 0px;
+    height: 50%;
+}

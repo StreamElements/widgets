@@ -1,0 +1,77 @@
+{
+  "title": {
+    "type": "text",
+    "label": "Title",
+    "value": "Vote time!"
+  },
+  "optionA": {
+    "type": "text",
+    "label": "Option A",
+    "value": "voteYea"
+  },
+  "optionB": {
+    "type": "text",
+    "label": "Option B",
+    "value": "voteNay"
+  },
+  "chatDecided": {
+    "type": "text",
+    "label": "Chat decided",
+    "value": "Chat decided to vote on"
+  },
+  "chatDidntDecide": {
+    "type": "text",
+    "label": "Chat didn't decide",
+    "value": "Chat couldn't decide, sorry!"
+  },
+  "startCommand": {
+    "type": "text",
+    "label": "Start command",
+    "value": "!quickpoll"
+  },
+  "pollTime": {
+    "type": "number",
+    "label": "Poll time (s)",
+    "value": 30
+  },
+  "voice": {
+    "type": "text",
+    "label": "TTS voice (as in alerts)",
+    "value": "Brian"
+  },
+  "volume": {
+    "type": "slider",
+    "label": "Volume",
+    "value": 50,
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  "managePermissions": {
+    "type": "dropdown",
+    "label": "Who can start poll:",
+    "value": "mods",
+    "options": {
+      "streamer": "Streamer",
+      "mods": "Mods"
+    }
+  },
+  "participants": {
+    "type": "dropdown",
+    "label": "Who can participate:",
+    "value": "everybody",
+    "options": {
+      "everybody": "Everybody",
+      "subs": "Subs"
+    }
+  },
+  "onlyUniqueUsers": {
+    "type": "dropdown",
+    "label": "Accept only first vote per user:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+}
