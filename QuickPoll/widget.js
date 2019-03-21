@@ -78,7 +78,7 @@ function announceResults() {
     } else {
         message += userOptions['optionB'];
     }
-    let myAudio = new Audio('http://api.streamelements.com/kappa/v2/speech?voice=' + userOptions['voice'] + '&text=' + encodeURI(message));
+    let myAudio = new Audio('//api.streamelements.com/kappa/v2/speech?voice=' + userOptions['voice'] + '&text=' + encodeURI(message));
     myAudio.addEventListener('ended', function () {
 
         $(".main-container").fadeOut();
