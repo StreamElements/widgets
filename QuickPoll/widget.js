@@ -69,6 +69,7 @@ function countDown() {
 }
 
 function announceResults() {
+    isActive = false;
     let message = userOptions['chatDecided'] + " ";
     if (votes['a'] === votes['b']) {
         message = userOptions['chatDidntDecide'];
@@ -81,7 +82,7 @@ function announceResults() {
     myAudio.addEventListener('ended', function () {
 
         $(".main-container").fadeOut();
-        isActive = false;
+
     }, false);
     myAudio.volume = parseInt(userOptions['volume']) / 100;
     myAudio.play();
