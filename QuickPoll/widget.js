@@ -4,11 +4,12 @@ let votes = {a: 0, b: 0};
 let isActive = false;
 let time = 0;
 let interval;
+let regexA, regexB;
 window.addEventListener('onEventReceived', function (obj) {
         if (obj.detail.listener !== 'message') return;
 
         let data = obj.detail.event.data;
-        let message = data['text'];
+        let message = data['text'].toLowerCase();
 
         let user = data['nick'];
         let userstate = {
@@ -39,10 +40,10 @@ window.addEventListener('onEventReceived', function (obj) {
         if (!isActive) return;
         if (userOptions['onlyUniqueUsers'] === "yes" && users.indexOf(user) !== -1) return false;
         if (userOptions['participants'] === "subs" && !userstate.sub) return false;
-        if (message.indexOf(userOptions['optionA']) > -1) {
+        if (message.search(regexA) > -1) {
 
             vote('a', user);
-        } else if (message.indexOf(userOptions['optionB']) > -1) {
+        } else if (message.search(regexB) > -1) {
 
             vote('b', user);
         }
@@ -92,5 +93,7 @@ function announceResults() {
 window.addEventListener('onWidgetLoad', function (obj) {
     userOptions = obj['detail']['fieldData'];
     userOptions['channelName'] = obj['detail']['channel']['username'];
+    regexA = new RegExp('\\b' + userOptions['optionA'].toLowerCase() + '\\b');
+    regexB = new RegExp('\\b' + userOptions['optionB'].toLowerCase() + '\\b');
 });
 
