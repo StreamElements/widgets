@@ -35,7 +35,7 @@ values = emptyvalues;
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
-    let message = data["text"];
+    let message = html_encode(data["text"]);
     let user = data["displayName"];
     let userstate = {
         "mod": parseInt(data.tags.mod),
@@ -93,6 +93,12 @@ window.addEventListener('onEventReceived', function (obj) {
 
 
 });
+
+function html_encode(e) {
+    return e.replace(/[\<\>\"\^]/g, function (e) {
+        return "&#" + e.charCodeAt(0) + ";";
+    });
+}
 
 
 function changeValue(index, type) {

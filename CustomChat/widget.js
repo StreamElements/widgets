@@ -34,8 +34,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
     ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
 });
 
+
 function attachEmotes(message) {
-    let text = message.text;
+    let text = html_encode(message.text);
     let data = message.emotes;
     return text
         .replace(
@@ -51,6 +52,12 @@ function attachEmotes(message) {
 
             }
         );
+}
+
+function html_encode(e) {
+    return e.replace(/[\<\>\"\^]/g, function (e) {
+        return "&#" + e.charCodeAt(0) + ";";
+    });
 }
 
 function addEvent(username, badges, message, isAction) {

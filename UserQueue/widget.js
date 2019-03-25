@@ -64,7 +64,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
-    let message = data["text"];
+    let message = html_encode(["text"]);
     let user = data["displayName"];
     if (message.indexOf(queueCommand) === 0) {
         message = message.split(" ");
@@ -95,3 +95,8 @@ window.addEventListener('onEventReceived', function (obj) {
 
 });
 
+function html_encode(e) {
+    return e.replace(/[\<\>\"\^]/g, function (e) {
+        return "&#" + e.charCodeAt(0) + ";";
+    });
+}
