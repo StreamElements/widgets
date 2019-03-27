@@ -65,6 +65,11 @@ There are some reserved field names (all future reserved words will start with `
       "7": "Lucky number"
     }
   },
+  "fontName": {
+      "type": "googleFont",
+      "label": "Select a font:",
+      "value": "Roboto"
+    },
   "widgetName": {
     "type": "hidden",
     "value": "My Custom Widget"
@@ -110,7 +115,8 @@ window.addEventListener('onWidgetLoad', function (obj) {
 ## Alert widget
 `{{name}}` - will be replaced with a person who is in subject of event. For example `{{name}} just followed stream!`<br>
 `{{amount}}` - will be replaced with amount if event supports it - amount of bits, months (as resub), viewers (when hosted, raided). For example `{{name}} just cheered with 1000 bits!`<br>
-`{{message}}` - message attached to event (sub, cheer, tip). For example `{name} is our sub for {amount} months, and he wanted to say {{message}}`<br>
+`{{announcement}}` - message attached to event (sub, cheer, tip). For example `{name} is our sub for {amount}`<br>
+`{{message}}` - HTML user message attached to event (sub, cheer, tip). Example value `  <span class="cheermote-1"><img class="alertbox-message-emote" alt="cheer1" src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/1/2.gif"/>1</span> Hi!`. Remember to provide proper styling for `.alertbox-message-emote` class<br>
 `{{sender}}` - if an action is a sub, `{sender}` is replaced with a person who gave it. For example `{{sender}} just gifted a sub for {{name}}`<br>
 `{{currency}}` - replaced with currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
 `{{image}}` - replaced with image attached to alert URL. For example `<img src="{{image}}"/>`<br>
