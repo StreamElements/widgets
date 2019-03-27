@@ -121,7 +121,11 @@ window.addEventListener('onWidgetLoad', function (obj) {
 `{{sender}}` - if an action is a sub, `{sender}` is replaced with a person who gave it. For example `{{sender}} just gifted a sub for {{name}}`<br>
 `{{currency}}` - replaced with currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
 `{{image}}` - replaced with image attached to alert URL. For example `<img src="{{image}}"/>`<br>
-`{{video}}` - will be replaced with video attached to alert URL. For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`
+`{{video}}` - will be replaced with URL of video attached to alert . For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`
+`{{videoVolume}}` - video volume (from 0 to 1)
+`{{audio}}` - will be replaced with URL of audio attached to alert . For example `<audio id="audio" playsinline autoplay ><source id="alertsound" src="{{audio}}" type="audio/ogg"></audio>`
+`{{audioVolume}}` - audio volume (from 0 to 1)
+
 ## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
 Note:
