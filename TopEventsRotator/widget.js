@@ -60,7 +60,9 @@ function showSlide(i) {
 function parseData(data) {
     elements.forEach(function (element) {
         let text = "";
-        if (typeof data[element.type][element.factor] === "undefined" || data[element.type][element.factor] === 0 || data[element.type][element.factor] === "") {
+        if (typeof data[element.type] === "undefined") {
+            text = element.emptyMessage;
+        } else if (typeof data[element.type][element.factor] === "undefined" || data[element.type][element.factor] === 0 || data[element.type][element.factor] === "") {
             text = element.emptyMessage;
         } else {
             text = element.message.replace(
