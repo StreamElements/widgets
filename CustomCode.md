@@ -121,10 +121,10 @@ window.addEventListener('onWidgetLoad', function (obj) {
 `{{sender}}` - if an action is a sub, `{sender}` is replaced with a person who gave it. For example `{{sender}} just gifted a sub for {{name}}`<br>
 `{{currency}}` - replaced with currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
 `{{image}}` - replaced with image attached to alert URL. For example `<img src="{{image}}"/>`<br>
-`{{video}}` - will be replaced with URL of video attached to alert . For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`
-`{{videoVolume}}` - video volume (from 0 to 1)
-`{{audio}}` - will be replaced with URL of audio attached to alert . For example `<audio id="audio" playsinline autoplay ><source id="alertsound" src="{{audio}}" type="audio/ogg"></audio>`
-`{{audioVolume}}` - audio volume (from 0 to 1)
+`{{video}}` - will be replaced with URL of video attached to alert . For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`<br>
+`{{videoVolume}}` - video volume (from 0 to 1)<br>
+`{{audio}}` - will be replaced with URL of audio attached to alert . For example `<audio id="audio" playsinline autoplay ><source id="alertsound" src="{{audio}}" type="audio/ogg"></audio>`<br>
+`{{audioVolume}}` - audio volume (from 0 to 1)<br>
 
 ## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
@@ -279,6 +279,13 @@ Possible keys within `data`:
 * `data["follower-month"]["count"]` - Followers this month
 * `data["follower-goal"]["amount"]` - Followers goal
 * `data["follower-total"]["count"]` - Total count of followers
+* `data["subscriber-alltime-gifter"]` an array of
+    * `data["subscriber-alltime-gifter"]["name"]"` - Name of latest gifter
+    * `data["subscriber-alltime-gifter"]["amount"]` - Number of gifted subs
+* `data["subscriber-gifted-latest"]` an array of
+    * `data["subscriber-gifted-latest"]["name"]"` - Name of latest gifter
+    * `data["subscriber-gifted-latest"]["amount"]` - Number of gifted subs
+* `data["subscriber-gifted-session"]["count"]` - Number of gifted subs during session
 * `data["subscriber-latest"]` - an array of
     * `data["subscriber-latest"]["name"]` - Name of latest sub
     * `data["subscriber-latest"]["amount"]` - Duration in months
@@ -286,6 +293,16 @@ Possible keys within `data`:
     * `data["subscriber-latest"]["message"]` - Message attached to sub action
     * `data["subscriber-latest"]["sender"]` - If it was a gift, here’s a gifter
     * `data["subscriber-latest"]["gifted"]` - If it was a gift, here’s a gifted
+* `data["subscriber-new-latest"]` an array of
+    * `data["subscriber-new-latest"]["name"]"` - Name of latest new sub
+    * `data["subscriber-new-latest"]["amount"]` - Number of months (1)
+    * `data["subscriber-new-latest"]["message"]` - user message
+* `data["subscriber-new-session"]["count"]` - Number of new subs during session
+* `data["subscriber-resub-latest"]` an array of
+    * `data["subscriber-resub-latest"]["name"]"` - Name of latest resub
+    * `data["subscriber-resub-latest"]["amount"]` - Number of months 
+    * `data["subscriber-resub-latest"]["message"]` - user message
+* `data["subscriber-resub-session"]["count"]` - Number of resubs during session
 * `data["subscriber-session"]["count"]` - Subscribers since session start
 * `data["subscriber-week"]["count"]`    - Subscribers this week
 * `data["subscriber-month"]["count"]`   - Subscribers this month
