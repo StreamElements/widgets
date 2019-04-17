@@ -45,6 +45,9 @@ window.addEventListener('onEventReceived', function (obj) {
     if (listener === 'follower-latest') {
         if (followSeconds > 0) countdown(followSeconds);
     } else if (listener === 'subscriber-latest') {
+        if (data.bulkGifted) { // Ignore gifting event and count only real subs
+            return;
+        }
         if (parseInt(data.tier) === 2000) {
             if (sub2Seconds > 0) countdown(sub2Seconds);
         } else if (parseInt(data.tier) === 3000) {
