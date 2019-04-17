@@ -14,8 +14,8 @@
     "value": "alltime",
     "options": {
       "alltime": "All time",
-      "months": "Month",
-      "weeks": "Week",
+      "monthly": "Month",
+      "weekly": "Week",
       "session": "Session"
     }
   },
