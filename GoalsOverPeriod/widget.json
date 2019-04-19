@@ -26,6 +26,9 @@
     "options": {
       "follower": "Follower",
       "subscriber": "Subscriber",
+      "subscriber-new": "Subscriber new (session only)",
+      "subscriber-resub": "Subscriber resub (session only)",
+      "subscriber-gifted": "Subscriber gifted (session only)",
       "tip": "Tip amount",
       "cheer": "Bits amount",
       "subscriber-points":"Subscriber points"
