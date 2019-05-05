@@ -88,7 +88,7 @@ window.addEventListener('onEventReceived', function (obj) {
         return;
     }
     if (message === purgeCommand) {
-        clearScreen();
+        purge();
         return;
     }
 
