@@ -40,8 +40,8 @@ function loadState() {
     SE_API.store.get('userQueue').then(obj => {
 
         if (obj !== null) {
-            users = data[0];
-            nicknames = data[1];
+            users = obj[0];
+            nicknames = obj[1];
         } else SE_API.store.set('userQueue', [users, nicknames])
     });
 
