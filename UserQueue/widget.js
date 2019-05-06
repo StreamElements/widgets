@@ -77,7 +77,7 @@ window.addEventListener('onEventReceived', function (obj) {
         return;
     }
     // Broadcaster commands only below
-    if (user !== channel) return;
+    if (user.toLowerCase() !== channel) return;
     if (message.indexOf(drawCommand) === 0) {
         message = message.split(" ");
         drawFromQueue(message[1]);
