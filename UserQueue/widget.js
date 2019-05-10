@@ -40,8 +40,8 @@ function loadState() {
     SE_API.store.get('userQueue').then(obj => {
 
         if (obj !== null) {
-            users = data[0];
-            nicknames = data[1];
+            users = obj[0];
+            nicknames = obj[1];
         } else SE_API.store.set('userQueue', [users, nicknames])
     });
 
@@ -64,7 +64,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
-    let message = html_encode(["text"]);
+    let message = html_encode(data["text"]);
     let user = data["displayName"];
     if (message.indexOf(queueCommand) === 0) {
         message = message.split(" ");
@@ -77,7 +77,7 @@ window.addEventListener('onEventReceived', function (obj) {
         return;
     }
     // Broadcaster commands only below
-    if (user !== channel) return;
+    if (user.toLowerCase() !== channel) return;
     if (message.indexOf(drawCommand) === 0) {
         message = message.split(" ");
         drawFromQueue(message[1]);
@@ -88,7 +88,7 @@ window.addEventListener('onEventReceived', function (obj) {
         return;
     }
     if (message === purgeCommand) {
-        clearScreen();
+        purge();
         return;
     }
 
