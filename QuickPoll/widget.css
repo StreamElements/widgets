@@ -1,7 +1,7 @@
 * {
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff;
-    font-size: 34px;
+    font-family: '{{fontName}}', sans-serif;
+    color: {{fontColor}};
+    font-size: {{fontSize}}px;
     overflow: hidden;
 }
 
