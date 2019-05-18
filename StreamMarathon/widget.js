@@ -33,7 +33,7 @@ function countdown(seconds) {
     toCountDown = a[0];
     start = toCountDown;
     $('#countdown').countdown(toCountDown, function (event) {
-        $(this).html(event.strftime('%H:%M:%S'));
+        $(this).html(event.strftime('%I:%M:%S'));
     });
 }
 
