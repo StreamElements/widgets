@@ -1,0 +1,197 @@
+{
+  "type": {
+    "type": "dropdown",
+    "label": "Channel type",
+    "options": {
+      "channel": "Channel",
+      "user": "User"
+    }
+  },
+  "channel": {
+    "type": "text",
+    "label": "User name/Channel ID",
+    "value": "UCjerlCIbLPQwSnYlClkjDXg"
+  },
+  "showTime": {
+    "type": "number",
+    "label": "How long image should be shown(s)",
+    "value": "10"
+  },
+  "hideTime": {
+    "type": "number",
+    "label": "How long image should be hidden (s)",
+    "value": "60"
+  },
+  "fontName": {
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Montserrat"
+  },
+  "textAlign": {
+    "label": "Text align",
+    "type": "dropdown",
+    "value": "left",
+    "options": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right",
+      "justify": "Justify"
+    }
+  },
+  "layout": {
+    "label": "Layout",
+    "type": "dropdown",
+    "value": "labelTop",
+    "options": {
+      "titleTopLabelBottom": "Title on top label on bottom",
+      "titleTopLabelHidden": "Title top, no label",
+      "titleBottomLabelHidden": "Title bottom, no label",
+      "titleBottomLabelTop": "Label on top title on bottom",
+      "labelTopTitleHidden": "Label on top, title hidden",
+      "labelBottomTitleHidden": "Label on bottom, title hidden",
+      "allHidden": "Title and label hidden"
+    }
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Title font size",
+    "value": 24
+  },
+  "fontWeight": {
+    "label": "Title font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    }
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Title font Color",
+    "value": "rgba(255,255,255,1)"
+  },
+  "titleBackground": {
+    "type": "colorpicker",
+    "label": "Title background",
+    "value": "rgba(118, 26, 231, 0.82)"
+  },
+  "label": {
+    "type": "text",
+    "label": "Label",
+    "value": "My latest YT video"
+  },
+  "labelBackground": {
+    "type": "colorpicker",
+    "label": "Label background",
+    "value": "rgba(255,255,255,0.4)"
+  },
+  "fontSizeLabel": {
+    "type": "number",
+    "label": "Label font size",
+    "value": 24
+  },
+  "fontWeightLabel": {
+    "label": "Label font weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    }
+  },
+  "fontColorLabel": {
+    "type": "colorpicker",
+    "label": "Label font Color",
+    "value": "rgba(255,255,255,1)"
+  },
+  "animationIn": {
+    "type": "dropdown",
+    "label": "Animation In:",
+    "value": "flipInX",
+    "options": {
+      "none": "None",
+      "bounceIn": "bounceIn",
+      "bounceInDown": "bounceInDown",
+      "bounceInLeft": "bounceInLeft",
+      "bounceInRight": "bounceInRight",
+      "bounceInUp": "bounceInUp",
+      "fadeIn": "fadeIn",
+      "fadeInDown": "fadeInDown",
+      "fadeInDownBig": "fadeInDownBig",
+      "fadeInLeft": "fadeInLeft",
+      "fadeInLeftBig": "fadeInLeftBig",
+      "fadeInRight": "fadeInRight",
+      "fadeInRightBig": "fadeInRightBig",
+      "fadeInUp": "fadeInUp",
+      "fadeInUpBig": "fadeInUpBig",
+      "flipInX": "flipInX",
+      "flipInY": "flipInY",
+      "lightSpeedIn": "lightSpeedIn",
+      "rotateIn": "rotateIn",
+      "rotateInDownLeft": "rotateInDownLeft",
+      "rotateInDownRight": "rotateInDownRight",
+      "rotateInUpLeft": "rotateInUpLeft",
+      "rotateInUpRight": "rotateInUpRight",
+      "slideInUp": "slideInUp",
+      "slideInDown": "slideInDown",
+      "slideInLeft": "slideInLeft",
+      "slideInRight": "slideInRight",
+      "zoomIn": "zoomIn",
+      "zoomInDown": "zoomInDown",
+      "zoomInLeft": "zoomInLeft",
+      "zoomInRight": "zoomInRight",
+      "zoomInUp": "zoomInUp",
+      "jackInTheBox": "jackInTheBox",
+      "rollIn": "rollIn"
+    }
+  },
+  "animationOut": {
+    "type": "dropdown",
+    "label": "Animation Out:",
+    "value": "flipOutY",
+    "options": {
+      "none": "None",
+      "bounceOut": "bounceOut",
+      "bounceOutDown": "bounceOutDown",
+      "bounceOutLeft": "bounceOutLeft",
+      "bounceOutRight": "bounceOutRight",
+      "bounceOutUp": "bounceOutUp",
+      "fadeOut": "fadeOut",
+      "fadeOutDown": "fadeOutDown",
+      "fadeOutDownBig": "fadeOutDownBig",
+      "fadeOutLeft": "fadeOutLeft",
+      "fadeOutLeftBig": "fadeOutLeftBig",
+      "fadeOutRight": "fadeOutRight",
+      "fadeOutRightBig": "fadeOutRightBig",
+      "fadeOutUp": "fadeOutUp",
+      "fadeOutUpBig": "fadeOutUpBig",
+      "flipOutX": "flipOutX",
+      "flipOutY": "flipOutY",
+      "lightSpeedOut": "lightSpeedOut",
+      "rotateOut": "rotateOut",
+      "rotateOutDownLeft": "rotateOutDownLeft",
+      "rotateOutDownRight": "rotateOutDownRight",
+      "rotateOutUpLeft": "rotateOutUpLeft",
+      "rotateOutUpRight": "rotateOutUpRight",
+      "slideOutUp": "slideOutUp",
+      "slideOutDown": "slideOutDown",
+      "slideOutLeft": "slideOutLeft",
+      "slideOutRight": "slideOutRight",
+      "zoomOut": "zoomOut",
+      "zoomOutDown": "zoomOutDown",
+      "zoomOutLeft": "zoomOutLeft",
+      "zoomOutRight": "zoomOutRight",
+      "zoomOutUp": "zoomOutUp",
+      "rollOut": "rollOut"
+    }
+  }
+}
