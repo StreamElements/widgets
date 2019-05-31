@@ -23,7 +23,7 @@ You can create custom variables, so enduser doesn’t have to interact with code
 
 This data can be also called by `{{variableName}}` or `{variableName}` within HTML/CSS/JS code (however for better readibility we suggest using those calls only in HTML/CSS).
 
-At this point we support all of HTML5 input types (except of file and date/datetime-local), as well as a handful of custom inputs: `colorpicker`, `audio-input`, `sound-input`, `video-input`, `googleFont`, `dropdown`, and `slider`.
+At this point we support all of HTML5 input types (except of file - use library inputs such as `video-input` instead), as well as a handful of custom inputs: `colorpicker`, `audio-input`, `sound-input`, `video-input`, `googleFont`, `dropdown`, and `slider`.
 
 There are some reserved field names (all future reserved words will start with `widget`):
 * `widgetName` - Used to set the display name of the widget
