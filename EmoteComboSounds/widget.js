@@ -6,8 +6,9 @@ let userConfig = [
         emote: "OMEGALUL",
         amount: 3,
         soundFile: "https://cdn.streamelements.com/uploads/OMEGALUL.mp3",
-        imageFile: "https://cdn.streamelements.com/uploads/OMEGALUL_ANIMATED.gif",
-        volume: 50,
+        imageFile: "",
+        videoFile: "https://cdn.streamelements.com/uploads/OMEGALUL_ANIMATED.webm",
+        volume: 0,
         timeout: 10, //seconds for triggering combo (amount occurrences within timeout seconds)
         cooldown: 240, //seconds
         caseSensitive: true,
@@ -16,7 +17,8 @@ let userConfig = [
         emote: "hello",
         amount: 2,
         soundFile: "https://cdn.streamelements.com/uploads/Kappa.ogg",
-        imageFile: "",
+        imageFile: "https://cdn.streamelements.com/uploads/OMEGALUL_ANIMATED.gif",
+        videoFile: "",
         volume: 50,
         timeout: 10, //seconds for triggering combo (amount occurrences within timeout seconds)
         cooldown: 240, //seconds
@@ -67,6 +69,12 @@ function checkPlay(index) {
                         let audio = new Audio(sound.soundFile);
                         audio.volume = sound.volume * .01;
                         audio.play();
+                        if (sound.videoFile.length > 10) {
+                            $("#video").attr('src', + sound.videoFile);
+                            setTimeout(function () {
+                                $("#video").attr('src', '');
+                            }, tmpaudio.duration * 1000);
+                        }
                         if (sound.imageFile.length > 10) {
                             $("#image").css('background-image', 'url(' + sound.imageFile + ')');
                             setTimeout(function () {
