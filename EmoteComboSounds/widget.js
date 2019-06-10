@@ -57,7 +57,7 @@ function checkPlay(index) {
         if (userConfig[index]['timer'] === 0) {
             userConfig[index]['timer'] = userConfig[index]['timeout'];
         }
-        if (cooldown) return;
+        if (cooldown>0) return;
         if (userConfig[index]['counter'] >= userConfig[index]['amount']) {
             userConfig[index]['cooldownEnd'] = (Date.now() / 1000) + sound.cooldown;
             let tmpaudio = new Audio(sound.soundFile);
