@@ -169,8 +169,13 @@ In the example above you have obj forwarded to that function, which has two inte
 * `obj.detail.event`: Will provide you information about event details. It contains few keys. For `-latest` events it is:
     * `.name` - user who triggered action
     * `.amount` - amount of action
-    * `.message` - if there was a message attached to it
-    * `.sender` - if it was a gift, a gifter
+    * `.message` - message attached to sub
+    * `.gifted` - if this is a gift event for viewer
+    * `.sender` - if it was a gift, a gifter (for community and single gifts)
+    * `.bulkGifted` - if it is INITIAL event of community gift (`${event.sender} gifted ${event.amount} subs to community`)
+    * `.isCommunityGift` - if it is one of community gifts train (`${event.sender} gifted ${event.name} a sub as part of random giveaway!`)
+    * `.playedAsCommunityGift` - if the event was played as part of "cumulative sub bomb alert"
+    
 
 
 * there is also `userCurrency` for donations, you can use it (if initialized by `let userCurrency;`). For example: `usercurrency.symbol`
