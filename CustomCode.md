@@ -28,6 +28,7 @@ At this point we support all of HTML5 input types (except of file - use library 
 There are some reserved field names (all future reserved words will start with `widget`):
 * `widgetName` - Used to set the display name of the widget
 * `widgetAuthor` - Set the author name of the widget (adds a "(by Author)" to the widget name)
+* `widgetDuration` - maximum event queue hold time (seconds) - for Custom Widget (as alertboxes have their own timers). Explained in section below
 #### Example
 ##### JSON
 ```JSON
@@ -85,7 +86,11 @@ There are some reserved field names (all future reserved words will start with `
   "widgetName": {
     "type": "hidden",
     "value": "My Custom Widget"
-  }
+  },
+  "widgetDuration": {
+      "type": "hidden",
+      "value": 15
+    }
 }
 ```
 ##### Input on left panel construction
@@ -155,6 +160,57 @@ SE_API.counters.get('counterName').then(counter => {
     // counter is of the format { counter, value }
 });
 ```
+#### resumeQueue method and widgetDuration property
+widgetDuration property defines maximum event queue hold time (execution time of widget) by widget in seconds (default 0). For example you want to show animations by this widget and don't want them overlap, so instead building your own queue you can use this. This property is defined in JSON (as mentioned above)
+Premature queue resume can be called by `SE_API.resumeQueue();`
+
+The best way to explain this is an example code. 
+
+Scenario:
+> We have animation for community sub gifts only we want to use. Animation duration is dynamic between 7 and 15 seconds and we don't want it to overlap on alerts.
+
+  
+Code:
+##### Fields
+```json
+{
+    "widgetDuration":{
+      "type": "hidden",
+      "value": 15
+    }
+}
+```
+##### JS
+```js
+let skippable=["bot:counter","event:test","event:skip","message"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
+let playAnimation=(event)=>{
+    $("container").html(`<div id="sender">${event.sender}</div><div class="amount">${event.amount} subs!</div>`)
+    return Math.floor(Math.random()*8)+7;
+};
+window.addEventListener('onEventReceived', function (obj) {
+    const listener = obj.detail.listener;
+  	console.log(obj.detail);
+    const data = obj.detail.event;
+	console.log(`RECEIVED ${listener}`);
+  	if (skippable.indexOf(listener)!==-1) return;
+  	if (listener !== 'subscriber-latest') {
+    	console.log("Resuming as event is not sub");
+          SE_API.resumeQueue(); 
+          return;
+        }
+  	if (data.bulkGifted !== true && !data.gifted) {
+    	  console.log("Resuming as event is not sub gift");
+          SE_API.resumeQueue();
+          return;
+    }    
+     if (data.name === data.sender) {
+         console.log("Getting animation duration for premature resume");
+         let time=playAnimation(data);
+         setTimeout(SE_API.resumeQueue,time*1000); 
+     }
+  	});
+```
+   
 
 ### On event:
 ```javascript
