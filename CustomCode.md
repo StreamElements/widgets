@@ -537,6 +537,6 @@ window.addEventListener('onEventReceived', function (obj) {
          let time=playAnimation(data);
          setTimeout(SE_API.resumeQueue,time*1000); 
      }
-  	});
+});
 ```
    
