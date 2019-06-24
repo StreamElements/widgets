@@ -9,8 +9,18 @@
   },
   "channel": {
     "type": "text",
-    "label": "User name/Channel ID",
+    "label": "User name/Channel ID (comma separated)",
     "value": "UCjerlCIbLPQwSnYlClkjDXg"
+  },
+  "resolution": {
+    "type": "dropdown",
+    "label": "Thumbnail resolution",
+    "value":"mqdefault",
+    "options": {
+      "mqdefault": "Medium",
+      "hqdefault": "High",
+      "maxresdefault":"Max"
+    }
   },
   "showTime": {
     "type": "number",

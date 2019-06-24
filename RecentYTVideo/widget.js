@@ -1,4 +1,18 @@
 let fieldData;
+let currentSlide = 0;
+
+let changeSlide = () => {
+    let slides = $(".slide");
+
+    if (currentSlide < slides.length - 1) {
+        currentSlide++;
+    } else {
+        currentSlide = 0;
+    }
+    slides.css("opacity",0);
+    $(slides[currentSlide]).css("opacity", 1);
+
+};
 
 function slideShow() {
     console.log("In slideshow");
@@ -6,18 +20,17 @@ function slideShow() {
     tl.timeScale(1);
     tl.call(function () {
         $(".main-container").removeClass("{{animationIn}}").addClass("{{animationOut}}");
-    }, null, null, `+=${fieldData.showTime}`);
+    }, null, null, `+=${fieldData.showTime + $(".slide").length}`);
+
     tl.call(function () {
         $(".main-container").removeClass("{{animationOut}}").addClass("{{animationIn}}");
+        changeSlide();
     }, null, null, `+=${fieldData.hideTime}`);
+
 
 }
 
-$(".main-container").hide();
-window.addEventListener('onWidgetLoad', function (obj) {
-
-    console.log(obj.detail);
-    fieldData = obj.detail.fieldData;
+let setPositions = () => {
     switch (fieldData.layout) {
         case "titleTopLabelBottom":
             $(".title").css("top", "0px");
@@ -49,25 +62,44 @@ window.addEventListener('onWidgetLoad', function (obj) {
             break;
 
     }
+};
 
-    let param;
-    if (fieldData.type === "channel") {
-        param = `?id=${fieldData.channel}`;
-    } else {
-        param = `?user=${fieldData.channel}`
+$(".main-container").hide();
+window.addEventListener('onWidgetLoad', function (obj) {
+
+    console.log(obj.detail);
+    fieldData = obj.detail.fieldData;
+
+
+    let channels = fieldData.channel.split(",");
+    for (let i in channels) {
+        let channelId = channels[i];
+        let param;
+        if (fieldData.type === "channel") {
+            param = `?id=${channelId}`;
+        } else {
+            param = `?user=${channelId}`
+        }
+        console.log(channelId);
+        fetch("https://decapi.me/youtube/latest_video" + param).then(response => response.text().then(text => {
+            let videoId = text.split("/").pop();
+            let title = text.split(" - https://youtu.be").shift();
+            $(".main-container").append(`<div class="slide" style="background-image:url(https://img.youtube.com/vi/${videoId}/${fieldData.resolution}.jpg)">
+                <div class="title">${title}</div>
+                <div class="label">{{label}}</div>
+            </div>`);
+
+
+        }))
+        ;
+
     }
+    setTimeout(() => {
+        setPositions();
+        $(".main-container").show().addClass("{{animationIn}}");
+        slideShow();
+    }, 3000);
 
-    fetch("https://decapi.me/youtube/latest_video" + param).then(response => response.text().then(text => {
-        let videoId = text.split("/").pop();
-        let title = text.split(" - https://youtu.be").shift();
-        $(".title").text(title);
-        $(".main-container").css("background-image", `url(https://img.youtube.com/vi/${videoId}/hqdefault.jpg)`);
-        setTimeout(() => {
-            $(".main-container").show().addClass("{{animationIn}}");
-            slideShow();
-        }, 3000);
 
-    }))
-    ;
 });
 
