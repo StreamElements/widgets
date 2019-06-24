@@ -73,7 +73,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 
     let channels = fieldData.channel.split(",");
     for (let i in channels) {
-        let channelId = channels[i];
+        let channelId = channels[i].replace(/[^A-Za-z0-9\-_]/,"");
         let param;
         if (fieldData.type === "channel") {
             param = `?id=${channelId}`;
