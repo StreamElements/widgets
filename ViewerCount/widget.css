@@ -5,5 +5,5 @@
     font-family: '{{fontName}}', sans-serif !important;
     color:{{fontColor}} !important;
     font-weight:{{fontWeight}} !important;
-    font-size:{{fontSize}}px;
+    font-size:{{fontSize}}px !important;
 }
