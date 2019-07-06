@@ -12,43 +12,38 @@ let eventsLimit = 5,
     includeCheers = true,
     direction = "top",
     textOrder = "nameFirst",
-    minCheer = 0;
+    minCheer = 0,
+    fadeoutTime;
 
 let userCurrency,
     totalEvents = 0;
 
-window.addEventListener('onEventReceived', function (obj) {
-    if (typeof obj.detail.event.itemId !== "undefined") {
-        obj.detail.listener = "redemption-latest"
-    }
-    const listener = obj.detail.listener.split("-")[0];
-    const event = obj.detail.event;
-
-    if (listener === 'follower') {
+let parseEvent = event => {
+    if (event.type === 'follower') {
         if (includeFollowers) {
             addEvent('follower', 'Follower', event.name);
         }
-    } else if (listener === 'redemption') {
+    } else if (event.type === 'redemption') {
         if (includeRedemptions) {
             addEvent('redemption', 'Redeemed', event.name);
         }
-    } else if (listener === 'subscriber') {
-        if (includeSubs) {
-            if (event.amount === 'gift') {
-                addEvent('sub', `Sub gift`, event.name);
-            } else {
-                addEvent('sub', `Sub X${event.amount}`, event.name);
-            }
+    } else if (event.type === 'subscriber') {
+        if (!includeSubs) return;
+        if (event.amount === 'gift') {
+            addEvent('sub', `Sub gift`, event.name);
+        } else {
+            addEvent('sub', `Sub X${event.amount}`, event.name);
         }
-    } else if (listener === 'host') {
+
+    } else if (event.type === 'host') {
         if (includeHosts && minHost <= event.amount) {
             addEvent('host', `Host ${event.amount.toLocaleString()}`, event.name);
         }
-    } else if (listener === 'cheer') {
+    } else if (event.type === 'cheer') {
         if (includeCheers && minCheer <= event.amount) {
             addEvent('cheer', `${event.amount.toLocaleString()} Bits`, event.name);
         }
-    } else if (listener === 'tip') {
+    } else if (event.type === 'tip') {
         if (includeTips && minTip <= event.amount) {
             if (event.amount === parseInt(event.amount)) {
                 addEvent('tip', event.amount.toLocaleString(userLocale, {
@@ -62,13 +57,23 @@ window.addEventListener('onEventReceived', function (obj) {
                     currency: userCurrency.code
                 }), event.name);
             }
-
         }
-    } else if (listener === 'raid') {
+    } else if (event.type === 'raid') {
         if (includeRaids && minRaid <= event.amount) {
             addEvent('raid', `Raid ${event.amount.toLocaleString()}`, event.name);
         }
     }
+
+};
+
+window.addEventListener('onEventReceived', function (obj) {
+    if (typeof obj.detail.event.itemId !== "undefined") {
+        obj.detail.listener = "redemption-latest"
+    }
+    const listener = obj.detail.listener.split("-")[0];
+    const event = obj.detail.event;
+    event.type = listener;
+    parseEvent(event);
 });
 
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -99,50 +104,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
         const event = recents[eventIndex];
 
-        if (event.type === 'follower') {
-            if (includeFollowers) {
-                addEvent('follower', 'Follower', event.name);
-            }
-        } else if (event.type === 'redemption') {
-            if (includeRedemptions) {
-                addEvent('redemption', 'Redeemed', event.name);
-            }
-        } else if (event.type === 'subscriber') {
-            if (!includeSubs) continue;
-            if (event.amount === 'gift') {
-                addEvent('sub', `Sub gift`, event.name);
-            } else {
-                addEvent('sub', `Sub X${event.amount}`, event.name);
-            }
-
-        } else if (event.type === 'host') {
-            if (includeHosts && minHost <= event.amount) {
-                addEvent('host', `Host ${event.amount.toLocaleString()}`, event.name);
-            }
-        } else if (event.type === 'cheer') {
-            if (includeCheers && minCheer <= event.amount) {
-                addEvent('cheer', `${event.amount.toLocaleString()} Bits`, event.name);
-            }
-        } else if (event.type === 'tip') {
-            if (includeTips && minTip <= event.amount) {
-                if (event.amount === parseInt(event.amount)) {
-                    addEvent('tip', event.amount.toLocaleString(userLocale, {
-                        style: 'currency',
-                        minimumFractionDigits: 0,
-                        currency: userCurrency.code
-                    }), event.name);
-                } else {
-                    addEvent('tip', event.amount.toLocaleString(userLocale, {
-                        style: 'currency',
-                        currency: userCurrency.code
-                    }), event.name);
-                }
-            }
-        } else if (event.type === 'raid') {
-            if (includeRaids && minRaid <= event.amount) {
-                addEvent('raid', `Raid ${event.amount.toLocaleString()}`, event.name);
-            }
-        }
+        parseEvent(event)
     }
 });
 
