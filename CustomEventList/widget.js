@@ -94,9 +94,9 @@ let getBadges = apiKey => {
             fetch(`https://badges.twitch.tv/v1/badges/channels/${obj.providerId}/display`).then(response => response.json()).then(data => {
                 if (data.badge_sets.subscriber.versions) {
                     badges = data.badge_sets.subscriber.versions;
-                    resolve("sub");
-                } else {
                     resolve("badge");
+                } else {
+                    resolve("sub");
                 }
             }).catch(() => {
                 resolve("sub");
