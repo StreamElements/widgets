@@ -92,10 +92,17 @@ let getBadges = apiKey => {
             }, "method": "GET"
         }).then(response => response.json()).then(obj => {
             fetch(`https://badges.twitch.tv/v1/badges/channels/${obj.providerId}/display`).then(response => response.json()).then(data => {
-                badges = data.badge_sets.subscriber.versions;
-                resolve(true);
+                if (data.badge_sets.subscriber.versions) {
+                    badges = data.badge_sets.subscriber.versions;
+                    resolve("sub");
+                } else {
+                    resolve("badge");
+                }
+            }).catch(() => {
+                resolve("sub");
             })
-
+        }).catch(() => {
+            resolve("sub");
         });
     })
 };
@@ -135,13 +142,15 @@ window.addEventListener('onWidgetLoad', function (obj) {
     fadeoutTime = fieldData.fadeoutTime;
     subLabel = fieldData.subLabel;
     if (fieldData.subLabel === "badge") {
-        getBadges(obj.detail.channel.apiToken).then(() => {
+        getBadges(obj.detail.channel.apiToken).then((result) => {
+            subLabel = result;
+            console.log("We are using: "+result);
             let eventIndex;
             for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
                 const event = recents[eventIndex];
                 parseEvent(event)
             }
-        })
+        });
     } else {
         let eventIndex;
         for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
