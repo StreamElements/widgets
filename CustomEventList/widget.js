@@ -27,7 +27,7 @@ let getBadge = months => {
             badge = number;
         }
     }
-    return `<img alt="`${months}` months" src="${badges[badge].image_url_2x}" class="badge"/>`;
+    return `<img alt="${months} months" src="${badges[badge].image_url_2x}" class="badge"/>`;
 };
 
 let parseEvent = event => {
