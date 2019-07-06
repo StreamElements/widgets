@@ -59,6 +59,15 @@
       "no": "No"
     }
   },
+  "subLabel": {
+    "type": "dropdown",
+    "label": "Sub label:",
+    "value": "sub",
+    "options": {
+      "sub": "Sub xNumber",
+      "badge": "badge xNumber"
+    }
+  },
   "includeTips": {
     "type": "dropdown",
     "label": "Display tips:",

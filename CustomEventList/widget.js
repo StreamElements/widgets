@@ -1,4 +1,6 @@
 let eventsLimit = 5,
+    badges = {},
+    subLabel,
     userLocale = "en-US",
     includeFollowers = true,
     includeRedemptions = true,
@@ -18,7 +20,18 @@ let eventsLimit = 5,
 let userCurrency,
     totalEvents = 0;
 
+let getBadge = months => {
+    let badge = 0;
+    for (let number in badges) {
+        if (months >= number && badge < number) {
+            badge = number;
+        }
+    }
+    return `<img alt="`${months}` months" src="${badges[badge].image_url_2x}" class="badge"/>`;
+};
+
 let parseEvent = event => {
+
     if (event.type === 'follower') {
         if (includeFollowers) {
             addEvent('follower', 'Follower', event.name);
@@ -29,10 +42,14 @@ let parseEvent = event => {
         }
     } else if (event.type === 'subscriber') {
         if (!includeSubs) return;
+        let prefix = "Sub ";
+        if (subLabel === "badge") {
+            prefix = getBadge(event.amount);
+        }
         if (event.amount === 'gift') {
-            addEvent('sub', `Sub gift`, event.name);
+            addEvent('sub', `${prefix} gift`, event.name);
         } else {
-            addEvent('sub', `Sub X${event.amount}`, event.name);
+            addEvent('sub', `${prefix} X${event.amount}`, event.name);
         }
 
     } else if (event.type === 'host') {
@@ -66,6 +83,22 @@ let parseEvent = event => {
 
 };
 
+let getBadges = apiKey => {
+    return new Promise(resolve => {
+        fetch("https://api.streamelements.com/kappa/v2/channels/me", {
+            "headers": {
+                "accept": "application/json, text/plain, */*",
+                "authorization": `apikey ${apiKey}`
+            }, "method": "GET"
+        }).then(response => response.json()).then(obj => {
+            fetch(`https://badges.twitch.tv/v1/badges/channels/${obj.providerId}/display`).then(response => response.json()).then(data => {
+                badges = data.badge_sets.subscriber.versions;
+                resolve(true);
+            })
+
+        });
+    })
+};
 window.addEventListener('onEventReceived', function (obj) {
     if (typeof obj.detail.event.itemId !== "undefined") {
         obj.detail.listener = "redemption-latest"
@@ -75,6 +108,7 @@ window.addEventListener('onEventReceived', function (obj) {
     event.type = listener;
     parseEvent(event);
 });
+
 
 window.addEventListener('onWidgetLoad', function (obj) {
     let recents = obj.detail.recents;
@@ -99,13 +133,23 @@ window.addEventListener('onWidgetLoad', function (obj) {
     userLocale = fieldData.locale;
     textOrder = fieldData.textOrder;
     fadeoutTime = fieldData.fadeoutTime;
-
-    let eventIndex;
-    for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
-        const event = recents[eventIndex];
-
-        parseEvent(event)
+    subLabel = fieldData.subLabel;
+    if (fieldData.subLabel === "badge") {
+        getBadges(obj.detail.channel.apiToken).then(() => {
+            let eventIndex;
+            for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
+                const event = recents[eventIndex];
+                parseEvent(event)
+            }
+        })
+    } else {
+        let eventIndex;
+        for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
+            const event = recents[eventIndex];
+            parseEvent(event)
+        }
     }
+
 });
 
 

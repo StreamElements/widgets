@@ -158,5 +158,12 @@
     text-align: right;
     margin-right: 15px;
     margin-left: 85px;
-    margin-top: 3px;
+    margin-top: 2px;
+}
+
+.badge{
+    height:1.5em;
+    position:relative;
+    top:5px;
+    margin-top:-5px;
 }
