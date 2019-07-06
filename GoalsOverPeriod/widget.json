@@ -4,6 +4,11 @@
     "label": "Goal",
     "value": 32
   },
+  "botCounter": {
+    "type": "checkbox",
+    "label": "Use 'goal' bot counter as goal number?",
+    "value": false
+  },
   "titleText": {
     "type": "text",
     "label": "Title text",
