@@ -68,7 +68,7 @@ There are some reserved field names (all future reserved words will start with `
   },
   "someImage": {
      "type": "image-input",
-     "label": "Some Image",
+     "label": "Some Image"
    },
  "someVideo": {
    "type": "video-input",
