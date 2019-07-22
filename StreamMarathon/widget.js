@@ -10,7 +10,8 @@ let followSeconds = 1,
     hostSeconds = 1, //multiplied by amount of viewers from host
     hostMin = 100,//minimum viewers in host
     raidSeconds = 1,//multiplied by amount of viewers from raid
-    raidMin = 100; // minimum viewers in raid
+    raidMin = 100, // minimum viewers in raid
+    addOnZero = false;
 
 let maxTime = '2040-06-18 10:45'; // Time cap you want to use
 let minTime = '2019-01-29 12:00';
@@ -22,8 +23,15 @@ let start;
 
 function countdown(seconds) {
     //$("#countdown").countdown('destroy');
-
     let toCountDown = start;
+    if (addOnZero) {
+        let a = [toCountDown, new Date()];
+        a.sort(function (a, b) {
+            return Date.parse(a) - Date.parse(b);
+        });
+        toCountDown = a[1];
+    }
+
     toCountDown.setSeconds(toCountDown.getSeconds() + seconds);
 
     let a = [toCountDown, maxTime];
@@ -94,6 +102,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     raidMin = fieldData.raidMin;
     maxTime = new Date(fieldData.maxTime);
     minTime = new Date(fieldData.minTime);
+    addOnZero = (fieldData.addOnZero === "add");
     if (fieldData.resetTimer) {
         SE_API.store.set('marathon', {amount: minTime});
     }

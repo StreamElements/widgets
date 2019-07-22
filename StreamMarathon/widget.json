@@ -14,6 +14,15 @@
     "label": "Reset timer",
     "value":false
   },
+  "addOnZero": {
+    "type": "dropdown",
+    "label": "What should happen on reaching zero?",
+    "value":"wait",
+    "options": {
+      "wait": "Wait for catchup",
+      "add": "New events add time to 0"
+    }
+  },
   "followSeconds": {
     "type": "number",
     "label": "Seconds per follower (-1 to disable):",
