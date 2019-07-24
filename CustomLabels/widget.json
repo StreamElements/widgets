@@ -1,9 +1,4 @@
 {
-  "eventLabel": {
-    "type": "text",
-    "label": "Label text",
-    "value": "Recent Subscriber: "
-  },
   "eventType": {
     "type": "dropdown",
     "label": "Event type:",
@@ -492,6 +487,15 @@
     "type": "text",
     "label": "Font name",
     "value": "Montserrat"
+  },
+  "dynamicFontSize": {
+    "type": "dropdown",
+    "label": "Font size",
+    "value": "static",
+    "options":{
+      "static":"Static - set below",
+      "dynamic":"Dynamic - fit container size"
+    }
   },
   "fontSize": {
     "type": "number",
