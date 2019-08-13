@@ -53,13 +53,16 @@ window.addEventListener('onWidgetLoad', function (obj) {
     spins = fieldData['spins'];
     theWheel = new Winwheel({
         'outerRadius': fieldData['wheelSize'] / 2,        // Set outer radius so wheel fits inside the background.
-        'innerRadius': 5,         // Make wheel hollow so segments don't go all way to center.
+        'innerRadius': fieldData['innerRadius'],         // Make wheel hollow so segments don't go all way to center.
         'textFontSize': fieldData['textSize'],         // Set default font size for the segments.
         'textOrientation': 'vertical', // Make text vertial so goes down from the outside of wheel.
         'textAlignment': 'outer',    // Align text to outside of wheel.
         'numSegments': segments.length,         // Specify number of segments.
-        'segments': segments          // Define segments including colour and text.
-        ,
+        'segments': segments,          // Define segments including colour and text.
+        'pins':
+            {
+                'number': fieldData['pins'],
+            },
         'animation':           // Specify the animation to use.
             {
                 'type': 'spinToStop',
@@ -71,8 +74,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 });
 
 // Vars used by the code in this page to do power controls.
-var wheelPower = 0;
-var wheelSpinning = false;
+let wheelSpinning = false;
 
 function startSpin() {
     if (wheelSpinning === false) {

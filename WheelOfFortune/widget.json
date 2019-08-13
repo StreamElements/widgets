@@ -9,6 +9,21 @@
     "label": "Wheel size",
     "value": 412
   },
+  "innerRadius": {
+    "type": "number",
+    "label": "Inner radius size",
+    "value": 70
+  },
+  "pins": {
+    "type": "number",
+    "label": "Pins count",
+    "value": 30
+  },
+  "background": {
+    "type": "image-input",
+    "label": "Background image",
+    "value": "https://cdn.streamelements.com/uploads/04d60fdc-a64e-4a72-ace0-8bcee7c51713.png"
+  },
   "textSize": {
     "type": "number",
     "label": "Text Size",
