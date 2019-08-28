@@ -73,7 +73,7 @@ let t = setInterval(function () {
     for (let key in words) {
         words[key]['timer'] = Math.max((words[key]['timer'] - 1), 0);
         if (words[key]['timer'] === 0) {
-            delete words[key];
+            words.splice(key, 1);
         }
     }
     displayWords();
