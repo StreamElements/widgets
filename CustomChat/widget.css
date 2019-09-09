@@ -1,11 +1,13 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
 @import url('https://fonts.googleapis.com/css?family={{fontName}}');
+
 * {
     font-family: '{{fontName}}', sans-serif;
     color: {{fontColor}};
     overflow: hidden;
     font-weight: {{fontWeight}};
 }
+
 .main-container{
     display:{{alignMessages}};
     flex-direction: column;
@@ -16,6 +18,7 @@
     margin-bottom:10px;
     box-sizing: border-box;
 }
+
 .message-row{
     flex: 0 0 auto;
     width:100%;
@@ -24,6 +27,7 @@
     padding:5px;
     vertical-align: baseline;
 }
+
 .badge{
     display:inline;
     height:{{fontSize}}px;
@@ -33,6 +37,7 @@
     display:inline;
     font-size:{{fontSize}}px;
 }
+
 .user-box > span{
     font-size:{{fontSize}}px;
 }
@@ -40,11 +45,13 @@
 .user-message{
     display:inline;
     font-size:{{fontSize}}px;
+    word-wrap: break-word;
 }
 
 .emote{
     height:{{fontSize}}px;
 }
+
 .action{
     font-style: italic;
 }
