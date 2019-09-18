@@ -1,0 +1,76 @@
+{
+  "audio": {
+    "type": "sound-input",
+    "label": "Alert sound",
+    "value":"https://cdn.streamelements.com/static/alertbox/default.ogg"
+  },
+  "audioVolume": {
+    "type": "slider",
+    "label": "Alert sound volume",
+    "min":0,
+    "max":100,
+    "value":50
+  },
+  "image": {
+    "type": "image-input",
+    "label": "Image (if alert has {image})",
+    "value":"https://cdn.streamelements.com/static/alertbox/default.gif"
+  },
+  "announcement": {
+    "type": "text",
+    "label": "Announcement",
+    "value":"Progress reached: "
+  },
+  "steps": {
+    "type": "text",
+    "label": "Steps to trigger alert",
+    "value": "10,20,30"
+  },
+  "botCounter": {
+    "type": "checkbox",
+    "label": "Use bot counter as current progress number?",
+    "value": false
+  },
+  "botCounterName": {
+    "type": "text",
+    "label": "Bot counter name",
+    "value": "kills"
+  },
+  "eventType": {
+    "type": "dropdown",
+    "label": "Pick event type:",
+    "value": "follower",
+    "options": {
+      "follower": "Follower",
+      "subscriber": "Subscriber",
+      "subscriber-new": "Subscriber new (session only)",
+      "subscriber-resub": "Subscriber resub (session only)",
+      "subscriber-gifted": "Subscriber gifted (session only)",
+      "tip": "Tip amount",
+      "cheer": "Bits amount",
+      "subscriber-points":"Subscriber points"
+    }
+  },
+  "eventPeriod": {
+    "type": "dropdown",
+    "label": "Pick period: (doesn't work with sub points)",
+    "value": "session",
+    "options": {
+      "session": "Session",
+      "week": "Week",
+      "month": "Month",
+      "total": "Total",
+      "goal": "Amount from goal data"
+    }
+  },
+  "alertDuration": {
+    "type": "number",
+    "label": "Alert duration (s)",
+    "value": "10"
+  },
+  "fontFamily": {
+    "label": "Font Picker",
+    "type": "fontpicker",
+    "value": "Roboto"
+  }
+}

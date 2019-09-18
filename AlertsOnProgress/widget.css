@@ -1,0 +1,51 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
+@import url('https://fonts.googleapis.com/css?family={fontFamily}');
+* {
+    font-family: '{fontFamily}', sans-serif;
+}
+
+.awsome-text-container {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.animated-letter {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    display: inline-block;
+    animation-fill-mode: both;
+    color: #3F51B5
+}
+
+.animated-letter:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.animated-letter:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.animated-letter:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.animated-letter:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.animated-letter:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.image-container {
+    margin: auto;
+    display: table;
+}
+
+.text-container {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: auto;
+    text-shadow: rgba(0, 0, 0, 0.8) 1px 1px 1px;
+}
