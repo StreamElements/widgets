@@ -163,6 +163,8 @@ In the example above you have obj forwarded to that function, which has two inte
     * `tip-latest` - New tip
     * `raid-latest` - New raid
     * `message` - New chat message received
+    * `delete-message` - Chat message removed
+    * `delete-messages` - Chat messages by userId removed
     * `event:skip` - User clicked "skip alert" button in activity feed
     * `bot:counter` - Update to bot counter
 
@@ -250,6 +252,14 @@ For every message on Twitch chat there is an object forwarded with every details
 }
 ```
 Every emote displayed on chat is within array of objects `emotes` with start/end index of `text` you can replace with image
+NOTE: if you are creating chat widget, remember to store `msgId` and `userId` of each message (for example `<div class="message" data-msgId="${msgId}" data-userId="${userId}"></div>`) for message deletion events handling.
+
+#### Message deletion
+When user message is removed by channel moderator there is an event emited either:
+- `delete-message` - with msgId of message to be removed
+- `delete-messages` - with userId of user whose messages have to be removed
+This functionality is to prevent abusive content displayed in chat widget.  
+
 
 #### Bot counter
 Contains two elements counter name (`counter`) and current value (`value`)
