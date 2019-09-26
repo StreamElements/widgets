@@ -1,10 +1,17 @@
-let totalMessages = 0, messagesLimit = 0, nickColor = "user";
+let totalMessages = 0, messagesLimit = 0, nickColor = "user", removeSelector;
 let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let hideAfter = 60;
 let hideCommands = "no";
 let ignoredUsers = [];
 window.addEventListener('onEventReceived', function (obj) {
+    if (obj.detail.listener === "delete-message") {
+        const msgId = obj.detail.event.msgId;
+        $(`.message-row[data-msgid=${msgId}]`).remove();
+    } else if (obj.detail.listener === "delete-messages") {
+        const sender = obj.detail.event.userId;
+        $(`.message-row[data-sender=${sender}]`).remove();
+    }
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
     if (data.text.startsWith("!") && hideCommands === "yes") return;
@@ -15,12 +22,12 @@ window.addEventListener('onEventReceived', function (obj) {
         badge = data.badges[i];
         badges += `<img alt="" src="${badge.url}" class="badge"> `;
     }
-    let username = data.displayName;
+    let username = data.displayName + ":";
     if (nickColor === "user") {
         const color = data.displayColor;
         username = `<span style="color:${color}">${username}</span>`;
     }
-    addEvent(username, badges, message, data.isAction);
+    addMessage(username, badges, message, data.isAction, data.userId, data.msgId);
 });
 
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -31,6 +38,11 @@ window.addEventListener('onWidgetLoad', function (obj) {
     messagesLimit = fieldData.messagesLimit;
     nickColor = fieldData.nickColor;
     hideCommands = fieldData.hideCommands;
+    if (fieldData.alignMessages === "block") {
+        removeSelector = ".message-row:nth-child(n+" + (messagesLimit + 1) + ")"
+    } else {
+        removeSelector = ".message-row:nth-last-child(n+" + (messagesLimit + 1) + ")"
+    }
     ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
 });
 
@@ -55,19 +67,19 @@ function attachEmotes(message) {
 }
 
 function html_encode(e) {
-    return e.replace(/[\<\>\"\^]/g, function (e) {
+    return e.replace(/[<>"^]/g, function (e) {
         return "&#" + e.charCodeAt(0) + ";";
     });
 }
 
-function addEvent(username, badges, message, isAction) {
+function addMessage(username, badges, message, isAction, uid, msgId) {
     totalMessages += 1;
     let actionClass = "";
     if (isAction) {
         actionClass = "action";
     }
     const element = $.parseHTML(`
-    <div class="message-row {animationIn} animated" id="msg-${totalMessages}">
+    <div data-sender="${uid}" data-msgid="${msgId}" class="message-row {animationIn} animated" id="msg-${totalMessages}">
         <div class="user-box ${actionClass}">${badges}${username}</div>
         <div class="user-message ${actionClass}">${message}</div>
     </div>`);
@@ -82,19 +94,19 @@ function addEvent(username, badges, message, isAction) {
     }
 
     if (totalMessages > messagesLimit) {
-        removeRow(totalMessages - messagesLimit);
+        removeRow();
     }
 }
 
-function removeRow(id) {
-    if (!$(`#msg-${id}`).length) {
+function removeRow() {
+    if (!$(removeSelector).length) {
         return;
     }
-    if (animationOut !== "none" || !$(`#msg-${id}`).hasClass(animationOut)) {
+    if (animationOut !== "none" || !$(removeSelector).hasClass(animationOut)) {
         if (hideAfter !== 999) {
-            $(`#msg-${id}`).dequeue();
+            $(removeSelector).dequeue();
         } else {
-            $(`#msg-${id}`).addClass(animationOut).delay(1000).queue(function () {
+            $(removeSelector).addClass(animationOut).delay(1000).queue(function () {
                 $(this).remove().dequeue()
             });
 
@@ -102,10 +114,10 @@ function removeRow(id) {
         return;
     }
 
-    $(`#msg-${id}`).animate({
+    $(removeSelector).animate({
         height: 0,
         opacity: 0
     }, 'slow', function () {
-        $(`#msg-${id}`).remove();
+        $(removeSelector).remove();
     });
 }
