@@ -1,0 +1,187 @@
+{
+  "fontName": {
+    "type": "text",
+    "label": "Font name",
+    "value": "Montserrat"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font size",
+    "value": 24
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    }
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font Color",
+    "value": "rgba(255,255,255,1)"
+  },
+  "strokeColor": {
+    "type": "colorpicker",
+    "label": "Stroke Color",
+    "value": "rgba(255,0,0,1)"
+  },
+  "strokeSize": {
+    "type": "number",
+    "label": "Stroke size",
+    "value": 2
+  },
+  "minAmount": {
+    "type": "number",
+    "label": "Minimum community gift amount",
+    "value": 20
+  },
+  "displayGifter": {
+    "type": "checkbox",
+    "label": "Display gifter",
+    "value": true
+  },
+  "gifterFontSize": {
+    "type": "number",
+    "label": "Gifter font size",
+    "value": 40
+  },
+  "gifterFontColor": {
+    "type": "color-picker",
+    "label": "Gifter font color",
+    "value": "rgb(255,0,0)"
+  },
+  "gifterBg": {
+    "type": "color-picker",
+    "label": "Gifter background color",
+    "value": "rgba(255,255,255,0.7)"
+  },
+  "gifterBorder": {
+    "type": "color-picker",
+    "label": "Gifter border color",
+    "value": "rgba(255,0,0,0.7)"
+  },
+  "gifterX": {
+    "type": "number",
+    "label": "Gifter X position",
+    "value": 500
+  },
+  "gifterY": {
+    "type": "number",
+    "label": "Gifter Y position",
+    "value": 500
+  },
+  "displayTime": {
+    "type": "number",
+    "label": "Display Time (s)",
+    "value": 10
+  },
+  "animation": {
+    "type": "dropdown",
+    "label": "Animation:",
+    "value": "randomPlaces",
+    "options": {
+      "randomPlaces": "Random Places",
+      "explosion": "Explosion",
+      "fall": "Fall",
+      "train": "Train"
+    }
+  },
+  "animationIn": {
+    "type": "dropdown",
+    "label": "Random places in:",
+    "value": "none",
+    "options": {
+      "none": "None",
+      "bounceIn": "bounceIn",
+      "bounceInDown": "bounceInDown",
+      "bounceInLeft": "bounceInLeft",
+      "bounceInRight": "bounceInRight",
+      "bounceInUp": "bounceInUp",
+      "fadeIn": "fadeIn",
+      "fadeInDown": "fadeInDown",
+      "fadeInDownBig": "fadeInDownBig",
+      "fadeInLeft": "fadeInLeft",
+      "fadeInLeftBig": "fadeInLeftBig",
+      "fadeInRight": "fadeInRight",
+      "fadeInRightBig": "fadeInRightBig",
+      "fadeInUp": "fadeInUp",
+      "fadeInUpBig": "fadeInUpBig",
+      "flipInX": "flipInX",
+      "flipInY": "flipInY",
+      "lightSpeedIn": "lightSpeedIn",
+      "rotateIn": "rotateIn",
+      "rotateInDownLeft": "rotateInDownLeft",
+      "rotateInDownRight": "rotateInDownRight",
+      "rotateInUpLeft": "rotateInUpLeft",
+      "rotateInUpRight": "rotateInUpRight",
+      "slideInUp": "slideInUp",
+      "slideInDown": "slideInDown",
+      "slideInLeft": "slideInLeft",
+      "slideInRight": "slideInRight",
+      "zoomIn": "zoomIn",
+      "zoomInDown": "zoomInDown",
+      "zoomInLeft": "zoomInLeft",
+      "zoomInRight": "zoomInRight",
+      "zoomInUp": "zoomInUp",
+      "jackInTheBox": "jackInTheBox",
+      "rollIn": "rollIn"
+    }
+  },
+  "animationOut": {
+    "type": "dropdown",
+    "label": "Random places out:",
+    "value": "none",
+    "options": {
+      "none": "None",
+      "bounceOut": "bounceOut",
+      "bounceOutDown": "bounceOutDown",
+      "bounceOutLeft": "bounceOutLeft",
+      "bounceOutRight": "bounceOutRight",
+      "bounceOutUp": "bounceOutUp",
+      "fadeOut": "fadeOut",
+      "fadeOutDown": "fadeOutDown",
+      "fadeOutDownBig": "fadeOutDownBig",
+      "fadeOutLeft": "fadeOutLeft",
+      "fadeOutLeftBig": "fadeOutLeftBig",
+      "fadeOutRight": "fadeOutRight",
+      "fadeOutRightBig": "fadeOutRightBig",
+      "fadeOutUp": "fadeOutUp",
+      "fadeOutUpBig": "fadeOutUpBig",
+      "flipOutX": "flipOutX",
+      "flipOutY": "flipOutY",
+      "lightSpeedOut": "lightSpeedOut",
+      "rotateOut": "rotateOut",
+      "rotateOutDownLeft": "rotateOutDownLeft",
+      "rotateOutDownRight": "rotateOutDownRight",
+      "rotateOutUpLeft": "rotateOutUpLeft",
+      "rotateOutUpRight": "rotateOutUpRight",
+      "slideOutUp": "slideOutUp",
+      "slideOutDown": "slideOutDown",
+      "slideOutLeft": "slideOutLeft",
+      "slideOutRight": "slideOutRight",
+      "zoomOut": "zoomOut",
+      "zoomOutDown": "zoomOutDown",
+      "zoomOutLeft": "zoomOutLeft",
+      "zoomOutRight": "zoomOutRight",
+      "zoomOutUp": "zoomOutUp",
+      "rollOut": "rollOut"
+    }
+  },
+  "explosionX": {
+    "type": "number",
+    "label": "Explosion initial X",
+    "value": 900
+  },
+  "explosionY": {
+    "type": "number",
+    "label": "Explosion initial Y",
+    "value": 600
+  }
+}
