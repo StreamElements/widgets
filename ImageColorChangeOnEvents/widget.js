@@ -1,10 +1,10 @@
-
 // variations colors can contain any CSS filter with proper value
 variations = [
     {
         "type": "follower",
         "amount": 0,
-        "colors": {}
+        "colors": {
+        }
     },
     {
         "type": "subscriber",
@@ -56,6 +56,14 @@ variations = [
             "hue-rotate": "300deg",
             "saturate": 6
         }
+    },
+    {
+        "type": "raid",
+        "amount": 1,
+        "colors": {
+            "hue-rotate": "100deg",
+            "saturate": 6
+        }
     }
 
 ];
@@ -97,5 +105,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     recents.sort(function (a, b) {
         return Date.parse(a.createdAt) - Date.parse(b.createdAt);
     });
-    parseEvent(recents.split(-1)[0]);
+    let latest = recents.pop();
+    parseEvent(latest);
+
 });

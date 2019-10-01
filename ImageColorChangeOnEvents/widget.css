@@ -5,7 +5,7 @@
 #main-container {
     background-image: url({border});
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
     transition: 0.3s all;
     position: absolute;
     top: 0;
