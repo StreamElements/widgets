@@ -29,7 +29,27 @@
       "cheer-weekly-top-donation": "Cheer weekly top donation",
       "cheer-weekly-top-donator": "Cheer weekly top donator",
       "cheer-session-top-donation": "Cheer session top donation",
-      "cheer-session-top-donator": "Cheer session top donator"
+      "cheer-session-top-donator": "Cheer session top donator",
+      "follower": "Follower count",
+      "subscriber": "Subscriber  count",
+      "subscriber-new": "Subscriber new  count(session only)",
+      "subscriber-resub": "Subscriber resub  count(session only)",
+      "subscriber-gifted": "Subscriber gifted  count(session only)",
+      "tip": "Tip amount",
+      "cheer": "Bits amount",
+      "subscriber-points":"Subscriber points"
+    }
+  },
+  "eventPeriod": {
+    "type": "dropdown",
+    "label": "Pick period: (if count/amount is selected)",
+    "value": "session",
+    "options": {
+      "session": "Session",
+      "week": "Week",
+      "month": "Month",
+      "total": "Total",
+      "goal": "Amount from goal data"
     }
   },
   "locale": {
