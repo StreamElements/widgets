@@ -1,4 +1,4 @@
-let index, goal, fieldData, currency, userLocale;
+let index, goal, fieldData, currency, userLocale, prevCount, timeout;
 
 window.addEventListener('onWidgetLoad', async function (obj) {
         fieldData = obj.detail.fieldData;
@@ -9,7 +9,7 @@ window.addEventListener('onWidgetLoad', async function (obj) {
         if (fieldData['eventType'] === "subscriber-points") {
             index = fieldData['eventType'];
         }
-        count = 0;
+        let count = 0;
         if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
             if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
                 count = obj["detail"]["session"]["data"][index]['amount'];
@@ -71,11 +71,20 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 
 function updateBar(count) {
+    if (count === prevCount) return;
+    clearTimeout(timeout);
+    prevCount = count;
+    $("body").fadeTo("slow", 1);
     let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
     $("#bar").css('width', percentage + "%");
     if (fieldData['eventType'] === 'tip') {
         count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
     }
     $("#count").html(count);
+    if (fieldData.fadeoutAfter) {
+        timeout = setTimeout(() => {
+            $("body").fadeTo("slow", 0);
+        }, fieldData.fadeoutAfter * 1000)
+    }
 
 }

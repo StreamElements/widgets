@@ -80,5 +80,10 @@
     "type": "text",
     "label": "User locale to display currency",
     "value": "en-US"
+  },
+  "fadeoutAfter":{
+    "type":"number",
+    "label":"Fadeout after (s) - 0 to disable",
+    "value":0
   }
 }
