@@ -1,0 +1,19 @@
+{
+  "privileges": {
+    "type": "dropdown",
+    "label": "Who can participate:",
+    "value": "everybody",
+    "options": {
+      "everybody": "Everybody",
+      "subs": "Subs",
+      "vips": "VIPS",
+      "mods": "Mods",
+      "broadcaster":"Broadcaster"
+    }
+  },
+  "globalCooldown": {
+    "type": "number",
+    "label": "Global cooldown (s)",
+    "value": 60
+  }
+}

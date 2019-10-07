@@ -1,7 +1,5 @@
 // URLs in userConfig are not real, please replace them with your URLs for sounds/images
 // Sound files are mandatory (but can be muted), image/video files are optional
-
-let globalCooldown = 60; //seconds
 let userConfig = [
     {
         emote: "OMEGALUL",
@@ -27,12 +25,35 @@ let userConfig = [
     }
 ];
 
-
+let fieldData,channelName;
 let queue = $("#placeholder");
 let emoticons = [];
+let checkPrivileges = (data) => {
+    required=fieldData.privileges;
+    let userState = {
+        'mod': parseInt(data.tags.mod),
+        'sub': parseInt(data.tags.subscriber),
+        'vip': (data.tags.badges.indexOf("vip") !== -1),
+        'badges': {
+            'broadcaster': (data.userId === data.tags['room-id']),
+        }
+    };
+    if (userState.badges.broadcaster) return true;
+    else if (required === "mods" && userState.badges.mod) return true;
+    else if (required === "vips" && (userState.badges.mod || userState.badges.vip)) return true;
+    else if (required === "subs" && (userState.badges.mod || userState.badges.vip || userState.badges.sub)) return true;
+    else if (required === "everybody") return true;
+    else return false;
+};
+
+
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
+
+    if (!checkPrivileges(data)) {
+        return;
+    }
     let message = data["text"];
     let words = message.split(" ");
     let results = words.filter(value => -1 !== emoticons.indexOf(value.toLowerCase()));
@@ -45,6 +66,10 @@ window.addEventListener('onEventReceived', function (obj) {
         }
     }
 
+});
+window.addEventListener('onWidgetLoad', function (obj) {
+    fieldData = obj['detail']['fieldData'];
+    channelName = obj['detail']['channel']['username'];
 });
 let cooldown = 0;
 
@@ -94,7 +119,7 @@ function checkPlay(index) {
 
 
             };
-            cooldown = globalCooldown;
+            cooldown = fielData.globalCooldown;
         }
     }
 }
@@ -115,3 +140,4 @@ let t = setInterval(function () {
         }
     }
 }, 1000);
+
