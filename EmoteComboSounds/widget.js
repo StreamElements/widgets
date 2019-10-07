@@ -29,7 +29,7 @@ let fieldData,channelName;
 let queue = $("#placeholder");
 let emoticons = [];
 let checkPrivileges = (data) => {
-    required=fieldData.privileges;
+    let required=fieldData.privileges;
     let userState = {
         'mod': parseInt(data.tags.mod),
         'sub': parseInt(data.tags.subscriber),
