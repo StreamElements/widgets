@@ -24,7 +24,7 @@ window.addEventListener('onEventReceived', function (obj) {
     }
     let username = data.displayName + ":";
     if (nickColor === "user") {
-        const color = data.displayColor;
+        const color = data.displayColor !== "" ? data.displayColor : "#" + (md5(username).substr(26));
         username = `<span style="color:${color}">${username}</span>`;
     }
     addMessage(username, badges, message, data.isAction, data.userId, data.msgId);
