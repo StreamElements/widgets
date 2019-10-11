@@ -327,7 +327,7 @@ Possible keys within `data`:
 * `data["subscriber-month"]["count"]`   - Subscribers this month
 * `data["subscriber-goal"]["amount"]`   - Subscribers goal
 * `data["subscriber-total"]["count"]`   - Total count of subscribers
-* `data["subscriber-points"]["amount"]` - Subscriber points more info on Twitch <a href="https://help.twitch.tv/customer/portal/articles/2348985">Subscriber Points</a>
+* `data["subscriber-points"]["amount"]` - Subscriber points (used for unlocking additional channel emotes - more info on Twitch <a href="https://help.twitch.tv/s/article/subscriber-emoticon-guide#emoticontiers">Partner Emoticon Guide</a>)
 * `data["host-latest"]["name"]` - Latest host
 * `data["host-latest"]["amount"]`   - Number of viewers in latest host <em>(can be 0)</em>
 * `data["raid-latest"]["name"]`     - Name of latest raider
