@@ -1,10 +1,10 @@
 * {
     font-family: '{{fontName}}', sans-serif;
-color: {{fontColor}};
-font-size: {{fontSize}}px;
-font-weight: {{fontWeight}};
-overflow: hidden;
-text-align:{{textAlign}};
--webkit-text-stroke-width: {{strokeSize}}px;
--webkit-text-stroke-color: {{strokeColor}};
+    color: {{fontColor}};
+    font-size: {{fontSize}}px;
+    font-weight: {{fontWeight}};
+    overflow: hidden;
+    text-align:{{textAlign}};
+    -webkit-text-stroke-width: {{strokeSize}}px;
+    -webkit-text-stroke-color: {{strokeColor}};
 }

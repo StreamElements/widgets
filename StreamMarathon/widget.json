@@ -25,27 +25,27 @@
   },
   "followSeconds": {
     "type": "number",
-    "label": "Seconds per follower (-1 to disable):",
+    "label": "Seconds per follower:",
     "value": 1
   },
   "sub1Seconds": {
     "type": "number",
-    "label": "Seconds per T1/Prime subscriber (-1 to disable):",
+    "label": "Seconds per T1/Prime subscriber:",
     "value": 60
   },
   "sub2Seconds": {
     "type": "number",
-    "label": "Seconds per T2 subscriber (-1 to disable):",
+    "label": "Seconds per T2 subscriber:",
     "value": 120
   },
   "sub3Seconds": {
     "type": "number",
-    "label": "Seconds per T3 subscriber (-1 to disable):",
+    "label": "Seconds per T3 subscriber:",
     "value": 180
   },
   "cheerSeconds": {
     "type": "number",
-    "label": "Seconds per 100 Bits (-1 to disable):",
+    "label": "Seconds per 100 Bits:",
     "value": 60
   },
   "cheerMin": {
@@ -55,7 +55,7 @@
   },
   "tipSeconds": {
     "type": "number",
-    "label": "Seconds multiplied by amount (-1 to disable):",
+    "label": "Seconds multiplied by amount:",
     "value": 300
   },
   "tipMin": {
@@ -65,7 +65,7 @@
   },
   "hostSeconds": {
     "type": "number",
-    "label": "Seconds per viewer from host (-1 to disable):",
+    "label": "Seconds per viewer from host:",
     "value": 1
   },
   "hostMin": {
@@ -75,7 +75,7 @@
   },
   "raidSeconds": {
     "type": "number",
-    "label": "Seconds per viewer from raid (-1 to disable):",
+    "label": "Seconds per viewer from raid:",
     "value": 1
   },
   "raidMin": {
