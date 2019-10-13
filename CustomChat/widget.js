@@ -1,4 +1,4 @@
-let totalMessages = 0, messagesLimit = 0, nickColor = "user", removeSelector;
+let totalMessages = 0, messagesLimit = 0, nickColor = "user", removeSelector, addition;
 let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let hideAfter = 60;
@@ -39,10 +39,13 @@ window.addEventListener('onWidgetLoad', function (obj) {
     nickColor = fieldData.nickColor;
     hideCommands = fieldData.hideCommands;
     if (fieldData.alignMessages === "block") {
+        addition = "prepend";
         removeSelector = ".message-row:nth-child(n+" + (messagesLimit + 1) + ")"
     } else {
+        addition = "append";
         removeSelector = ".message-row:nth-last-child(n+" + (messagesLimit + 1) + ")"
     }
+    console.log(removeSelector);
     ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
 });
 
@@ -83,14 +86,26 @@ function addMessage(username, badges, message, isAction, uid, msgId) {
         <div class="user-box ${actionClass}">${badges}${username}</div>
         <div class="user-message ${actionClass}">${message}</div>
     </div>`);
-    if (hideAfter !== 999) {
-        $(element).appendTo('.main-container').delay(hideAfter * 1000).queue(function () {
-            $(this).removeClass(animationIn).addClass(animationOut).delay(1000).queue(function () {
-                $(this).remove()
-            }).dequeue();
-        });
+    if (addition === "append") {
+        if (hideAfter !== 999) {
+            $(element).appendTo('.main-container').delay(hideAfter * 1000).queue(function () {
+                $(this).removeClass(animationIn).addClass(animationOut).delay(1000).queue(function () {
+                    $(this).remove()
+                }).dequeue();
+            });
+        } else {
+            $(element).appendTo('.main-container');
+        }
     } else {
-        $(element).appendTo('.main-container');
+        if (hideAfter !== 999) {
+            $(element).prependTo('.main-container').delay(hideAfter * 1000).queue(function () {
+                $(this).removeClass(animationIn).addClass(animationOut).delay(1000).queue(function () {
+                    $(this).remove()
+                }).dequeue();
+            });
+        } else {
+            $(element).prependTo('.main-container');
+        }
     }
 
     if (totalMessages > messagesLimit) {
