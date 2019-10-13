@@ -34,7 +34,7 @@ window.addEventListener('onEventReceived', function (obj) {
     if (message.toLowerCase() !== spinCommand.toLowerCase()) return;
     if (wheelSpinning) return;
     if (accessLevel === 'broadcaster' && channelName !== user) return;
-    if (accessLevel === 'mod' && !(channelName === user || data['tags']['mod'])) return;
+    if (accessLevel === 'mods' && !(channelName === user || data['tags']['mod'])) return;
 
     startSpin();
     setTimeout(
