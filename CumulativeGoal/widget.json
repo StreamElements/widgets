@@ -24,6 +24,16 @@
     "label": "Points per Bit",
     "value": 0.01
   },
+  "pointsPerCounter": {
+    "type": "number",
+    "label": "Points per counter amount",
+    "value": 0.01
+  },
+  "botCounterName": {
+    "type": "text",
+    "label": "Bot counter name",
+    "value": "botpoints"
+  },
   "fontName": {
     "type": "text",
     "label": "Font Name",

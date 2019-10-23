@@ -1,33 +1,44 @@
 let goal, fieldData;
-let pointsPerTip = 1;
-let pointsPerBit = 0.01;
-let pointsPerSub = 3;
-let pointsPerFollow = 0;
+
+let botPoints = 0;
+let sessionData;
 
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
     goal = fieldData["goal"];
-    pointsPerBit = fieldData["pointsPerBit"];
-    pointsPerTip = fieldData["pointsPerTip"];
-    pointsPerSub = fieldData["pointsPerSub"];
-    let data = obj["detail"]["session"]["data"];
-    analysePoints(data);
+    sessionData = obj["detail"]["session"]["data"];
+    SE_API.counters.get(fieldData.botCounterName).then(counter => {
+        botPoints = parseInt(counter.value);
+        analysePoints();
+    });
 });
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    let data = obj["detail"]["session"];
-    analysePoints(data);
+    sessionData = obj["detail"]["session"];
+    analysePoints();
 });
 
-function analysePoints(data) {
+window.addEventListener('onEventReceived', function (obj) {
+    const listener = obj.detail.listener;
+    const data = obj.detail.event;
+    if (listener === 'bot:counter' && data.counter === fieldData.botCounterName) {
+        botPoints = parseInt(data.value);
+    }
+    analysePoints();
+});
+
+
+function analysePoints() {
+    let data = sessionData;
     let bitsAmount = data["cheer-goal"]["amount"];
     let subsAmount = data["subscriber-goal"]["amount"];
     let tipsAmount = data["tip-goal"]["amount"];
     let followerAmount = data["follower-goal"]["amount"];
-    let currentPoints = subsAmount * pointsPerSub;
-    currentPoints += tipsAmount * pointsPerTip;
-    currentPoints += bitsAmount * pointsPerBit;
-    currentPoints += followerAmount * pointsPerFollow;
+    let currentPoints = subsAmount * fieldData.pointsPerSub;
+    currentPoints += tipsAmount * fieldData.pointsPerTip;
+    currentPoints += bitsAmount * fieldData.pointsPerBit;
+    currentPoints += followerAmount * fieldData.pointsPerFollow;
+    currentPoints += botPoints * fieldData.pointsPerCounter;
     updateBar(currentPoints);
 }
 
