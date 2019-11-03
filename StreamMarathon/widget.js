@@ -39,36 +39,36 @@ window.addEventListener('onEventReceived', function (obj) {
 
     const data = obj.detail.event;
     if (listener === 'follower-latest') {
-        if (followSeconds > 0) countdown(followSeconds);
+        if (fieldData.followSeconds != 0) countdown(fieldData.followSeconds);
     } else if (listener === 'subscriber-latest') {
         if (data.bulkGifted) { // Ignore gifting event and count only real subs
             return;
         }
         if (parseInt(data.tier) === 2000) {
-            if (fieldData.sub2Seconds > 0) countdown(fieldData.sub2Seconds);
+            if (fieldData.sub2Seconds != 0) countdown(fieldData.sub2Seconds);
         } else if (parseInt(data.tier) === 3000) {
-            if (fieldData.sub3Seconds > 0) countdown(fieldData.sub3Seconds);
+            if (fieldData.sub3Seconds != 0) countdown(fieldData.sub3Seconds);
         } else {
-            if (fieldData.sub1Seconds > 0) countdown(fieldData.sub1Seconds);
+            if (fieldData.sub1Seconds != 0) countdown(fieldData.sub1Seconds);
         }
 
     } else if (listener === 'host-latest') {
-        if (data['amount'] < fieldData.hostMin || fieldData.hostSeconds < 0) {
+        if (data['amount'] < fieldData.hostMin || fieldData.hostSeconds === 0) {
             return;
         }
         countdown(fieldData.hostSeconds * data["amount"]);
     } else if (listener === 'raid-latest') {
-        if (data['amount'] < fieldData.raidMin || fieldData.raidSeconds < 0) {
+        if (data['amount'] < fieldData.raidMin || fieldData.raidSeconds === 0) {
             return;
         }
         countdown(fieldData.raidSeconds * data["amount"]);
     } else if (listener === 'cheer-latest') {
-        if (data['amount'] < fieldData.cheerMin || fieldData.cheerSeconds < 0) {
+        if (data['amount'] < fieldData.cheerMin || fieldData.cheerSeconds === 0) {
             return;
         }
         countdown(parseInt(fieldData.cheerSeconds * data["amount"] / 100));
     } else if (listener === 'tip-latest') {
-        if (data['amount'] < fieldData.tipMin || fieldData.tipSeconds < 0) {
+        if (data['amount'] < fieldData.tipMin || fieldData.tipSeconds === 0) {
             return;
         }
         countdown(parseInt(fieldData.tipSeconds * data["amount"]));
