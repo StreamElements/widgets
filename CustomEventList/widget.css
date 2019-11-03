@@ -1,14 +1,16 @@
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: '{fontName}', sans-serif;
     color: {{fontColor}};
-    font-size: 14px;
+    font-size: {fontSize}px;
     overflow: hidden;
 }
+
 .fadeOutClass{
     animation: fadeOut 1s;
     animation-delay:{{fadeoutTime}}s;
     animation-fill-mode: forwards;
 }
+
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -17,40 +19,71 @@
         opacity: 0;
     }
 }
-.event-follower {
-    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg');
-    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/follower.svg');
-
+.event-follower.mask {
+    mask-image: url('{followerImg}');
+    -webkit-mask-image: url('{followerImg}');
 }
 
-.event-cheer {
-    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/bits.svg');
-    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/bits.svg');
+.event-cheer.mask{
+    mask-image: url('{cheerImg}');
+    -webkit-mask-image: url('{cheerImg}');
 }
 
-.event-host {
-    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/host.svg');
-    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/host.svg');
+.event-host.mask{
+    mask-image: url('{hostImg}');
+    -webkit-mask-image: url('{hostImg}');
 }
 
-.event-raid {
-    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/raid.svg');
-    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/raid.svg');
+.event-raid.mask{
+    mask-image: url('{raidImg}');
+    -webkit-mask-image: url('{raidImg}');
 }
 
-.event-sub {
-    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/sub.svg');
-    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/sub.svg');
+.event-sub.mask{
+    mask-image: url('{subImg}');
+    -webkit-mask-image: url('{subImg}');
 }
 
-.event-tip {
-    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/tip.svg');
-    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/tip.svg');
+.event-tip.mask{
+    mask-image: url('{tipImg}');
+    -webkit-mask-image: url('{tipImg}');
 }
 
-.event-redemption {
-    mask-image: url('https://cdn.streamelements.com/static/custom-event-list/redemption.svg');
-    -webkit-mask-image: url('https://cdn.streamelements.com/static/custom-event-list/redemption.svg');
+.event-redemption.mask{
+    mask-image: url('{redemptionImg}');
+    -webkit-mask-image: url('{redemptionImg}');
+}
+
+.event-follower.background {
+    background-image: url('{followerImg}');
+}
+
+.event-cheer.background{
+    background-image: url('{cheerImg}');
+}
+
+.event-host.background{
+    background-image: url('{hostImg}');
+}
+
+.event-raid.background{
+    background-image: url('{raidImg}');
+}
+
+.event-sub.background{
+    background-image: url('{subImg}');
+}
+
+.event-tip.background{
+    background-image: url('{tipImg}');
+}
+
+.event-redemption.background{
+    background-image: url('{redemptionImg}');
+}
+
+.background{
+    background-size:100% 100%;
 }
 
 @keyframes slide-in {
@@ -131,10 +164,12 @@
     object-fit: contain;
     display: inline-block;
     width: 20px;
-    -webkit-mask-size: cover;
-    mask-size: cover;
     background-color:{{iconColor}};
     position:absolute;
+}
+.mask{
+    -webkit-mask-size: cover;
+    mask-size: cover;
 }
 
 .username-container {
@@ -149,7 +184,7 @@
 }
 
 .details-container {
-    position: absolute;
+    width:40%;
     animation: 1.2s fade-in;
     animation-fill-mode: forwards;
     display: inline-block;
@@ -157,7 +192,6 @@
     font-weight: 700;
     text-align: right;
     margin-right: 15px;
-    margin-left: 85px;
     margin-top: 2px;
 }
 

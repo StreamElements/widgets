@@ -1,4 +1,32 @@
 {
+  "fontName": {
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Montserrat"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font size",
+    "value": 24
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    }
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font Color",
+    "value": "rgba(255,255,255,1)"
+  },
   "eventsLimit": {
     "type": "number",
     "label": "Limit displayed events to:",
@@ -13,6 +41,11 @@
       "no": "No"
     }
   },
+  "followerImg":{
+    "type":"image-input",
+    "label":"Follower image",
+    "value":"https://cdn.streamelements.com/static/custom-event-list/follower.svg"
+  },
   "includeRedemptions": {
     "type": "dropdown",
     "label": "Display redemptions:",
@@ -21,6 +54,11 @@
       "yes": "Yes",
       "no": "No"
     }
+  },
+  "redemptionImg":{
+    "type":"image-input",
+    "label":"Redemption image",
+    "value":"https://cdn.streamelements.com/static/custom-event-list/redemption.svg"
   },
   "includeHosts": {
     "type": "dropdown",
@@ -36,6 +74,11 @@
     "label": "Minimum amount of hosting viewers:",
     "value": 1
   },
+  "hostImg":{
+    "type":"image-input",
+    "label":"Host image",
+    "value":"https://cdn.streamelements.com/static/custom-event-list/host.svg"
+  },
   "includeRaids": {
     "type": "dropdown",
     "label": "Display raids:",
@@ -49,6 +92,11 @@
     "type": "number",
     "label": "Minimum amount of raiding viewers:",
     "value": 1
+  },
+  "raidImg":{
+    "type":"image-input",
+    "label":"Raid image",
+    "value":"https://cdn.streamelements.com/static/custom-event-list/raid.svg"
   },
   "includeSubs": {
     "type": "dropdown",
@@ -68,6 +116,11 @@
       "badge": "badge xNumber"
     }
   },
+  "subImg":{
+    "type":"image-input",
+    "label":"Follower image",
+    "value":"https://cdn.streamelements.com/static/custom-event-list/sub.svg"
+  },
   "includeTips": {
     "type": "dropdown",
     "label": "Display tips:",
@@ -82,6 +135,11 @@
     "label": "Minimum amount of tip:",
     "value": 1
   },
+  "tipImg":{
+    "type":"image-input",
+    "label":"Tip image",
+    "value":"https://cdn.streamelements.com/static/custom-event-list/tip.svg"
+  },
   "includeCheers": {
     "type": "dropdown",
     "label": "Display cheers:",
@@ -95,6 +153,11 @@
     "type": "number",
     "label": "Minimum amount of bits in Cheer:",
     "value": 1
+  },
+  "cheerImg":{
+    "type":"image-input",
+    "label":"Cheer image",
+    "value":"https://cdn.streamelements.com/static/custom-event-list/bits.svg"
   },
   "direction": {
     "type": "dropdown",
@@ -120,11 +183,6 @@
     "value": 999
   },
 
-  "fontColor": {
-    "type": "colorpicker",
-    "label": "Font color",
-    "value": "rgb(255, 255, 255)"
-  },
   "theme": {
     "type": "dropdown",
     "label": "Background pattern:",
@@ -151,9 +209,18 @@
     "label": "Background color",
     "value": "rgba(36, 6, 73, 0.15)"
   },
+  "imageType":{
+    "label":"Display image as:",
+    "type":"dropdown",
+    "options":{
+      "mask":"mask",
+      "background":"background"
+    },
+    "value":"mask"
+  },
   "iconColor": {
     "type": "colorpicker",
-    "label": "Icon Color",
+    "label": "Icon Color (when mask)",
     "value": "rgb(255, 255, 255, 255)"
   },
   "locale": {

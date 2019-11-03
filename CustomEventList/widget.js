@@ -169,7 +169,7 @@ function addEvent(type, text, username) {
         element = `
     <div class="event-container" id="event-${totalEvents}">
 		<div class="backgroundsvg"></div>
-        <div class="event-image event-${type}"></div>
+        <div class="event-image event-${type} {imageType}"></div>
         <div class="username-container">${text}</div>
        <div class="details-container">${username}</div>
     </div>`;
@@ -177,7 +177,7 @@ function addEvent(type, text, username) {
         element = `
     <div class="event-container" id="event-${totalEvents}">
 		<div class="backgroundsvg"></div>
-        <div class="event-image event-${type}"></div>
+        <div class="event-image event-${type} {imageType}"></div>
         <div class="username-container">${username}</div>
        <div class="details-container">${text}</div>
     </div>`;
