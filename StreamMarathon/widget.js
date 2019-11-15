@@ -29,7 +29,8 @@ function countdown(seconds) {
     toCountDown = a[0];
     start = toCountDown;
     $('#countdown').countdown(toCountDown, function (event) {
-        $(this).html(event.strftime('%I:%M:%S'));
+        if (event.type === "finish") $(this).html(fieldData.onComplete);
+        else $(this).html(event.strftime('%I:%M:%S'));
     });
 }
 

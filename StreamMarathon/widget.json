@@ -130,5 +130,11 @@
     "type": "number",
     "label": "Stroke size",
     "value": 2
+  },
+  "onComplete": {
+    "type": "text",
+    "label": "Message on complete",
+    "value": "Done!"
+
   }
 }
