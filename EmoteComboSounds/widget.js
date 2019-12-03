@@ -39,9 +39,9 @@ let checkPrivileges = (data) => {
         }
     };
     if (userState.badges.broadcaster) return true;
-    else if (required === "mods" && userState.badges.mod) return true;
-    else if (required === "vips" && (userState.badges.mod || userState.badges.vip)) return true;
-    else if (required === "subs" && (userState.badges.mod || userState.badges.vip || userState.badges.sub)) return true;
+    else if (required === "mods" && userState.mod) return true;
+    else if (required === "vips" && (userState.mod || userState.vip)) return true;
+    else if (required === "subs" && (userState.mod || userState.vip || userState.sub)) return true;
     else if (required === "everybody") return true;
     else return false;
 };
