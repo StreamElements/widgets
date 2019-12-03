@@ -19,6 +19,7 @@ window.addEventListener('onSessionUpdate', function (obj) {
 
 let updateEvent = (data) => {
     if (showName) {
+        if (typeof data[eventType] === undefined) return;
         if (!data[eventType]["name"].length) return;
         if (eventType.indexOf("tip") !== -1) {
             $(".main-container").html(data[eventType]["name"] + " " + data[eventType]["amount"].toLocaleString(userLocale, {
