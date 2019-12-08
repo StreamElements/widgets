@@ -4,6 +4,26 @@
     "label": "Spin Command",
     "value": "!spin"
   },
+  "segments": {
+    "type": "text",
+    "label": "Segments, comma separated",
+    "value": "100,200,300,400,500"
+  },
+  "segmentColors": {
+    "type": "text",
+    "label": "Segment colors, comma separated",
+    "value": "#ff0000,#00ff00,#ffffff,#123123,#421221"
+  },
+  "displayImage": {
+    "type": "checkbox",
+    "label": "Display Image",
+    "value": false
+  },
+  "wheelImage": {
+    "type": "image-input",
+    "label": "Wheel image image(instead of text)",
+    "value": ""
+  },
   "wheelSize": {
     "type": "number",
     "label": "Wheel size",
@@ -42,14 +62,16 @@
     "max": 10,
     "steps": 1
   },
-  "access": {
+  "privileges": {
     "type": "dropdown",
-    "label": "Allow users:",
-    "value": "broadcaster",
+    "label": "Who can participate:",
+    "value": "everybody",
     "options": {
-      "broadcaster": "Broadcaster",
-      "mods": "Mods+",
-      "everybody": "Everybody"
+      "everybody": "Everybody",
+      "subs": "Subs",
+      "vips": "VIPS",
+      "mods": "Mods",
+      "broadcaster": "Broadcaster"
     }
   }
 }
