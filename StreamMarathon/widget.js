@@ -17,7 +17,7 @@ function countdown(seconds) {
         a.sort(function (a, b) {
             return Date.parse(a) - Date.parse(b);
         });
-        toCountDown = a[1];
+        toCountDown = new Date(a[1].getTime());
     }
 
     toCountDown.setSeconds(toCountDown.getSeconds() + seconds);
@@ -26,7 +26,7 @@ function countdown(seconds) {
     a.sort(function (a, b) {
         return Date.parse(a) - Date.parse(b);
     });
-    toCountDown = a[0];
+    toCountDown = new Date(a[0].getTime());
     start = toCountDown;
     $('#countdown').countdown(toCountDown, function (event) {
         if (event.type === "finish") $(this).html(fieldData.onComplete);
