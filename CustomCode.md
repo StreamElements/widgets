@@ -46,7 +46,10 @@ There are some reserved field names (all future reserved words will start with `
   "someNumber": {
     "type": "number",
     "label": "Count",
-    "value": 10
+    "value": 10,
+    "min": 0,
+    "max": 100,
+    "step": 1
   },
   "someSlider": {
     "type": "slider",
@@ -54,7 +57,7 @@ There are some reserved field names (all future reserved words will start with `
     "value": 10,
     "min": 0,
     "max": 100,
-    "steps": 1
+    "step": 1
   },
   "someDropdown": {
     "type": "dropdown",
@@ -83,6 +86,11 @@ There are some reserved field names (all future reserved words will start with `
       "label": "Select a font:",
       "value": "Roboto"
     },
+  "someButton": {
+    "type": "button",
+    "label": "Click me!",
+    "value": "Thanks"
+  },
   "widgetName": {
     "type": "hidden",
     "value": "My Custom Widget"
@@ -167,6 +175,7 @@ In the example above you have obj forwarded to that function, which has two inte
     * `delete-messages` - Chat messages by userId removed
     * `event:skip` - User clicked "skip alert" button in activity feed
     * `bot:counter` - Update to bot counter
+    * `widget-button` - User clicked custom field button in widget properties 
 
 * `obj.detail.event`: Will provide you information about event details. It contains few keys. For `-latest` events it is:
     * `.name` - user who triggered action
@@ -273,6 +282,33 @@ window.addEventListener('onEventReceived', function (obj) {
     }
 });
 ```
+
+#### Button click
+Contains two elements - field name (`field`) and value (`value`). Example below will send simplified event to test your chat widget
+```javascript
+window.addEventListener('onEventReceived', function (obj) {
+    const data = obj.detail.event;
+        if (data.listener === 'widget-button') {
+            if (data.field==='chat' && data.value==='First Message'){
+                const emulated = new CustomEvent("onEventReceived", {
+                        detail: {
+                            "listener": "message",
+                            event: {
+                                data: {
+                                    text: "Example message!",
+                                    displayName: "StreamElements"
+                                }
+                            }
+                        }
+                    
+                });
+                window.dispatchEvent(emulated);
+            }
+        }
+});
+```
+
+
 
 ### On Widget load
 ```javascript
