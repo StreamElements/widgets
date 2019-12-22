@@ -66,8 +66,14 @@
     "value": "user",
     "options": {
       "user": "as on twitch",
-      "custom": "same as message text"
+      "messagecolor": "same as message text",
+      "custom":"specified below"
     }
+  },
+  "customNickColor": {
+    "type": "colorpicker",
+    "label": "Custom nickname color:",
+    "value": "rgba(0,255,0,1)"
   },
   "backgroundColor": {
     "type": "colorpicker",

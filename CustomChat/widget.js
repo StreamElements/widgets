@@ -1,4 +1,4 @@
-let totalMessages = 0, messagesLimit = 0, nickColor = "user", removeSelector, addition;
+let totalMessages = 0, messagesLimit = 0, nickColor = "user", removeSelector, addition, customNickColor;
 let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let hideAfter = 60;
@@ -27,6 +27,10 @@ window.addEventListener('onEventReceived', function (obj) {
         const color = data.displayColor !== "" ? data.displayColor : "#" + (md5(username).substr(26));
         username = `<span style="color:${color}">${username}</span>`;
     }
+    if (nickColor === "custom") {
+        const color = customNickColor;
+        username = `<span style="color:${color}">${username}</span>`;
+    }
     addMessage(username, badges, message, data.isAction, data.userId, data.msgId);
 });
 
@@ -37,6 +41,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     hideAfter = fieldData.hideAfter;
     messagesLimit = fieldData.messagesLimit;
     nickColor = fieldData.nickColor;
+    customNickColor = fieldData.customNickColor;
     hideCommands = fieldData.hideCommands;
     if (fieldData.alignMessages === "block") {
         addition = "prepend";
