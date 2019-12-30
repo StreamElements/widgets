@@ -2,25 +2,25 @@
   "minTime": {
     "type": "datetime-local",
     "label": "Initial end date of marathon",
-    "value": 3600,
+    "value": "2021-01-01T00:00:00.000",
     "group": "Timer settings"
   },
   "maxTime": {
     "type": "datetime-local",
     "label": "Maximum end date of marathon:",
-    "value": 86400,
+    "value": "2021-01-01T00:00:00.000",
     "group": "Timer settings"
   },
-  "resetTimer": {
-    "type": "checkbox",
+  "reset": {
+    "type": "button",
+    "value": "Reset timer",
     "label": "Reset timer",
-    "value":false,
     "group": "Timer settings"
   },
   "addOnZero": {
     "type": "dropdown",
     "label": "What should happen on reaching zero?",
-    "value":"wait",
+    "value": "wait",
     "options": {
       "wait": "Wait for catchup",
       "add": "New events add time to 0"
@@ -32,7 +32,6 @@
     "label": "Message on complete",
     "value": "Done!",
     "group": "Timer settings"
-
   },
   "followSeconds": {
     "type": "number",
@@ -117,7 +116,6 @@
     },
     "group": "Typography"
   },
-
   "fontName": {
     "type": "text",
     "label": "Font name",

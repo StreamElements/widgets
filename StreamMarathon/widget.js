@@ -83,9 +83,6 @@ window.addEventListener('onWidgetLoad', function (obj) {
     maxTime = new Date(fieldData.maxTime);
     minTime = new Date(fieldData.minTime);
     addOnZero = (fieldData.addOnZero === "add");
-    if (fieldData.resetTimer) {
-        SE_API.store.set('marathon', {amount: minTime});
-    }
     loadState();
 
 });
@@ -113,3 +110,14 @@ function loadState() {
         }
     });
 }
+
+window.addEventListener('onEventReceived', function (obj) {
+    const data = obj.detail.event;
+    if (data.listener === 'widget-button') {
+        if (data.field==='reset'){
+            start=minTime;
+            SE_API.store.set('marathon', {amount: minTime});
+            countdown(0);
+        }
+    }
+});
