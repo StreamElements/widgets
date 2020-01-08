@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family={fontName}');
+* {
+    font-family: '{{fontName}}', sans-serif;
+    color:{{fontColor}};
+    font-weight:{{fontWeight}};
+    font-size:{{fontSize}}px;
+}
