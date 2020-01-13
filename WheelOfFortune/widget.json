@@ -73,5 +73,42 @@
       "mods": "Mods",
       "broadcaster": "Broadcaster"
     }
+  },
+  "listener": {
+    "type": "dropdown",
+    "options": {
+      "none": "None (command only)",
+      "tip-latest": "Tip",
+      "cheer-latest": "Cheer"
+    },
+    "value": "none"
+  },
+  "minAmount": {
+    "type": "number",
+    "label": "Minimum amount",
+    "step": 0.01,
+    "value": 100
+  },
+  "modifierFormula": {
+    "type": "text",
+    "readonly": "readonly",
+    "label": "Modifier formula (read only)",
+    "value": "1/options_count*(1+(keyword_modifier+tip_amount*amount_modifier)/100)"
+  },
+  "amountModifier": {
+    "type": "number",
+    "label": "Amount modifier",
+    "step": 0.01,
+    "value": 2
+  },
+  "keywordModifier": {
+    "type": "number",
+    "label": "Keyword modifier",
+    "value": 2
+  },
+  "maxChance": {
+    "type": "number",
+    "label": "Max chance for rigged result %",
+    "value": 50
   }
 }

@@ -1,4 +1,4 @@
-let theWheel, channelName, spinCommand, fieldData, cooldown, spins;
+let theWheel, channelName, spinCommand, fieldData, cooldown, spins, segments = [];
 
 let checkPrivileges = (data) => {
     let required = fieldData.privileges;
@@ -19,19 +19,55 @@ let checkPrivileges = (data) => {
 };
 
 window.addEventListener('onEventReceived', function (obj) {
-    if (obj.detail.listener !== "message") return;
-    let data = obj.detail.event.data;
-    if (data["text"].toLowerCase() !== spinCommand.toLowerCase()) return;
-    if (wheelSpinning) return;
-    if (!checkPrivileges(data)) {
-        return;
+    const skippable = ["bot:counter", "event:test", "event:skip"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
+    if (skippable.indexOf(obj.detail.listener) !== -1) return;
+    if (obj.detail.listener === "message") {
+        let data = obj.detail.event.data;
+        if (data["text"].toLowerCase() !== spinCommand.toLowerCase()) return;
+        if (wheelSpinning) return;
+        if (!checkPrivileges(data)) {
+            return;
+        }
+        startSpin();
+        setTimeout(
+            function () {
+                wheelSpinning = false; // set wheel not spinning, you can add callback to SE API here, to add points to `user`
+                //var winningSegment = theWheel.getIndicatedSegment(); //- use this as reference
+            }, cooldown * 1000 + 100);
+    } else if (obj.detail.listener === fieldData.listener) {
+        const data=obj.detail.event;
+        if (data.amount<fieldData.minAmount){
+            SE_API.resumeQueue();
+            return;
+        }
+        for (let i in segments) {
+            if (data.message.toLowerCase().indexOf(segments[i].text.toLowerCase()) !== -1) {
+
+                let chance = 1 / segments.length * (1 + (fieldData.keywordModifier + data.amount * fieldData.amountModifier) / 100)
+
+                chance = Math.min(fieldData.maxChance / 100, chance);
+                console.log(chance);
+                if (Math.random() < chance) {
+                    console.log(`Stopping at ${segments[i].text}`);
+                    console.log(theWheel.segments);
+                    let stopAt = theWheel.getRandomForSegment(i + 1);
+                    theWheel.animation.stopAngle = stopAt;
+                }
+                break;
+            }
+        }
+
+        startSpin();
+        setTimeout(
+            function () {
+                wheelSpinning = false; // set wheel not spinning, you can add callback to SE API here, to add points to `user`
+                //var winningSegment = theWheel.getIndicatedSegment(); //- use this as reference
+            }, cooldown * 1000 + 100);
+
+    } else {
+        SE_API.resumeQueue();
     }
-    startSpin();
-    setTimeout(
-        function () {
-            wheelSpinning = false; // set wheel not spinning, you can add callback to SE API here, to add points to `user`
-            //var winningSegment = theWheel.getIndicatedSegment(); //- use this as reference
-        }, cooldown * 1000 + 100);
+
 });
 
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -40,7 +76,6 @@ window.addEventListener('onWidgetLoad', function (obj) {
     spinCommand = fieldData['spinCommand'];
     cooldown = fieldData['duration'];
     spins = fieldData['spins'];
-    let segments = [];
     let tmpsegments = fieldData.segments.replace(" ", "").split(",");
     let tmpcolors = fieldData.segmentColors.toLowerCase().replace(" ", "").split(",");
     for (let i in fieldData.segments.replace(" ", "").split(",")) {
