@@ -1,27 +1,22 @@
 //MULTIPLIERS:
 let fieldData;
 
-let maxTime = '2040-06-18 10:45'; // Time cap you want to use
-let minTime = '2019-01-29 12:00';
+let maxTime; // Time cap you want to use
+let minTime;
 let addOnZero = false;
-
-//Starting to work like a machine does
 
 let start;
 
 function countdown(seconds) {
-    //$("#countdown").countdown('destroy');
     let toCountDown = start;
     if (addOnZero) {
         let a = [toCountDown, new Date()];
         a.sort(function (a, b) {
             return Date.parse(a) - Date.parse(b);
         });
-        toCountDown = new Date(a[1].getTime());
+        toCountDown = a[1];
     }
-
     toCountDown.setSeconds(toCountDown.getSeconds() + seconds);
-
     let a = [toCountDown, maxTime];
     a.sort(function (a, b) {
         return Date.parse(a) - Date.parse(b);
@@ -36,7 +31,20 @@ function countdown(seconds) {
 
 window.addEventListener('onEventReceived', function (obj) {
     const listener = obj.detail.listener;
-    if (listener.indexOf("-latest") === -1) return;
+    if (obj.detail.event) {
+        if (obj.detail.event.listener === 'widget-button') {
+            if (obj.detail.event.field === 'resetTimer') {
+                minTime = new Date();
+                minTime.setMinutes(minTime.getMinutes() + fieldData.minTime);
+                maxTime = new Date();
+                maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
+                start = minTime;
+                saveState();
+                countdown(0);
+            }
+            return;
+        }
+    } else if (listener.indexOf("-latest") === -1) return;
 
     const data = obj.detail.event;
     if (listener === 'follower-latest') {
@@ -79,26 +87,24 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
-
-    maxTime = new Date(fieldData.maxTime);
-    minTime = new Date(fieldData.minTime);
     addOnZero = (fieldData.addOnZero === "add");
     loadState();
-
 });
 
 
 function saveState() {
-    SE_API.store.set('marathon', {amount: start});
+    SE_API.store.set('marathon', {current: start, maxTime: maxTime, minTime: minTime});
 }
 
 function loadState() {
     SE_API.store.get('marathon').then(obj => {
         if (obj !== null) {
-            let amount = new Date(obj.amount);
-            if (amount > 0) {
-                amount = Math.max(amount, minTime);
-                start = new Date(amount);
+            let current = new Date(obj.current);
+            minTime = new Date(obj.minTime);
+            maxTime = new Date(obj.maxTime);
+            if (current > 0) {
+                current = Math.max(current, minTime);
+                start = new Date(current);
                 countdown(0);
             } else {
                 start = minTime;
@@ -110,14 +116,3 @@ function loadState() {
         }
     });
 }
-
-window.addEventListener('onEventReceived', function (obj) {
-    const data = obj.detail.event;
-    if (data.listener === 'widget-button') {
-        if (data.field==='reset'){
-            start=minTime;
-            SE_API.store.set('marathon', {amount: minTime});
-            countdown(0);
-        }
-    }
-});

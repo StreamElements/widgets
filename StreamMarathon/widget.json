@@ -1,20 +1,20 @@
 {
   "minTime": {
-    "type": "datetime-local",
-    "label": "Initial end date of marathon",
-    "value": "2021-01-01T00:00:00.000",
+    "type": "number",
+    "label": "Initial marathon duration (minutes)",
+    "value": 3600,
     "group": "Timer settings"
   },
   "maxTime": {
-    "type": "datetime-local",
-    "label": "Maximum end date of marathon:",
-    "value": "2021-01-01T00:00:00.000",
+    "type": "number",
+    "label": "Maximum marathon duration (minutes):",
+    "value": 86400,
     "group": "Timer settings"
   },
-  "reset": {
+  "resetTimer": {
     "type": "button",
-    "value": "Reset timer",
     "label": "Reset timer",
+    "value": "Reset timer",
     "group": "Timer settings"
   },
   "addOnZero": {
@@ -37,6 +37,9 @@
     "type": "number",
     "label": "Seconds per follower:",
     "value": 1,
+    "step": 0.1,
+    "min": 0,
+    "max": 3,
     "group": "Event time settings"
   },
   "sub1Seconds": {
@@ -71,7 +74,7 @@
   },
   "tipSeconds": {
     "type": "number",
-    "label": "Seconds multiplied by amount:",
+    "label": "Seconds multiplied by tip amount:",
     "value": 300,
     "group": "Event time settings"
   },
