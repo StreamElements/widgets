@@ -1,4 +1,5 @@
-let totalMessages = 0, messagesLimit = 0, nickColor = "user", removeSelector, addition, customNickColor,channelName;
+let totalMessages = 0, messagesLimit = 0, nickColor = "user", removeSelector, addition, customNickColor, channelName,
+    provider;
 let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let hideAfter = 60;
@@ -6,7 +7,7 @@ let hideCommands = "no";
 let ignoredUsers = [];
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.event.listener === 'widget-button') {
-        console.log(obj.detail);
+
         if (obj.detail.event.field === 'testMessage') {
             let emulated = new CustomEvent("onEventReceived", {
                 detail: {
@@ -80,13 +81,16 @@ window.addEventListener('onEventReceived', function (obj) {
         $(`.message-row[data-sender=${sender}]`).remove();
         return;
     }
-    console.log(obj.detail);
+
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
     if (data.text.startsWith("!") && hideCommands === "yes") return;
     if (ignoredUsers.indexOf(data.nick) !== -1) return;
     let message = attachEmotes(data);
     let badges = "", badge;
+    if (provider === 'mixer') {
+        data.badges.push({url: data.avatar});
+    }
     for (let i = 0; i < data.badges.length; i++) {
         badge = data.badges[i];
         badges += `<img alt="" src="${badge.url}" class="badge"> `;
@@ -112,8 +116,10 @@ window.addEventListener('onWidgetLoad', function (obj) {
     nickColor = fieldData.nickColor;
     customNickColor = fieldData.customNickColor;
     hideCommands = fieldData.hideCommands;
-    channelName=obj.detail.channel.username;
-    console.log(obj.detail);
+    channelName = obj.detail.channel.username;
+    fetch('https://api.streamelements.com/kappa/v2/channels/' + obj.detail.channel.id + '/').then(response => response.json()).then((profile) => {
+        provider = profile.provider;
+    });
     if (fieldData.alignMessages === "block") {
         addition = "prepend";
         removeSelector = ".message-row:nth-child(n+" + (messagesLimit + 1) + ")"
@@ -121,7 +127,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
         addition = "append";
         removeSelector = ".message-row:nth-last-child(n+" + (messagesLimit + 1) + ")"
     }
-    console.log(removeSelector);
+
     ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
 });
 
@@ -137,8 +143,13 @@ function attachEmotes(message) {
                     return emote.name === key
                 });
                 if (typeof result[0] !== "undefined") {
-                    let url = result[0]['urls'][4];
-                    return `<img alt="" src="${url}" class="emote"/>`;
+                    let url = result[0]['urls'][1];
+                    if (typeof result[0].coords === "undefined") {
+                        result[0].coords = {x: 0, y: 0};
+                    }
+                    let x = parseInt(result[0].coords.x);
+                    let y = parseInt(result[0].coords.y);
+                    return `<div class="emote" style="width: 24px; height: 24px; display: inline-block; background-image: url(${url}); background-position: -${x}px -${y}px;"></div>`;
                 } else return key;
 
             }
