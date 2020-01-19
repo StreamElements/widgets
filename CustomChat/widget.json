@@ -1,4 +1,9 @@
 {
+  "testMessage": {
+    "type": "button",
+    "label": "Test message",
+    "value": "Test message"
+  },
   "fontName": {
     "type": "text",
     "label": "Font name",
@@ -67,7 +72,7 @@
     "options": {
       "user": "as on twitch",
       "messagecolor": "same as message text",
-      "custom":"specified below"
+      "custom": "specified below"
     }
   },
   "customNickColor": {
