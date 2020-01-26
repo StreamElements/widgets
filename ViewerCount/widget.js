@@ -11,20 +11,30 @@ If you want other styling:
 
 let timeToRefresh = 60;
 let channelName;
+let provider = "twitch";
 window.addEventListener('onWidgetLoad', function (obj) {
     channelName = obj["detail"]["channel"]["username"];
-    getData();
-    setInterval(function () {
+    fetch('https://api.streamelements.com/kappa/v2/channels/' + obj.detail.channel.id + '/').then(response => response.json()).then((profile) => {
+        provider = profile.provider;
         getData();
-    }, timeToRefresh * 1000);
+        setInterval(function () {
+            getData();
+        }, timeToRefresh * 1000);
+    });
+
 
 });
 
 function getData() {
-    $.get("https://decapi.me/twitch/viewercount/" + channelName, function (data) {
-        $(".odometer").html(data);
-
-    });
+    if (provider === "twitch") {
+        fetch(`https://decapi.me/twitch/viewercount/${channelName}`).then(response => response.text()).then(data => {
+            $(".odometer").html(data);
+        })
+    } else if (provider === "mixer") {
+        fetch(`https://mixer.com/api/v1/channels/${channelName}?fields=viewersCurrent`).then(response => response.json()).then(obj => {
+            $(".odometer").html(obj.viewersCurrent);
+        })
+    }
 }
 
 
