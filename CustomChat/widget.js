@@ -135,6 +135,13 @@ window.addEventListener('onWidgetLoad', function (obj) {
 function attachEmotes(message) {
     let text = html_encode(message.text);
     let data = message.emotes;
+    if (typeof message.attachment !== "undefined") {
+        if (typeof message.attachment.media !== "undefined") {
+            if (typeof message.attachment.media.image !== "undefined") {
+                text = `${message.text}<img src="${message.attachment.media.image.src}" style="width:${fieldData.fontSize * 2}px;">`;
+            }
+        }
+    }
     return text
         .replace(
             /([^\s]*)/gi,
