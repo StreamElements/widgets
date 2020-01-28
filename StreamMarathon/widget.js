@@ -1,8 +1,8 @@
 //MULTIPLIERS:
 let fieldData;
 
-let maxTime; // Time cap you want to use
-let minTime;
+let maxTime = new Date(); // Time cap you want to use
+let minTime = new Date();
 let addOnZero = false;
 
 let start;
@@ -99,9 +99,18 @@ function saveState() {
 function loadState() {
     SE_API.store.get('marathon').then(obj => {
         if (obj !== null) {
-            let current = new Date(obj.current);
-            minTime = new Date(obj.minTime);
-            maxTime = new Date(obj.maxTime);
+            let current = new Date();
+            if (fieldData.preserveTime === "save") {
+                current = new Date(obj.current);
+                minTime = new Date(obj.minTime);
+                maxTime = new Date(obj.maxTime);
+            } else if (fieldData.preserveTime === "restart") {
+                minTime = new Date();
+                minTime.setMinutes(minTime.getMinutes() + fieldData.minTime);
+                maxTime = new Date();
+                maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
+                start = minTime;
+            }
             if (current > 0) {
                 current = Math.max(current, minTime);
                 start = new Date(current);

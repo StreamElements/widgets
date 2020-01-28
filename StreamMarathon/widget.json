@@ -2,19 +2,30 @@
   "minTime": {
     "type": "number",
     "label": "Initial marathon duration (minutes)",
-    "value": 3600,
+    "value": 60,
     "group": "Timer settings"
   },
   "maxTime": {
     "type": "number",
     "label": "Maximum marathon duration (minutes):",
-    "value": 86400,
+    "value": 1440,
     "group": "Timer settings"
   },
   "resetTimer": {
     "type": "button",
-    "label": "Reset timer",
-    "value": "Reset timer",
+    "label": "Start/Reset timer",
+    "value": "Start/Reset timer",
+    "group": "Timer settings"
+  },
+  "preserveTime": {
+    "type": "dropdown",
+    "label": "Overlay reload behaviour",
+    "value": "ignore",
+    "options": {
+      "ignore": "Wait for start to be clicked",
+      "save": "Continue countdown",
+      "restart": "Restart countdown"
+    },
     "group": "Timer settings"
   },
   "addOnZero": {
