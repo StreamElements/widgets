@@ -20,8 +20,8 @@ let start = new Date();
 let isPlaying = false;
 
 let duration;
-// Waiting to video load
-var vid = document.getElementById("intro");
+let vid = document.getElementById("intro");
+
 window.setInterval(function (t) {
     if (vid.readyState > 0) {
         duration = vid.duration;
@@ -29,26 +29,13 @@ window.setInterval(function (t) {
     }
 }, 500);
 
-window.addEventListener('onWidgetLoad', function (obj) {
-    const fieldData = obj.detail.fieldData;
-    minutes = fieldData.introDuration;
-    includeIntro=(fieldData.includeIntro==="yes");
-    closeAfterIntro=(fieldData.closeAfterIntro==="yes");
-    hideCounter=(fieldData.hideCounter==="yes");
-    showMessage=(fieldData.showMessage==="yes");
-
-});
-
-$("document").ready(function () {
-
-
+const animate = () => {
     let timeUntil = start.getTime() + minutes * 60000;
     let finished = false;
     $('#countdown').countdown(timeUntil, {elapse: true}).on('update.countdown', function (event) {
         if (!event.elapsed || event.offset.totalSeconds === 0) {
             $(this).html(event.strftime('%H:%M:%S'));
         }
-
         if (!finished) {
             if (includeIntro && event.offset.totalSeconds < duration && !isPlaying) {
                 console.log("Playing intro");
@@ -56,7 +43,6 @@ $("document").ready(function () {
                 $(".blinder").addClass("hideBlinder");
                 vid.play();
             }
-
             if (event.elapsed) {
                 if (hideCounter) {
                     $(this).html('');
@@ -76,11 +62,18 @@ $("document").ready(function () {
                     $(".blinder").addClass("hideBlinder");
                     vid.play();
                 }
-
-
             }
-
-
         }
     });
+};
+
+window.addEventListener('onWidgetLoad', function (obj) {
+    const fieldData = obj.detail.fieldData;
+    minutes = fieldData.introDuration;
+    includeIntro = (fieldData.includeIntro === "yes");
+    closeAfterIntro = (fieldData.closeAfterIntro === "yes");
+    hideCounter = (fieldData.hideCounter === "yes");
+    showMessage = (fieldData.showMessage === "yes");
+    vid.volume=fieldData.introVolume/100;
+    animate();
 });

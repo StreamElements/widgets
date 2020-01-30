@@ -1,36 +1,19 @@
 {
-  "introUrl": {
-    "type": "text",
-    "label": "URL to webm intro file",
-    "value": "https://URL-to-your.intro/file.webm"
-  },
-  "finalMessage": {
-    "type": "text",
-    "label": "Accept words starting with",
-    "value": "#"
-  },
-  "showMessage": {
-    "type": "dropdown",
-    "label": "Show message after countdown is complete:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
   "introDuration": {
     "type": "number",
     "label": "Intro duration in minutes",
-    "value": 5
+    "value": 5,
+    "group": "Main settings"
   },
   "includeIntro": {
     "type": "dropdown",
     "label": "Play intro while countdown is in progress:",
     "value": "yes",
     "options": {
-      "yes": "Yes",
+      "yes": "Yes - play when time remaining is equal to video duration",
       "no": "No - play after countdown is complete"
-    }
+    },
+    "group": "Main settings"
   },
   "closeAfterIntro": {
     "type": "dropdown",
@@ -39,7 +22,8 @@
     "options": {
       "yes": "Yes",
       "no": "No - freeze the last frame of intro video"
-    }
+    },
+    "group": "Main settings"
   },
   "hideCounter": {
     "type": "dropdown",
@@ -48,6 +32,103 @@
     "options": {
       "yes": "Yes",
       "no": "No"
-    }
+    },
+    "group": "Main settings"
+  },
+  "introUrl": {
+    "type": "video-input",
+    "label": "URL to webm intro file",
+    "value": "https://cdn.streamelements.com/uploads/34557a35-0c38-4c2c-874b-8813fa217442.mp4",
+    "group": "Video file settings"
+  },
+  "introVolume": {
+    "type": "slider",
+    "label": "Video volume",
+    "value": 40,
+    "min": 0,
+    "max": 100,
+    "group": "Video file settings"
+  },
+  "finalMessage": {
+    "type": "text",
+    "label": "Final message",
+    "value": "Will start soon",
+    "group": "Text settings"
+  },
+  "showMessage": {
+    "type": "dropdown",
+    "label": "Show message after countdown is complete:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Text settings"
+  },
+  "fontName": {
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Montserrat",
+    "group": "Typography"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font size",
+    "value": 24,
+    "group": "Typography"
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group": "Typography"
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font Color",
+    "value": "rgba(255,255,255,1)",
+    "group": "Typography"
+  },
+  "shadow": {
+    "type": "text",
+    "label": "Text shadow",
+    "value": "-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;",
+    "group": "Typography"
+  },
+  "positionX": {
+    "type": "number",
+    "label": "Counter Position X",
+    "step": 1,
+    "value": 800,
+    "group": "Typography"
+  },
+  "positionY": {
+    "type": "number",
+    "label": "Counter Position Y",
+    "step": 1,
+    "value": 800,
+    "group": "Typography"
+  },
+  "messageX": {
+    "type": "number",
+    "label": "Final message position X",
+    "step": 1,
+    "value": 800,
+    "group": "Typography"
+  },
+  "messageY": {
+    "type": "number",
+    "label": "Final message position Y",
+    "step": 1,
+    "value": 800,
+    "group": "Typography"
   }
 }

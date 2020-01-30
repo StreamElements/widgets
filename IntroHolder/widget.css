@@ -1,16 +1,18 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family={{fontName}}');
 
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: '{{fontName}}', sans-serif;
+    color:{{fontColor}};
+    font-weight:{{fontWeight}};
+    font-size:{{fontSize}}px;
 }
 
 #countdown {
     z-index: 1000;
     position: absolute;
-    top: 45%;
-    width: 100%;
-    text-align: center;
+    top: {positionY}px;
+    left: {positionX}px;
     font-size: 100px;
 }
 
