@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family={fontName}');
 * {
     font-family: '{{fontName}}', sans-serif;
-color:{{fontColor}};
-font-weight:{{fontWeight}};
-font-size:{{fontSize}}px;
+    color:{{fontColor}};
+    font-weight:{{fontWeight}};
+    font-size:{{fontSize}}px;
 }
 
 .holder{
@@ -13,9 +13,21 @@ font-size:{{fontSize}}px;
     height:100%;
     top:0;
     left:0;
+    text-align:{textAlign};
 }
 
-.main-container{
+.dynamicFontSize{
     display:inline-block;
     white-space: nowrap;
+}
+
+.plainh{
+    display:none;
+}
+.marquee{
+    overflow: hidden;
+    text-align:left;
+}
+.marqueeh{
+margin-left:{gap}px;
 }

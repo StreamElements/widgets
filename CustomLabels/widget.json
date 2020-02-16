@@ -37,7 +37,7 @@
       "subscriber-gifted": "Subscriber gifted  count(session only)",
       "tip": "Tip amount",
       "cheer": "Bits amount",
-      "subscriber-points":"Subscriber points"
+      "subscriber-points": "Subscriber points"
     }
   },
   "eventPeriod": {
@@ -512,9 +512,9 @@
     "type": "dropdown",
     "label": "Font size",
     "value": "static",
-    "options":{
-      "static":"Static - set below",
-      "dynamic":"Dynamic - fit container size"
+    "options": {
+      "static": "Static - set below",
+      "dynamic": "Dynamic - fit container size"
     }
   },
   "fontSize": {
@@ -549,5 +549,24 @@
     "type": "number",
     "label": "Stroke size",
     "value": 2
+  },
+  "marquee": {
+    "type": "dropdown",
+    "label": "Enable marquee",
+    "value": "plain",
+    "options": {
+      "marquee": "yes",
+      "plain": "no"
+    }
+  },
+  "marqueeSpeed": {
+    "type": "number",
+    "label": "Marquee speed",
+    "value": 5
+  },
+  "gap": {
+    "type": "number",
+    "label": "Gap between segments",
+    "value": 50
   }
 }
