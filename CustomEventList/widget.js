@@ -15,7 +15,7 @@ let eventsLimit = 5,
     direction = "top",
     textOrder = "nameFirst",
     minCheer = 0,
-    fadeoutTime;
+    fadeoutTime, fadeoutTimeout;
 
 let userCurrency,
     totalEvents = 0;
@@ -166,6 +166,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 
 
 function addEvent(type, text, username, isHistorical) {
+    clearTimeout(fadeoutTimeout);
     totalEvents += 1;
     let element;
     const showClass = isHistorical ? '' : '{animationIn}';
@@ -200,7 +201,9 @@ function addEvent(type, text, username, isHistorical) {
         }
     }
     if (fadeoutTime !== 999) {
-        $('.main-container').addClass("fadeOutClass");
+        fadeoutTimeout = setTimeout(() => {
+            $('.main-container').addClass("fadeOutClass");
+        }, fadeoutTime * 1000);
     }
     if (totalEvents > eventsLimit) {
         removeEvent(totalEvents - eventsLimit);

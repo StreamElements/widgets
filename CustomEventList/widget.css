@@ -12,7 +12,6 @@
 
 .fadeOutClass{
     animation: fadeOut 1s;
-    animation-delay:{{fadeoutTime}}s;
     animation-fill-mode: forwards;
 }
 
