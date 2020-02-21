@@ -5,6 +5,11 @@
     overflow: hidden;
 }
 
+.main-container{
+    display:none;
+    overflow:visible;
+}
+
 .fadeOutClass{
     animation: fadeOut 1s;
     animation-delay:{{fadeoutTime}}s;
@@ -19,6 +24,7 @@
         opacity: 0;
     }
 }
+
 .event-follower.mask {
     mask-image: url('{followerImg}');
     -webkit-mask-image: url('{followerImg}');
@@ -86,14 +92,6 @@
     background-size:100% 100%;
 }
 
-@keyframes slide-in {
-    0% {
-        width: 0px;
-    }
-    100% {
-        width: 100%;
-    }
-}
 
 @keyframes pop-in {
     0% {
@@ -113,18 +111,18 @@
         margin-bottom: 12px
     }
     85% {
-        width: 23px;
-        height: 23px;
-        background-size: 23px 23px;
+        width: calc({fontSize}px - 2px);
+        height: calc({fontSize}px - 2px);
+        background-size: calc({fontSize}px - 2px) calc({fontSize}px - 2px);
         margin-top: 1px;
         margin-left: 2px;
         margin-right: 0px;
         margin-bottom: 0px
     }
     100% {
-        width: 21px;
-        height: 21px;
-        background-size: 21px 21px;
+        width: calc({fontSize}px + 3px);
+        height: calc({fontSize}px + 3px);
+        background-size: {fontSize}px {fontSize}px;
         margin-top: 2px;
         margin-left: 3px;
     }
@@ -140,24 +138,26 @@
 }
 
 .event-container {
-    width: 0px;
-    height: 25px;
+    position:relative;
+    width: 100%;
+    height: calc({fontSize}px + 8px);
     display: flex;
     justify-content: right;
     background-color: {{backgroundColor}};
     border-radius: 14px;
     margin-top: 3px;
-    animation: 0.6s slide-in;
-    animation-fill-mode: forwards;
 }
+
 .backgroundsvg{
+    position:absolute;
     background: url(https://s3.amazonaws.com/cdn.streamelements.com/static/event-list/patterns/{{theme}}.svg);
-    background-size: 100px;
+    background-size: 10px;
     width:100%;
+    height:100%;
     opacity:calc({{backgroundOpacity}}/100);
-    position:relative;
     z-index:0;
 }
+
 .event-image {
     animation: 0.7s pop-in;
     animation-fill-mode: forwards;
@@ -176,15 +176,16 @@
     animation: 1.2s fade-in;
     animation-fill-mode: forwards;
     display: inline-block;
-    width: 140px;
     font-weight: 400;
     margin-top: 4px;
-    margin-left: 33px;
+    margin-left: calc({fontSize}px + 8px);
     position:absolute;
 }
 
 .details-container {
-    width:40%;
+    position: absolute;
+    width:100%;
+    text-align:right;
     animation: 1.2s fade-in;
     animation-fill-mode: forwards;
     display: inline-block;

@@ -30,58 +30,58 @@ let getBadge = months => {
     return `<img alt="${months} months" src="${badges[badge].image_url_2x}" class="badge"/>`;
 };
 
-let parseEvent = event => {
-
-    if (event.type === 'follower') {
-        if (includeFollowers) {
-            addEvent('follower', 'Follower', event.name);
-        }
-    } else if (event.type === 'redemption') {
-        if (includeRedemptions) {
-            addEvent('redemption', 'Redeemed', event.name);
-        }
-    } else if (event.type === 'subscriber') {
-        if (!includeSubs) return;
-        let prefix = "Sub ";
-        if (subLabel === "badge") {
-            prefix = getBadge(event.amount);
-        }
-        if (event.amount === 'gift') {
-            addEvent('sub', `${prefix} gift`, event.name);
-        } else {
-            addEvent('sub', `${prefix} X${event.amount}`, event.name);
-        }
-
-    } else if (event.type === 'host') {
-        if (includeHosts && minHost <= event.amount) {
-            addEvent('host', `Host ${event.amount.toLocaleString()}`, event.name);
-        }
-    } else if (event.type === 'cheer') {
-        if (includeCheers && minCheer <= event.amount) {
-            addEvent('cheer', `${event.amount.toLocaleString()} Bits`, event.name);
-        }
-    } else if (event.type === 'tip') {
-        if (includeTips && minTip <= event.amount) {
-            if (event.amount === parseInt(event.amount)) {
-                addEvent('tip', event.amount.toLocaleString(userLocale, {
-                    style: 'currency',
-                    minimumFractionDigits: 0,
-                    currency: userCurrency.code
-                }), event.name);
+let parseEvent = (event, isHistorical) => {
+        if (event.type === 'follower') {
+            if (includeFollowers) {
+                addEvent('follower', 'Follower', event.name, isHistorical);
+            }
+        } else if (event.type === 'redemption') {
+            if (includeRedemptions) {
+                addEvent('redemption', 'Redeemed', event.name, isHistorical);
+            }
+        } else if (event.type === 'subscriber') {
+            if (!includeSubs) return;
+            let prefix = "Sub ";
+            if (subLabel === "badge") {
+                prefix = getBadge(event.amount);
+            }
+            if (event.amount === 'gift') {
+                addEvent('sub', `${prefix} gift`, event.name, isHistorical);
             } else {
-                addEvent('tip', event.amount.toLocaleString(userLocale, {
-                    style: 'currency',
-                    currency: userCurrency.code
-                }), event.name);
+                addEvent('sub', `${prefix} X${event.amount}`, event.name, isHistorical);
+            }
+
+        } else if (event.type === 'host') {
+            if (includeHosts && minHost <= event.amount) {
+                addEvent('host', `Host ${event.amount.toLocaleString()}`, event.name, isHistorical);
+            }
+        } else if (event.type === 'cheer') {
+            if (includeCheers && minCheer <= event.amount) {
+                addEvent('cheer', `${event.amount.toLocaleString()} Bits`, event.name, isHistorical);
+            }
+        } else if (event.type === 'tip') {
+            if (includeTips && minTip <= event.amount) {
+                if (event.amount === parseInt(event.amount)) {
+                    addEvent('tip', event.amount.toLocaleString(userLocale, {
+                        style: 'currency',
+                        minimumFractionDigits: 0,
+                        currency: userCurrency.code
+                    }), event.name, isHistorical);
+                } else {
+                    addEvent('tip', event.amount.toLocaleString(userLocale, {
+                        style: 'currency',
+                        currency: userCurrency.code
+                    }), event.name, isHistorical);
+                }
+            }
+        } else if (event.type === 'raid') {
+            if (includeRaids && minRaid <= event.amount) {
+                addEvent('raid', `Raid ${event.amount.toLocaleString()}`, event.name, isHistorical);
             }
         }
-    } else if (event.type === 'raid') {
-        if (includeRaids && minRaid <= event.amount) {
-            addEvent('raid', `Raid ${event.amount.toLocaleString()}`, event.name);
-        }
-    }
 
-};
+    }
+;
 
 let getBadges = apiKey => {
     return new Promise(resolve => {
@@ -113,7 +113,7 @@ window.addEventListener('onEventReceived', function (obj) {
     const listener = obj.detail.listener.split("-")[0];
     const event = obj.detail.event;
     event.type = listener;
-    parseEvent(event);
+    parseEvent(event, 0);
 });
 
 
@@ -144,30 +144,34 @@ window.addEventListener('onWidgetLoad', function (obj) {
     if (fieldData.subLabel === "badge") {
         getBadges(obj.detail.channel.apiToken).then((result) => {
             subLabel = result;
-            console.log("We are using: "+result);
+            console.log("We are using: " + result);
             let eventIndex;
             for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
                 const event = recents[eventIndex];
-                parseEvent(event)
+                parseEvent(event, 1)
             }
         });
     } else {
         let eventIndex;
         for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
             const event = recents[eventIndex];
-            parseEvent(event)
+            parseEvent(event, 1)
         }
     }
+    setTimeout(() => {
+        $(".main-container").show();
+    }, 2500);
 
 });
 
 
-function addEvent(type, text, username) {
+function addEvent(type, text, username, isHistorical) {
     totalEvents += 1;
     let element;
+    const showClass = isHistorical ? '' : '{animationIn}';
     if (textOrder === "actionFirst") {
         element = `
-    <div class="event-container" id="event-${totalEvents}">
+    <div class="event-container animated ${showClass}" id="event-${totalEvents}">
 		<div class="backgroundsvg"></div>
         <div class="event-image event-${type} {imageType}"></div>
         <div class="username-container">${text}</div>
@@ -175,7 +179,7 @@ function addEvent(type, text, username) {
     </div>`;
     } else {
         element = `
-    <div class="event-container" id="event-${totalEvents}">
+    <div class="event-container animated ${showClass}"  id="event-${totalEvents}">
 		<div class="backgroundsvg"></div>
         <div class="event-image event-${type} {imageType}"></div>
         <div class="username-container">${username}</div>
@@ -183,9 +187,17 @@ function addEvent(type, text, username) {
     </div>`;
     }
     if (direction === "bottom") {
-        $('.main-container').removeClass("fadeOutClass").show().append(element);
+        if (isHistorical) {
+            $('.main-container').append(element);
+        } else {
+            $('.main-container').removeClass("fadeOutClass").append(element);
+        }
     } else {
-        $('.main-container').removeClass("fadeOutClass").show().prepend(element);
+        if (isHistorical) {
+            $('.main-container').prepend(element);
+        } else {
+            $('.main-container').removeClass("fadeOutClass").prepend(element);
+        }
     }
     if (fadeoutTime !== 999) {
         $('.main-container').addClass("fadeOutClass");
@@ -196,10 +208,9 @@ function addEvent(type, text, username) {
 }
 
 function removeEvent(eventId) {
-    $(`#event-${eventId}`).animate({
-        height: 0,
-        opacity: 0
-    }, 'slow', function () {
+    $(`#event-${eventId}`).removeClass(`{animationIn}`).addClass(`{animationOut}`);
+    setTimeout(() => {
         $(`#event-${eventId}`).remove();
-    });
+    }, 1000);
+
 }

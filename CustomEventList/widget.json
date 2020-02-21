@@ -1,163 +1,12 @@
 {
-  "fontName": {
-    "type": "googleFont",
-    "label": "Font name",
-    "value": "Montserrat"
-  },
-  "fontSize": {
-    "type": "number",
-    "label": "Font size",
-    "value": 24
-  },
-  "fontWeight": {
-    "label": "Font Weight",
-    "type": "dropdown",
-    "value": "400",
-    "options": {
-      "100": "Thin (100)",
-      "300": "Light (300)",
-      "400": "Regular (400)",
-      "500": "Medium (500)",
-      "700": "Bold (700)",
-      "900": "Black (900)"
-    }
-  },
-  "fontColor": {
-    "type": "colorpicker",
-    "label": "Font Color",
-    "value": "rgba(255,255,255,1)"
-  },
   "eventsLimit": {
     "type": "number",
     "label": "Limit displayed events to:",
-    "value": 5
-  },
-  "includeFollowers": {
-    "type": "dropdown",
-    "label": "Display followers:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "followerImg":{
-    "type":"image-input",
-    "label":"Follower image",
-    "value":"https://cdn.streamelements.com/static/custom-event-list/follower.svg"
-  },
-  "includeRedemptions": {
-    "type": "dropdown",
-    "label": "Display redemptions:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "redemptionImg":{
-    "type":"image-input",
-    "label":"Redemption image",
-    "value":"https://cdn.streamelements.com/static/custom-event-list/redemption.svg"
-  },
-  "includeHosts": {
-    "type": "dropdown",
-    "label": "Display hosts:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "minHost": {
-    "type": "number",
-    "label": "Minimum amount of hosting viewers:",
-    "value": 1
-  },
-  "hostImg":{
-    "type":"image-input",
-    "label":"Host image",
-    "value":"https://cdn.streamelements.com/static/custom-event-list/host.svg"
-  },
-  "includeRaids": {
-    "type": "dropdown",
-    "label": "Display raids:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "minRaid": {
-    "type": "number",
-    "label": "Minimum amount of raiding viewers:",
-    "value": 1
-  },
-  "raidImg":{
-    "type":"image-input",
-    "label":"Raid image",
-    "value":"https://cdn.streamelements.com/static/custom-event-list/raid.svg"
-  },
-  "includeSubs": {
-    "type": "dropdown",
-    "label": "Display subscribers:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "subLabel": {
-    "type": "dropdown",
-    "label": "Sub label:",
-    "value": "sub",
-    "options": {
-      "sub": "Sub xNumber",
-      "badge": "badge xNumber"
-    }
-  },
-  "subImg":{
-    "type":"image-input",
-    "label":"Follower image",
-    "value":"https://cdn.streamelements.com/static/custom-event-list/sub.svg"
-  },
-  "includeTips": {
-    "type": "dropdown",
-    "label": "Display tips:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "minTip": {
-    "type": "number",
-    "label": "Minimum amount of tip:",
-    "value": 1
-  },
-  "tipImg":{
-    "type":"image-input",
-    "label":"Tip image",
-    "value":"https://cdn.streamelements.com/static/custom-event-list/tip.svg"
-  },
-  "includeCheers": {
-    "type": "dropdown",
-    "label": "Display cheers:",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "minCheer": {
-    "type": "number",
-    "label": "Minimum amount of bits in Cheer:",
-    "value": 1
-  },
-  "cheerImg":{
-    "type":"image-input",
-    "label":"Cheer image",
-    "value":"https://cdn.streamelements.com/static/custom-event-list/bits.svg"
+    "value": 5,
+    "step": 1,
+    "min": 1,
+    "max": 100,
+    "group": "Main"
   },
   "direction": {
     "type": "dropdown",
@@ -166,35 +15,41 @@
     "options": {
       "top": "Top",
       "bottom": "Bottom"
-    }
+    },
+    "group": "Main"
   },
-  "textOrder":{
+  "textOrder": {
     "type": "dropdown",
     "label": "Text order:",
     "value": "nameFirst",
     "options": {
       "nameFirst": "Name first",
       "actionFirst": "Action first"
-    }
+    },
+    "group": "Main"
   },
   "fadeoutTime": {
     "type": "number",
     "label": "Fadeout after action in seconds, 999 to disable:",
-    "value": 999
+    "value": 999,
+    "min": 1,
+    "max": 999,
+    "group": "Main"
   },
-
   "theme": {
     "type": "dropdown",
     "label": "Background pattern:",
-    "value": "texture",
+    "value": "plain",
     "options": {
+      "blank": "plain",
       "texture": "texture",
       "diagonal-stripes": "Diagonal stripes",
       "hexagons": "Hexagons",
       "i-like-food": "I like food",
       "tiny-checkers": "Tiny checkers",
       "circuit-board": "Circuit board"
-    }
+    },
+    "group": "Main"
   },
   "backgroundOpacity": {
     "type": "number",
@@ -202,26 +57,113 @@
     "max": 100,
     "step": 1,
     "label": "Texture opacity",
-    "value": 50
+    "value": 50,
+    "group": "Main"
   },
   "backgroundColor": {
     "type": "colorpicker",
     "label": "Background color",
-    "value": "rgba(36, 6, 73, 0.15)"
+    "value": "rgba(36, 6, 73, 0.15)",
+    "group": "Main"
   },
-  "imageType":{
-    "label":"Display image as:",
-    "type":"dropdown",
-    "options":{
-      "mask":"mask",
-      "background":"background"
+  "imageType": {
+    "label": "Display image as:",
+    "type": "dropdown",
+    "options": {
+      "mask": "mask",
+      "background": "background"
     },
-    "value":"mask"
+    "value": "mask",
+    "group": "Main"
   },
   "iconColor": {
     "type": "colorpicker",
     "label": "Icon Color (when mask)",
-    "value": "rgb(255, 255, 255, 255)"
+    "value": "rgb(255, 255, 255, 255)",
+    "group": "Main"
+  },
+  "animationIn": {
+    "type": "dropdown",
+    "label": "Animation In:",
+    "value": "none",
+    "options": {
+      "none": "None",
+      "bounceIn": "bounceIn",
+      "bounceInDown": "bounceInDown",
+      "bounceInLeft": "bounceInLeft",
+      "bounceInRight": "bounceInRight",
+      "bounceInUp": "bounceInUp",
+      "fadeIn": "fadeIn",
+      "fadeInDown": "fadeInDown",
+      "fadeInDownBig": "fadeInDownBig",
+      "fadeInLeft": "fadeInLeft",
+      "fadeInLeftBig": "fadeInLeftBig",
+      "fadeInRight": "fadeInRight",
+      "fadeInRightBig": "fadeInRightBig",
+      "fadeInUp": "fadeInUp",
+      "fadeInUpBig": "fadeInUpBig",
+      "flipInX": "flipInX",
+      "flipInY": "flipInY",
+      "lightSpeedIn": "lightSpeedIn",
+      "rotateIn": "rotateIn",
+      "rotateInDownLeft": "rotateInDownLeft",
+      "rotateInDownRight": "rotateInDownRight",
+      "rotateInUpLeft": "rotateInUpLeft",
+      "rotateInUpRight": "rotateInUpRight",
+      "slideInUp": "slideInUp",
+      "slideInDown": "slideInDown",
+      "slideInLeft": "slideInLeft",
+      "slideInRight": "slideInRight",
+      "zoomIn": "zoomIn",
+      "zoomInDown": "zoomInDown",
+      "zoomInLeft": "zoomInLeft",
+      "zoomInRight": "zoomInRight",
+      "zoomInUp": "zoomInUp",
+      "jackInTheBox": "jackInTheBox",
+      "rollIn": "rollIn"
+    },
+    "group": "Main"
+  },
+  "animationOut": {
+    "type": "dropdown",
+    "label": "Animation Out:",
+    "value": "none",
+    "options": {
+      "none": "None",
+      "bounceOut": "bounceOut",
+      "bounceOutDown": "bounceOutDown",
+      "bounceOutLeft": "bounceOutLeft",
+      "bounceOutRight": "bounceOutRight",
+      "bounceOutUp": "bounceOutUp",
+      "fadeOut": "fadeOut",
+      "fadeOutDown": "fadeOutDown",
+      "fadeOutDownBig": "fadeOutDownBig",
+      "fadeOutLeft": "fadeOutLeft",
+      "fadeOutLeftBig": "fadeOutLeftBig",
+      "fadeOutRight": "fadeOutRight",
+      "fadeOutRightBig": "fadeOutRightBig",
+      "fadeOutUp": "fadeOutUp",
+      "fadeOutUpBig": "fadeOutUpBig",
+      "flipOutX": "flipOutX",
+      "flipOutY": "flipOutY",
+      "lightSpeedOut": "lightSpeedOut",
+      "rotateOut": "rotateOut",
+      "rotateOutDownLeft": "rotateOutDownLeft",
+      "rotateOutDownRight": "rotateOutDownRight",
+      "rotateOutUpLeft": "rotateOutUpLeft",
+      "rotateOutUpRight": "rotateOutUpRight",
+      "slideOutUp": "slideOutUp",
+      "slideOutDown": "slideOutDown",
+      "slideOutLeft": "slideOutLeft",
+      "slideOutRight": "slideOutRight",
+      "zoomOut": "zoomOut",
+      "zoomOutDown": "zoomOutDown",
+      "zoomOutLeft": "zoomOutLeft",
+      "zoomOutRight": "zoomOutRight",
+      "zoomOutUp": "zoomOutUp",
+      "rollOut": "rollOut"
+    },
+    "group": "Main"
   },
   "locale": {
     "type": "dropdown",
@@ -662,6 +604,185 @@
       "yo": "Yoruba",
       "zu-ZA": "Zulu (South Africa)",
       "zu": "Zulu"
-    }
+    },
+    "group": "Main"
+  },
+  "fontName": {
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Montserrat",
+    "group": "Typography"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font size",
+    "value": 24,
+    "group": "Typography"
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group": "Typography"
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font Color",
+    "value": "rgba(255,255,255,1)",
+    "group": "Typography"
+  },
+  "includeFollowers": {
+    "type": "dropdown",
+    "label": "Display followers:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Followers"
+  },
+  "followerImg": {
+    "type": "image-input",
+    "label": "Follower image",
+    "value": "https://cdn.streamelements.com/static/custom-event-list/follower.svg",
+    "group": "Followers"
+  },
+  "includeRedemptions": {
+    "type": "dropdown",
+    "label": "Display redemptions:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Redemptions"
+  },
+  "redemptionImg": {
+    "type": "image-input",
+    "label": "Redemption image",
+    "value": "https://cdn.streamelements.com/static/custom-event-list/redemption.svg",
+    "group": "Redemptions"
+  },
+  "includeHosts": {
+    "type": "dropdown",
+    "label": "Display hosts:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Hosts"
+  },
+  "minHost": {
+    "type": "number",
+    "label": "Minimum amount of hosting viewers:",
+    "value": 1,
+    "group": "Hosts"
+  },
+  "hostImg": {
+    "type": "image-input",
+    "label": "Host image",
+    "value": "https://cdn.streamelements.com/static/custom-event-list/host.svg",
+    "group": "Hosts"
+  },
+  "includeRaids": {
+    "type": "dropdown",
+    "label": "Display raids:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Raids"
+  },
+  "minRaid": {
+    "type": "number",
+    "label": "Minimum amount of raiding viewers:",
+    "value": 1,
+    "group": "Raids"
+  },
+  "raidImg": {
+    "type": "image-input",
+    "label": "Raid image",
+    "value": "https://cdn.streamelements.com/static/custom-event-list/raid.svg",
+    "group": "Raids"
+  },
+  "includeSubs": {
+    "type": "dropdown",
+    "label": "Display subscribers:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Subscribers"
+  },
+  "subLabel": {
+    "type": "dropdown",
+    "label": "Sub label:",
+    "value": "sub",
+    "options": {
+      "sub": "Sub xNumber",
+      "badge": "badge xNumber"
+    },
+    "group": "Subscribers"
+  },
+  "subImg": {
+    "type": "image-input",
+    "label": "Follower image",
+    "value": "https://cdn.streamelements.com/static/custom-event-list/sub.svg",
+    "group": "Subscribers"
+  },
+  "includeTips": {
+    "type": "dropdown",
+    "label": "Display tips:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Tips"
+  },
+  "minTip": {
+    "type": "number",
+    "label": "Minimum amount of tip:",
+    "value": 1,
+    "group": "Tips"
+  },
+  "tipImg": {
+    "type": "image-input",
+    "label": "Tip image",
+    "value": "https://cdn.streamelements.com/static/custom-event-list/tip.svg",
+    "group": "Tips"
+  },
+  "includeCheers": {
+    "type": "dropdown",
+    "label": "Display cheers:",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Cheers"
+  },
+  "minCheer": {
+    "type": "number",
+    "label": "Minimum amount of bits in Cheer:",
+    "value": 1,
+    "group": "Cheers"
+  },
+  "cheerImg": {
+    "type": "image-input",
+    "label": "Cheer image",
+    "value": "https://cdn.streamelements.com/static/custom-event-list/bits.svg",
+    "group": "Cheers"
   }
 }
