@@ -34,7 +34,8 @@
     "value": "wait",
     "options": {
       "wait": "Wait for catchup",
-      "add": "New events add time to 0"
+      "add": "New events add time to 0",
+      "stop": "Stop adding time"
     },
     "group": "Timer settings"
   },

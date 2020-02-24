@@ -4,11 +4,12 @@ let fieldData;
 let maxTime = new Date(); // Time cap you want to use
 let minTime = new Date();
 let addOnZero = false;
-
+let stopOnZero = false;
 let start;
 
 function countdown(seconds) {
     let toCountDown = start;
+    if (stopOnZero && toCountDown < new Date()) return;
     if (addOnZero) {
         let a = [toCountDown, new Date()];
         a.sort(function (a, b) {
@@ -48,17 +49,17 @@ window.addEventListener('onEventReceived', function (obj) {
 
     const data = obj.detail.event;
     if (listener === 'follower-latest') {
-        if (fieldData.followSeconds != 0) countdown(fieldData.followSeconds);
+        if (fieldData.followSeconds !== 0) countdown(fieldData.followSeconds);
     } else if (listener === 'subscriber-latest') {
         if (data.bulkGifted) { // Ignore gifting event and count only real subs
             return;
         }
         if (parseInt(data.tier) === 2000) {
-            if (fieldData.sub2Seconds != 0) countdown(fieldData.sub2Seconds);
+            if (fieldData.sub2Seconds !== 0) countdown(fieldData.sub2Seconds);
         } else if (parseInt(data.tier) === 3000) {
-            if (fieldData.sub3Seconds != 0) countdown(fieldData.sub3Seconds);
+            if (fieldData.sub3Seconds !== 0) countdown(fieldData.sub3Seconds);
         } else {
-            if (fieldData.sub1Seconds != 0) countdown(fieldData.sub1Seconds);
+            if (fieldData.sub1Seconds !== 0) countdown(fieldData.sub1Seconds);
         }
 
     } else if (listener === 'host-latest') {
@@ -88,6 +89,7 @@ window.addEventListener('onEventReceived', function (obj) {
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
     addOnZero = (fieldData.addOnZero === "add");
+    stopOnZero = (fieldData.addOnZero === "stop");
     loadState();
 });
 
