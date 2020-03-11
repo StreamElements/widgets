@@ -51,6 +51,7 @@
 .emote{
     height:1.1em;
     vertical-align: middle;
+    background-repeat:no-repeat;
 }
 
 .action{
