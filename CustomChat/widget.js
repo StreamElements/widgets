@@ -157,7 +157,7 @@ function attachEmotes(message) {
                     let x = parseInt(result[0].coords.x);
                     let y = parseInt(result[0].coords.y);
                     const backgroundTwitch = provider === "twitch" ? "background-size: contain; " : "";
-                    return `<div class="emote" style="width: 24px; height: 24px; display: inline-block; background-image: url(${url});  ${backgroundTwitch}background-position: -${x}px -${y}px;"></div>`;
+                    return `<div class="emote" style="width: {fontSize}px; height: {fontSize}px; display: inline-block; background-image: url(${url});  ${backgroundTwitch}background-position: -${x}px -${y}px;"></div>`;
                 } else return key;
 
             }
