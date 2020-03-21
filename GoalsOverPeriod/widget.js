@@ -21,7 +21,12 @@ window.addEventListener('onWidgetLoad', async function (obj) {
             goal = await getCounterValue(obj.detail.channel.apiToken);
         }
         if (fieldData['eventType'] === 'tip') {
-            $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
+            if (goal % 1){
+                $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
+            }
+            else{
+                $("#goal").html(goal.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: currency}));
+            }
         } else {
             $("#goal").html(goal);
         }
@@ -78,7 +83,12 @@ function updateBar(count) {
     let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
     $("#bar").css('width', percentage + "%");
     if (fieldData['eventType'] === 'tip') {
-        count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
+        if (count %1){
+            count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
+        }
+        else{
+            count = count.toLocaleString(userLocale, {minimumFractionDigits: 0,style: 'currency', currency: currency})
+        }
     }
     $("#count").html(count);
     if (fieldData.fadeoutAfter) {
