@@ -2,6 +2,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 .meter {
+    display:{displayBar};
     height: 25px;  /* Can be anything */
     position: relative;
     background: {{backgroundColor}};
@@ -11,8 +12,9 @@
     padding: 0px;
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
 }
+
 .meter > span {
-    display: block;
+    display:{displayBar};
     height: 100%;
     border-radius: 25px;
     background-color: {{barColor1}};
@@ -22,8 +24,8 @@
         {{barColor2}} 69%
     );
     box-shadow:
-        inset 0 2px 9px  rgba(255,255,255,0.3),
-        inset 0 -2px 6px rgba(0,0,0,0.4);
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
     position: relative;
     overflow: hidden;
 }
@@ -46,10 +48,11 @@
     border-radius:25px;
     overflow: hidden;
 }
+
 .legend{
+    display:{displayLabels};
     width: 100%;
     font-size:{{labelSize}}px;
-    color:{{labelColor}};
     text-align:center;
     font-weight:bold;
 }
@@ -59,4 +62,13 @@
     color:{{titleColor}};
     text-align:center;
     font-weight:bold;
+}
+#count{
+    color:{{valueColor}};
+}
+#divider{
+    color:{{dividerColor}};
+}
+#goal{
+    color:{{goalColor}};
 }

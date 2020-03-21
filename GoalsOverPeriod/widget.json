@@ -36,7 +36,7 @@
       "subscriber-gifted": "Subscriber gifted (session only)",
       "tip": "Tip amount",
       "cheer": "Bits amount",
-      "subscriber-points":"Subscriber points"
+      "subscriber-points": "Subscriber points"
     }
   },
   "eventPeriod": {
@@ -49,6 +49,24 @@
       "month": "Month",
       "total": "Total",
       "goal": "Amount from goal data"
+    }
+  },
+  "displayBar": {
+    "type": "dropdown",
+    "label": "Display bar",
+    "value": "block",
+    "options": {
+      "block": "Yes",
+      "none": "No"
+    }
+  },
+  "displayLabels": {
+    "type": "dropdown",
+    "label": "Display labels",
+    "value": "block",
+    "options": {
+      "block": "Yes",
+      "none": "No"
     }
   },
   "backgroundColor": {
@@ -66,9 +84,24 @@
     "label": "Bar color2",
     "value": "rgb(85, 33, 195)"
   },
-  "labelColor": {
+  "divider": {
+    "type": "text",
+    "label": "Divider",
+    "value": "/"
+  },
+  "dividerColor": {
     "type": "colorpicker",
-    "label": "Label font color",
+    "label": "Divider font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "valueColor": {
+    "type": "colorpicker",
+    "label": "Current value font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "goalColor": {
+    "type": "colorpicker",
+    "label": "Goal font color",
     "value": "rgb(255, 255, 255)"
   },
   "labelSize": {
@@ -76,10 +109,10 @@
     "label": "Label font Size",
     "value": 24
   },
-  "fadeoutAfter":{
-    "type":"number",
-    "label":"Fadeout after (s) - 0 to disable",
-    "value":0
+  "fadeoutAfter": {
+    "type": "number",
+    "label": "Fadeout after (s) - 0 to disable",
+    "value": 0
   },
   "userLocale": {
     "type": "dropdown",
