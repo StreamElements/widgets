@@ -1,5 +1,6 @@
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: '{fontName}', sans-serif;
+    font-weight: '{fontWeight}';
 }
 .meter {
     display:{displayBar};
