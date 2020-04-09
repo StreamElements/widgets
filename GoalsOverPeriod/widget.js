@@ -1,5 +1,21 @@
 let index, goal, fieldData, currency, userLocale, prevCount, timeout;
 
+function setGoal() {
+    if (fieldData['eventType'] === 'tip') {
+        if (goal % 1) {
+            $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
+        } else {
+            $("#goal").html(goal.toLocaleString(userLocale, {
+                minimumFractionDigits: 0,
+                style: 'currency',
+                currency: currency
+            }));
+        }
+    } else {
+        $("#goal").html(goal);
+    }
+}
+
 window.addEventListener('onWidgetLoad', async function (obj) {
         fieldData = obj.detail.fieldData;
         goal = fieldData["goal"];
@@ -20,16 +36,7 @@ window.addEventListener('onWidgetLoad', async function (obj) {
         if (fieldData['botCounter']) {
             goal = await getCounterValue(obj.detail.channel.apiToken);
         }
-        if (fieldData['eventType'] === 'tip') {
-            if (goal % 1){
-                $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
-            }
-            else{
-                $("#goal").html(goal.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: currency}));
-            }
-        } else {
-            $("#goal").html(goal);
-        }
+        setGoal()
         updateBar(count);
     }
 );
@@ -66,28 +73,30 @@ window.addEventListener('onEventReceived', function (obj) {
 
     if (listener === 'bot:counter' && data.counter === "goal") {
         goal = data.value;
-        if (fieldData['eventType'] === 'tip') {
-            $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
-        } else {
-            $("#goal").html(goal);
-        }
+        setGoal();
         updateBar(count);
     }
 });
 
+
 function updateBar(count) {
     if (count === prevCount) return;
+    if (count >= goal && fieldData['autoIncrement'] > 0) {
+        goal += fieldData['autoIncrement'];
+        setGoal();
+        updateBar(count);
+        return;
+    }
     clearTimeout(timeout);
     prevCount = count;
     $("body").fadeTo("slow", 1);
     let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
     $("#bar").css('width', percentage + "%");
     if (fieldData['eventType'] === 'tip') {
-        if (count %1){
+        if (count % 1) {
             count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
-        }
-        else{
-            count = count.toLocaleString(userLocale, {minimumFractionDigits: 0,style: 'currency', currency: currency})
+        } else {
+            count = count.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: currency})
         }
     }
     $("#count").html(count);

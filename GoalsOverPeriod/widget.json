@@ -4,6 +4,11 @@
     "label": "Goal",
     "value": 32
   },
+  "autoIncrement": {
+    "type": "number",
+    "label": "Auto increment goal when reached by",
+    "value": 0
+  },
   "botCounter": {
     "type": "checkbox",
     "label": "Use 'goal' bot counter as goal number?",
