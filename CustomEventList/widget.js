@@ -15,6 +15,7 @@ let eventsLimit = 5,
     direction = "top",
     textOrder = "nameFirst",
     minCheer = 0,
+    fieldData,
     fadeoutTime, fadeoutTimeout;
 
 let userCurrency,
@@ -45,8 +46,14 @@ let parseEvent = (event, isHistorical) => {
             if (subLabel === "badge") {
                 prefix = getBadge(event.amount);
             }
-            if (event.amount === 'gift') {
-                addEvent('sub', `${prefix} gift`, event.name, isHistorical);
+            if (event.gifted || event.bulkGifted) {
+                if (fieldData.subAggregate && event.isCommunityGift && !event.bulkGifted) return;
+                if (event.bulkGifted) {
+                    addEvent('sub', `${prefix} gift X${event.amount}`, event.name, isHistorical);
+                } else {
+                    addEvent('sub', `${prefix} gift`, event.name, isHistorical);
+                }
+
             } else {
                 addEvent('sub', `${prefix} X${event.amount}`, event.name, isHistorical);
             }
@@ -123,7 +130,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
         return Date.parse(a.createdAt) - Date.parse(b.createdAt);
     });
     userCurrency = obj.detail.currency;
-    const fieldData = obj.detail.fieldData;
+    fieldData = obj.detail.fieldData;
     eventsLimit = fieldData.eventsLimit;
     includeFollowers = (fieldData.includeFollowers === "yes");
     includeRedemptions = (fieldData.includeRedemptions === "yes");

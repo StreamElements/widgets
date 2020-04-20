@@ -741,6 +741,12 @@
     "value": "https://cdn.streamelements.com/static/custom-event-list/sub.svg",
     "group": "Subscribers"
   },
+  "subAggregate": {
+    "type": "checkbox",
+    "label": "Aggregate community gifts",
+    "value": false,
+    "group": "Subscribers"
+  },
   "includeTips": {
     "type": "dropdown",
     "label": "Display tips:",
