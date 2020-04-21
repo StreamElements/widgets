@@ -24,9 +24,8 @@ let userCurrency,
 let getBadge = months => {
     let badge = 0;
     for (let number in badges) {
-        if (months >= number && badge < number) {
-            badge = number;
-        }
+        if (months < number) break
+        badge = number;
     }
     return `<img alt="${months} months" src="${badges[badge].image_url_2x}" class="badge"/>`;
 };
@@ -100,7 +99,9 @@ let getBadges = apiKey => {
         }).then(response => response.json()).then(obj => {
             fetch(`https://badges.twitch.tv/v1/badges/channels/${obj.providerId}/display`).then(response => response.json()).then(data => {
                 if (data.badge_sets.subscriber.versions) {
-                    badges = data.badge_sets.subscriber.versions;
+                    Object.keys(data.badge_sets.subscriber.versions).sort().forEach(function (key) {
+                        badges[key] = data.badge_sets.subscriber.versions[key];
+                    });
                     resolve("badge");
                 } else {
                     resolve("sub");
