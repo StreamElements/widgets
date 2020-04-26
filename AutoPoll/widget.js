@@ -86,10 +86,10 @@ function displayWords() {
 
     let limit = Math.min(userOptions.wordsLimit, Object.keys(words).length);
 
-    let starting = words.length - limit;
+
     let row;
     $("#words").html("");
-    for (let wordIndex = starting; wordIndex < words.length; wordIndex++) {
+    for (let wordIndex = 0; wordIndex < limit; wordIndex++) {
 
         row = words[wordIndex];
         $("#words").append(`<div class="wordRow"><div class="word">${row.word}</div> <div class="amount">${row.count}</div> </div>`);
