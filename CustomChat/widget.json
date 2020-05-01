@@ -32,6 +32,11 @@
     "label": "Font Color",
     "value": "rgba(255,255,255,1)"
   },
+  "emoteSize": {
+    "type": "number",
+    "label": "Emote size",
+    "value": 24
+  },
   "alignMessages": {
     "label": "Align Messages",
     "type": "dropdown",

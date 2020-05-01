@@ -138,7 +138,7 @@ function attachEmotes(message) {
     if (typeof message.attachment !== "undefined") {
         if (typeof message.attachment.media !== "undefined") {
             if (typeof message.attachment.media.image !== "undefined") {
-                text = `${message.text}<img src="${message.attachment.media.image.src}" style="height:${fieldData.fontSize * 2}px;">`;
+                text = `${message.text}<img src="${message.attachment.media.image.src}" style="height:${fieldData.emoteSize * 2}px;">`;
             }
         }
     }
@@ -157,7 +157,7 @@ function attachEmotes(message) {
                     let x = parseInt(result[0].coords.x);
                     let y = parseInt(result[0].coords.y);
                     const backgroundTwitch = provider === "twitch" ? "background-size: contain; " : "";
-                    return `<div class="emote" style="width: {fontSize}px; height: {fontSize}px; display: inline-block; background-image: url(${url});  ${backgroundTwitch}background-position: -${x}px -${y}px;"></div>`;
+                    return `<div class="emote" style="width: {emotesize}px; height: {emotesize}px; display: inline-block; background-image: url(${url});  ${backgroundTwitch}background-position: -${x}px -${y}px;"></div>`;
                 } else return key;
 
             }
