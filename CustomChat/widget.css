@@ -6,6 +6,7 @@
     color: {{fontColor}};
     overflow: hidden;
     font-weight: {{fontWeight}};
+    text-shadow:{textShadow};
 }
 
 .main-container{
@@ -49,7 +50,7 @@
 }
 
 .emote{
-    height:1.1em;
+    height: {emoteSize}px;
     vertical-align: middle;
     background-repeat:no-repeat;
 }

@@ -138,7 +138,7 @@ function attachEmotes(message) {
     if (typeof message.attachment !== "undefined") {
         if (typeof message.attachment.media !== "undefined") {
             if (typeof message.attachment.media.image !== "undefined") {
-                text = `${message.text}<img src="${message.attachment.media.image.src}" style="height:${fieldData.emoteSize * 2}px;">`;
+                text = `${message.text}<img src="${message.attachment.media.image.src}">`;
             }
         }
     }
@@ -151,13 +151,19 @@ function attachEmotes(message) {
                 });
                 if (typeof result[0] !== "undefined") {
                     let url = result[0]['urls'][1];
-                    if (typeof result[0].coords === "undefined") {
-                        result[0].coords = {x: 0, y: 0};
+                    if (provider === "twitch")
+                    {
+                        return `<img class="emote" " src="${url}"/>`;
                     }
-                    let x = parseInt(result[0].coords.x);
-                    let y = parseInt(result[0].coords.y);
-                    const backgroundTwitch = provider === "twitch" ? "background-size: contain; " : "";
-                    return `<div class="emote" style="width: {emotesize}px; height: {emotesize}px; display: inline-block; background-image: url(${url});  ${backgroundTwitch}background-position: -${x}px -${y}px;"></div>`;
+                    else{
+                        if (typeof result[0].coords === "undefined") {
+                            result[0].coords = {x: 0, y: 0};
+                        }
+                        let x = parseInt(result[0].coords.x);
+                        let y = parseInt(result[0].coords.y);
+                        const backgroundTwitch = provider === "twitch" ? "background-size: contain; " : "";
+                        return `<div class="emote" style="width: {emoteSize}px; display: inline-block; background-image: url(${url});  ${backgroundTwitch}background-position: -${x}px -${y}px;"></div>`;
+                    }
                 } else return key;
 
             }

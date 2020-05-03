@@ -32,6 +32,11 @@
     "label": "Font Color",
     "value": "rgba(255,255,255,1)"
   },
+  "textShadow": {
+    "type": "text",
+    "label": "Text shadow",
+    "value": "rgb(0, 0, 0) 1px 1px 1px"
+  },
   "emoteSize": {
     "type": "number",
     "label": "Emote size",
