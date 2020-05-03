@@ -747,6 +747,17 @@
     "value": false,
     "group": "Subscribers"
   },
+  "giftDisplay": {
+    "type": "dropdown",
+    "label": "Gift display:",
+    "value": "gifted",
+    "options": {
+      "gifted": "Gifted user",
+      "sender": "Gifter user",
+      "both": "Both gifter and gifted"
+    },
+    "group": "Subscribers"
+  },
   "includeTips": {
     "type": "dropdown",
     "label": "Display tips:",

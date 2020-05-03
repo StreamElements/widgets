@@ -50,7 +50,14 @@ let parseEvent = (event, isHistorical) => {
                 if (event.bulkGifted) {
                     addEvent('sub', `${prefix} gift X${event.amount}`, event.name, isHistorical);
                 } else {
-                    addEvent('sub', `${prefix} gift`, event.name, isHistorical);
+                    if (fieldData.giftDisplay === 'both') {
+                        addEvent('sub', `${prefix} gift from ${sender}`, event.name, isHistorical);
+                    } else if (fieldData.giftDisplay === 'gifted') {
+                        addEvent('sub', `${prefix}`, event.name, isHistorical);
+                    } else {
+                        addEvent('sub', `${prefix}`, event.sender, isHistorical);
+                    }
+
                 }
 
             } else {
