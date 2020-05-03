@@ -2,17 +2,20 @@
   "testMessage": {
     "type": "button",
     "label": "Test message",
-    "value": "Test message"
+    "value": "Test message",
+    "group": "Test"
   },
   "fontName": {
     "type": "text",
     "label": "Font name",
-    "value": "Montserrat"
+    "value": "Montserrat",
+    "group": "Typography"
   },
   "fontSize": {
     "type": "number",
     "label": "Font size",
-    "value": 24
+    "value": 24,
+    "group": "Typography"
   },
   "fontWeight": {
     "label": "Font Weight",
@@ -25,22 +28,26 @@
       "500": "Medium (500)",
       "700": "Bold (700)",
       "900": "Black (900)"
-    }
+    },
+    "group": "Typography"
   },
   "fontColor": {
     "type": "colorpicker",
     "label": "Font Color",
-    "value": "rgba(255,255,255,1)"
+    "value": "rgba(255,255,255,1)",
+    "group": "Typography"
   },
   "textShadow": {
     "type": "text",
     "label": "Text shadow",
-    "value": "rgb(0, 0, 0) 1px 1px 1px"
+    "value": "rgb(0, 0, 0) 1px 1px 1px",
+    "group": "Typography"
   },
   "emoteSize": {
     "type": "number",
     "label": "Emote size",
-    "value": 24
+    "value": 24,
+    "group": "Typography"
   },
   "alignMessages": {
     "label": "Align Messages",
@@ -49,31 +56,8 @@
     "options": {
       "flex": "Bottom",
       "block": "Top"
-    }
-  },
-  "messagesLimit": {
-    "type": "number",
-    "label": "Messages limit",
-    "value": 4
-  },
-  "hideAfter": {
-    "type": "number",
-    "label": "Hide after seconds (999 to disable)",
-    "value": 999
-  },
-  "hideCommands": {
-    "label": "Hide lines starting with ! (!command)",
-    "type": "dropdown",
-    "value": "yes",
-    "options": {
-      "yes": "Yes",
-      "no": "No"
-    }
-  },
-  "ignoredUsers": {
-    "label": "Ignored users (comma separated)",
-    "type": "text",
-    "value": "StreamElements,OtherBot"
+    },
+    "group": "Typography"
   },
   "nickColor": {
     "type": "dropdown",
@@ -83,17 +67,48 @@
       "user": "as on twitch",
       "messagecolor": "same as message text",
       "custom": "specified below"
-    }
+    },
+    "group": "Typography"
   },
   "customNickColor": {
     "type": "colorpicker",
     "label": "Custom nickname color:",
-    "value": "rgba(0,255,0,1)"
+    "value": "rgba(0,255,0,1)",
+    "group": "Typography"
+  },
+  "messagesLimit": {
+    "type": "number",
+    "label": "Messages limit",
+    "value": 4,
+    "group": "Settings"
+  },
+  "hideAfter": {
+    "type": "number",
+    "label": "Hide after seconds (999 to disable)",
+    "value": 999,
+    "group": "Settings"
+  },
+  "hideCommands": {
+    "label": "Hide lines starting with ! (!command)",
+    "type": "dropdown",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Settings"
+  },
+  "ignoredUsers": {
+    "label": "Ignored users (comma separated)",
+    "type": "text",
+    "value": "StreamElements,OtherBot",
+    "group": "Settings"
   },
   "backgroundColor": {
     "type": "colorpicker",
     "label": "Background color:",
-    "value": "rgba(0,0,0,0)"
+    "value": "rgba(0,0,0,0)",
+    "group": "Settings"
   },
   "animationIn": {
     "type": "dropdown",
@@ -134,7 +149,8 @@
       "zoomInUp": "zoomInUp",
       "jackInTheBox": "jackInTheBox",
       "rollIn": "rollIn"
-    }
+    },
+    "group": "Settings"
   },
   "animationOut": {
     "type": "dropdown",
@@ -174,6 +190,7 @@
       "zoomOutRight": "zoomOutRight",
       "zoomOutUp": "zoomOutUp",
       "rollOut": "rollOut"
-    }
+    },
+    "group": "Settings"
   }
 }
