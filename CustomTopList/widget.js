@@ -43,7 +43,7 @@ function displayPeople() {
 
     let newDataRequest = {
         method: 'GET',
-        url: `https://api.streamelements.com/kappa/v2/activities/${channelId}/top?limit=${limitQ}&offset=${offsetQ}&period=${periodQ}&type=${typeQ}`,
+        url: `https://api.streamelements.com/kappa/v2/sessions/${channelId}/top?limit=${limitQ}&offset=${offsetQ}&period=${periodQ}&type=${typeQ}`,
         headers: {
             'Authorization': 'apikey ' + apiKey
         }
