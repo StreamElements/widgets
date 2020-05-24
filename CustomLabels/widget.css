@@ -5,6 +5,7 @@
     color:{{fontColor}};
     font-weight:{{fontWeight}};
     font-size:{{fontSize}}px;
+    -webkit-text-stroke: {strokeSize}px {strokeColor};
 }
 
 .holder{
@@ -29,5 +30,5 @@
     text-align:left;
 }
 .marqueeh{
-margin-left:{gap}px;
+    margin-left:{gap}px;
 }
