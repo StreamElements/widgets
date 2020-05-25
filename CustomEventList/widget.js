@@ -2,26 +2,15 @@ let eventsLimit = 5,
     badges = {},
     subLabel,
     userLocale = "en-US",
-    includeFollowers = true,
-    includeRedemptions = true,
-    includeHosts = true,
-    minHost = 0,
-    includeRaids = true,
-    minRaid = 0,
-    includeSubs = true,
-    includeTips = true,
-    minTip = 0,
-    includeCheers = true,
     direction = "top",
     textOrder = "nameFirst",
-    minCheer = 0,
     fieldData,
     fadeoutTime, fadeoutTimeout;
 
 let userCurrency,
     totalEvents = 0;
 
-let getBadge = months => {
+const getBadge = months => {
     let badge = 0;
     for (let number in badges) {
         if (months < number) break
@@ -30,73 +19,69 @@ let getBadge = months => {
     return `<img alt="${months} months" src="${badges[badge].image_url_2x}" class="badge"/>`;
 };
 
-let parseEvent = (event, isHistorical) => {
-        if (event.type === 'follower') {
-            if (includeFollowers) {
-                addEvent('follower', 'Follower', event.name, isHistorical);
-            }
-        } else if (event.type === 'redemption') {
-            if (includeRedemptions) {
-                addEvent('redemption', 'Redeemed', event.name, isHistorical);
-            }
-        } else if (event.type === 'subscriber') {
-            if (!includeSubs) return;
-            let prefix = "Sub ";
-            if (subLabel === "badge") {
-                prefix = getBadge(event.amount);
-            }
-            if (event.gifted || event.bulkGifted) {
-                if (fieldData.subAggregate && event.isCommunityGift && !event.bulkGifted) return;
-                if (event.bulkGifted) {
-                    addEvent('sub', `${prefix} gift X${event.amount}`, event.name, isHistorical);
-                } else {
-                    if (fieldData.giftDisplay === 'both') {
-                        addEvent('sub', `${prefix} gift from ${sender}`, event.name, isHistorical);
-                    } else if (fieldData.giftDisplay === 'gifted') {
-                        addEvent('sub', `${prefix}`, event.name, isHistorical);
-                    } else {
-                        addEvent('sub', `${prefix}`, event.sender, isHistorical);
-                    }
+const checkSub = (event) => {
+    if (fieldData.subAggregate && event.isCommunityGift && !event.bulkGifted) return false; // Sub aggregation exit
+    if (event.isCommunityGift || event.amount >= fieldData.minimumSubDuration) return true; // Minimum duration check
+    if (parseInt(event.tier) >= 2000 && fieldData.minimumSubTier === "t2") return true; // Tier 2 check
+    if (parseInt(event.tier) === 3000 && fieldData.minimumSubTier === "t3") return true; // Tier 3 check
+    return false;
+}
 
-                }
+const wrapText = (message, event) => {
+    return message.replace("{name}", event.name)
+        .replace("{amount}", event.amount)
+        .replace("{sender}", event.sender)
+        .replace("{tier}", event.tier)
+        .replace("{currency}", userCurrency.code)
+        .replace("{prefix}", event.prefix);
+};
 
+const parseEvent = (event, isHistorical) => {
+
+    if (!fieldData[`${event.type}-include`]) return;
+    if (typeof fieldData[`${event.type}-min`] !== undefined) {
+        if (fieldData[`${event.type}-min`] > event.amount) return;
+    }
+    if (event.type === 'subscriber') {
+        if (!checkSub(event)) return;
+
+        let prefix = "Sub ";
+        if (subLabel === "badge") {
+            prefix = getBadge(event.amount);
+        }
+        event.prefix = prefix;
+        if (event.gifted || event.bulkGifted) {
+            if (event.bulkGifted) {
+                addEvent(event.type, wrapText(fieldData['sub-community-text'], event), event.name, isHistorical);
             } else {
-                addEvent('sub', `${prefix} X${event.amount}`, event.name, isHistorical);
+                addEvent(event.type, wrapText(fieldData['sub-gift-text'], event), event.name, isHistorical);
             }
-
-        } else if (event.type === 'host') {
-            if (includeHosts && minHost <= event.amount) {
-                addEvent('host', `Host ${event.amount.toLocaleString()}`, event.name, isHistorical);
-            }
-        } else if (event.type === 'cheer') {
-            if (includeCheers && minCheer <= event.amount) {
-                addEvent('cheer', `${event.amount.toLocaleString()} Bits`, event.name, isHistorical);
-            }
-        } else if (event.type === 'tip') {
-            if (includeTips && minTip <= event.amount) {
-                if (event.amount === parseInt(event.amount)) {
-                    addEvent('tip', event.amount.toLocaleString(userLocale, {
-                        style: 'currency',
-                        minimumFractionDigits: 0,
-                        currency: userCurrency.code
-                    }), event.name, isHistorical);
-                } else {
-                    addEvent('tip', event.amount.toLocaleString(userLocale, {
-                        style: 'currency',
-                        currency: userCurrency.code
-                    }), event.name, isHistorical);
-                }
-            }
-        } else if (event.type === 'raid') {
-            if (includeRaids && minRaid <= event.amount) {
-                addEvent('raid', `Raid ${event.amount.toLocaleString()}`, event.name, isHistorical);
-            }
+        } else {
+            addEvent(event.type, wrapText(fieldData['sub-text'], event), event.name, isHistorical);
         }
 
-    }
-;
+    } else if (event.type === 'tip') {
 
-let getBadges = apiKey => {
+        if (event.amount === parseInt(event.amount)) {
+            event.amount = event.amount.toLocaleString(userLocale, {
+                style: 'currency',
+                minimumFractionDigits: 0,
+                currency: userCurrency.code
+            });
+        } else {
+            event.amount = event.amount.toLocaleString(userLocale, {
+                style: 'currency',
+                currency: userCurrency.code
+            });
+        }
+        addEvent(event.type, wrapText(fieldData[`${event.type}-text`], event), event.name, isHistorical);
+    } else {
+        addEvent(event.type, wrapText(fieldData[`${event.type}-text`], event), event.name, isHistorical);
+    }
+};
+
+
+const getBadges = apiKey => {
     return new Promise(resolve => {
         fetch("https://api.streamelements.com/kappa/v2/channels/me", {
             "headers": {
@@ -121,6 +106,7 @@ let getBadges = apiKey => {
         });
     })
 };
+
 window.addEventListener('onEventReceived', function (obj) {
     if (typeof obj.detail.event.itemId !== "undefined") {
         obj.detail.listener = "redemption-latest"
@@ -140,17 +126,6 @@ window.addEventListener('onWidgetLoad', function (obj) {
     userCurrency = obj.detail.currency;
     fieldData = obj.detail.fieldData;
     eventsLimit = fieldData.eventsLimit;
-    includeFollowers = (fieldData.includeFollowers === "yes");
-    includeRedemptions = (fieldData.includeRedemptions === "yes");
-    includeHosts = (fieldData.includeHosts === "yes");
-    minHost = fieldData.minHost;
-    includeRaids = (fieldData.includeRaids === "yes");
-    minRaid = fieldData.minRaid;
-    includeSubs = (fieldData.includeSubs === "yes");
-    includeTips = (fieldData.includeTips === "yes");
-    minTip = fieldData.minTip;
-    includeCheers = (fieldData.includeCheers === "yes");
-    minCheer = fieldData.minCheer;
     direction = fieldData.direction;
     userLocale = fieldData.locale;
     textOrder = fieldData.textOrder;
@@ -180,7 +155,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 });
 
 
-function addEvent(type, text, username, isHistorical) {
+const addEvent = (type, text, username, isHistorical) => {
     clearTimeout(fadeoutTimeout);
     totalEvents += 1;
     let element;
@@ -225,10 +200,9 @@ function addEvent(type, text, username, isHistorical) {
     }
 }
 
-function removeEvent(eventId) {
+const removeEvent = (eventId) => {
     $(`#event-${eventId}`).removeClass(`{animationIn}`).addClass(`{animationOut}`);
     setTimeout(() => {
         $(`#event-${eventId}`).remove();
     }, 1000);
-
-}
+};

@@ -639,7 +639,7 @@
     "value": "rgba(255,255,255,1)",
     "group": "Typography"
   },
-  "includeFollowers": {
+  "follower-include": {
     "type": "dropdown",
     "label": "Display followers:",
     "value": "yes",
@@ -649,13 +649,19 @@
     },
     "group": "Followers"
   },
+  "follower-text": {
+    "type": "text",
+    "label": "Text",
+    "value": "Follower",
+    "group": "Followers"
+  },
   "followerImg": {
     "type": "image-input",
     "label": "Follower image",
     "value": "https://cdn.streamelements.com/static/custom-event-list/follower.svg",
     "group": "Followers"
   },
-  "includeRedemptions": {
+  "redemption-include": {
     "type": "dropdown",
     "label": "Display redemptions:",
     "value": "yes",
@@ -665,13 +671,19 @@
     },
     "group": "Redemptions"
   },
+  "redemption-text": {
+    "type": "text",
+    "label": "Text",
+    "value": "Redemption",
+    "group": "Redemptions"
+  },
   "redemptionImg": {
     "type": "image-input",
     "label": "Redemption image",
     "value": "https://cdn.streamelements.com/static/custom-event-list/redemption.svg",
     "group": "Redemptions"
   },
-  "includeHosts": {
+  "host-include": {
     "type": "dropdown",
     "label": "Display hosts:",
     "value": "yes",
@@ -681,10 +693,16 @@
     },
     "group": "Hosts"
   },
-  "minHost": {
+  "host-min": {
     "type": "number",
     "label": "Minimum amount of hosting viewers:",
     "value": 1,
+    "group": "Hosts"
+  },
+  "host-text": {
+    "type": "text",
+    "label": "Text",
+    "value": "Host {amount}",
     "group": "Hosts"
   },
   "hostImg": {
@@ -693,7 +711,7 @@
     "value": "https://cdn.streamelements.com/static/custom-event-list/host.svg",
     "group": "Hosts"
   },
-  "includeRaids": {
+  "raid-include": {
     "type": "dropdown",
     "label": "Display raids:",
     "value": "yes",
@@ -703,10 +721,16 @@
     },
     "group": "Raids"
   },
-  "minRaid": {
+  "raid-min": {
     "type": "number",
     "label": "Minimum amount of raiding viewers:",
     "value": 1,
+    "group": "Raids"
+  },
+  "raid-text": {
+    "type": "text",
+    "label": "Text",
+    "value": "Raid {amount}",
     "group": "Raids"
   },
   "raidImg": {
@@ -715,7 +739,7 @@
     "value": "https://cdn.streamelements.com/static/custom-event-list/raid.svg",
     "group": "Raids"
   },
-  "includeSubs": {
+  "subscriber-include": {
     "type": "dropdown",
     "label": "Display subscribers:",
     "value": "yes",
@@ -737,7 +761,7 @@
   },
   "subImg": {
     "type": "image-input",
-    "label": "Follower image",
+    "label": "Subscriber image",
     "value": "https://cdn.streamelements.com/static/custom-event-list/sub.svg",
     "group": "Subscribers"
   },
@@ -758,7 +782,44 @@
     },
     "group": "Subscribers"
   },
-  "includeTips": {
+  "sub-text": {
+    "type": "text",
+    "label": "Sub text",
+    "value": "{prefix} X{amount}",
+    "group": "Subscribers"
+  },
+  "sub-gift-text": {
+    "type": "text",
+    "label": "Sub gift Text",
+    "value": "sub gift from {sender}",
+    "group": "Subscribers"
+  },
+  "sub-community-text": {
+    "type": "text",
+    "label": "Sub community gift text",
+    "value": "Sub GIFT X{amount}",
+    "group": "Subscribers"
+  },
+  "minimumSubTier": {
+    "type": "dropdown",
+    "label": "Min sub Tier",
+    "value": "t1",
+    "options": {
+      "t1": "Tier 1/Prime",
+      "t2": "Tier 2",
+      "t3": "Tier 3"
+    },
+    "group": "Subscribers"
+  },
+  "minimumSubDuration": {
+    "type": "number",
+    "label": "Min sub duration (months",
+    "value": 1,
+    "min": 1,
+    "step": 1,
+    "group": "Subscribers"
+  },
+  "tip-include": {
     "type": "dropdown",
     "label": "Display tips:",
     "value": "yes",
@@ -768,10 +829,16 @@
     },
     "group": "Tips"
   },
-  "minTip": {
+  "tip-min": {
     "type": "number",
     "label": "Minimum amount of tip:",
     "value": 1,
+    "group": "Tips"
+  },
+  "tip-text": {
+    "type": "text",
+    "label": "Text",
+    "value": "Tip {amount}",
     "group": "Tips"
   },
   "tipImg": {
@@ -780,7 +847,7 @@
     "value": "https://cdn.streamelements.com/static/custom-event-list/tip.svg",
     "group": "Tips"
   },
-  "includeCheers": {
+  "cheer-include": {
     "type": "dropdown",
     "label": "Display cheers:",
     "value": "yes",
@@ -790,10 +857,16 @@
     },
     "group": "Cheers"
   },
-  "minCheer": {
+  "cheer-min": {
     "type": "number",
     "label": "Minimum amount of bits in Cheer:",
     "value": 1,
+    "group": "Cheers"
+  },
+  "cheer-text": {
+    "type": "text",
+    "label": "Text",
+    "value": "Cheer {name} - {amount}",
     "group": "Cheers"
   },
   "cheerImg": {

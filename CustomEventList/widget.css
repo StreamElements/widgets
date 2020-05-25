@@ -44,7 +44,7 @@
     -webkit-mask-image: url('{raidImg}');
 }
 
-.event-sub.mask{
+.event-subscriber.mask{
     mask-image: url('{subImg}');
     -webkit-mask-image: url('{subImg}');
 }
@@ -75,7 +75,7 @@
     background-image: url('{raidImg}');
 }
 
-.event-sub.background{
+.event-subscriber.background{
     background-image: url('{subImg}');
 }
 
