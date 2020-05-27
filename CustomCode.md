@@ -38,6 +38,10 @@ There are some reserved field names (all future reserved words will start with `
     "label": "Some Text",
     "value": "Default text"
   },
+  "someCheckbox": {
+    "type": "checkbox",
+    "label" "Some checkbox"
+  },
   "someColorPicker": {
     "type": "colorpicker",
     "label": "Some color",
