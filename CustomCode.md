@@ -40,7 +40,7 @@ There are some reserved field names (all future reserved words will start with `
   },
   "someCheckbox": {
     "type": "checkbox",
-    "label" "Some checkbox"
+    "label": "Some checkbox"
   },
   "someColorPicker": {
     "type": "colorpicker",
