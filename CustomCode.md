@@ -154,6 +154,21 @@ window.addEventListener('onWidgetLoad', function (obj) {
 `{{videoVolume}}` - video volume (from 0 to 1)<br>
 `{{audio}}` - will be replaced with URL of audio attached to alert . For example `<audio id="audio" playsinline autoplay ><source id="alertsound" src="{{audio}}" type="audio/ogg"></audio>`<br>
 `{{audioVolume}}` - audio volume (from 0 to 1)<br>
+`{{widgetDuration}}` - widget duration in seconds, so you can create exit animation timed perfectly like on examples below:
+```js
+const hideAfter=parseInt("{widgetDuration}")-1000;
+const playHideAnimation=()=>{
+  timeline.reverse(); //or any other thing that will make your alert fancy exit
+}
+setTimeout(playHideAnimation,hideAfter);
+```
+Or CSS:
+```css
+#alertbox {
+  animation: hide forwards 1s;
+  animation-delay: calc({widgetDuration}s - 1s);
+}
+```
 
 ## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
