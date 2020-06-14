@@ -28,6 +28,7 @@ function countdown(seconds) {
         if (event.type === "finish") $(this).html(fieldData.onComplete);
         else $(this).html(event.strftime('%I:%M:%S'));
     });
+    saveState();
 }
 
 window.addEventListener('onEventReceived', function (obj) {
@@ -40,7 +41,6 @@ window.addEventListener('onEventReceived', function (obj) {
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
                 start = minTime;
-                saveState();
                 countdown(0);
             }
             return;
@@ -83,7 +83,7 @@ window.addEventListener('onEventReceived', function (obj) {
         }
         countdown(parseInt(fieldData.tipSeconds * data["amount"]));
     }
-    saveState();
+
 
 });
 window.addEventListener('onWidgetLoad', function (obj) {
