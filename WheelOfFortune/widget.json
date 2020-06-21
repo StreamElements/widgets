@@ -14,6 +14,11 @@
     "label": "Segment colors, comma separated",
     "value": "#ff0000,#00ff00,#ffffff,#123123,#421221"
   },
+  "segmentWeights": {
+    "type": "text",
+    "label": "Segment weights, comma separated",
+    "value": "5,4,3,2,1"
+  },
   "displayImage": {
     "type": "checkbox",
     "label": "Display Image",

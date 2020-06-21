@@ -1,6 +1,9 @@
 let theWheel, channelName, spinCommand, fieldData, cooldown, spins, segments = [];
-
-let checkPrivileges = (data) => {
+const random_hex_color_code = () => {
+    let n = (Math.random() * 0xfffff * 1000000).toString(16);
+    return '#' + n.slice(0, 6);
+};
+const checkPrivileges = (data) => {
     let required = fieldData.privileges;
     let userState = {
         'mod': parseInt(data.tags.mod),
@@ -35,8 +38,8 @@ window.addEventListener('onEventReceived', function (obj) {
                 //var winningSegment = theWheel.getIndicatedSegment(); //- use this as reference
             }, cooldown * 1000 + 100);
     } else if (obj.detail.listener === fieldData.listener) {
-        const data=obj.detail.event;
-        if (data.amount<fieldData.minAmount){
+        const data = obj.detail.event;
+        if (data.amount < fieldData.minAmount) {
             SE_API.resumeQueue();
             return;
         }
@@ -78,9 +81,30 @@ window.addEventListener('onWidgetLoad', function (obj) {
     spins = fieldData['spins'];
     let tmpsegments = fieldData.segments.replace(" ", "").split(",");
     let tmpcolors = fieldData.segmentColors.toLowerCase().replace(" ", "").split(",");
-    for (let i in fieldData.segments.replace(" ", "").split(",")) {
-        segments.push({'text': tmpsegments[i], 'fillStyle': tmpcolors[i]});
+    let weights = fieldData.segmentWeights.replace(" ", "").split(",");
+    let sumWeights = 0;
+    if (!weights.length) sumWeights = 360;
+    for (let i in weights) {
+        if (parseInt(weights[i])) {
+            sumWeights += parseInt(weights[i]);
+        }
+
     }
+    if (fieldData.segments.split(",").length > weights.length) {
+        sumWeights += 360 * (fieldData.segments.split(",").length - weights.length) / fieldData.segments.split(",").length;
+    }
+
+
+    for (let i in fieldData.segments.split(",")) {
+        if (typeof tmpcolors[i] === "undefined") tmpcolors[i] = random_hex_color_code();
+        if (tmpcolors[i].length < 2) tmpcolors[i] = random_hex_color_code();
+        if (parseFloat(weights[i])) {
+            segments.push({'text': tmpsegments[i], 'fillStyle': tmpcolors[i], 'size': 360 * weights[i] / sumWeights});
+        } else {
+            segments.push({'text': tmpsegments[i], 'fillStyle': tmpcolors[i]});
+        }
+    }
+    console.log(segments);
     if (fieldData.displayImage) {
         theWheel = new Winwheel({
             'drawMode': 'image',
