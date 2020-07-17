@@ -558,6 +558,17 @@ SE_API.store.get('keyName').then(obj => {
 SE_API.counters.get('counterName').then(counter => {
     // counter is of the format { counter, value }
 });
+
+SE_API.sanitize({ message: "Hello SomeVulgarWorld"}).then(sanityResult => {
+/*
+    sanityResult={
+        "result":{
+            "message":"Hello Kreygasm" //Message after validation
+        },
+        "skip":false // Should it be skipped according to rules 
+    }
+*/  
+});
 ```
 #### resumeQueue method and widgetDuration property
 widgetDuration property defines maximum event queue hold time (execution time of widget) by widget in seconds (default 0). For example you want to show animations by this widget and don't want them overlap, so instead building your own queue you can use this. This property is defined in JSON (as mentioned above)
