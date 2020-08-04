@@ -39,11 +39,6 @@
     "label": "Font Name",
     "value": "Roboto"
   },
-  "barHeight": {
-    "type": "number",
-    "label": "Bar Thickness",
-    "value": 25
-  },
   "backgroundColor": {
     "type": "colorpicker",
     "label": "Background color",
@@ -53,6 +48,11 @@
     "type": "colorpicker",
     "label": "Bar color",
     "value": "rgb(63, 63, 195)"
+  },
+  "barColor2": {
+    "type": "colorpicker",
+    "label": "Bar color 2",
+    "value": "rgb(63, 191, 194)"
   },
   "labelColor": {
     "type": "colorpicker",
