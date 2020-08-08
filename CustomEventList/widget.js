@@ -38,7 +38,7 @@ const wrapText = (message, event) => {
 
 const parseEvent = (event, isHistorical) => {
 
-    if (!fieldData[`${event.type}-include`]) return;
+    if (fieldData[`${event.type}-include`] !== "yes") return;
     if (typeof fieldData[`${event.type}-min`] !== undefined) {
         if (fieldData[`${event.type}-min`] > event.amount) return;
     }
