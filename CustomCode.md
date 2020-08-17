@@ -512,6 +512,32 @@ window.addEventListener('onWidgetLoad', function (obj) {
 	* `data["videolike-latest"]["amount"]` - Amount
 * `data["videolike-recent"]`    - An array of latest videolike events with each element structure as in `videolike-latest`
 
+##### YouTube
+* `data["sponsor-goal"]["amount"]` - Amount of  sponsor goal
+* `data["sponsor-session"]["count"]` - Sponsors since session start
+* `data["sponsor-week"]["count"]` - Sponsors this week
+* `data["sponsor-month"]["count"]` - Sponsors this month
+* `data["sponsor-total"]["count"]` - Total count of sponsors
+* `data["sponsor-latest"]`    - An array containing latest sponsor event
+	* `data["sponsor-latest"]["name"]` - Username
+	* `data["sponsor-latest"]["amount"]` - amount
+* `data["sponsor-recent"]`    - An array of latest sponsor events with each element structure as in `sponsor-latest`
+* `data["subscriber-latest"]["name"]` - Name of latest subscriber
+* `data["subscriber-session"]["count"]` - Subscribers since session start
+* `data["subscriber-week"]["count"]` - Subscribers this week
+* `data["subscriber-month"]["count"]` - Subscribers this month
+* `data["subscriber-goal"]["amount"]` - Subscribers goal
+* `data["subscriber-total"]["count"]` - Total count of subscribers
+* `data["superchat-goal"]["amount"]` - Amount of  superchat goal
+* `data["superchat-session"]["count"]` - Superchats since session start
+* `data["superchat-week"]["count"]` - Superchats this week
+* `data["superchat-month"]["count"]` - Superchats this month
+* `data["superchat-total"]["count"]` - Total count of superchats
+* `data["superchat-latest"]`    - An array containing latest superchat event
+	* `data["superchat-latest"]["name"]` - Username
+	* `data["superchat-latest"]["amount"]` - amount
+* `data["superchat-recent"]`    - An array of latest superchat events with each element structure as in `superchat-latest`
+
 There is a difference between:
 * `cheer-*-donation` and `cheer-*-donator`
 * `tip-*-donation` and `tip-*-donator`
