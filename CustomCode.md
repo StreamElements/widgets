@@ -346,7 +346,48 @@ window.addEventListener('onWidgetLoad', function (obj) {
     let fieldData=obj["detail"]["fieldData"];
 });
 ```
-Possible keys within `data`:
+#### Possible keys within `data`:
+
+##### Common
+* `data["merch-goal-items"]["amount"]` - Merch items goal progress
+* `data["merch-goal-orders"]["amount"]` - Merch orders goal progress
+* `data["merch-goal-total"]["amount"]` - Merch total goal progress
+* `data["tip-latest"]`    - An array containing latest Tip event
+    * `data["tip-latest"]["name"]`    - Latest tipper username
+    * `data["tip-latest"]["amount"]`  - Latest tip amount
+    * `data["tip-latest"]["message"]` - Latest tip message
+* `data["tip-session-top-donation"]` - Aan array of top tip since session start
+    * `data["tip-session-top-donation"]["name"]` - Username
+    * `data["tip-session-top-donation"]["amount"]` - Tip amount
+* `data["tip-weekly-top-donation"]` - An array of top tip in past week
+    * `data["tip-weekly-top-donation"]["name"]` - Username
+    * `data["tip-weekly-top-donation"]["amount"]` - Tip amount
+* `data["tip-monthly-top-donation"]` - An array of top tip in past month
+    * `data["tip-monthly-top-donation"]["name"]` - Tip amount
+    * `data["tip-monthly-top-donation"]["amount"]` - Username
+* `data["tip-alltime-top-donation"]`  - - An array of top tip all time
+    * `data["tip-alltime-top-donation"]["name"]` - Username
+    * `data["tip-alltime-top-donation"]["amount"]` - Tip amount
+* `data["tip-session-top-donator"]` - An array of top tipper since session start
+    * `data["tip-session-top-donator"]["name"]` - Username
+    * `data["tip-session-top-donator"]["amount"]` - Sum of the tip amounts
+* `data["tip-weekly-top-donator"]` - An array of top tip in past week
+    * `data["tip-weekly-top-donator"]["name"]` - Username
+    * `data["tip-weekly-top-donator"]["amount"]` - Sum of the tip amounts
+* `data["tip-monthly-top-donator"]` - An array of top tip in past month
+    * `data["tip-monthly-top-donator"]["name"]` - Tipper username
+    * `data["tip-monthly-top-donator"]["amount"]` - Sum of the tip amounts
+* `data["tip-alltime-top-donator"]`  - - An array of top tip all time
+    * `data["tip-alltime-top-donator"]["name"]` - Tipper username
+    * `data["tip-alltime-top-donator"]["amount"]` - Sum of the tip amounts
+* `data["tip-session"]["amount"]` - Sum of all donations since session start
+* `data["tip-week"]["amount"]`  - Sum of all donations this week
+* `data["tip-month"]["amount"]` - Sum of all donations this month
+* `data["tip-total"]["amount"]` - Sum of all donations this all time
+* `data["tip-count"]["count"]` - Number of tip events
+* `data["tip-goal"]["amount"]` - Donation goal
+
+##### Twitch
 * `data["follower-latest"]["name"]` - Name of latest follower
 * `data["follower-session"]["count"]` - Followers since session start
 * `data["follower-week"]["count"]` - Followers this week
@@ -420,40 +461,56 @@ Possible keys within `data`:
 * `data["cheer-alltime-top-donator"]`  - - An array of top cheer all time
     * `data["cheer-alltime-top-donator"]["name"]` - Username
     * `data["cheer-alltime-top-donator"]["amount"]` - Sum of the cheer amounts
-* `data["tip-latest"]`    - An array containing latest Tip event
-    * `data["tip-latest"]["name"]`    - Latest tipper username
-    * `data["tip-latest"]["amount"]`  - Latest tip amount
-    * `data["tip-latest"]["message"]` - Latest tip message
-* `data["tip-session-top-donation"]` - Aan array of top tip since session start
-    * `data["tip-session-top-donation"]["name"]` - Username
-    * `data["tip-session-top-donation"]["amount"]` - Tip amount
-* `data["tip-weekly-top-donation"]` - An array of top tip in past week
-    * `data["tip-weekly-top-donation"]["name"]` - Username
-    * `data["tip-weekly-top-donation"]["amount"]` - Tip amount
-* `data["tip-monthly-top-donation"]` - An array of top tip in past month
-    * `data["tip-monthly-top-donation"]["name"]` - Tip amount
-    * `data["tip-monthly-top-donation"]["amount"]` - Username
-* `data["tip-alltime-top-donation"]`  - - An array of top tip all time
-    * `data["tip-alltime-top-donation"]["name"]` - Username
-    * `data["tip-alltime-top-donation"]["amount"]` - Tip amount
-* `data["tip-session-top-donator"]` - An array of top tipper since session start
-    * `data["tip-session-top-donator"]["name"]` - Username
-    * `data["tip-session-top-donator"]["amount"]` - Sum of the tip amounts
-* `data["tip-weekly-top-donator"]` - An array of top tip in past week
-    * `data["tip-weekly-top-donator"]["name"]` - Username
-    * `data["tip-weekly-top-donator"]["amount"]` - Sum of the tip amounts
-* `data["tip-monthly-top-donator"]` - An array of top tip in past month
-    * `data["tip-monthly-top-donator"]["name"]` - Tipper username
-    * `data["tip-monthly-top-donator"]["amount"]` - Sum of the tip amounts
-* `data["tip-alltime-top-donator"]`  - - An array of top tip all time
-    * `data["tip-alltime-top-donator"]["name"]` - Tipper username
-    * `data["tip-alltime-top-donator"]["amount"]` - Sum of the tip amounts
-* `data["tip-session"]["amount"]` - Sum of all donations since session start
-* `data["tip-week"]["amount"]`  - Sum of all donations this week
-* `data["tip-month"]["amount"]` - Sum of all donations this month
-* `data["tip-total"]["amount"]` - Sum of all donations this all time
-* `data["tip-count"]["count"]` - Number of tip events
-* `data["tip-goal"]["amount"]` - Donation goal
+
+##### Facebook
+* `data["fan-latest"]["name"]` - Name of latest fan
+* `data["fan-session"]["count"]` - Fans since session start
+* `data["fan-week"]["count"]` - Fans this week
+* `data["fan-month"]["count"]` - Fans this month
+* `data["fan-total"]["count"]` - Total count of fans
+* `data["fan-latest"]`    - An array containing latest fan event
+* `data["follower-latest"]["name"]` - Name of latest follower
+* `data["follower-session"]["count"]` - Followers since session start
+* `data["follower-week"]["count"]` - Followers this week
+* `data["follower-month"]["count"]` - Followers this month
+* `data["follower-goal"]["amount"]` - Followers goal
+* `data["follower-total"]["count"]` - Total count of followers
+* `data["share-goal"]["amount"]` - Amount of  share goal
+* `data["share-session"]["count"]` - Shares since session start
+* `data["share-week"]["count"]` - Shares this week
+* `data["share-month"]["count"]` - Shares this month
+* `data["share-total"]["count"]` - Total count of shares
+* `data["share-latest"]`    - An array containing latest share event
+	* `data["share-latest"]["name"]` - Username
+	* `data["share-latest"]["amount"]` - amount
+* `data["share-recent"]`    - An array of latest share events with each element structure as in `share-latest`
+* `data["stars-goal"]["amount"]` - Amount of  stars goal
+* `data["stars-session"]["count"]` - Stars since session start
+* `data["stars-week"]["count"]` - Stars this week
+* `data["stars-month"]["count"]` - Stars this month
+* `data["stars-total"]["count"]` - Total count of stars
+* `data["stars-latest"]`    - An array containing latest stars event
+	* `data["stars-latest"]["name"]` - Username
+	* `data["stars-latest"]["amount"]` - amount
+* `data["stars-recent"]`    - An array of latest stars events with each element structure as in `stars-latest`
+* `data["supporter-goal"]["amount"]` - Amount of  supporter goal
+* `data["supporter-session"]["count"]` - Supporters since session start
+* `data["supporter-week"]["count"]` - Supporters this week
+* `data["supporter-month"]["count"]` - Supporters this month
+* `data["supporter-total"]["count"]` - Total count of supporters
+* `data["supporter-latest"]`    - An array containing latest supporter event
+	* `data["supporter-latest"]["name"]` - Username
+	* `data["supporter-latest"]["amount"]` - Amount
+* `data["supporter-recent"]`    - An array of latest supporter events with each element structure as in `supporter-latest`
+* `data["supporter-goal"]["amount"]` - Amount of  videolike goal
+* `data["videolike-session"]["count"]` - Videolikes since session start
+* `data["videolike-week"]["count"]` - Videolikes this week
+* `data["videolike-month"]["count"]` - Videolikes this month
+* `data["videolike-total"]["count"]` - Total count of videolikes
+* `data["videolike-latest"]`    - An array containing latest videolike event
+	* `data["videolike-latest"]["name"]` - Username
+	* `data["videolike-latest"]["amount"]` - Amount
+* `data["videolike-recent"]`    - An array of latest videolike events with each element structure as in `videolike-latest`
 
 There is a difference between:
 * `cheer-*-donation` and `cheer-*-donator`
