@@ -1,21 +1,22 @@
 * {
     font-family: '{{fontName}}', sans-serif;
-    font-size: {{fontSize}}px;
-    font-weight: {{fontWeight}};
-    overflow: hidden;
-    -webkit-text-stroke-width: {{strokeSize}}px;
-    -webkit-text-stroke-color: {{strokeColor}};
+color: {{fontColor}};
+font-size: {{fontSize}}px;
+font-weight: {{fontWeight}};
+overflow: hidden;
+-webkit-text-stroke-width: {{strokeSize}}px;
+-webkit-text-stroke-color: {{strokeColor}};
 }
 .subs{
     position:absolute;
 }
 .explosion{
-    top:{{explosionY}}px;
-    left:{{explosionX}}px;
-    transition-duration: calc({{displayTime}}s);
+top:{{explosionY}}px;
+left:{{explosionX}}px;
+transition-duration: calc({{displayTime}}s);
 }
 .rainfall{
-    transition-duration: calc({{displayTime}}s);
+transition-duration: calc({{displayTime}}s);
 }
 .train{
     position: absolute;
@@ -45,7 +46,7 @@
 }
 .locomotive{
     display:inline-block;
-    background-image: url(https://cdn.streamelements.com/uploads/a8654e44-89ed-4315-a183-f8dbc2a5e618.png);
+    background-image: url({locomotive});
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 64px;
@@ -57,7 +58,7 @@
 .wagon{
     display:inline-block;
     display:inline-block;
-    background-image: url(https://cdn.streamelements.com/uploads/1bde19d4-e217-4e4b-a875-ce59e884859d.png);
+    background-image: url({wagon});
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height:70px;
@@ -69,10 +70,10 @@
 .gifter{
     position:absolute;
     z-index:20;
-    left:{{gifterX}}px;
-    top:{{gifterY}}px;
-    background-color:{{gifterBg}};
-    color:{{gifterFontColor}};
-    font-size:{{gifterFontSize}}px;
-    border: 2px solid {{gifterBorder}};
+left:{{gifterX}}px;
+top:{{gifterY}}px;
+background-color:{{gifterBg}};
+color:{{gifterFontColor}};
+font-size:{{gifterFontSize}}px;
+border: 2px solid {{gifterBorder}};
 }

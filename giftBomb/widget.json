@@ -1,4 +1,17 @@
 {
+  "alertUrl":{
+    "type": "sound-input",
+    "label": "Initial sound",
+    "value":""
+  },
+  "volume": {
+    "type": "slider",
+    "label": "Volume",
+    "value": 50,
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
   "fontName": {
     "type": "text",
     "label": "Font name",
@@ -53,17 +66,17 @@
     "value": 40
   },
   "gifterFontColor": {
-    "type": "color-picker",
+    "type": "colorpicker",
     "label": "Gifter font color",
     "value": "rgb(255,0,0)"
   },
   "gifterBg": {
-    "type": "color-picker",
+    "type": "colorpicker",
     "label": "Gifter background color",
     "value": "rgba(255,255,255,0.7)"
   },
   "gifterBorder": {
-    "type": "color-picker",
+    "type": "colorpicker",
     "label": "Gifter border color",
     "value": "rgba(255,0,0,0.7)"
   },
@@ -80,7 +93,12 @@
   "displayTime": {
     "type": "number",
     "label": "Display Time (s)",
-    "value": 10
+    "value": 15
+  },
+  "widgetDuration": {
+    "type": "number",
+    "label": "MAX Queue lock (s)",
+    "value": 20
   },
   "animation": {
     "type": "dropdown",
@@ -89,8 +107,8 @@
     "options": {
       "randomPlaces": "Random Places",
       "explosion": "Explosion",
-      "fall": "Fall",
-      "train": "Train"
+      "fall":"Fall",
+      "train":"Train"
     }
   },
   "animationIn": {
@@ -183,5 +201,16 @@
     "type": "number",
     "label": "Explosion initial Y",
     "value": 600
+  },
+  "locomotive":{
+    "type":"image-input",
+    "label":"Locomotive image",
+    "value":"https://cdn.streamelements.com/uploads/a8654e44-89ed-4315-a183-f8dbc2a5e618.png"
+  },
+  "wagon":{
+    "type":"image-input",
+    "label":"Wagon image",
+    "value":"https://cdn.streamelements.com/uploads/1bde19d4-e217-4e4b-a875-ce59e884859d.png"
   }
+
 }
