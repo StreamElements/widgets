@@ -9,7 +9,7 @@ let eventsLimit = 5,
 
 let userCurrency,
     totalEvents = 0;
-
+let commGifts = {};
 const getBadge = months => {
     let badge = 0;
     for (let number in badges) {
@@ -20,8 +20,28 @@ const getBadge = months => {
 };
 
 const checkSub = (event) => {
-    if (fieldData.subAggregate && event.isCommunityGift && !event.bulkGifted) return false; // Sub aggregation exit
-    if (event.isCommunityGift || event.amount >= fieldData.minimumSubDuration) return true; // Minimum duration check
+    if (fieldData.subAggregate) {
+        if (event.bulkGifted && event.amount > 1) {
+            event.sender = event.sender.toLowerCase();
+            commGifts[event.sender] = event.amount;
+            return true;
+        }
+        if (event.isCommunityGift) {
+            event.sender = event.sender.toLowerCase();
+            if (typeof commGifts[event.sender] === "undefined" && event.amount === 1) return true;
+
+            if (commGifts[event.sender] > 0) {
+                commGifts[event.sender]--;
+                if (commGifts[event.sender] === 0) {
+                    delete commGifts[event.sender];
+                }
+                return false;
+            }
+        }
+    } else {
+        if (event.bulkGifted) return false;
+    }
+    if (event.gifted || event.isCommunityGift || event.amount >= fieldData.minimumSubDuration) return true; // Minimum duration check
     if (parseInt(event.tier) >= 2000 && fieldData.minimumSubTier === "t2") return true; // Tier 2 check
     if (parseInt(event.tier) === 3000 && fieldData.minimumSubTier === "t3") return true; // Tier 3 check
     return false;
