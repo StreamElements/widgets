@@ -23,8 +23,8 @@ window.addEventListener('onEventReceived', function (obj) {
     const data = obj.detail.event;
     if (listener === 'bot:counter' && data.counter === fieldData.botCounterName) {
         botPoints = parseInt(data.value);
+        analysePoints();
     }
-    analysePoints();
 });
 
 
