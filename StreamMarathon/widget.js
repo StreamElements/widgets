@@ -43,6 +43,9 @@ window.addEventListener('onEventReceived', function (obj) {
                 start = minTime;
                 countdown(0);
             }
+            if (obj.detail.event.field === 'addTime') {
+                countdown(60);
+            }
             return;
         }
     } else if (listener.indexOf("-latest") === -1) return;

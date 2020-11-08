@@ -18,6 +18,12 @@
     "value": "Start/Reset timer",
     "group": "Timer settings"
   },
+  "addTime": {
+    "type": "button",
+    "label": "Add 60s",
+    "value": "Add 60s",
+    "group": "Timer settings"
+  },
   "preserveTime": {
     "type": "dropdown",
     "label": "Overlay reload behaviour",
