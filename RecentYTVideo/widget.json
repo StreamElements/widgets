@@ -2,6 +2,7 @@
   "type": {
     "type": "dropdown",
     "label": "Channel type",
+    "value": "channel",
     "options": {
       "channel": "Channel",
       "user": "User"
@@ -15,22 +16,22 @@
   "resolution": {
     "type": "dropdown",
     "label": "Thumbnail resolution",
-    "value":"mqdefault",
+    "value": "mqdefault",
     "options": {
       "mqdefault": "Medium",
       "hqdefault": "High",
-      "maxresdefault":"Max"
+      "maxresdefault": "Max"
     }
   },
   "showTime": {
     "type": "number",
     "label": "How long image should be shown(s)",
-    "value": "10"
+    "value": 10
   },
   "hideTime": {
     "type": "number",
     "label": "How long image should be hidden (s)",
-    "value": "60"
+    "value": 60
   },
   "fontName": {
     "type": "googleFont",
@@ -51,7 +52,7 @@
   "layout": {
     "label": "Layout",
     "type": "dropdown",
-    "value": "labelTop",
+    "value": "labelBottomTitleHidden",
     "options": {
       "titleTopLabelBottom": "Title on top label on bottom",
       "titleTopLabelHidden": "Title top, no label",
