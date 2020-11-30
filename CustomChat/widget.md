@@ -1,0 +1,1 @@
+Custom chat widget

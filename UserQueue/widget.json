@@ -18,5 +18,21 @@
     "type": "text",
     "label": "Empty queue",
     "value": "!purge"
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "User Queue"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/UserQueue/"
   }
 }

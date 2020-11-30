@@ -68,5 +68,21 @@
     "type": "number",
     "label": "Label stroke size",
     "value": 1
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Cumulative Goal"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/CumulativeGoal/"
   }
 }

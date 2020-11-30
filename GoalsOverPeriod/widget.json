@@ -577,5 +577,21 @@
       "zu-ZA": "Zulu (South Africa)",
       "zu": "Zulu"
     }
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Goal Widget"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/GoalsOverPeriod/"
   }
 }

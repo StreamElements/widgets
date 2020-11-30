@@ -1,32 +1,8 @@
 {
-  "text": {
-    "type": "text",
-    "label": "Text to scroll, possible variables:",
-    "value": ""
-  },
-  "textAlign": {
-    "label": "Text align",
-    "type": "dropdown",
-    "value": "left",
-    "options": {
-      "left": "Left",
-      "center": "Center",
-      "right": "Right"
-    }
-  },
   "fontName": {
     "type": "googleFont",
     "label": "Font name",
     "value": "Montserrat"
-  },
-  "dynamicFontSize": {
-    "type": "dropdown",
-    "label": "Font size",
-    "value": "static",
-    "options": {
-      "static": "Static - set below",
-      "dynamic": "Dynamic - fit container size"
-    }
   },
   "fontSize": {
     "type": "number",
@@ -51,55 +27,20 @@
     "label": "Font Color",
     "value": "rgba(255,255,255,1)"
   },
-  "strokeColor": {
-    "type": "colorpicker",
-    "label": "Stroke Color",
-    "value": "rgba(255,0,0,1)"
+  "widgetName": {
+    "type": "hidden",
+    "value": "Ultimate Text Widget"
   },
-  "strokeSize": {
-    "type": "number",
-    "label": "Stroke size",
-    "value": 2
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
   },
-  "bgColor": {
-    "type": "colorpicker",
-    "label": "Background Color",
-    "value": "rgba(255,0,0,0)"
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
   },
-  "marquee": {
-    "type": "dropdown",
-    "label": "Enable marquee",
-    "value": "plain",
-    "options": {
-      "marquee": "yes",
-      "plain": "no"
-    }
-  },
-  "marqueeSpeed": {
-    "type": "number",
-    "label": "Marquee speed",
-    "value": 5
-  },
-  "gap": {
-    "type": "number",
-    "label": "Gap between segments",
-    "value": 50
-  },
-  "rotate": {
-    "type": "number",
-    "label": "Rotate",
-    "value": 0,
-    "min": -180,
-    "max": 180
-  },
-  "images": {
-    "type": "image-input",
-    "label": "Images",
-    "multiple": true
-  },
-  "imageHeight": {
-    "type": "number",
-    "label": "Image height",
-    "value": 24
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/SessionDataTemplating/"
   }
 }

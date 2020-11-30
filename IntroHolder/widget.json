@@ -130,5 +130,21 @@
     "step": 1,
     "value": 800,
     "group": "Typography"
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Intro Holder"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/IntroHolder/"
   }
 }

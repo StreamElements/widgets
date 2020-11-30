@@ -38,5 +38,21 @@
     "type": "number",
     "label": "Explosion duration (seconds)",
     "value": 1
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Heart Engangement"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/HeartEngangement/"
   }
 }

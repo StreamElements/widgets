@@ -1,8 +1,8 @@
 {
-  "alertUrl":{
+  "alertUrl": {
     "type": "sound-input",
     "label": "Initial sound",
-    "value":""
+    "value": ""
   },
   "volume": {
     "type": "slider",
@@ -107,8 +107,8 @@
     "options": {
       "randomPlaces": "Random Places",
       "explosion": "Explosion",
-      "fall":"Fall",
-      "train":"Train"
+      "fall": "Fall",
+      "train": "Train"
     }
   },
   "animationIn": {
@@ -202,15 +202,30 @@
     "label": "Explosion initial Y",
     "value": 600
   },
-  "locomotive":{
-    "type":"image-input",
-    "label":"Locomotive image",
-    "value":"https://cdn.streamelements.com/uploads/a8654e44-89ed-4315-a183-f8dbc2a5e618.png"
+  "locomotive": {
+    "type": "image-input",
+    "label": "Locomotive image",
+    "value": "https://cdn.streamelements.com/uploads/a8654e44-89ed-4315-a183-f8dbc2a5e618.png"
   },
-  "wagon":{
-    "type":"image-input",
-    "label":"Wagon image",
-    "value":"https://cdn.streamelements.com/uploads/1bde19d4-e217-4e4b-a875-ce59e884859d.png"
+  "wagon": {
+    "type": "image-input",
+    "label": "Wagon image",
+    "value": "https://cdn.streamelements.com/uploads/1bde19d4-e217-4e4b-a875-ce59e884859d.png"
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Community Gift Bomb Alerts"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/giftBomb/"
   }
-
 }
