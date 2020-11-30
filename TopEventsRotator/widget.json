@@ -1,103 +1,131 @@
 {
+  "fontName": {
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Montserrat",
+    "group": "Typography"
+  },
+  "dynamicFontSize": {
+    "type": "dropdown",
+    "label": "Font size",
+    "value": "static",
+    "options": {
+      "static": "Static - set below",
+      "dynamic": "Dynamic - fit container size"
+    },
+    "group": "Typography"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font size",
+    "value": 24,
+    "group": "Typography"
+  },
   "fontColor": {
     "type": "colorpicker",
     "label": "Font color",
-    "value": "#ff0000"
+    "group": "Typography"
   },
-  "timeIn": {
-    "type": "number",
-    "label": "Animation In time ms",
-    "value": 400
-  },
-  "timeDisplay": {
-    "type": "number",
-    "label": "Display time ms",
-    "value": 4000
-  },
-  "timeOut": {
-    "type": "number",
-    "label": "Animation Out time ms",
-    "value": 400
-  },
-  "animationIn": {
+  "fontWeight": {
+    "label": "Font Weight",
     "type": "dropdown",
-    "label": "Animation In:",
-    "value": "none",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group": "Typography"
+  },
+  "textTransform": {
+    "type": "dropdown",
+    "label": "Text transform",
     "options": {
       "none": "None",
-      "bounceIn": "bounceIn",
-      "bounceInDown": "bounceInDown",
-      "bounceInLeft": "bounceInLeft",
-      "bounceInRight": "bounceInRight",
-      "bounceInUp": "bounceInUp",
-      "fadeIn": "fadeIn",
-      "fadeInDown": "fadeInDown",
-      "fadeInDownBig": "fadeInDownBig",
-      "fadeInLeft": "fadeInLeft",
-      "fadeInLeftBig": "fadeInLeftBig",
-      "fadeInRight": "fadeInRight",
-      "fadeInRightBig": "fadeInRightBig",
-      "fadeInUp": "fadeInUp",
-      "fadeInUpBig": "fadeInUpBig",
-      "flipInX": "flipInX",
-      "flipInY": "flipInY",
-      "lightSpeedIn": "lightSpeedIn",
-      "rotateIn": "rotateIn",
-      "rotateInDownLeft": "rotateInDownLeft",
-      "rotateInDownRight": "rotateInDownRight",
-      "rotateInUpLeft": "rotateInUpLeft",
-      "rotateInUpRight": "rotateInUpRight",
-      "slideInUp": "slideInUp",
-      "slideInDown": "slideInDown",
-      "slideInLeft": "slideInLeft",
-      "slideInRight": "slideInRight",
-      "zoomIn": "zoomIn",
-      "zoomInDown": "zoomInDown",
-      "zoomInLeft": "zoomInLeft",
-      "zoomInRight": "zoomInRight",
-      "zoomInUp": "zoomInUp",
-      "jackInTheBox": "jackInTheBox",
-      "rollIn": "rollIn"
-    }
-  },
-  "animationOut": {
-    "type": "dropdown",
-    "label": "Animation Out:",
+      "uppercase": "Uppercase",
+      "lowercase": "Lowercase",
+      "capitalize": "Capitalize"
+    },
     "value": "none",
-    "options": {
-      "none": "None",
-      "bounceOut": "bounceOut",
-      "bounceOutDown": "bounceOutDown",
-      "bounceOutLeft": "bounceOutLeft",
-      "bounceOutRight": "bounceOutRight",
-      "bounceOutUp": "bounceOutUp",
-      "fadeOut": "fadeOut",
-      "fadeOutDown": "fadeOutDown",
-      "fadeOutDownBig": "fadeOutDownBig",
-      "fadeOutLeft": "fadeOutLeft",
-      "fadeOutLeftBig": "fadeOutLeftBig",
-      "fadeOutRight": "fadeOutRight",
-      "fadeOutRightBig": "fadeOutRightBig",
-      "fadeOutUp": "fadeOutUp",
-      "fadeOutUpBig": "fadeOutUpBig",
-      "flipOutX": "flipOutX",
-      "flipOutY": "flipOutY",
-      "lightSpeedOut": "lightSpeedOut",
-      "rotateOut": "rotateOut",
-      "rotateOutDownLeft": "rotateOutDownLeft",
-      "rotateOutDownRight": "rotateOutDownRight",
-      "rotateOutUpLeft": "rotateOutUpLeft",
-      "rotateOutUpRight": "rotateOutUpRight",
-      "slideOutUp": "slideOutUp",
-      "slideOutDown": "slideOutDown",
-      "slideOutLeft": "slideOutLeft",
-      "slideOutRight": "slideOutRight",
-      "zoomOut": "zoomOut",
-      "zoomOutDown": "zoomOutDown",
-      "zoomOutLeft": "zoomOutLeft",
-      "zoomOutRight": "zoomOutRight",
-      "zoomOutUp": "zoomOutUp",
-      "rollOut": "rollOut"
-    }
+    "group": "Typography"
+  },
+  "shadow": {
+    "type": "text",
+    "label": "Text shadow",
+    "group": "Typography"
+  },
+  "hideAfter": {
+    "type": "number",
+    "label": "Hide for X seconds",
+    "value": 24,
+    "group": "Global settings"
+  },
+  "cycleTime": {
+    "type": "number",
+    "label": "Cycle slide every (s)",
+    "value": 6,
+    "group": "Global settings"
+  },
+  "image1": {
+    "type": "image-input",
+    "label": "Image #1",
+    "group": "Texts"
+  },
+  "text1": {
+    "type": "text",
+    "label": "Text #1",
+    "value": "{follower-latest.name}",
+    "group": "Texts"
+  },
+  "image2": {
+    "type": "image-input",
+    "label": "Image #2",
+    "group": "Texts"
+  },
+  "text2": {
+    "type": "text",
+    "label": "Text #2",
+    "value": "{subscriber-latest.name}",
+    "group": "Texts"
+  },
+  "image3": {
+    "type": "image-input",
+    "label": "Image #3",
+    "group": "Texts"
+  },
+  "text3": {
+    "type": "text",
+    "label": "Text #3",
+    "value": "{cheer-latest.name}",
+    "group": "Texts"
+  },
+  "image4": {
+    "type": "image-input",
+    "label": "Image #4",
+    "group": "Texts"
+  },
+  "text4": {
+    "type": "text",
+    "label": "Text #4",
+    "value": "{tip-latest.name}",
+    "group": "Texts"
+  },
+  "image5": {
+    "type": "image-input",
+    "label": "Image #1",
+    "group": "Texts"
+  },
+  "text5": {
+    "type": "text",
+    "label": "Text #1",
+    "value": "{follower-latest.name}",
+    "group": "Texts"
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Top Events Rotator"
   }
 }

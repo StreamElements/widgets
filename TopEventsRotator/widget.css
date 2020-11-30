@@ -1,28 +1,58 @@
-.mySlides {
-    _display: none;
+@import url('https://fonts.googleapis.com/css?family={fontName}');
+
+:root {
+    --font-size: {fontSize}px;
+    --font-weight: {fontWeight};
+}
+
+* {
+    font-family: '{{fontName}}', sans-serif;
+    color: {fontColor};
+    text-shadow: {shadow};
+    text-transform:{textTransform};
+}
+
+
+.main-container {
     position: absolute;
-    top:0px;
-    left:0px;
-    display:none;
-    font-size: 30px;
-    padding: 20px;
-    color:{{fontColor}};
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
 }
-.icon {
-    text-align: center;
-    text-decoration: none;
-    float: left;
-}
-.username{
 
-    float:left;
-    padding-left:10px;
-    padding-top:2px;
-}
-.fa{
-    width: 45px;
-    padding: 5px;
-    border-radius: 50%;
 
-    color:#5e5e5e;
+.image {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.2em;
+}
+.slide{
+    position: absolute;
+    opacity:0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align:{textAlign};
+    display:flex;
+    align-items: flex-start;
+}
+
+.dynamic{
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.image{
+    height:100%;
+    background-size:contain;
+    ibackground-repeat:no-repeat;
+}
+.text{
+    height:100%;
+    display:flex;
+    align-items: center;
 }
