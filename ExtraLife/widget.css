@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.alert {
+    background-color: #194F6C;
+    border-radius: 0.15rem;
+    box-shadow: 0 0 0 0.3rem #ffffff;
+    color: #30C3EB;
+    max-height: 100px;
+    padding: 10px 0;
+    position: absolute;
+    top: 10rem;
+    text-align: center;
+    overflow: hidden;
+    width: 0;
+    z-index: 1;
+    visibility: hidden;
+}
+
+.alert-user {
+    color: white;
+    font-size: 1rem;
+    -webkit-text-stroke: 0.3px #30C3EB;
+}
+
+.alert-donation {
+    color: #3DE016;
+    font-size: 1.5rem;
+    -webkit-text-stroke: 0.3px white;
+}
+
+.alert-message {
+    color: #ffffff;
+    font-size: 0.6rem;
+}
+
+.main-container {
+    height: 100%;
+    margin: 0;
+    min-width: 400px;
+    max-width: 800px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+.goal {
+    background-color: #194F6C;
+    border-radius: 0.15rem;
+    box-shadow: 0 0 0 0.3rem #ffffff;
+    height: 150px;
+    padding: 0;
+    position: absolute;
+    top: 8rem;
+    width: 20px;
+    z-index: 10;
+}
+
+.goal-left {
+    left: 6rem;
+}
+
+.goal-right {
+    right: 6rem;
+}
+
+.el-logo {
+    position: absolute;
+    left: -52px;
+    top: -62px;
+    width: 100px;
+    z-index: 100!important;
+}
+
+.goal-progress {
+    background-color: #30C3EB;
+    border-radius: 0.15rem;
+    bottom: 0;
+    height: 0%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    animation: fill 800ms;
+}
+
+@keyframes fill {
+    from { height: 0; }
+}
+
+.size-small .alert {
+    padding: 10px;
+}
+
+.size-small .alert-left {
+    left: calc(6rem + 20px);
+}
+
+.size-small .alert-right {
+    right: calc(6rem + 20px);
+}
+
+.size-small .alert .alert-donation {
+    font-size: 1.2rem;
+}
+
+.size-medium .alert {
+    padding: 10px 15px;
+    max-height: 140px;
+}
+
+.size-medium .alert .alert-user {
+    font-size: 1rem;
+}
+
+.size-medium .alert .alert-message {
+    font-size: 0.8rem;
+}
+
+.size-medium .alert-left {
+    left: calc(6rem + 30px);
+}
+
+.size-medium .alert-right {
+    right: calc(6rem + 30px);
+}
+
+.size-medium .goal {
+    height: 250px;
+    width: 30px;
+}
+
+.size-medium .el-logo {
+    left: -75px;
+    top: -90px;
+    width: 150px;
+}
+
+.size-large .alert {
+    padding: 20px;
+    max-height: 160px;
+}
+
+.size-large .alert .alert-user {
+    font-size: 1.4rem;
+}
+
+.size-large .alert .alert-message {
+    font-size: 0.8rem;
+}
+
+.size-large .alert-left {
+    left: calc(6rem + 40px);
+}
+
+.size-large .alert-right {
+    right: calc(6rem + 40px);
+}
+
+.size-large .goal {
+    height: 350px;
+    width: 40px;
+}
+
+.size-large .el-logo {
+    left: -102px;
+    top: -120px;
+    width: 200px;
+}
+
+.alert-show {
+    animation: alert-show 300ms ease-in forwards;
+}
+
+.alert-hide {
+    animation: alert-hide 100ms ease-out forwards;
+}
+
+@keyframes alert-show {
+    0% { width: 0px; padding: 0; visibility: hidden; }
+    100% { width: 400px; visibility: visible; }
+}
+
+@keyframes alert-hide {
+    0% { width: 400px; visibility: visible; }
+    100% { width: 0px; padding: 0; visibility: hidden; }
+}
