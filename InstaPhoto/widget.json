@@ -1,0 +1,113 @@
+{
+  "command": {
+    "type": "string",
+    "label": "Command",
+    "value": "!insta"
+  },
+  "username": {
+    "type": "string",
+    "label": "Username",
+    "value": ""
+  },
+  "fontFamily": {
+    "group": "Visual",
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Sail"
+  },
+  "colorC1": {
+    "group": "Visual",
+    "type": "colorpicker",
+    "label": "Text color #1",
+    "value": "rgba(0,172,255,1)"
+  },
+  "colorC2": {
+    "group": "Visual",
+    "type": "colorpicker",
+    "label": "Text color #2",
+    "value": "rgba(0,172,255,1)"
+  },
+  "duration": {
+    "type": "number",
+    "label": "Duration",
+    "value": 5
+  },
+  "showVideo": {
+    "type": "checkbox",
+    "label": "Show video"
+  },
+  "showCar": {
+    "type": "checkbox",
+    "label": "Show carouselle"
+  },
+  "durationCarrusel": {
+    "type": "number",
+    "label": "Duration of image on carousel",
+    "value": 3
+  },
+  "isRandom": {
+    "type": "dropdown",
+    "label": "Show insta post",
+    "value": "last",
+    "options": {
+      "last": "Latest publication",
+      "random": "Random (12 latest)"
+    }
+  },
+  "inT": {
+    "group": "Visual",
+    "type": "dropdown",
+    "label": "Enter animation",
+    "value": "SlideUp",
+    "options": {
+      "SlideUp": "SlideUp",
+      "SlideDown": "SlideDown",
+      "SlideLeft": "SlideLeft",
+      "SlideRight": "SlideRight",
+      "Fade": "Fade",
+      "Bounce": "Bounce"
+    }
+  },
+  "outT": {
+    "group": "Visual",
+    "type": "dropdown",
+    "label": "Exit animation",
+    "value": "SlideUp",
+    "options": {
+      "SlideUp": "SlideUp",
+      "SlideDown": "SlideDown",
+      "SlideLeft": "SlideLeft",
+      "SlideRight": "SlideRight",
+      "Fade": "Fade",
+      "Bounce": "Bounce"
+    }
+  },
+  "fontSize": {
+    "group": "Visual",
+    "type": "number",
+    "label": "Font size",
+    "value": 25
+  },
+  "width": {
+    "group": "Visual",
+    "type": "number",
+    "label": "Width (px)",
+    "value": 500
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Insta Photo"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "cdod"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/InstaPhoto/"
+  }
+}

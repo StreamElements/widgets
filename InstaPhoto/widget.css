@@ -1,0 +1,264 @@
+/* Const */
+@import url('https://fonts.googleapis.com/css?family={fontFamily}:100,300,400,500,700,900&display=swap');
+/*  */
+.round-sq {
+    border-radius: 40px;
+}
+.show {
+    width: {{width}}px;
+    height: auto;
+}
+
+.txt {
+    text-align: center;
+    word-wrap: break-word;
+    width: {{width}}px;
+    height: auto;
+    font: normal {{fontSize}}px/1 {{fontFamily}}, Helvetica, sans-serif;
+    background: -webkit-linear-gradient({{colorC1}}, {{colorC2}});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Carrusel */
+.carousel {
+    width: {{width}}px;
+    height: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.carousel .slides {
+    position: relative;
+    left: 0;
+    display: flex;
+    width: 100%;
+    transition: 1s ease-in-out all;
+}
+.carousel .slides .slide {
+    min-width: 100%;
+    height: auto;
+}
+
+
+/* Animaciones */
+.initialHide {
+    visibility: hidden;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes SlideRightIn {
+    0% {
+        transform: translate3d(-150%, 0, 0);
+        visibility: visible;
+    }
+    60% {
+        transform: translate3d(10%, 0, 0);
+
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.SlideRightIn {
+    animation-name: SlideRightIn;
+}
+@keyframes SlideLeftIn {
+    0% {
+        transform: translate3d(150%, 0, 0);
+        visibility: visible;
+    }
+    60% {
+        transform: translate3d(-10%, 0, 0);
+
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.SlideLeftIn {
+    animation-name: SlideLeftIn;
+}
+@keyframes SlideUpIn {
+    0% {
+        transform: translate3d(0, 150%, 0);
+        visibility: visible;
+    }
+    60% {
+        transform: translate3d(0, -10%, 0);
+
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+}
+
+.SlideUpIn {
+    animation-name: SlideUpIn;
+}
+@keyframes SlideDownIn {
+    0% {
+        transform: translate3d(0, -150%, 0);
+        visibility: visible;
+    }
+    60% {
+        transform: translate3d(10%, 0, 0);
+
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.SlideDownIn {
+    animation-name: SlideDownIn;
+}
+
+@keyframes SlideUpOut {
+    0% {
+        transform: translate3d(0, 0, 0);
+
+    }
+    20% {
+        transform: translate3d(0, 10%, 0);
+
+    }
+    100% {
+        transform: translate3d(0, -150%, 0);
+        visibility: hidden;
+    }
+}
+
+.SlideUpOut {
+    animation-name: SlideUpOut;
+}
+@keyframes SlideDownOut {
+    0% {
+        transform: translate3d(0, 0, 0);
+
+    }
+    20% {
+        transform: translate3d(0, -10%, 0);
+
+    }
+    100% {
+        transform: translate3d(0, 150%, 0);
+        visibility: hidden;
+    }
+}
+
+.SlideDownOut {
+    animation-name: SlideDownOut;
+}
+@keyframes SlideLeftOut {
+    0% {
+        transform: translate3d(0, 0, 0);
+
+    }
+    20% {
+        transform: translate3d(10%, 0, 0);
+
+    }
+    100% {
+        transform: translate3d(-150%, 0, 0);
+        visibility: hidden;
+    }
+}
+
+.SlideLeftOut {
+    animation-name: SlideLeftOut;
+}
+@keyframes SlideRightOut {
+    0% {
+        transform: translate3d(0, 0, 0);
+
+    }
+    20% {
+        transform: translate3d(-10$, 0, 0);
+
+    }
+    100% {
+        transform: translate3d(150%, 0, 0);
+        visibility: hidden;
+    }
+
+}
+
+.SlideRightOut {
+    animation-name: SlideRightOut;
+}
+@keyframes FadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.FadeOut {
+    animation-name: FadeOut;
+}
+.FadetOut {
+    animation-name: SlideRightOut;
+}
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.FadeIn {
+    animation-name: FadeIn;
+}
+@keyframes BounceIn {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.BounceIn {
+    animation-name: BounceIn;
+}
+@keyframes BounceOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(1.2);
+
+    }
+    100% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+}
+
+.BounceOut {
+    animation-name: BounceOut;
+}
