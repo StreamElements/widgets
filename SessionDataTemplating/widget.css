@@ -1,7 +1,48 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
 @import url('https://fonts.googleapis.com/css?family={fontName}');
 * {
     font-family: '{{fontName}}', sans-serif;
     color:{{fontColor}};
     font-weight:{{fontWeight}};
     font-size:{{fontSize}}px;
+    -webkit-text-stroke: {strokeSize}px {strokeColor};
+}
+
+.holder{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    text-align:{textAlign};
+    background-color:{bgColor};
+    transform: rotate({rotate}deg);
+}
+
+.image{
+    height: {{imageHeight}}px;
+}
+
+.plain{
+    display: flex;
+    align-items: center; /* Vertical center alignment */
+    justify-content: {textAlign}; /* Horizontal center alignment */
+}
+
+.dynamicFontSize{
+    display:inline-block;
+    white-space: nowrap;
+}
+
+.plainh{
+    display:none;
+}
+
+.marquee{
+    overflow: hidden;
+    text-align:left;
+}
+
+.marqueeh{
+    margin-left:{gap}px;
 }
