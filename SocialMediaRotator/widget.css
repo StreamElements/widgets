@@ -1,18 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family={{fontFamily}}:wght@{{fontWeight}}&display=swap");
-
-body
-{
-    margin:  0 !important;
-    padding: 0 !important;
-}
+@import url("https://fonts.googleapis.com/css2?family={{fontFamily}}&display=swap");
 
 #container
 {
     width:       100%;
     height:      100%;
     font-family: '{{fontFamily}}', sans-serif;
-font-size:   {{fontSize}}px;
+    font-size:   {{fontSize}}px;
 }
+
 #container .slides
 {
     width:           100%;
@@ -24,41 +19,62 @@ font-size:   {{fontSize}}px;
     display:         flex;
     flex-wrap:       nowrap;
     flex-direction:  row;
-    justify-content: center;
+    justify-content: {{alignContent}};
     align-items:     center;
 }
 
 #container .slides.animateIn
 {
     animation:                 {{animationIn}};
-    animation-duration:        {{timeIn}}ms;
+    animation-duration:        {{timeIn}}s;
     animation-iteration-count: 1;
 }
 
 #container .slides.animateOut
 {
     animation:                 {{animationOut}};
-    animation-duration:        {{timeOut}}ms;
+    animation-duration:        {{timeOut}}s;
     animation-iteration-count: 1;
+}
+
+#container .slides .slidesContent
+{
+
 }
 
 #container .slides .username
 {
-    flex:        0 0 auto;
-    color:       {{fontColor}};
-    font-weight: {{fontWeight}};
-    padding:     0 10px;
+    flex:           0 0 auto;
+    align-self:     center;
+    color:          {{fontColor}};
+    font-weight:    {{fontWeight}};
+    line-height:    {{fontSize}}px;
+    letter-spacing: {{letterSpacing}}px;
+    padding:        0 {{textPaddingHoizontal}}px;
+    position:       relative;
+    top:            {{textVerticalCorrection}}px;
+    text-shadow:	  {{shadowOffsetX}}px {{shadowOffsetY}}px {{shadowBlurRadius}}px {{shadowColor1}},
+    {{shadowOffsetX}}px {{shadowOffsetY}}px {{shadowBlurRadius}}px {{shadowColor1}},
+    {{shadowOffsetX}}px {{shadowOffsetY}}px {{shadowBlurRadius}}px {{shadowColor2}},
+    {{shadowOffsetX}}px {{shadowOffsetY}}px {{shadowBlurRadius}}px {{shadowColor2}};
 }
 
-#container .slides .imageWrapper
+#container .slides .imageWrapper,
+#container .slides .faWrapper
 {
-    flex:      0 0 auto;
-    max-width: {{fontSize}}px;
+    order:           0;
+    flex:            0 0 auto;
+    display:         inline-flex;
+    flex-wrap:       nowrap;
+    flex-direction:  row;
+    justify-content: center;
+    align-items:     stretch;
 }
 
 #container .slides .imageWrapper .image
 {
-    height:  {{fontSize}}px;
-    width:   {{fontSize}}px;
-    display: block;
+    height:     1em;
+    width:      auto;
+    flex:       0 0 auto;
+    align-self: center;
 }
