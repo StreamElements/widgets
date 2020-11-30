@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family={{fontFamily}}:wght@{{fontWeight}}&display=swap");
+
+body
+{
+    margin:  0 !important;
+    padding: 0 !important;
+}
+
+#container
+{
+    width:       100%;
+    height:      100%;
+    font-family: '{{fontFamily}}', sans-serif;
+font-size:   {{fontSize}}px;
+}
+#container .slides
+{
+    width:           100%;
+    height:          100%;
+    position:        absolute;
+    top:             0;
+    left:            0;
+    visibility:      hidden;
+    display:         flex;
+    flex-wrap:       nowrap;
+    flex-direction:  row;
+    justify-content: center;
+    align-items:     center;
+}
+
+#container .slides.animateIn
+{
+    animation:                 {{animationIn}};
+    animation-duration:        {{timeIn}}ms;
+    animation-iteration-count: 1;
+}
+
+#container .slides.animateOut
+{
+    animation:                 {{animationOut}};
+    animation-duration:        {{timeOut}}ms;
+    animation-iteration-count: 1;
+}
+
+#container .slides .username
+{
+    flex:        0 0 auto;
+    color:       {{fontColor}};
+    font-weight: {{fontWeight}};
+    padding:     0 10px;
+}
+
+#container .slides .imageWrapper
+{
+    flex:      0 0 auto;
+    max-width: {{fontSize}}px;
+}
+
+#container .slides .imageWrapper .image
+{
+    height:  {{fontSize}}px;
+    width:   {{fontSize}}px;
+    display: block;
+}

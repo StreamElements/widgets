@@ -1,0 +1,386 @@
+{
+  "rotatorBehaviour": {
+    "group": "General",
+    "type": "dropdown",
+    "label": "Rotator behaviour",
+    "value": "repeat",
+    "options": {
+      "repeat": "Repeat endlessly",
+      "sleep": "Sleep after X iterations"
+    }
+  },
+  "iterations": {
+    "group": "General",
+    "type": "number",
+    "label": "Iteration count",
+    "min": 1,
+    "max": 100,
+    "value": 1,
+    "step": 1
+  },
+  "sleepTime": {
+    "group": "General",
+    "type": "number",
+    "label": "Sleep time (in seconds)",
+    "min": 1,
+    "max": 86400,
+    "value": 10,
+    "step": 0.1
+  },
+  "fontFamily": {
+    "group": "Font",
+    "type": "googleFont",
+    "label": "Font family",
+    "value": "Montserrat"
+  },
+  "useIconColor": {
+    "group": "Font",
+    "type": "dropdown",
+    "label": "Text color",
+    "value": "icons",
+    "options": {
+      "icons": "Use icon color as font color",
+      "separate": "Use own font color below"
+    }
+  },
+  "fontColor": {
+    "group": "Font",
+    "type": "colorpicker",
+    "label": "Font color",
+    "value": "#ffffff"
+  },
+  "fontSize": {
+    "group": "Font",
+    "type": "number",
+    "label": "Font size",
+    "min": 1,
+    "max": 300,
+    "value": 60,
+    "step": 1
+  },
+  "fontWeight": {
+    "group": "Font",
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "700",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    }
+  },
+  "timeIn": {
+    "group": "Animations",
+    "type": "number",
+    "label": "Animation In time ms",
+    "value": 400,
+    "step": 50
+  },
+  "timeDisplay": {
+    "group": "Animations",
+    "type": "number",
+    "label": "Display time ms",
+    "value": 4000,
+    "step": 100
+  },
+  "timeOut": {
+    "group": "Animations",
+    "type": "number",
+    "label": "Animation Out time ms",
+    "value": 400,
+    "step": 50
+  },
+  "timeInBetween": {
+    "group": "Animations",
+    "type": "number",
+    "label": "Time between each social (in ms)",
+    "value": 400,
+    "step": 50
+  },
+  "timeDelay": {
+    "group": "Animations",
+    "type": "number",
+    "label": "Time before socials repeats itself (in ms)",
+    "value": 400,
+    "step": 50
+  },
+  "animationIn": {
+    "group": "Animations",
+    "type": "dropdown",
+    "label": "Animation In:",
+    "value": "bounceIn",
+    "options": {
+      "none": "None",
+      "bounceIn": "bounceIn",
+      "bounceInDown": "bounceInDown",
+      "bounceInLeft": "bounceInLeft",
+      "bounceInRight": "bounceInRight",
+      "bounceInUp": "bounceInUp",
+      "fadeIn": "fadeIn",
+      "fadeInDown": "fadeInDown",
+      "fadeInDownBig": "fadeInDownBig",
+      "fadeInLeft": "fadeInLeft",
+      "fadeInLeftBig": "fadeInLeftBig",
+      "fadeInRight": "fadeInRight",
+      "fadeInRightBig": "fadeInRightBig",
+      "fadeInUp": "fadeInUp",
+      "fadeInUpBig": "fadeInUpBig",
+      "flipInX": "flipInX",
+      "flipInY": "flipInY",
+      "lightSpeedIn": "lightSpeedIn",
+      "rotateIn": "rotateIn",
+      "rotateInDownLeft": "rotateInDownLeft",
+      "rotateInDownRight": "rotateInDownRight",
+      "rotateInUpLeft": "rotateInUpLeft",
+      "rotateInUpRight": "rotateInUpRight",
+      "slideInUp": "slideInUp",
+      "slideInDown": "slideInDown",
+      "slideInLeft": "slideInLeft",
+      "slideInRight": "slideInRight",
+      "zoomIn": "zoomIn",
+      "zoomInDown": "zoomInDown",
+      "zoomInLeft": "zoomInLeft",
+      "zoomInRight": "zoomInRight",
+      "zoomInUp": "zoomInUp",
+      "jackInTheBox": "jackInTheBox",
+      "rollIn": "rollIn"
+    }
+  },
+  "animationOut": {
+    "group": "Animations",
+    "type": "dropdown",
+    "label": "Animation Out:",
+    "value": "bounceOut",
+    "options": {
+      "none": "None",
+      "bounceOut": "bounceOut",
+      "bounceOutDown": "bounceOutDown",
+      "bounceOutLeft": "bounceOutLeft",
+      "bounceOutRight": "bounceOutRight",
+      "bounceOutUp": "bounceOutUp",
+      "fadeOut": "fadeOut",
+      "fadeOutDown": "fadeOutDown",
+      "fadeOutDownBig": "fadeOutDownBig",
+      "fadeOutLeft": "fadeOutLeft",
+      "fadeOutLeftBig": "fadeOutLeftBig",
+      "fadeOutRight": "fadeOutRight",
+      "fadeOutRightBig": "fadeOutRightBig",
+      "fadeOutUp": "fadeOutUp",
+      "fadeOutUpBig": "fadeOutUpBig",
+      "flipOutX": "flipOutX",
+      "flipOutY": "flipOutY",
+      "lightSpeedOut": "lightSpeedOut",
+      "rotateOut": "rotateOut",
+      "rotateOutDownLeft": "rotateOutDownLeft",
+      "rotateOutDownRight": "rotateOutDownRight",
+      "rotateOutUpLeft": "rotateOutUpLeft",
+      "rotateOutUpRight": "rotateOutUpRight",
+      "slideOutUp": "slideOutUp",
+      "slideOutDown": "slideOutDown",
+      "slideOutLeft": "slideOutLeft",
+      "slideOutRight": "slideOutRight",
+      "zoomOut": "zoomOut",
+      "zoomOutDown": "zoomOutDown",
+      "zoomOutLeft": "zoomOutLeft",
+      "zoomOutRight": "zoomOutRight",
+      "zoomOutUp": "zoomOutUp",
+      "rollOut": "rollOut"
+    }
+  },
+  "icon1SocialOrder": {
+    "group": "Social 1",
+    "type": "dropdown",
+    "label": "Order social 1",
+    "value": "iconfirst",
+    "options": {
+      "iconfirst": "Icon First",
+      "socialfirst": "Name First"
+    }
+  },
+  "el1Name": {
+    "group": "Social 1",
+    "type": "text",
+    "label": "Social 1 name",
+    "value": "Twittername"
+  },
+  "el1Color": {
+    "group": "Social 1",
+    "type": "colorpicker",
+    "label": "Social 1 FontAwesome icon color",
+    "value": "#1da1f2"
+  },
+  "el1Icon": {
+    "group": "Social 1",
+    "type": "text",
+    "label": "Social 1 FontAwesome icon",
+    "value": "twitter"
+  },
+  "el1IconLink": {
+    "group": "Social 1",
+    "type": "image-input",
+    "label": "Social 1 upload icon"
+  },
+  "el1IconShow": {
+    "group": "Social 1",
+    "type": "dropdown",
+    "label": "Show social 1 icon:",
+    "value": "fontawesome",
+    "options": {
+      "none": "None",
+      "fontawesome": "Social 1 FontAwesome icon",
+      "url": "Social 1 upload icon"
+    }
+  },
+  "icon2SocialOrder": {
+    "group": "Social 2",
+    "type": "dropdown",
+    "label": "Order social 2",
+    "value": "iconfirst",
+    "options": {
+      "iconfirst": "Icon First",
+      "socialfirst": "Name First"
+    }
+  },
+  "el2Name": {
+    "group": "Social 2",
+    "type": "text",
+    "label": "Social 2 name",
+    "value": "Youtubename"
+  },
+  "el2Color": {
+    "group": "Social 2",
+    "type": "colorpicker",
+    "label": "Social 2 FontAwesome icon color",
+    "value": "#ff0000"
+  },
+  "el2Icon": {
+    "group": "Social 2",
+    "type": "text",
+    "label": "Social 2 FontAwesome icon",
+    "value": "youtube"
+  },
+  "el2IconLink": {
+    "group": "Social 2",
+    "type": "text",
+    "type": "image-input",
+    "label": "Social 2 upload icon"
+  },
+  "el2IconShow": {
+    "group": "Social 2",
+    "type": "dropdown",
+    "label": "Show social 2 icon:",
+    "value": "none",
+    "options": {
+      "none": "None",
+      "fontawesome": "Social 2 FontAwesome icon",
+      "url": "Social 2 upload icon"
+    }
+  },
+  "icon3SocialOrder": {
+    "group": "Social 3",
+    "type": "dropdown",
+    "label": "Order social 3",
+    "value": "iconfirst",
+    "options": {
+      "iconfirst": "Icon First",
+      "socialfirst": "Name First"
+    }
+  },
+  "el3Name": {
+    "group": "Social 3",
+    "type": "text",
+    "label": "Social 3 name",
+    "value": "Instagramname"
+  },
+  "el3Color": {
+    "group": "Social 3",
+    "type": "colorpicker",
+    "label": "Social 3 FontAwesome icon color",
+    "value": "#e1306c"
+  },
+  "el3Icon": {
+    "group": "Social 3",
+    "type": "text",
+    "label": "Social 3 FontAwesome icon",
+    "value": "instagram"
+  },
+  "el3IconLink": {
+    "group": "Social 3",
+    "type": "image-input",
+    "label": "Social 3 upload icon"
+  },
+  "el3IconShow": {
+    "group": "Social 3",
+    "type": "dropdown",
+    "label": "Show social 3 icon:",
+    "value": "url",
+    "options": {
+      "none": "None",
+      "fontawesome": "Social 3 FontAwesome icon",
+      "url": "Social 3 upload icon"
+    }
+  },
+  "icon4SocialOrder": {
+    "group": "Social 4",
+    "type": "dropdown",
+    "label": "Order social 4",
+    "value": "iconfirst",
+    "options": {
+      "iconfirst": "Icon First",
+      "socialfirst": "Name First"
+    }
+  },
+  "el4Name": {
+    "group": "Social 4",
+    "type": "text",
+    "label": "Social 4 name",
+    "value": "Twitchname"
+  },
+  "el4Color": {
+    "group": "Social 4",
+    "type": "colorpicker",
+    "label": "Social 4 FontAwesome icon color",
+    "value": "#6441a5"
+  },
+  "el4Icon": {
+    "group": "Social 4",
+    "type": "text",
+    "label": "Social 4 FontAwesome icon",
+    "value": "twitch"
+  },
+  "el4IconLink": {
+    "group": "Social 4",
+    "type": "image-input",
+    "label": "Social 4 upload icon"
+  },
+  "el4IconShow": {
+    "group": "Social 4",
+    "type": "dropdown",
+    "label": "Show social 4 icon:",
+    "value": "fontawesome",
+    "options": {
+      "none": "None",
+      "fontawesome": "Social 4 FontAwesome icon",
+      "url": "Social 4 upload icon"
+    }
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Social Media Rotator"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "Benno"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.2"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/SocialMediaRotator/"
+  }
+}
