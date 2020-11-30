@@ -204,5 +204,21 @@
       "zoomOutUp": "zoomOutUp",
       "rollOut": "rollOut"
     }
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Recent YT Video"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "lx"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.0"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/RecentYTVideo/"
   }
 }
