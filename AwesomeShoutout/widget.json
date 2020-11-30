@@ -1,0 +1,4785 @@
+{
+  "notificationTime": {
+    "type": "number",
+    "label": "Notification duration(seconds)",
+    "value": 6.8,
+    "group":"General Config"
+  },
+  "method": {
+    "type": "dropdown",
+    "label": "Mode",
+    "value": "command",
+    "options": {
+      "command": "On mod/streamer command",
+      "firstMessage": "First user's message per stream"
+    },
+    "group":"General Config"
+  },
+  "customCommand": {
+    "type": "text",
+    "label": "Shoutout Command",
+    "value": "!so",
+    "group":"General Config"
+  },
+  "whenNotFound": {
+    "type": "dropdown",
+    "label": "Name not in VIP list",
+    "value": "show",
+    "options": {
+      "show": "User/Channel logo",
+      "nothing": "Don't do anything",
+      "video": "Show default video",
+      "image": "Show default image"
+    },
+    "group":"General Config"
+  },
+  "playSound": {
+    "type": "dropdown",
+    "label": "Play Sound?",
+    "value": "notFound",
+    "options": {
+      "notFound": "Play",
+      "false": "Do not play"
+    },
+    "group":"General Config"
+  },
+  "defaultSound": {
+    "type": "sound-input",
+    "label": "Default Sound",
+    "value": "",
+    "group":"General Config"
+  },
+  "volumeSlider": {
+    "type": "slider",
+    "label": "Default Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"General Config"
+  },
+
+
+  "defaultVideoSettings0": {
+    "type": "hidden",
+    "label": "***************************",
+    "group":"General Config"
+  },
+  "defaultVideoSettings1": {
+    "type": "hidden",
+    "label": "DEFAULT VIDEO SETTINGS",
+    "group":"General Config"
+  },
+  "defaultVideoSettings2": {
+    "type": "hidden",
+    "label": "***************************",
+    "group":"General Config"
+  },
+
+
+  "defaultVideo": {
+    "type": "video-input",
+    "label": "Default video",
+    "group":"General Config"
+  },
+  "defaultVideoVolume": {
+    "type": "slider",
+    "label": "Default Video Volume",
+    "value": 100,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"General Config"
+  },
+  "defaultVideoSize": {
+    "type": "slider",
+    "label": "Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"General Config"
+  },
+  "videoHeight": {
+    "type": "slider",
+    "label": "Vertical pos. of the video (%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"General Config"
+  },
+
+  "defaultImageSettings0": {
+    "type": "hidden",
+    "label": "***************************",
+    "group":"General Config"
+  },
+  "defaultImageSettings1": {
+    "type": "hidden",
+    "label": "DEFAULT IMAGE SETTINGS",
+    "group":"General Config"
+  },
+  "defaultImageSettings2": {
+    "type": "hidden",
+    "label": "***************************",
+    "group":"General Config"
+  },
+
+  "defaultImage": {
+    "type": "image-input",
+    "label": "Default Image",
+    "group":"General Config"
+  },
+  "defaultImageSize": {
+    "type": "slider",
+    "label": "Image Size (%)",
+    "value": 80,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"General Config"
+  },
+  "imageHeight": {
+    "type": "slider",
+    "label": "Vertical pos. of the image (%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"General Config"
+  },
+  "mainText": {
+    "type": "text",
+    "label": "Main Text",
+    "value": "Awesome Shoutout",
+    "group":"General Top Text Config"
+  },
+  "mainTextColor": {
+    "type": "colorpicker",
+    "label": "Main Text Color",
+    "value": "#fdb336",
+    "group":"General Top Text Config"
+  },
+  "mainTextAnimationIn":{
+    "label": "Main Text Animation In",
+    "type": "dropdown",
+    "value": "bounce",
+    "options": {
+      "bounce":"bounce",
+      "bounceIn":"bounceIn",
+      "bounceInDown":"bounceInDown",
+      "bounceInLeft":"bounceInLeft",
+      "bounceInRight":"bounceInRight",
+      "bounceInUp":"bounceInUp",
+      "fadeIn":"fadeIn",
+      "fadeInDown":"fadeInDown",
+      "fadeInDownBig":"fadeInDownBig",
+      "fadeInLeft":"fadeInLeft",
+      "fadeInLeftBig":"fadeInLeftBig",
+      "fadeInRight":"fadeInRight",
+      "fadeInRightBig":"fadeInRightBig",
+      "fadeInUp":"fadeInUp",
+      "fadeInUpBig":"fadeInUpBig",
+      "flash":"flash",
+      "flipInX":"flipInX",
+      "flipInY":"flipInY",
+      "headShake":"headShake",
+      "heartBeat":"heartBeat",
+      "hinge":"hinge",
+      "jackInTheBox":"jackInTheBox",
+      "jello":"jello",
+      "lightSpeedIn":"lightSpeedIn",
+      "pulse":"pulse",
+      "rollIn":"rollIn",
+      "rotateIn":"rotateIn",
+      "rotateInDownLeft":"rotateInDownLeft",
+      "rotateInDownRight":"rotateInDownRight",
+      "rotateInUpLeft":"rotateInUpLeft",
+      "rotateInUpRight":"rotateInUpRight",
+      "rubberBand":"rubberBand",
+      "shake":"shake",
+      "slideInDown":"slideInDown",
+      "slideInLeft":"slideInLeft",
+      "slideInRight":"slideInRight",
+      "slideInUp":"slideInUp",
+      "swing":"swing",
+      "tada":"tada",
+      "wobble":"wobble",
+      "zoomIn":"zoomIn",
+      "zoomInDown":"zoomInDown",
+      "zoomInLeft":"zoomInLeft",
+      "zoomInRight":"zoomInRight",
+      "zoomInUp":"zoomInUp"
+    },
+    "group":"General Top Text Config"
+  },
+  "mainTextAnimationInSpeed": {
+    "label": "Main Text Animation In Speed",
+    "type": "dropdown",
+    "value": "slow",
+    "options": {
+      "slow": "slow",
+      "slower": "slower",
+      "fast": "fast",
+      "faster": "faster"
+    },
+    "group":"General Top Text Config"
+  },
+  "mainTextAnimationOut":{
+    "label": "Main Text Animation Out",
+    "type": "dropdown",
+    "value": "bounceOut",
+    "options": {
+      "bounceOut":"bounceOut",
+      "bounceOutDown":"bounceOutDown",
+      "bounceOutLeft":"bounceOutLeft",
+      "bounceOutRight":"bounceOutRight",
+      "bounceOutUp":"bounceOutUp",
+      "fadeOut":"fadeOut",
+      "fadeOutDown":"fadeOutDown",
+      "fadeOutDownBig":"fadeOutDownBig",
+      "fadeOutLeft":"fadeOutLeft",
+      "fadeOutLeftBig":"fadeOutLeftBig",
+      "fadeOutRight":"fadeOutRight",
+      "fadeOutRightBig":"fadeOutRightBig",
+      "fadeOutUp":"fadeOutUp",
+      "fadeOutUpBig":"fadeOutUpBig",
+      "flipOutX":"flipOutX",
+      "flipOutY":"flipOutY",
+      "lightSpeedOut":"lightSpeedOut",
+      "rollOut":"rollOut",
+      "rotateOut":"rotateOut",
+      "rotateOutDownLeft":"rotateOutDownLeft",
+      "rotateOutDownRight":"rotateOutDownRight",
+      "rotateOutUpLeft":"rotateOutUpLeft",
+      "rotateOutUpRight":"rotateOutUpRight",
+      "slideOutDown":"slideOutDown",
+      "slideOutLeft":"slideOutLeft",
+      "slideOutRight":"slideOutRight",
+      "slideOutUp":"slideOutUp",
+      "zoomOut":"zoomOut",
+      "zoomOutDown":"zoomOutDown",
+      "zoomOutLeft":"zoomOutLeft",
+      "zoomOutRight":"zoomOutRight",
+      "zoomOutUp":"zoomOutUp"
+    },
+    "group":"General Top Text Config"
+  },
+  "mainTextAnimationOutSpeed": {
+    "label": "Main Text Animation Out Speed",
+    "type": "dropdown",
+    "value": "slow",
+    "options": {
+      "slow": "slow",
+      "slower": "slower",
+      "fast": "fast",
+      "faster": "faster"
+    },
+    "group":"General Top Text Config"
+  },
+  "mainTextFontName": {
+    "type": "googleFont",
+    "label": "Main Text Font name",
+    "value": "Oswald",
+    "group":"General Top Text Config"
+  },
+  "mainTextFontSize": {
+    "type": "number",
+    "label": "Main Text Font size",
+    "value": 70,
+    "group":"General Top Text Config"
+  },
+  "mainTextFontWeight": {
+    "label": "Main Text Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group":"General Top Text Config"
+  },
+
+  "mainTextfontHeight": {
+    "type": "slider",
+    "label": "Height of the top text (%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"General Top Text Config"
+  }
+
+
+
+
+,
+  "subText": {
+    "type": "text",
+    "label": "Lower Text",
+    "value": "Awesome Shoutout",
+    "group":"General Bottom Text Config"
+  },
+  "subTextColor": {
+    "type": "colorpicker",
+    "label": "sub Text Color",
+    "value": "#fdb336",
+    "group":"General Bottom Text Config"
+  },
+  "subTextAnimationIn":{
+    "label": "Sub Text Animation In",
+    "type": "dropdown",
+    "value": "bounce",
+    "options": {
+      "bounce":"bounce",
+      "bounceIn":"bounceIn",
+      "bounceInDown":"bounceInDown",
+      "bounceInLeft":"bounceInLeft",
+      "bounceInRight":"bounceInRight",
+      "bounceInUp":"bounceInUp",
+      "fadeIn":"fadeIn",
+      "fadeInDown":"fadeInDown",
+      "fadeInDownBig":"fadeInDownBig",
+      "fadeInLeft":"fadeInLeft",
+      "fadeInLeftBig":"fadeInLeftBig",
+      "fadeInRight":"fadeInRight",
+      "fadeInRightBig":"fadeInRightBig",
+      "fadeInUp":"fadeInUp",
+      "fadeInUpBig":"fadeInUpBig",
+      "flash":"flash",
+      "flipInX":"flipInX",
+      "flipInY":"flipInY",
+      "headShake":"headShake",
+      "heartBeat":"heartBeat",
+      "hinge":"hinge",
+      "jackInTheBox":"jackInTheBox",
+      "jello":"jello",
+      "lightSpeedIn":"lightSpeedIn",
+      "pulse":"pulse",
+      "rollIn":"rollIn",
+      "rotateIn":"rotateIn",
+      "rotateInDownLeft":"rotateInDownLeft",
+      "rotateInDownRight":"rotateInDownRight",
+      "rotateInUpLeft":"rotateInUpLeft",
+      "rotateInUpRight":"rotateInUpRight",
+      "rubberBand":"rubberBand",
+      "shake":"shake",
+      "slideInDown":"slideInDown",
+      "slideInLeft":"slideInLeft",
+      "slideInRight":"slideInRight",
+      "slideInUp":"slideInUp",
+      "swing":"swing",
+      "tada":"tada",
+      "wobble":"wobble",
+      "zoomIn":"zoomIn",
+      "zoomInDown":"zoomInDown",
+      "zoomInLeft":"zoomInLeft",
+      "zoomInRight":"zoomInRight",
+      "zoomInUp":"zoomInUp"
+    },
+    "group":"General Bottom Text Config"
+  },
+  "subTextAnimationInSpeed": {
+    "label": "SubText Animation In Speed",
+    "type": "dropdown",
+    "value": "slow",
+    "options": {
+      "slow": "slow",
+      "slower": "slower",
+      "fast": "fast",
+      "faster": "faster"
+    },
+    "group":"General Bottom Text Config"
+  },
+
+  "subTextAnimationOut":{
+    "label": "Sub Text Animation Out",
+    "type": "dropdown",
+    "value": "bounceOut",
+    "options": {
+      "bounceOut":"bounceOut",
+      "bounceOutDown":"bounceOutDown",
+      "bounceOutLeft":"bounceOutLeft",
+      "bounceOutRight":"bounceOutRight",
+      "bounceOutUp":"bounceOutUp",
+      "fadeOut":"fadeOut",
+      "fadeOutDown":"fadeOutDown",
+      "fadeOutDownBig":"fadeOutDownBig",
+      "fadeOutLeft":"fadeOutLeft",
+      "fadeOutLeftBig":"fadeOutLeftBig",
+      "fadeOutRight":"fadeOutRight",
+      "fadeOutRightBig":"fadeOutRightBig",
+      "fadeOutUp":"fadeOutUp",
+      "fadeOutUpBig":"fadeOutUpBig",
+      "flipOutX":"flipOutX",
+      "flipOutY":"flipOutY",
+      "lightSpeedOut":"lightSpeedOut",
+      "rollOut":"rollOut",
+      "rotateOut":"rotateOut",
+      "rotateOutDownLeft":"rotateOutDownLeft",
+      "rotateOutDownRight":"rotateOutDownRight",
+      "rotateOutUpLeft":"rotateOutUpLeft",
+      "rotateOutUpRight":"rotateOutUpRight",
+      "slideOutDown":"slideOutDown",
+      "slideOutLeft":"slideOutLeft",
+      "slideOutRight":"slideOutRight",
+      "slideOutUp":"slideOutUp",
+      "zoomOut":"zoomOut",
+      "zoomOutDown":"zoomOutDown",
+      "zoomOutLeft":"zoomOutLeft",
+      "zoomOutRight":"zoomOutRight",
+      "zoomOutUp":"zoomOutUp"
+    },
+    "group":"General Bottom Text Config"
+  },
+  "subTextAnimationOutSpeed": {
+    "label": "SubText Animation Out Speed",
+    "type": "dropdown",
+    "value": "slow",
+    "options": {
+      "slow": "slow",
+      "slower": "slower",
+      "fast": "fast",
+      "faster": "faster"
+    },
+    "group":"General Bottom Text Config"
+  },
+  "subTextFontName": {
+    "type": "googleFont",
+    "label": "Lower Text Font name",
+    "value": "Oswald",
+    "group":"General Bottom Text Config"
+  },
+  "subTextFontSize": {
+    "type": "number",
+    "label": "Lower Text Font size",
+    "value": 70,
+    "group":"General Bottom Text Config"
+  },
+  "subTextFontWeight": {
+    "label": "Lower Text Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group":"General Bottom Text Config"
+  },
+  "subTextFontWeight": {
+    "label": "Lower Text Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group":"General Bottom Text Config"
+  },
+  "subTextFontWeight": {
+    "label": "Lower Text Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group":"General Bottom Text Config"
+  },
+  "subTextFontWeight": {
+    "label": "Lower Text Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group":"General Bottom Text Config"
+  },
+  "subTextFontWeight": {
+    "label": "Lower Text Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group":"General Bottom Text Config"
+  },
+
+  "subTextfontHeight": {
+    "type": "slider",
+    "label": "Height of the lower text (%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"General Bottom Text Config"
+  },
+
+
+
+  "vipusers0": {
+    "type": "hidden",
+    "label": "***************************",
+    "group":"VIP USERS"
+  },
+  "vipusers2": {
+    "type": "hidden",
+    "label": "***************************",
+    "group":"VIP USERS"
+  },
+
+
+
+
+
+
+  "vip1": {
+    "type": "text",
+    "label": "VIP 1 - Username",
+    "value": "",
+    "group":"VIP 1"
+  },
+
+  "vip1TopText": {
+    "type": "text",
+    "label": "VIP 1 - Top Text",
+    "value": "",
+    "group":"VIP 1"
+  },
+
+  "vip1LowerText": {
+    "type": "text",
+    "label": "VIP 1 - Lower Text",
+    "value": "",
+    "group":"VIP 1"
+  },
+
+  "vip1Video": {
+    "type": "video-input",
+    "label": "VIP 1 - Video",
+    "group":"VIP 1"
+  },
+  "vip1VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 1"
+  },
+  "vip1VideoSize": {
+    "type": "slider",
+    "label": "VIP 1 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 1"
+  },
+  "vip1VideoHeight": {
+    "type": "slider",
+    "label": "VIP 1 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 1"
+  },
+  "vip1Image": {
+    "type": "image-input",
+    "label": "VIP 1 - Image",
+    "group":"VIP 1"
+  },
+  "vip1ImageSize": {
+    "type": "slider",
+    "label": "VIP 1 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 1"
+  },
+  "vip1ImageHeight": {
+    "type": "slider",
+    "label": "VIP 1 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 1"
+  },
+  "vip1OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 1 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 1"
+  },
+  "vip1Sound": {
+    "type": "sound-input",
+    "label": "VIP 1 - Sound file",
+    "value": "",
+    "group":"VIP 1"
+  },
+  "vip1SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 1"
+  },
+
+
+
+
+
+
+
+
+
+  "vip2": {
+    "type": "text",
+    "label": "VIP 2 - Username",
+    "value": "",
+    "group":"VIP 2"
+  },
+
+  "vip2TopText": {
+    "type": "text",
+    "label": "VIP 2 - Top Text",
+    "value": "",
+    "group":"VIP 2"
+  },
+
+  "vip2LowerText": {
+    "type": "text",
+    "label": "VIP 2 - Lower Text",
+    "value": "",
+    "group":"VIP 2"
+  },
+
+  "vip2Video": {
+    "type": "video-input",
+    "label": "VIP 2 - Video",
+    "group":"VIP 2"
+  },
+  "vip2VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 2"
+  },
+  "vip2VideoSize": {
+    "type": "slider",
+    "label": "VIP 2 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 2"
+  },
+  "vip2VideoHeight": {
+    "type": "slider",
+    "label": "VIP 2 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 2"
+  },
+  "vip2Image": {
+    "type": "image-input",
+    "label": "VIP 2 - Image",
+    "group":"VIP 2"
+  },
+  "vip2ImageSize": {
+    "type": "slider",
+    "label": "VIP 2 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 2"
+  },
+  "vip2ImageHeight": {
+    "type": "slider",
+    "label": "VIP 2 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 2"
+  },
+  "vip2OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 2 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 2"
+  },
+  "vip2Sound": {
+    "type": "sound-input",
+    "label": "VIP 2 - Sound file",
+    "value": "",
+    "group":"VIP 2"
+  },
+  "vip2SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 2"
+  },
+
+
+
+
+
+
+
+
+
+
+  "vip3": {
+    "type": "text",
+    "label": "VIP 3 - Username",
+    "value": "",
+    "group":"VIP 3"
+  },
+
+  "vip3TopText": {
+    "type": "text",
+    "label": "VIP 3 - Top Text",
+    "value": "",
+    "group":"VIP 3"
+  },
+
+  "vip3LowerText": {
+    "type": "text",
+    "label": "VIP 3 - Lower Text",
+    "value": "",
+    "group":"VIP 3"
+  },
+
+  "vip3Video": {
+    "type": "video-input",
+    "label": "VIP 3 - Video",
+    "group":"VIP 3"
+  },
+  "vip3VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 3"
+  },
+  "vip3VideoSize": {
+    "type": "slider",
+    "label": "VIP 3 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 3"
+  },
+  "vip3VideoHeight": {
+    "type": "slider",
+    "label": "VIP 3 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 3"
+  },
+  "vip3Image": {
+    "type": "image-input",
+    "label": "VIP 3 - Image",
+    "group":"VIP 3"
+  },
+  "vip3ImageSize": {
+    "type": "slider",
+    "label": "VIP 3 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 3"
+  },
+  "vip3ImageHeight": {
+    "type": "slider",
+    "label": "VIP 3 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 3"
+  },
+  "vip3OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 3 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 3"
+  },
+  "vip3Sound": {
+    "type": "sound-input",
+    "label": "VIP 3 - Sound file",
+    "value": "",
+    "group":"VIP 3"
+  },
+  "vip3SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 3"
+  },
+
+
+
+
+
+
+  "vip4": {
+    "type": "text",
+    "label": "VIP 4 - Username",
+    "value": "",
+    "group":"VIP 4"
+  },
+
+  "vip4TopText": {
+    "type": "text",
+    "label": "VIP 4 - Top Text",
+    "value": "",
+    "group":"VIP 4"
+  },
+
+  "vip4LowerText": {
+    "type": "text",
+    "label": "VIP 4 - Lower Text",
+    "value": "",
+    "group":"VIP 4"
+  },
+
+  "vip4Video": {
+    "type": "video-input",
+    "label": "VIP 4 - Video",
+    "group":"VIP 4"
+  },
+  "vip4VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 4"
+  },
+  "vip4VideoSize": {
+    "type": "slider",
+    "label": "VIP 4 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 4"
+  },
+  "vip4VideoHeight": {
+    "type": "slider",
+    "label": "VIP 4 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 4"
+  },
+  "vip4Image": {
+    "type": "image-input",
+    "label": "VIP 4 - Image",
+    "group":"VIP 4"
+  },
+  "vip4ImageSize": {
+    "type": "slider",
+    "label": "VIP 4 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 4"
+  },
+  "vip4ImageHeight": {
+    "type": "slider",
+    "label": "VIP 4 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 4"
+  },
+  "vip4OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 4 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 4"
+  },
+  "vip4Sound": {
+    "type": "sound-input",
+    "label": "VIP 4 - Sound file",
+    "value": "",
+    "group":"VIP 4"
+  },
+  "vip4SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 4"
+  },
+
+
+
+
+
+
+  "vip5": {
+    "type": "text",
+    "label": "VIP 5 - Username",
+    "value": "",
+    "group":"VIP 5"
+  },
+
+  "vip5TopText": {
+    "type": "text",
+    "label": "VIP 5 - Top Text",
+    "value": "",
+    "group":"VIP 5"
+  },
+
+  "vip5LowerText": {
+    "type": "text",
+    "label": "VIP 5 - Lower Text",
+    "value": "",
+    "group":"VIP 5"
+  },
+
+  "vip5Video": {
+    "type": "video-input",
+    "label": "VIP 5 - Video",
+    "group":"VIP 5"
+  },
+  "vip5VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 5"
+  },
+  "vip5VideoSize": {
+    "type": "slider",
+    "label": "VIP 5 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 5"
+  },
+  "vip5VideoHeight": {
+    "type": "slider",
+    "label": "VIP 5 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 5"
+  },
+  "vip5Image": {
+    "type": "image-input",
+    "label": "VIP 5 - Image",
+    "group":"VIP 5"
+  },
+  "vip5ImageSize": {
+    "type": "slider",
+    "label": "VIP 5 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 5"
+  },
+  "vip5ImageHeight": {
+    "type": "slider",
+    "label": "VIP 5 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 5"
+  },
+  "vip5OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 5 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 5"
+  },
+  "vip5Sound": {
+    "type": "sound-input",
+    "label": "VIP 5 - Sound file",
+    "value": "",
+    "group":"VIP 5"
+  },
+  "vip5SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 5"
+  },
+
+
+
+
+
+
+  "vip6": {
+    "type": "text",
+    "label": "VIP 6 - Username",
+    "value": "",
+    "group":"VIP 6"
+  },
+
+  "vip6TopText": {
+    "type": "text",
+    "label": "VIP 6 - Top Text",
+    "value": "",
+    "group":"VIP 6"
+  },
+
+  "vip6LowerText": {
+    "type": "text",
+    "label": "VIP 6 - Lower Text",
+    "value": "",
+    "group":"VIP 6"
+  },
+
+  "vip6Video": {
+    "type": "video-input",
+    "label": "VIP 6 - Video",
+    "group":"VIP 6"
+  },
+  "vip6VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 6"
+  },
+  "vip6VideoSize": {
+    "type": "slider",
+    "label": "VIP 6 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 6"
+  },
+  "vip6VideoHeight": {
+    "type": "slider",
+    "label": "VIP 6 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 6"
+  },
+  "vip6Image": {
+    "type": "image-input",
+    "label": "VIP 6 - Image",
+    "group":"VIP 6"
+  },
+  "vip6ImageSize": {
+    "type": "slider",
+    "label": "VIP 6 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 6"
+  },
+  "vip6ImageHeight": {
+    "type": "slider",
+    "label": "VIP 6 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 6"
+  },
+  "vip6OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 6 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 6"
+  },
+  "vip6Sound": {
+    "type": "sound-input",
+    "label": "VIP 6 - Sound file",
+    "value": "",
+    "group":"VIP 6"
+  },
+  "vip6SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 6"
+  },
+
+
+
+
+
+
+
+  "vip7": {
+    "type": "text",
+    "label": "VIP 7 - Username",
+    "value": "",
+    "group":"VIP 7"
+  },
+
+  "vip7TopText": {
+    "type": "text",
+    "label": "VIP 7 - Top Text",
+    "value": "",
+    "group":"VIP 7"
+  },
+
+  "vip7LowerText": {
+    "type": "text",
+    "label": "VIP 7 - Lower Text",
+    "value": "",
+    "group":"VIP 7"
+  },
+
+  "vip7Video": {
+    "type": "video-input",
+    "label": "VIP 7 - Video",
+    "group":"VIP 7"
+  },
+  "vip7VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 7"
+  },
+  "vip7VideoSize": {
+    "type": "slider",
+    "label": "VIP 7 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 7"
+  },
+  "vip7VideoHeight": {
+    "type": "slider",
+    "label": "VIP 7 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 7"
+  },
+  "vip7Image": {
+    "type": "image-input",
+    "label": "VIP 7 - Image",
+    "group":"VIP 7"
+  },
+  "vip7ImageSize": {
+    "type": "slider",
+    "label": "VIP 7 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 7"
+  },
+  "vip7ImageHeight": {
+    "type": "slider",
+    "label": "VIP 7 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 7"
+  },
+  "vip7OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 7 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 7"
+  },
+  "vip7Sound": {
+    "type": "sound-input",
+    "label": "VIP 7 - Sound file",
+    "value": "",
+    "group":"VIP 7"
+  },
+  "vip7SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 7"
+  },
+
+
+
+
+
+
+  "vip8": {
+    "type": "text",
+    "label": "VIP 8 - Username",
+    "value": "",
+    "group":"VIP 8"
+  },
+
+  "vip8TopText": {
+    "type": "text",
+    "label": "VIP 8 - Top Text",
+    "value": "",
+    "group":"VIP 8"
+  },
+
+  "vip8LowerText": {
+    "type": "text",
+    "label": "VIP 8 - Lower Text",
+    "value": "",
+    "group":"VIP 8"
+  },
+
+  "vip8Video": {
+    "type": "video-input",
+    "label": "VIP 8 - Video",
+    "group":"VIP 8"
+  },
+  "vip8VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 8"
+  },
+  "vip8VideoSize": {
+    "type": "slider",
+    "label": "VIP 8 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 8"
+  },
+  "vip8VideoHeight": {
+    "type": "slider",
+    "label": "VIP 8 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 8"
+  },
+  "vip8Image": {
+    "type": "image-input",
+    "label": "VIP 8 - Image",
+    "group":"VIP 8"
+  },
+  "vip8ImageSize": {
+    "type": "slider",
+    "label": "VIP 8 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 8"
+  },
+  "vip8ImageHeight": {
+    "type": "slider",
+    "label": "VIP 8 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 8"
+  },
+  "vip8OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 8 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 8"
+  },
+  "vip8Sound": {
+    "type": "sound-input",
+    "label": "VIP 8 - Sound file",
+    "value": "",
+    "group":"VIP 8"
+  },
+  "vip8SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 8"
+  },
+
+
+
+
+
+
+
+
+  "vip9": {
+    "type": "text",
+    "label": "VIP 9 - Username",
+    "value": "",
+    "group":"VIP 9"
+  },
+
+  "vip9TopText": {
+    "type": "text",
+    "label": "VIP 9 - Top Text",
+    "value": "",
+    "group":"VIP 9"
+  },
+
+  "vip9LowerText": {
+    "type": "text",
+    "label": "VIP 9 - Lower Text",
+    "value": "",
+    "group":"VIP 9"
+  },
+
+  "vip9Video": {
+    "type": "video-input",
+    "label": "VIP 9 - Video",
+    "group":"VIP 9"
+  },
+  "vip9VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 9"
+  },
+  "vip9VideoSize": {
+    "type": "slider",
+    "label": "VIP 9 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 9"
+  },
+  "vip9VideoHeight": {
+    "type": "slider",
+    "label": "VIP 9 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 9"
+  },
+  "vip9Image": {
+    "type": "image-input",
+    "label": "VIP 9 - Image",
+    "group":"VIP 9"
+  },
+  "vip9ImageSize": {
+    "type": "slider",
+    "label": "VIP 9 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 9"
+  },
+  "vip9ImageHeight": {
+    "type": "slider",
+    "label": "VIP 9 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 9"
+  },
+  "vip9OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 9 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 9"
+  },
+  "vip9Sound": {
+    "type": "sound-input",
+    "label": "VIP 9 - Sound file",
+    "value": "",
+    "group":"VIP 9"
+  },
+  "vip9SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 9"
+  },
+
+
+
+
+
+
+
+
+  "vip10": {
+    "type": "text",
+    "label": "VIP 10 - Username",
+    "value": "",
+    "group":"VIP 10"
+  },
+
+  "vip10TopText": {
+    "type": "text",
+    "label": "VIP 10 - Top Text",
+    "value": "",
+    "group":"VIP 10"
+  },
+
+  "vip10LowerText": {
+    "type": "text",
+    "label": "VIP 10 - Lower Text",
+    "value": "",
+    "group":"VIP 10"
+  },
+
+  "vip10Video": {
+    "type": "video-input",
+    "label": "VIP 10 - Video",
+    "group":"VIP 10"
+  },
+  "vip10VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 10"
+  },
+  "vip10VideoSize": {
+    "type": "slider",
+    "label": "VIP 10 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 10"
+  },
+  "vip10VideoHeight": {
+    "type": "slider",
+    "label": "VIP 10 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 10"
+  },
+  "vip10Image": {
+    "type": "image-input",
+    "label": "VIP 10 - Image",
+    "group":"VIP 10"
+  },
+  "vip10ImageSize": {
+    "type": "slider",
+    "label": "VIP 10 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 10"
+  },
+  "vip10ImageHeight": {
+    "type": "slider",
+    "label": "VIP 10 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 10"
+  },
+  "vip10OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 10 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 10"
+  },
+  "vip10Sound": {
+    "type": "sound-input",
+    "label": "VIP 10 - Sound file",
+    "value": "",
+    "group":"VIP 10"
+  },
+  "vip10SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 10"
+  },
+
+
+
+
+
+
+
+
+  "vip11": {
+    "type": "text",
+    "label": "VIP 11 - Username",
+    "value": "",
+    "group":"VIP 11"
+  },
+
+  "vip11TopText": {
+    "type": "text",
+    "label": "VIP 11 - Top Text",
+    "value": "",
+    "group":"VIP 11"
+  },
+
+  "vip11LowerText": {
+    "type": "text",
+    "label": "VIP 11 - Lower Text",
+    "value": "",
+    "group":"VIP 11"
+  },
+
+  "vip11Video": {
+    "type": "video-input",
+    "label": "VIP 11 - Video",
+    "group":"VIP 11"
+  },
+  "vip11VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 11"
+  },
+  "vip11VideoSize": {
+    "type": "slider",
+    "label": "VIP 11 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 11"
+  },
+  "vip11VideoHeight": {
+    "type": "slider",
+    "label": "VIP 11 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 11"
+  },
+  "vip11Image": {
+    "type": "image-input",
+    "label": "VIP 11 - Image",
+    "group":"VIP 11"
+  },
+  "vip11ImageSize": {
+    "type": "slider",
+    "label": "VIP 11 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 11"
+  },
+  "vip11ImageHeight": {
+    "type": "slider",
+    "label": "VIP 11 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 11"
+  },
+  "vip11OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 11 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 11"
+  },
+  "vip11Sound": {
+    "type": "sound-input",
+    "label": "VIP 11 - Sound file",
+    "value": "",
+    "group":"VIP 11"
+  },
+  "vip11SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 11"
+  },
+
+
+
+
+
+
+
+
+  "vip12": {
+    "type": "text",
+    "label": "VIP 12 - Username",
+    "value": "",
+    "group":"VIP 12"
+  },
+
+  "vip12TopText": {
+    "type": "text",
+    "label": "VIP 12 - Top Text",
+    "value": "",
+    "group":"VIP 12"
+  },
+
+  "vip12LowerText": {
+    "type": "text",
+    "label": "VIP 12 - Lower Text",
+    "value": "",
+    "group":"VIP 12"
+  },
+
+  "vip12Video": {
+    "type": "video-input",
+    "label": "VIP 12 - Video",
+    "group":"VIP 12"
+  },
+  "vip12VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 12"
+  },
+  "vip12VideoSize": {
+    "type": "slider",
+    "label": "VIP 12 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 12"
+  },
+  "vip12VideoHeight": {
+    "type": "slider",
+    "label": "VIP 12 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 12"
+  },
+  "vip12Image": {
+    "type": "image-input",
+    "label": "VIP 12 - Image",
+    "group":"VIP 12"
+  },
+  "vip12ImageSize": {
+    "type": "slider",
+    "label": "VIP 12 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 12"
+  },
+  "vip12ImageHeight": {
+    "type": "slider",
+    "label": "VIP 12 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 12"
+  },
+  "vip12OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 12 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 12"
+  },
+  "vip12Sound": {
+    "type": "sound-input",
+    "label": "VIP 12 - Sound file",
+    "value": "",
+    "group":"VIP 12"
+  },
+  "vip12SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 12"
+  },
+
+
+
+
+
+
+
+
+  "vip13": {
+    "type": "text",
+    "label": "VIP 13 - Username",
+    "value": "",
+    "group":"VIP 13"
+  },
+
+  "vip13TopText": {
+    "type": "text",
+    "label": "VIP 13 - Top Text",
+    "value": "",
+    "group":"VIP 13"
+  },
+
+  "vip13LowerText": {
+    "type": "text",
+    "label": "VIP 13 - Lower Text",
+    "value": "",
+    "group":"VIP 13"
+  },
+
+  "vip13Video": {
+    "type": "video-input",
+    "label": "VIP 13 - Video",
+    "group":"VIP 13"
+  },
+  "vip13VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 13"
+  },
+  "vip13VideoSize": {
+    "type": "slider",
+    "label": "VIP 13 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 13"
+  },
+  "vip13VideoHeight": {
+    "type": "slider",
+    "label": "VIP 13 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 13"
+  },
+  "vip13Image": {
+    "type": "image-input",
+    "label": "VIP 13 - Image",
+    "group":"VIP 13"
+  },
+  "vip13ImageSize": {
+    "type": "slider",
+    "label": "VIP 13 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 13"
+  },
+  "vip13ImageHeight": {
+    "type": "slider",
+    "label": "VIP 13 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 13"
+  },
+  "vip13OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 13 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 13"
+  },
+  "vip13Sound": {
+    "type": "sound-input",
+    "label": "VIP 13 - Sound file",
+    "value": "",
+    "group":"VIP 13"
+  },
+  "vip13SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 13"
+  },
+
+
+
+
+
+
+
+
+  "vip14": {
+    "type": "text",
+    "label": "VIP 14 - Username",
+    "value": "",
+    "group":"VIP 14"
+  },
+
+  "vip14TopText": {
+    "type": "text",
+    "label": "VIP 14 - Top Text",
+    "value": "",
+    "group":"VIP 14"
+  },
+
+  "vip14LowerText": {
+    "type": "text",
+    "label": "VIP 14 - Lower Text",
+    "value": "",
+    "group":"VIP 14"
+  },
+
+  "vip14Video": {
+    "type": "video-input",
+    "label": "VIP 14 - Video",
+    "group":"VIP 14"
+  },
+  "vip14VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 14"
+  },
+  "vip14VideoSize": {
+    "type": "slider",
+    "label": "VIP 14 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 14"
+  },
+  "vip14VideoHeight": {
+    "type": "slider",
+    "label": "VIP 14 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 14"
+  },
+  "vip14Image": {
+    "type": "image-input",
+    "label": "VIP 14 - Image",
+    "group":"VIP 14"
+  },
+  "vip14ImageSize": {
+    "type": "slider",
+    "label": "VIP 14 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 14"
+  },
+  "vip14ImageHeight": {
+    "type": "slider",
+    "label": "VIP 14 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 14"
+  },
+  "vip14OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 14 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 14"
+  },
+  "vip14Sound": {
+    "type": "sound-input",
+    "label": "VIP 14 - Sound file",
+    "value": "",
+    "group":"VIP 14"
+  },
+  "vip14SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 14"
+  },
+
+
+
+
+
+
+
+
+  "vip15": {
+    "type": "text",
+    "label": "VIP 15 - Username",
+    "value": "",
+    "group":"VIP 15"
+  },
+
+  "vip15TopText": {
+    "type": "text",
+    "label": "VIP 15 - Top Text",
+    "value": "",
+    "group":"VIP 15"
+  },
+
+  "vip15LowerText": {
+    "type": "text",
+    "label": "VIP 15 - Lower Text",
+    "value": "",
+    "group":"VIP 15"
+  },
+
+  "vip15Video": {
+    "type": "video-input",
+    "label": "VIP 15 - Video",
+    "group":"VIP 15"
+  },
+  "vip15VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 15"
+  },
+  "vip15VideoSize": {
+    "type": "slider",
+    "label": "VIP 15 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 15"
+  },
+  "vip15VideoHeight": {
+    "type": "slider",
+    "label": "VIP 15 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 15"
+  },
+  "vip15Image": {
+    "type": "image-input",
+    "label": "VIP 15 - Image",
+    "group":"VIP 15"
+  },
+  "vip15ImageSize": {
+    "type": "slider",
+    "label": "VIP 15 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 15"
+  },
+  "vip15ImageHeight": {
+    "type": "slider",
+    "label": "VIP 15 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 15"
+  },
+  "vip15OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 15 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 15"
+  },
+  "vip15Sound": {
+    "type": "sound-input",
+    "label": "VIP 15 - Sound file",
+    "value": "",
+    "group":"VIP 15"
+  },
+  "vip15SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 15"
+  },
+
+
+
+
+
+
+
+
+  "vip16": {
+    "type": "text",
+    "label": "VIP 16 - Username",
+    "value": "",
+    "group":"VIP 16"
+  },
+
+  "vip16TopText": {
+    "type": "text",
+    "label": "VIP 16 - Top Text",
+    "value": "",
+    "group":"VIP 16"
+  },
+
+  "vip16LowerText": {
+    "type": "text",
+    "label": "VIP 16 - Lower Text",
+    "value": "",
+    "group":"VIP 16"
+  },
+
+  "vip16Video": {
+    "type": "video-input",
+    "label": "VIP 16 - Video",
+    "group":"VIP 16"
+  },
+  "vip16VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 16"
+  },
+  "vip16VideoSize": {
+    "type": "slider",
+    "label": "VIP 16 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 16"
+  },
+  "vip16VideoHeight": {
+    "type": "slider",
+    "label": "VIP 16 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 16"
+  },
+  "vip16Image": {
+    "type": "image-input",
+    "label": "VIP 16 - Image",
+    "group":"VIP 16"
+  },
+  "vip16ImageSize": {
+    "type": "slider",
+    "label": "VIP 16 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 16"
+  },
+  "vip16ImageHeight": {
+    "type": "slider",
+    "label": "VIP 16 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 16"
+  },
+  "vip16OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 16 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 16"
+  },
+  "vip16Sound": {
+    "type": "sound-input",
+    "label": "VIP 16 - Sound file",
+    "value": "",
+    "group":"VIP 16"
+  },
+  "vip16SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 16"
+  },
+
+
+
+
+
+
+
+
+  "vip17": {
+    "type": "text",
+    "label": "VIP 17 - Username",
+    "value": "",
+    "group":"VIP 17"
+  },
+
+  "vip17TopText": {
+    "type": "text",
+    "label": "VIP 17 - Top Text",
+    "value": "",
+    "group":"VIP 17"
+  },
+
+  "vip17LowerText": {
+    "type": "text",
+    "label": "VIP 17 - Lower Text",
+    "value": "",
+    "group":"VIP 17"
+  },
+
+  "vip17Video": {
+    "type": "video-input",
+    "label": "VIP 17 - Video",
+    "group":"VIP 17"
+  },
+  "vip17VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 17"
+  },
+  "vip17VideoSize": {
+    "type": "slider",
+    "label": "VIP 17 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 17"
+  },
+  "vip17VideoHeight": {
+    "type": "slider",
+    "label": "VIP 17 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 17"
+  },
+  "vip17Image": {
+    "type": "image-input",
+    "label": "VIP 17 - Image",
+    "group":"VIP 17"
+  },
+  "vip17ImageSize": {
+    "type": "slider",
+    "label": "VIP 17 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 17"
+  },
+  "vip17ImageHeight": {
+    "type": "slider",
+    "label": "VIP 17 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 17"
+  },
+  "vip17OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 17 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 17"
+  },
+  "vip17Sound": {
+    "type": "sound-input",
+    "label": "VIP 17 - Sound file",
+    "value": "",
+    "group":"VIP 17"
+  },
+  "vip17SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 17"
+  },
+
+
+
+
+
+
+
+
+  "vip18": {
+    "type": "text",
+    "label": "VIP 18 - Username",
+    "value": "",
+    "group":"VIP 18"
+  },
+
+  "vip18TopText": {
+    "type": "text",
+    "label": "VIP 18 - Top Text",
+    "value": "",
+    "group":"VIP 18"
+  },
+
+  "vip18LowerText": {
+    "type": "text",
+    "label": "VIP 18 - Lower Text",
+    "value": "",
+    "group":"VIP 18"
+  },
+
+  "vip18Video": {
+    "type": "video-input",
+    "label": "VIP 18 - Video",
+    "group":"VIP 18"
+  },
+  "vip18VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 18"
+  },
+  "vip18VideoSize": {
+    "type": "slider",
+    "label": "VIP 18 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 18"
+  },
+  "vip18VideoHeight": {
+    "type": "slider",
+    "label": "VIP 18 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 18"
+  },
+  "vip18Image": {
+    "type": "image-input",
+    "label": "VIP 18 - Image",
+    "group":"VIP 18"
+  },
+  "vip18ImageSize": {
+    "type": "slider",
+    "label": "VIP 18 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 18"
+  },
+  "vip18ImageHeight": {
+    "type": "slider",
+    "label": "VIP 18 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 18"
+  },
+  "vip18OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 18 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 18"
+  },
+  "vip18Sound": {
+    "type": "sound-input",
+    "label": "VIP 18 - Sound file",
+    "value": "",
+    "group":"VIP 18"
+  },
+  "vip18SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 18"
+  },
+
+
+
+
+
+
+
+
+  "vip19": {
+    "type": "text",
+    "label": "VIP 19 - Username",
+    "value": "",
+    "group":"VIP 19"
+  },
+
+  "vip19TopText": {
+    "type": "text",
+    "label": "VIP 19 - Top Text",
+    "value": "",
+    "group":"VIP 19"
+  },
+
+  "vip19LowerText": {
+    "type": "text",
+    "label": "VIP 19 - Lower Text",
+    "value": "",
+    "group":"VIP 19"
+  },
+
+  "vip19Video": {
+    "type": "video-input",
+    "label": "VIP 19 - Video",
+    "group":"VIP 19"
+  },
+  "vip19VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 19"
+  },
+  "vip19VideoSize": {
+    "type": "slider",
+    "label": "VIP 19 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 19"
+  },
+  "vip19VideoHeight": {
+    "type": "slider",
+    "label": "VIP 19 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 19"
+  },
+  "vip19Image": {
+    "type": "image-input",
+    "label": "VIP 19 - Image",
+    "group":"VIP 19"
+  },
+  "vip19ImageSize": {
+    "type": "slider",
+    "label": "VIP 19 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 19"
+  },
+  "vip19ImageHeight": {
+    "type": "slider",
+    "label": "VIP 19 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 19"
+  },
+  "vip19OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 19 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 19"
+  },
+  "vip19Sound": {
+    "type": "sound-input",
+    "label": "VIP 19 - Sound file",
+    "value": "",
+    "group":"VIP 19"
+  },
+  "vip19SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 19"
+  },
+
+
+
+
+
+
+
+
+  "vip20": {
+    "type": "text",
+    "label": "VIP 20 - Username",
+    "value": "",
+    "group":"VIP 20"
+  },
+
+  "vip20TopText": {
+    "type": "text",
+    "label": "VIP 20 - Top Text",
+    "value": "",
+    "group":"VIP 20"
+  },
+
+  "vip20LowerText": {
+    "type": "text",
+    "label": "VIP 20 - Lower Text",
+    "value": "",
+    "group":"VIP 20"
+  },
+
+  "vip20Video": {
+    "type": "video-input",
+    "label": "VIP 20 - Video",
+    "group":"VIP 20"
+  },
+  "vip20VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 20"
+  },
+  "vip20VideoSize": {
+    "type": "slider",
+    "label": "VIP 20 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 20"
+  },
+  "vip20VideoHeight": {
+    "type": "slider",
+    "label": "VIP 20 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 20"
+  },
+  "vip20Image": {
+    "type": "image-input",
+    "label": "VIP 20 - Image",
+    "group":"VIP 20"
+  },
+  "vip20ImageSize": {
+    "type": "slider",
+    "label": "VIP 20 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 20"
+  },
+  "vip20ImageHeight": {
+    "type": "slider",
+    "label": "VIP 20 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 20"
+  },
+  "vip20OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 20 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 20"
+  },
+  "vip20Sound": {
+    "type": "sound-input",
+    "label": "VIP 20 - Sound file",
+    "value": "",
+    "group":"VIP 20"
+  },
+  "vip20SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 20,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 20"
+  },
+
+  "vip21": {
+    "type": "text",
+    "label": "VIP 21 - Username",
+    "value": "",
+    "group":"VIP 21"
+  },
+
+  "vip21TopText": {
+    "type": "text",
+    "label": "VIP 21 - Top Text",
+    "value": "",
+    "group":"VIP 21"
+  },
+
+  "vip21LowerText": {
+    "type": "text",
+    "label": "VIP 21 - Lower Text",
+    "value": "",
+    "group":"VIP 21"
+  },
+
+  "vip21Video": {
+    "type": "video-input",
+    "label": "VIP 21 - Video",
+    "group":"VIP 21"
+  },
+  "vip21VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 21,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 21"
+  },
+  "vip21VideoSize": {
+    "type": "slider",
+    "label": "VIP 21 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 21"
+  },
+  "vip21VideoHeight": {
+    "type": "slider",
+    "label": "VIP 21 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 21"
+  },
+  "vip21Image": {
+    "type": "image-input",
+    "label": "VIP 21 - Image",
+    "group":"VIP 21"
+  },
+  "vip21ImageSize": {
+    "type": "slider",
+    "label": "VIP 21 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 21"
+  },
+  "vip21ImageHeight": {
+    "type": "slider",
+    "label": "VIP 21 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 21"
+  },
+  "vip21OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 21 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 21"
+  },
+  "vip21Sound": {
+    "type": "sound-input",
+    "label": "VIP 21 - Sound file",
+    "value": "",
+    "group":"VIP 21"
+  },
+  "vip21SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 21,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 21"
+  },
+
+  "vip22": {
+    "type": "text",
+    "label": "VIP 22 - Username",
+    "value": "",
+    "group":"VIP 22"
+  },
+
+  "vip22TopText": {
+    "type": "text",
+    "label": "VIP 22 - Top Text",
+    "value": "",
+    "group":"VIP 22"
+  },
+
+  "vip22LowerText": {
+    "type": "text",
+    "label": "VIP 22 - Lower Text",
+    "value": "",
+    "group":"VIP 22"
+  },
+
+  "vip22Video": {
+    "type": "video-input",
+    "label": "VIP 22 - Video",
+    "group":"VIP 22"
+  },
+  "vip22VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 22,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 22"
+  },
+  "vip22VideoSize": {
+    "type": "slider",
+    "label": "VIP 22 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 22"
+  },
+  "vip22VideoHeight": {
+    "type": "slider",
+    "label": "VIP 22 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 22"
+  },
+  "vip22Image": {
+    "type": "image-input",
+    "label": "VIP 22 - Image",
+    "group":"VIP 22"
+  },
+  "vip22ImageSize": {
+    "type": "slider",
+    "label": "VIP 22 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 22"
+  },
+  "vip22ImageHeight": {
+    "type": "slider",
+    "label": "VIP 22 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 22"
+  },
+  "vip22OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 22 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 22"
+  },
+  "vip22Sound": {
+    "type": "sound-input",
+    "label": "VIP 22 - Sound file",
+    "value": "",
+    "group":"VIP 22"
+  },
+  "vip22SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 22,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 22"
+  },
+
+  "vip23": {
+    "type": "text",
+    "label": "VIP 23 - Username",
+    "value": "",
+    "group":"VIP 23"
+  },
+
+  "vip23TopText": {
+    "type": "text",
+    "label": "VIP 23 - Top Text",
+    "value": "",
+    "group":"VIP 23"
+  },
+
+  "vip23LowerText": {
+    "type": "text",
+    "label": "VIP 23 - Lower Text",
+    "value": "",
+    "group":"VIP 23"
+  },
+
+  "vip23Video": {
+    "type": "video-input",
+    "label": "VIP 23 - Video",
+    "group":"VIP 23"
+  },
+  "vip23VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 23,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 23"
+  },
+  "vip23VideoSize": {
+    "type": "slider",
+    "label": "VIP 23 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 23"
+  },
+  "vip23VideoHeight": {
+    "type": "slider",
+    "label": "VIP 23 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 23"
+  },
+  "vip23Image": {
+    "type": "image-input",
+    "label": "VIP 23 - Image",
+    "group":"VIP 23"
+  },
+  "vip23ImageSize": {
+    "type": "slider",
+    "label": "VIP 23 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 23"
+  },
+  "vip23ImageHeight": {
+    "type": "slider",
+    "label": "VIP 23 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 23"
+  },
+  "vip23OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 23 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 23"
+  },
+  "vip23Sound": {
+    "type": "sound-input",
+    "label": "VIP 23 - Sound file",
+    "value": "",
+    "group":"VIP 23"
+  },
+  "vip23SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 23,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 23"
+  },
+
+  "vip24": {
+    "type": "text",
+    "label": "VIP 24 - Username",
+    "value": "",
+    "group":"VIP 24"
+  },
+
+  "vip24TopText": {
+    "type": "text",
+    "label": "VIP 24 - Top Text",
+    "value": "",
+    "group":"VIP 24"
+  },
+
+  "vip24LowerText": {
+    "type": "text",
+    "label": "VIP 24 - Lower Text",
+    "value": "",
+    "group":"VIP 24"
+  },
+
+  "vip24Video": {
+    "type": "video-input",
+    "label": "VIP 24 - Video",
+    "group":"VIP 24"
+  },
+  "vip24VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 24,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 24"
+  },
+  "vip24VideoSize": {
+    "type": "slider",
+    "label": "VIP 24 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 24"
+  },
+  "vip24VideoHeight": {
+    "type": "slider",
+    "label": "VIP 24 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 24"
+  },
+  "vip24Image": {
+    "type": "image-input",
+    "label": "VIP 24 - Image",
+    "group":"VIP 24"
+  },
+  "vip24ImageSize": {
+    "type": "slider",
+    "label": "VIP 24 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 24"
+  },
+  "vip24ImageHeight": {
+    "type": "slider",
+    "label": "VIP 24 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 24"
+  },
+  "vip24OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 24 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 24"
+  },
+  "vip24Sound": {
+    "type": "sound-input",
+    "label": "VIP 24 - Sound file",
+    "value": "",
+    "group":"VIP 24"
+  },
+  "vip24SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 24,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 24"
+  },
+
+  "vip25": {
+    "type": "text",
+    "label": "VIP 25 - Username",
+    "value": "",
+    "group":"VIP 25"
+  },
+
+  "vip25TopText": {
+    "type": "text",
+    "label": "VIP 25 - Top Text",
+    "value": "",
+    "group":"VIP 25"
+  },
+
+  "vip25LowerText": {
+    "type": "text",
+    "label": "VIP 25 - Lower Text",
+    "value": "",
+    "group":"VIP 25"
+  },
+
+  "vip25Video": {
+    "type": "video-input",
+    "label": "VIP 25 - Video",
+    "group":"VIP 25"
+  },
+  "vip25VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 25,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 25"
+  },
+  "vip25VideoSize": {
+    "type": "slider",
+    "label": "VIP 25 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 25"
+  },
+  "vip25VideoHeight": {
+    "type": "slider",
+    "label": "VIP 25 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 25"
+  },
+  "vip25Image": {
+    "type": "image-input",
+    "label": "VIP 25 - Image",
+    "group":"VIP 25"
+  },
+  "vip25ImageSize": {
+    "type": "slider",
+    "label": "VIP 25 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 25"
+  },
+  "vip25ImageHeight": {
+    "type": "slider",
+    "label": "VIP 25 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 25"
+  },
+  "vip25OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 25 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 25"
+  },
+  "vip25Sound": {
+    "type": "sound-input",
+    "label": "VIP 25 - Sound file",
+    "value": "",
+    "group":"VIP 25"
+  },
+  "vip25SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 25,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 25"
+  },
+
+  "vip26": {
+    "type": "text",
+    "label": "VIP 26 - Username",
+    "value": "",
+    "group":"VIP 26"
+  },
+
+  "vip26TopText": {
+    "type": "text",
+    "label": "VIP 26 - Top Text",
+    "value": "",
+    "group":"VIP 26"
+  },
+
+  "vip26LowerText": {
+    "type": "text",
+    "label": "VIP 26 - Lower Text",
+    "value": "",
+    "group":"VIP 26"
+  },
+
+  "vip26Video": {
+    "type": "video-input",
+    "label": "VIP 26 - Video",
+    "group":"VIP 26"
+  },
+  "vip26VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 26,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 26"
+  },
+  "vip26VideoSize": {
+    "type": "slider",
+    "label": "VIP 26 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 26"
+  },
+  "vip26VideoHeight": {
+    "type": "slider",
+    "label": "VIP 26 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 26"
+  },
+  "vip26Image": {
+    "type": "image-input",
+    "label": "VIP 26 - Image",
+    "group":"VIP 26"
+  },
+  "vip26ImageSize": {
+    "type": "slider",
+    "label": "VIP 26 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 26"
+  },
+  "vip26ImageHeight": {
+    "type": "slider",
+    "label": "VIP 26 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 26"
+  },
+  "vip26OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 26 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 26"
+  },
+  "vip26Sound": {
+    "type": "sound-input",
+    "label": "VIP 26 - Sound file",
+    "value": "",
+    "group":"VIP 26"
+  },
+  "vip26SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 26,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 26"
+  },
+
+  "vip27": {
+    "type": "text",
+    "label": "VIP 27 - Username",
+    "value": "",
+    "group":"VIP 27"
+  },
+
+  "vip27TopText": {
+    "type": "text",
+    "label": "VIP 27 - Top Text",
+    "value": "",
+    "group":"VIP 27"
+  },
+
+  "vip27LowerText": {
+    "type": "text",
+    "label": "VIP 27 - Lower Text",
+    "value": "",
+    "group":"VIP 27"
+  },
+
+  "vip27Video": {
+    "type": "video-input",
+    "label": "VIP 27 - Video",
+    "group":"VIP 27"
+  },
+  "vip27VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 27,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 27"
+  },
+  "vip27VideoSize": {
+    "type": "slider",
+    "label": "VIP 27 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 27"
+  },
+  "vip27VideoHeight": {
+    "type": "slider",
+    "label": "VIP 27 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 27"
+  },
+  "vip27Image": {
+    "type": "image-input",
+    "label": "VIP 27 - Image",
+    "group":"VIP 27"
+  },
+  "vip27ImageSize": {
+    "type": "slider",
+    "label": "VIP 27 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 27"
+  },
+  "vip27ImageHeight": {
+    "type": "slider",
+    "label": "VIP 27 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 27"
+  },
+  "vip27OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 27 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 27"
+  },
+  "vip27Sound": {
+    "type": "sound-input",
+    "label": "VIP 27 - Sound file",
+    "value": "",
+    "group":"VIP 27"
+  },
+  "vip27SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 27,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 27"
+  },
+
+  "vip28": {
+    "type": "text",
+    "label": "VIP 28 - Username",
+    "value": "",
+    "group":"VIP 28"
+  },
+
+  "vip28TopText": {
+    "type": "text",
+    "label": "VIP 28 - Top Text",
+    "value": "",
+    "group":"VIP 28"
+  },
+
+  "vip28LowerText": {
+    "type": "text",
+    "label": "VIP 28 - Lower Text",
+    "value": "",
+    "group":"VIP 28"
+  },
+
+  "vip28Video": {
+    "type": "video-input",
+    "label": "VIP 28 - Video",
+    "group":"VIP 28"
+  },
+  "vip28VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 28,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 28"
+  },
+  "vip28VideoSize": {
+    "type": "slider",
+    "label": "VIP 28 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 28"
+  },
+  "vip28VideoHeight": {
+    "type": "slider",
+    "label": "VIP 28 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 28"
+  },
+  "vip28Image": {
+    "type": "image-input",
+    "label": "VIP 28 - Image",
+    "group":"VIP 28"
+  },
+  "vip28ImageSize": {
+    "type": "slider",
+    "label": "VIP 28 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 28"
+  },
+  "vip28ImageHeight": {
+    "type": "slider",
+    "label": "VIP 28 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 28"
+  },
+  "vip28OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 28 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 28"
+  },
+  "vip28Sound": {
+    "type": "sound-input",
+    "label": "VIP 28 - Sound file",
+    "value": "",
+    "group":"VIP 28"
+  },
+  "vip28SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 28,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 28"
+  },
+
+  "vip29": {
+    "type": "text",
+    "label": "VIP 29 - Username",
+    "value": "",
+    "group":"VIP 29"
+  },
+
+  "vip29TopText": {
+    "type": "text",
+    "label": "VIP 29 - Top Text",
+    "value": "",
+    "group":"VIP 29"
+  },
+
+  "vip29LowerText": {
+    "type": "text",
+    "label": "VIP 29 - Lower Text",
+    "value": "",
+    "group":"VIP 29"
+  },
+
+  "vip29Video": {
+    "type": "video-input",
+    "label": "VIP 29 - Video",
+    "group":"VIP 29"
+  },
+  "vip29VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 29,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 29"
+  },
+  "vip29VideoSize": {
+    "type": "slider",
+    "label": "VIP 29 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 29"
+  },
+  "vip29VideoHeight": {
+    "type": "slider",
+    "label": "VIP 29 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 29"
+  },
+  "vip29Image": {
+    "type": "image-input",
+    "label": "VIP 29 - Image",
+    "group":"VIP 29"
+  },
+  "vip29ImageSize": {
+    "type": "slider",
+    "label": "VIP 29 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 29"
+  },
+  "vip29ImageHeight": {
+    "type": "slider",
+    "label": "VIP 29 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 29"
+  },
+  "vip29OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 29 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 29"
+  },
+  "vip29Sound": {
+    "type": "sound-input",
+    "label": "VIP 29 - Sound file",
+    "value": "",
+    "group":"VIP 29"
+  },
+  "vip29SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 29,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 29"
+  },
+
+  "vip30": {
+    "type": "text",
+    "label": "VIP 30 - Username",
+    "value": "",
+    "group":"VIP 30"
+  },
+
+  "vip30TopText": {
+    "type": "text",
+    "label": "VIP 30 - Top Text",
+    "value": "",
+    "group":"VIP 30"
+  },
+
+  "vip30LowerText": {
+    "type": "text",
+    "label": "VIP 30 - Lower Text",
+    "value": "",
+    "group":"VIP 30"
+  },
+
+  "vip30Video": {
+    "type": "video-input",
+    "label": "VIP 30 - Video",
+    "group":"VIP 30"
+  },
+  "vip30VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 30,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 30"
+  },
+  "vip30VideoSize": {
+    "type": "slider",
+    "label": "VIP 30 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 30"
+  },
+  "vip30VideoHeight": {
+    "type": "slider",
+    "label": "VIP 30 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 30"
+  },
+  "vip30Image": {
+    "type": "image-input",
+    "label": "VIP 30 - Image",
+    "group":"VIP 30"
+  },
+  "vip30ImageSize": {
+    "type": "slider",
+    "label": "VIP 30 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 30"
+  },
+  "vip30ImageHeight": {
+    "type": "slider",
+    "label": "VIP 30 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 30"
+  },
+  "vip30OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 30 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 30"
+  },
+  "vip30Sound": {
+    "type": "sound-input",
+    "label": "VIP 30 - Sound file",
+    "value": "",
+    "group":"VIP 30"
+  },
+  "vip30SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 30,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 30"
+  },
+
+  "vip31": {
+    "type": "text",
+    "label": "VIP 31 - Username",
+    "value": "",
+    "group":"VIP 31"
+  },
+
+  "vip31TopText": {
+    "type": "text",
+    "label": "VIP 31 - Top Text",
+    "value": "",
+    "group":"VIP 31"
+  },
+
+  "vip31LowerText": {
+    "type": "text",
+    "label": "VIP 31 - Lower Text",
+    "value": "",
+    "group":"VIP 31"
+  },
+
+  "vip31Video": {
+    "type": "video-input",
+    "label": "VIP 31 - Video",
+    "group":"VIP 31"
+  },
+  "vip31VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 31,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 31"
+  },
+  "vip31VideoSize": {
+    "type": "slider",
+    "label": "VIP 31 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 31"
+  },
+  "vip31VideoHeight": {
+    "type": "slider",
+    "label": "VIP 31 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 31"
+  },
+  "vip31Image": {
+    "type": "image-input",
+    "label": "VIP 31 - Image",
+    "group":"VIP 31"
+  },
+  "vip31ImageSize": {
+    "type": "slider",
+    "label": "VIP 31 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 31"
+  },
+  "vip31ImageHeight": {
+    "type": "slider",
+    "label": "VIP 31 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 31"
+  },
+  "vip31OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 31 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 31"
+  },
+  "vip31Sound": {
+    "type": "sound-input",
+    "label": "VIP 31 - Sound file",
+    "value": "",
+    "group":"VIP 31"
+  },
+  "vip31SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 31,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 31"
+  },
+
+  "vip32": {
+    "type": "text",
+    "label": "VIP 32 - Username",
+    "value": "",
+    "group":"VIP 32"
+  },
+
+  "vip32TopText": {
+    "type": "text",
+    "label": "VIP 32 - Top Text",
+    "value": "",
+    "group":"VIP 32"
+  },
+
+  "vip32LowerText": {
+    "type": "text",
+    "label": "VIP 32 - Lower Text",
+    "value": "",
+    "group":"VIP 32"
+  },
+
+  "vip32Video": {
+    "type": "video-input",
+    "label": "VIP 32 - Video",
+    "group":"VIP 32"
+  },
+  "vip32VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 32,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 32"
+  },
+  "vip32VideoSize": {
+    "type": "slider",
+    "label": "VIP 32 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 32"
+  },
+  "vip32VideoHeight": {
+    "type": "slider",
+    "label": "VIP 32 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 32"
+  },
+  "vip32Image": {
+    "type": "image-input",
+    "label": "VIP 32 - Image",
+    "group":"VIP 32"
+  },
+  "vip32ImageSize": {
+    "type": "slider",
+    "label": "VIP 32 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 32"
+  },
+  "vip32ImageHeight": {
+    "type": "slider",
+    "label": "VIP 32 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 32"
+  },
+  "vip32OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 32 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 32"
+  },
+  "vip32Sound": {
+    "type": "sound-input",
+    "label": "VIP 32 - Sound file",
+    "value": "",
+    "group":"VIP 32"
+  },
+  "vip32SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 32,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 32"
+  },
+
+  "vip33": {
+    "type": "text",
+    "label": "VIP 33 - Username",
+    "value": "",
+    "group":"VIP 33"
+  },
+
+  "vip33TopText": {
+    "type": "text",
+    "label": "VIP 33 - Top Text",
+    "value": "",
+    "group":"VIP 33"
+  },
+
+  "vip33LowerText": {
+    "type": "text",
+    "label": "VIP 33 - Lower Text",
+    "value": "",
+    "group":"VIP 33"
+  },
+
+  "vip33Video": {
+    "type": "video-input",
+    "label": "VIP 33 - Video",
+    "group":"VIP 33"
+  },
+  "vip33VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 33,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 33"
+  },
+  "vip33VideoSize": {
+    "type": "slider",
+    "label": "VIP 33 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 33"
+  },
+  "vip33VideoHeight": {
+    "type": "slider",
+    "label": "VIP 33 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 33"
+  },
+  "vip33Image": {
+    "type": "image-input",
+    "label": "VIP 33 - Image",
+    "group":"VIP 33"
+  },
+  "vip33ImageSize": {
+    "type": "slider",
+    "label": "VIP 33 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 33"
+  },
+  "vip33ImageHeight": {
+    "type": "slider",
+    "label": "VIP 33 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 33"
+  },
+  "vip33OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 33 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 33"
+  },
+  "vip33Sound": {
+    "type": "sound-input",
+    "label": "VIP 33 - Sound file",
+    "value": "",
+    "group":"VIP 33"
+  },
+  "vip33SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 33,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 33"
+  },
+
+  "vip34": {
+    "type": "text",
+    "label": "VIP 34 - Username",
+    "value": "",
+    "group":"VIP 34"
+  },
+
+  "vip34TopText": {
+    "type": "text",
+    "label": "VIP 34 - Top Text",
+    "value": "",
+    "group":"VIP 34"
+  },
+
+  "vip34LowerText": {
+    "type": "text",
+    "label": "VIP 34 - Lower Text",
+    "value": "",
+    "group":"VIP 34"
+  },
+
+  "vip34Video": {
+    "type": "video-input",
+    "label": "VIP 34 - Video",
+    "group":"VIP 34"
+  },
+  "vip34VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 34,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 34"
+  },
+  "vip34VideoSize": {
+    "type": "slider",
+    "label": "VIP 34 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 34"
+  },
+  "vip34VideoHeight": {
+    "type": "slider",
+    "label": "VIP 34 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 34"
+  },
+  "vip34Image": {
+    "type": "image-input",
+    "label": "VIP 34 - Image",
+    "group":"VIP 34"
+  },
+  "vip34ImageSize": {
+    "type": "slider",
+    "label": "VIP 34 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 34"
+  },
+  "vip34ImageHeight": {
+    "type": "slider",
+    "label": "VIP 34 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 34"
+  },
+  "vip34OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 34 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 34"
+  },
+  "vip34Sound": {
+    "type": "sound-input",
+    "label": "VIP 34 - Sound file",
+    "value": "",
+    "group":"VIP 34"
+  },
+  "vip34SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 34,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 34"
+  },
+
+  "vip35": {
+    "type": "text",
+    "label": "VIP 35 - Username",
+    "value": "",
+    "group":"VIP 35"
+  },
+
+  "vip35TopText": {
+    "type": "text",
+    "label": "VIP 35 - Top Text",
+    "value": "",
+    "group":"VIP 35"
+  },
+
+  "vip35LowerText": {
+    "type": "text",
+    "label": "VIP 35 - Lower Text",
+    "value": "",
+    "group":"VIP 35"
+  },
+
+  "vip35Video": {
+    "type": "video-input",
+    "label": "VIP 35 - Video",
+    "group":"VIP 35"
+  },
+  "vip35VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 35,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 35"
+  },
+  "vip35VideoSize": {
+    "type": "slider",
+    "label": "VIP 35 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 35"
+  },
+  "vip35VideoHeight": {
+    "type": "slider",
+    "label": "VIP 35 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 35"
+  },
+  "vip35Image": {
+    "type": "image-input",
+    "label": "VIP 35 - Image",
+    "group":"VIP 35"
+  },
+  "vip35ImageSize": {
+    "type": "slider",
+    "label": "VIP 35 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 35"
+  },
+  "vip35ImageHeight": {
+    "type": "slider",
+    "label": "VIP 35 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 35"
+  },
+  "vip35OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 35 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 35"
+  },
+  "vip35Sound": {
+    "type": "sound-input",
+    "label": "VIP 35 - Sound file",
+    "value": "",
+    "group":"VIP 35"
+  },
+  "vip35SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 35,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 35"
+  },
+
+  "vip36": {
+    "type": "text",
+    "label": "VIP 36 - Username",
+    "value": "",
+    "group":"VIP 36"
+  },
+
+  "vip36TopText": {
+    "type": "text",
+    "label": "VIP 36 - Top Text",
+    "value": "",
+    "group":"VIP 36"
+  },
+
+  "vip36LowerText": {
+    "type": "text",
+    "label": "VIP 36 - Lower Text",
+    "value": "",
+    "group":"VIP 36"
+  },
+
+  "vip36Video": {
+    "type": "video-input",
+    "label": "VIP 36 - Video",
+    "group":"VIP 36"
+  },
+  "vip36VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 36,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 36"
+  },
+  "vip36VideoSize": {
+    "type": "slider",
+    "label": "VIP 36 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 36"
+  },
+  "vip36VideoHeight": {
+    "type": "slider",
+    "label": "VIP 36 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 36"
+  },
+  "vip36Image": {
+    "type": "image-input",
+    "label": "VIP 36 - Image",
+    "group":"VIP 36"
+  },
+  "vip36ImageSize": {
+    "type": "slider",
+    "label": "VIP 36 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 36"
+  },
+  "vip36ImageHeight": {
+    "type": "slider",
+    "label": "VIP 36 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 36"
+  },
+  "vip36OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 36 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 36"
+  },
+  "vip36Sound": {
+    "type": "sound-input",
+    "label": "VIP 36 - Sound file",
+    "value": "",
+    "group":"VIP 36"
+  },
+  "vip36SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 36,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 36"
+  },
+
+  "vip37": {
+    "type": "text",
+    "label": "VIP 37 - Username",
+    "value": "",
+    "group":"VIP 37"
+  },
+
+  "vip37TopText": {
+    "type": "text",
+    "label": "VIP 37 - Top Text",
+    "value": "",
+    "group":"VIP 37"
+  },
+
+  "vip37LowerText": {
+    "type": "text",
+    "label": "VIP 37 - Lower Text",
+    "value": "",
+    "group":"VIP 37"
+  },
+
+  "vip37Video": {
+    "type": "video-input",
+    "label": "VIP 37 - Video",
+    "group":"VIP 37"
+  },
+  "vip37VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 37,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 37"
+  },
+  "vip37VideoSize": {
+    "type": "slider",
+    "label": "VIP 37 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 37"
+  },
+  "vip37VideoHeight": {
+    "type": "slider",
+    "label": "VIP 37 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 37"
+  },
+  "vip37Image": {
+    "type": "image-input",
+    "label": "VIP 37 - Image",
+    "group":"VIP 37"
+  },
+  "vip37ImageSize": {
+    "type": "slider",
+    "label": "VIP 37 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 37"
+  },
+  "vip37ImageHeight": {
+    "type": "slider",
+    "label": "VIP 37 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 37"
+  },
+  "vip37OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 37 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 37"
+  },
+  "vip37Sound": {
+    "type": "sound-input",
+    "label": "VIP 37 - Sound file",
+    "value": "",
+    "group":"VIP 37"
+  },
+  "vip37SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 37,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 37"
+  },
+
+  "vip38": {
+    "type": "text",
+    "label": "VIP 38 - Username",
+    "value": "",
+    "group":"VIP 38"
+  },
+
+  "vip38TopText": {
+    "type": "text",
+    "label": "VIP 38 - Top Text",
+    "value": "",
+    "group":"VIP 38"
+  },
+
+  "vip38LowerText": {
+    "type": "text",
+    "label": "VIP 38 - Lower Text",
+    "value": "",
+    "group":"VIP 38"
+  },
+
+  "vip38Video": {
+    "type": "video-input",
+    "label": "VIP 38 - Video",
+    "group":"VIP 38"
+  },
+  "vip38VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 38,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 38"
+  },
+  "vip38VideoSize": {
+    "type": "slider",
+    "label": "VIP 38 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 38"
+  },
+  "vip38VideoHeight": {
+    "type": "slider",
+    "label": "VIP 38 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 38"
+  },
+  "vip38Image": {
+    "type": "image-input",
+    "label": "VIP 38 - Image",
+    "group":"VIP 38"
+  },
+  "vip38ImageSize": {
+    "type": "slider",
+    "label": "VIP 38 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 38"
+  },
+  "vip38ImageHeight": {
+    "type": "slider",
+    "label": "VIP 38 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 38"
+  },
+  "vip38OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 38 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 38"
+  },
+  "vip38Sound": {
+    "type": "sound-input",
+    "label": "VIP 38 - Sound file",
+    "value": "",
+    "group":"VIP 38"
+  },
+  "vip38SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 38,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 38"
+  },
+
+  "vip39": {
+    "type": "text",
+    "label": "VIP 39 - Username",
+    "value": "",
+    "group":"VIP 39"
+  },
+
+  "vip39TopText": {
+    "type": "text",
+    "label": "VIP 39 - Top Text",
+    "value": "",
+    "group":"VIP 39"
+  },
+
+  "vip39LowerText": {
+    "type": "text",
+    "label": "VIP 39 - Lower Text",
+    "value": "",
+    "group":"VIP 39"
+  },
+
+  "vip39Video": {
+    "type": "video-input",
+    "label": "VIP 39 - Video",
+    "group":"VIP 39"
+  },
+  "vip39VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 39,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 39"
+  },
+  "vip39VideoSize": {
+    "type": "slider",
+    "label": "VIP 39 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 39"
+  },
+  "vip39VideoHeight": {
+    "type": "slider",
+    "label": "VIP 39 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 39"
+  },
+  "vip39Image": {
+    "type": "image-input",
+    "label": "VIP 39 - Image",
+    "group":"VIP 39"
+  },
+  "vip39ImageSize": {
+    "type": "slider",
+    "label": "VIP 39 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 39"
+  },
+  "vip39ImageHeight": {
+    "type": "slider",
+    "label": "VIP 39 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 39"
+  },
+  "vip39OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 39 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 39"
+  },
+  "vip39Sound": {
+    "type": "sound-input",
+    "label": "VIP 39 - Sound file",
+    "value": "",
+    "group":"VIP 39"
+  },
+  "vip39SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 39,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 39"
+  },
+
+  "vip40": {
+    "type": "text",
+    "label": "VIP 40 - Username",
+    "value": "",
+    "group":"VIP 40"
+  },
+
+  "vip40TopText": {
+    "type": "text",
+    "label": "VIP 40 - Top Text",
+    "value": "",
+    "group":"VIP 40"
+  },
+
+  "vip40LowerText": {
+    "type": "text",
+    "label": "VIP 40 - Lower Text",
+    "value": "",
+    "group":"VIP 40"
+  },
+
+  "vip40Video": {
+    "type": "video-input",
+    "label": "VIP 40 - Video",
+    "group":"VIP 40"
+  },
+  "vip40VideoVolume": {
+    "type": "slider",
+    "label": "Video Volume",
+    "value": 40,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 40"
+  },
+  "vip40VideoSize": {
+    "type": "slider",
+    "label": "VIP 40 - Video Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 40"
+  },
+  "vip40VideoHeight": {
+    "type": "slider",
+    "label": "VIP 40 - Video Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 40"
+  },
+  "vip40Image": {
+    "type": "image-input",
+    "label": "VIP 40 - Image",
+    "group":"VIP 40"
+  },
+  "vip40ImageSize": {
+    "type": "slider",
+    "label": "VIP 40 - Image Size (%)",
+    "value": 80,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 40"
+  },
+  "vip40ImageHeight": {
+    "type": "slider",
+    "label": "VIP 40 - Image Vertical pos.(%)",
+    "value": 1,
+    "min": 1,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 40"
+  },
+  "vip40OnOffSound": {
+    "type": "dropdown",
+    "label": "VIP 40 - Play Sound?",
+    "value": "false",
+    "options": {
+      "true": "Play",
+      "false": "Do not play"
+    },
+    "group":"VIP 40"
+  },
+  "vip40Sound": {
+    "type": "sound-input",
+    "label": "VIP 40 - Sound file",
+    "value": "",
+    "group":"VIP 40"
+  },
+  "vip40SoundVolume": {
+    "type": "slider",
+    "label": "Sound Volume",
+    "value": 40,
+    "min": 0,
+    "max": 100,
+    "steps": 1,
+    "group":"VIP 40"
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Awesome Shoutout"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "ReneChiquete"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "1.5"
+  },
+  "widgetUpdateUrl": {
+    "type": "hidden",
+    "value": "https://github.com/StreamElements/widgets/blob/master/AwesomeShoutout/"
+  }
+}
