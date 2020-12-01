@@ -169,7 +169,7 @@ function awesomeshoutout(soname, service = "twitch", avatarToken = "") {
         //console.log('playSound after: '+playSound);
 
         switch (playSound) {
-            case true:
+            case "true":
                 console.log('playSound, enter true');
 
                 if (userMatrix["sound"]) {
