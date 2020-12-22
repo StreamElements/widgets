@@ -105,6 +105,9 @@ There are some reserved field names (all future reserved words will start with `
     }
 }
 ```
+
+Fields of type `image-input`, `video-input`, `sound-input` may use additional parameter `"multiple":true` which allows end user to provide multiple media files within single field. Output will result in array of urls. 
+
 ##### Input on left panel construction
 Input field on left panel will look like:
 ```html
