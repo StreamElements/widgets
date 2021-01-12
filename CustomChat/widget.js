@@ -147,7 +147,7 @@ function attachEmotes(message) {
             /([^\s]*)/gi,
             function (m, key) {
                 let result = data.filter(emote => {
-                    return emote.name === key
+                    return html_encode(emote.name) === key
                 });
                 if (typeof result[0] !== "undefined") {
                     let url = result[0]['urls'][1];
