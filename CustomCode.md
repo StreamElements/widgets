@@ -655,6 +655,8 @@ SE_API.sanitize({ message: "Hello SomeVulgarWorld"}).then(sanityResult => {
     }
 */  
 });
+
+SE_API.setField('key', 'value'); // Set's the fieldData[key] = value. This does not save, so should be used with Editor Mode so the user can save.
 ```
 #### resumeQueue method and widgetDuration property
 widgetDuration property defines maximum event queue hold time (execution time of widget) by widget in seconds (default 0). For example you want to show animations by this widget and don't want them overlap, so instead building your own queue you can use this. This property is defined in JSON (as mentioned above)
