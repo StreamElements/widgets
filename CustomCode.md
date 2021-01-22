@@ -125,7 +125,7 @@ or for  dropdown (based on example above)
 Result of those custom fields can be used like:
 ###### HTML
 ```html
-<div class="message">{{someDropDown}} is an option for today!<span id="additional">{{someText}}</span></div>
+<div class="message">{{someDropdown}} is an option for today!<span id="additional">{{someText}}</span></div>
 ```
 ###### CSS
 ```css
