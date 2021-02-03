@@ -4,6 +4,16 @@
     "label": "Goal",
     "value": 32
   },
+  "onGoalReach": {
+    "type": "dropdown",
+    "label": "On goal reach",
+    "value": "nothing",
+    "options": {
+      "nothing": "Do nothing",
+      "increment": "Increment by value below",
+      "reset": "Reset goal"
+    }
+  },
   "autoIncrement": {
     "type": "number",
     "label": "Auto increment goal when reached by",

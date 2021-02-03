@@ -81,11 +81,16 @@ window.addEventListener('onEventReceived', function (obj) {
 
 function updateBar(count) {
     if (count === prevCount) return;
-    if (count >= goal && fieldData['autoIncrement'] > 0) {
-        goal += fieldData['autoIncrement'];
-        setGoal();
-        updateBar(count);
-        return;
+    if (count >= goal) {
+        if (fieldData['autoIncrement'] > 0 && fieldData.onGoalReach === "increment") {
+            goal += fieldData['autoIncrement'];
+            setGoal();
+            updateBar(count);
+            return;
+        } else if (fieldData.onGoalReach === "reset") {
+            fieldData.onGoalReach === "reset";
+            count = count % goal;
+        }
     }
     clearTimeout(timeout);
     prevCount = count;
