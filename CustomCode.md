@@ -637,7 +637,7 @@ window.addEventListener('onSessionUpdate', function (obj) {
 A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more advanced functionality.
 
 ```javascript
-SE_API.store.set('keyName', obj); // stores an object into our database under this keyName (multiple widgets using the same keyName will share the same data).
+SE_API.store.set('keyName', obj); // stores an object into our database under this keyName (multiple widgets using the same keyName will share the same data. keyName can be an alphanumeric string only).
 SE_API.store.get('keyName').then(obj => {
     // obj is the object stored in the db, must be a simple object
 });
