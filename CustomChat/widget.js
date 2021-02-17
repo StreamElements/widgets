@@ -100,9 +100,12 @@ window.addEventListener('onEventReceived', function (obj) {
         const color = data.displayColor !== "" ? data.displayColor : "#" + (md5(username).substr(26));
         username = `<span style="color:${color}">${username}</span>`;
     }
-    if (nickColor === "custom") {
+    else if (nickColor === "custom") {
         const color = customNickColor;
         username = `<span style="color:${color}">${username}</span>`;
+    }
+    else if (nickColor === "remove") {
+        username = '';
     }
     addMessage(username, badges, message, data.isAction, data.userId, data.msgId);
 });

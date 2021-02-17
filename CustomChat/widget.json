@@ -66,7 +66,8 @@
     "options": {
       "user": "as on twitch",
       "messagecolor": "same as message text",
-      "custom": "specified below"
+      "custom": "specified below",
+      "remove": "Remove username"
     },
     "group": "Typography"
   },
