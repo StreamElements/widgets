@@ -505,7 +505,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 	* `data["supporter-latest"]["name"]` - Username
 	* `data["supporter-latest"]["amount"]` - Amount
 * `data["supporter-recent"]`    - An array of latest supporter events with each element structure as in `supporter-latest`
-* `data["supporter-goal"]["amount"]` - Amount of  videolike goal
+* `data["videolike-goal"]["amount"]` - Amount of videolike goal
 * `data["videolike-session"]["count"]` - Videolikes since session start
 * `data["videolike-week"]["count"]` - Videolikes this week
 * `data["videolike-month"]["count"]` - Videolikes this month
