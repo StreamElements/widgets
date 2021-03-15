@@ -28,7 +28,7 @@ At this point we support all of HTML5 input types (except of file - use library 
 There are some reserved field names (all future reserved words will start with `widget`):
 * `widgetName` - Used to set the display name of the widget
 * `widgetAuthor` - Set the author name of the widget (adds a "(by Author)" to the widget name)
-* `widgetDuration` - maximum event queue hold time (seconds) - for Custom Widget (as alertboxes have their own timers). Explained in section below
+* `widgetDuration` - maximum event queue hold time (seconds) - for Custom Widget (as alertboxes have their own timers). Explained in [resumeQueue section](#resumequeue-method-and-widgetduration-property) below
 #### Example
 ##### JSON
 ```JSON
@@ -176,7 +176,7 @@ Or CSS:
 ## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
 Note:
-> You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api) or SE_API store (described below).
+> You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api) or [SE_API](#se-api) store.
 
 ### On event:
 ```javascript
@@ -196,7 +196,8 @@ In the example above you have obj forwarded to that function, which has two inte
     * `delete-message` - Chat message removed
     * `delete-messages` - Chat messages by userId removed
     * `event:skip` - User clicked "skip alert" button in activity feed
-    * `bot:counter` - Update to bot counter
+    * `bot:counter` - Update of bot counter
+    * `kvstore:update` - Update of [SE_API](#se-api) store value.
     * `widget-button` - User clicked custom field button in widget properties 
 
 * `obj.detail.event`: Will provide you information about event details. It contains few keys. For `-latest` events it is:
@@ -634,7 +635,7 @@ window.addEventListener('onSessionUpdate', function (obj) {
 `data` is the same as in `onWidgetLoad` so every property is listed in section above.
 
 ### SE API
-A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more advanced functionality.
+A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more direct REST API calls to be used as authorization header.
 
 ```javascript
 SE_API.store.set('keyName', obj); // stores an object into our database under this keyName (multiple widgets using the same keyName will share the same data. keyName can be an alphanumeric string only).
@@ -658,6 +659,27 @@ SE_API.sanitize({ message: "Hello SomeVulgarWorld"}).then(sanityResult => {
 
 SE_API.setField('key', 'value'); // Set's the fieldData[key] = value. This does not save, so should be used with Editor Mode so the user can save.
 ```
+`SE_API.store.set` method emits an event received by every custom widget. Example payload:
+```json
+{
+	"detail": {
+		"listener": "kvstore:update",
+		"event": {
+			"data": {
+				"key": "customWidget.keyName",
+				"value": {
+					"array": [
+						33,
+						"foobar"
+					],
+					"date": "2021-03-15T08:46:10.919Z",
+					"test": 15
+				}
+			}
+		}
+	}
+}
+```
 #### resumeQueue method and widgetDuration property
 widgetDuration property defines maximum event queue hold time (execution time of widget) by widget in seconds (default 0). For example you want to show animations by this widget and don't want them overlap, so instead building your own queue you can use this. This property is defined in JSON (as mentioned above)
 Premature queue resume can be called by `SE_API.resumeQueue();`
@@ -680,7 +702,7 @@ Code:
 ```
 ##### JS:
 ```js
-let skippable=["bot:counter","event:test","event:skip","message"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
+let skippable=["bot:counter","event:test","event:skip","message","kvstore:update"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
 let playAnimation=(event)=>{
     $("container").html(`<div id="sender">${event.sender}</div><div class="amount">${event.amount} subs!</div>`)
     return Math.floor(Math.random()*8)+7;
