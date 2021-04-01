@@ -50,7 +50,7 @@ window.addEventListener('onEventReceived', function (obj) {
             return;
         }
     }
-    else if (listener.indexOf("-latest") === -1) return;
+    if (listener.indexOf("-latest") === -1) return;
 
     const data = obj.detail.event;
     if (listener === 'follower-latest') {
