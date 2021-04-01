@@ -8,6 +8,7 @@ let stopOnZero = false;
 let start;
 
 function countdown(seconds) {
+    if (seconds === 0) return;
     let toCountDown = start;
     if (stopOnZero && toCountDown < new Date()) return;
     if (addOnZero) {
@@ -48,7 +49,8 @@ window.addEventListener('onEventReceived', function (obj) {
             }
             return;
         }
-    } else if (listener.indexOf("-latest") === -1) return;
+    }
+    if (listener.indexOf("-latest") === -1) return;
 
     const data = obj.detail.event;
     if (listener === 'follower-latest') {
@@ -86,9 +88,9 @@ window.addEventListener('onEventReceived', function (obj) {
         }
         countdown(parseInt(fieldData.tipSeconds * data["amount"]));
     }
-
-
 });
+
+
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
     addOnZero = (fieldData.addOnZero === "add");
