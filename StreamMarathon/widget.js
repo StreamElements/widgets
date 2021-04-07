@@ -42,7 +42,7 @@ window.addEventListener('onEventReceived', function (obj) {
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
                 start = minTime;
-                countdown(0);
+                countdown(1);
             }
             if (obj.detail.event.field === 'addTime') {
                 countdown(60);
