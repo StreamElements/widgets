@@ -141,7 +141,7 @@
     width: 100%;
     height: calc({fontSize}px + 8px);
     display: flex;
-    justify-content: right;
+    justify-content: left;
     background-color: {{backgroundColor}};
     border-radius: 14px;
     margin-top: 3px;
