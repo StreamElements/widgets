@@ -8,7 +8,7 @@ let stopOnZero = false;
 let start;
 
 function countdown(seconds) {
-    if (seconds === 0) return;
+    if (seconds == 0) return;
     let toCountDown = start;
     if (stopOnZero && toCountDown < new Date()) return;
     if (addOnZero) {
@@ -29,7 +29,9 @@ function countdown(seconds) {
         if (event.type === "finish") $(this).html(fieldData.onComplete);
         else $(this).html(event.strftime('%I:%M:%S'));
     });
+
     saveState();
+
 }
 
 window.addEventListener('onEventReceived', function (obj) {
@@ -49,8 +51,7 @@ window.addEventListener('onEventReceived', function (obj) {
             }
             return;
         }
-    }
-    if (listener.indexOf("-latest") === -1) return;
+    } else if (listener.indexOf("-latest") === -1) return;
 
     const data = obj.detail.event;
     if (listener === 'follower-latest') {
@@ -88,9 +89,9 @@ window.addEventListener('onEventReceived', function (obj) {
         }
         countdown(parseInt(fieldData.tipSeconds * data["amount"]));
     }
+
+
 });
-
-
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
     addOnZero = (fieldData.addOnZero === "add");
@@ -113,6 +114,7 @@ function loadState() {
                 maxTime = new Date(obj.maxTime);
             } else if (fieldData.preserveTime === "restart") {
                 minTime = new Date();
+                current = minTime;
                 minTime.setMinutes(minTime.getMinutes() + fieldData.minTime);
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
@@ -121,7 +123,7 @@ function loadState() {
             if (current > 0) {
                 current = Math.max(current, minTime);
                 start = new Date(current);
-                countdown(0);
+                countdown(1);
             } else {
                 start = minTime;
                 countdown(0);
