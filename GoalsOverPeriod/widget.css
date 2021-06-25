@@ -63,13 +63,17 @@
     color:{{titleColor}};
     text-align:center;
     font-weight:bold;
+  text-shadow: {{shadow}};
 }
 #count{
     color:{{valueColor}};
+    text-shadow: {{shadow}};
 }
 #divider{
     color:{{dividerColor}};
+    text-shadow: {{shadow}};
 }
 #goal{
     color:{{goalColor}};
+    text-shadow: {{shadow}};
 }
