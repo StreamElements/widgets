@@ -34,6 +34,11 @@
     "label": "Font name",
     "value": "Montserrat"
   },
+  "shadow": {
+    "type": "text",
+    "label": "Font shadow",
+    "value": "1px 1px 1px #000000"
+  },
   "fontWeight": {
     "label": "Font Weight",
     "type": "dropdown",
