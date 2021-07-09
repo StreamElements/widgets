@@ -1,5 +1,4 @@
 let userCurrency;
-let userCurrency;
 let fieldData;
 let animation;
 let minAmount = 20;
