@@ -659,6 +659,10 @@ SE_API.sanitize({ message: "Hello SomeVulgarWorld"}).then(sanityResult => {
 */  
 });
 
+SE_API.cheerFilter(message).then(cheerResult => {
+	// cheerResult = "message but without any cheers in it";
+});
+
 SE_API.setField('key', 'value'); // Set's the fieldData[key] = value. This does not save, so should be used with Editor Mode so the user can save.
 ```
 `SE_API.store.set` method emits an event received by every custom widget. Example payload:
