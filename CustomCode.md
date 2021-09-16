@@ -233,7 +233,7 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 ```
 #### Message
-For every message on Twitch chat there is an object forwarded with every details there:
+For message events, there is an additional object that's accessible at `obj.detail.event.data`, which looks like this:
 ```json
 {
   "time": 1552400352142,
