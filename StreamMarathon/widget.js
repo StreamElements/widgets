@@ -88,6 +88,11 @@ window.addEventListener('onEventReceived', function (obj) {
             return;
         }
         countdown(parseInt(fieldData.tipSeconds * data["amount"]));
+    } else if (listener === 'merch-latest') {
+        if (fieldData.merchSeconds === 0) {
+            return;
+        }
+        countdown(parseInt(fieldData.merchSeconds * data["amount"]));
     }
 
 

@@ -108,6 +108,13 @@
     "step": 0.01,
     "group": "Event time settings"
   },
+  "merchSeconds": {
+    "type": "number",
+    "label": "Seconds multiplied by merch order amount:",
+    "value": 300,
+    "step": 0.01,
+    "group": "Event time settings"
+  },
   "hostSeconds": {
     "type": "number",
     "label": "Seconds per viewer from host:",
