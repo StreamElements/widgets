@@ -36,7 +36,7 @@ window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.listener !== "message") return;
     let data = obj.detail.event.data;
     let message = html_encode(data["text"]);
-    let user = data["displayName"];
+    let user = data["displayName"].toLowerCase();
     let userstate = {
         "mod": parseInt(data.tags.mod),
         "badges": {
