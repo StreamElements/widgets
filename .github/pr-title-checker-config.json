@@ -1,0 +1,12 @@
+{
+  "LABEL": {
+    "name": "PR title must include a JIRA ticket ID enclosed in square brackets (\"[LT-123]\")",
+    "color": "EEEEEE"
+  },
+  "CHECKS": {
+    "regexp": "\\[[A-Z]+-[0-9]+\\]",
+    "regexpFlags": "",
+    "ignoreLabels" : [],
+    "alwaysPassCI": false
+  }
+}
