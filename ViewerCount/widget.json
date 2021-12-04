@@ -41,6 +41,18 @@
     "label": "Font Color",
     "value": "rgba(255,255,255,1)"
   },
+  "minLength": {
+    "label": "Minimum Digits",
+    "type": "dropdown",
+    "value": "d",
+    "options": {
+      "1": "1",
+      "2": "02",
+      "3": "003",
+      "4": "0004",
+      "5": "0005"
+    }
+  },
   "widgetName": {
     "type": "hidden",
     "value": "Viewer Counter"
