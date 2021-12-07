@@ -4,6 +4,7 @@ let animationOut = 'bounceOut';
 let hideAfter = 60;
 let hideCommands = 'no';
 let ignoredUsers = [];
+let allowedDefaults = [];
 
 window.addEventListener('onEventReceived', function (obj) {
   // Test Button - remove as and when required
@@ -83,8 +84,10 @@ window.addEventListener('onEventReceived', function (obj) {
   
   // Load default twitch badges
   for (let i = 0; i < data.badges.length; i++) {
-      badge = data.badges[i];
+    badge = data.badges[i];
+    if (allowedDefaults.includes(badge.type)) {
       badges += `<img alt="" src="${badge.url}" class="message__badge">`;
+    }
   }
   
   // Handle badge additions
@@ -104,6 +107,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
   nickColor = fieldData.nickColor;
   hideCommands = fieldData.hideCommands;
   ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
+  allowedDefaults = fieldData.allowedDefaults.toLowerCase().replace(" ", "").split(",");
   channelName = obj.detail.channel.username;
 });
 

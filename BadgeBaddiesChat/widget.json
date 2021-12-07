@@ -8,7 +8,7 @@
     "fontName": {
       "type": "googleFont",
       "label": "Font name",
-      "value": "Montserrat",
+      "value": "Open Sans",
       "group": "Typography"
     },
     "fontSize": {
@@ -75,6 +75,12 @@
       "label": "Ignored users (comma separated)",
       "type": "text",
       "value": "StreamElements,OtherBot",
+      "group": "Settings"
+    },
+    "allowedDefaults": {
+      "label": "Allowed default badges (comma separated)",
+      "type": "text",
+      "value": "moderator,partner,vip,sub",
       "group": "Settings"
     },
     "backgroundColor": {
@@ -172,7 +178,7 @@
     },
     "widgetAuthor": {
       "type": "hidden",
-      "value": "Badge Badies"
+      "value": "Badge Baddies"
     },
     "widgetVersion": {
       "type": "hidden",
