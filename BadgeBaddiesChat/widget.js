@@ -77,13 +77,20 @@ window.addEventListener('onEventReceived', function (obj) {
   if (data.text.startsWith("!") && hideCommands === 'yes') return;
   if (ignoredUsers.indexOf(data.nick) !== -1) return;
   let message = attachEmotes(data);
-  let badges = '', badge;
-  for (let i = 0; i < data.badges.length; i++) {
-      badge = data.badges[i];
-      badges += `<img alt="" src="${badge.url}" class="message__badge"> `;
-  }
   let username = data.displayName;
   const color = data.displayColor;
+  let badges = '', badge;
+  
+  // Load default twitch badges
+  for (let i = 0; i < data.badges.length; i++) {
+      badge = data.badges[i];
+      badges += `<img alt="" src="${badge.url}" class="message__badge">`;
+  }
+  
+  // Handle badge additions
+  if (username === "the_party_bard") {
+    badges += `<img alt="" src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" class="message__badge">`
+  }
 
   addEvent(username, badges, message, data.isAction, color);
 });
@@ -112,7 +119,7 @@ function attachEmotes(msg) {
         });
         if (typeof result[0] !== "undefined") {
           let url = result[0]['urls'][1];
-           return `<img alt="" src="${url}" class="emote"/>`;
+           return `<img alt="" src="${url}" class="message__emote"/>`;
         } else return key;
       }
     );

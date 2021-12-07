@@ -10,25 +10,26 @@ html,body {
   width: 100%;
   height: 100%;
   background: {backgroundColor};
-  padding: 10px;
 }
 
 .log {}
 
 .message {
   font-size: {fontSize}px;
+  font-weight: {fontWeight};
   color: {fontColor};
-  margin-bottom: 10px;
+  padding: 5px 10px;
 }
 
 .message__badges {
   display: inline-flex;
   align-items: center;
   height: {fontSize};
+  vertical-align: middle;
 }
 
 .message__badge {
-  height: {fontSize}px;
+  height: {badgeSize}px;
   margin-right: 5px;
 }
 
@@ -38,3 +39,10 @@ html,body {
 }
 
 .message__text {}
+
+
+.message__emote {
+    height: {emoteSize}px;
+    vertical-align: middle;
+    background-repeat:no-repeat;
+}

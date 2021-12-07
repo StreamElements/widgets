@@ -1,12 +1,12 @@
 {
     "testMessage": {
-    "type": "button",
-    "label": "Test message",
-    "value": "Test message",
-    "group": "Test"
-  },
+      "type": "button",
+      "label": "Test message",
+      "value": "Test message",
+      "group": "Test"
+    },
     "fontName": {
-      "type": "text",
+      "type": "googleFont",
       "label": "Font name",
       "value": "Montserrat",
       "group": "Typography"
@@ -37,44 +37,16 @@
       "value": "rgba(255,255,255,1)",
       "group": "Typography"
     },
-    "textShadow": {
-      "type": "text",
-      "label": "Text shadow",
-      "value": "rgb(0, 0, 0) 1px 1px 1px",
-      "group": "Typography"
-    },
     "emoteSize": {
       "type": "number",
       "label": "Emote size",
       "value": 24,
       "group": "Typography"
     },
-    "alignMessages": {
-      "label": "Align Messages",
-      "type": "dropdown",
-      "value": "flex",
-      "options": {
-        "flex": "Bottom",
-        "block": "Top"
-      },
-      "group": "Typography"
-    },
-    "nickColor": {
-      "type": "dropdown",
-      "label": "Nickname color:",
-      "value": "user",
-      "options": {
-        "user": "as on twitch",
-        "messagecolor": "same as message text",
-        "custom": "specified below",
-        "remove": "Remove username"
-      },
-      "group": "Typography"
-    },
-    "customNickColor": {
-      "type": "colorpicker",
-      "label": "Custom nickname color:",
-      "value": "rgba(0,255,0,1)",
+    "badgeSize": {
+      "type": "number",
+      "label": "Badge size",
+      "value": 24,
       "group": "Typography"
     },
     "messagesLimit": {
@@ -108,7 +80,7 @@
     "backgroundColor": {
       "type": "colorpicker",
       "label": "Background color:",
-      "value": "rgba(51,3,0,1)",
+      "value": "#333",
       "group": "Settings"
     },
     "animationIn": {
