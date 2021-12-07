@@ -13,3 +13,21 @@ html,body {
 }
 
 .log {}
+
+.message {
+  font-size: {fontSize}px;
+  color: {fontColor};
+}
+
+.message__badges {
+  display: inline;
+  height: {fontSize}px;
+}
+
+.message__badge {
+  height: {fontSize}px;
+}
+
+.message__username {}
+
+.message__text {}

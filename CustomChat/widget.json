@@ -108,7 +108,7 @@
   "backgroundColor": {
     "type": "colorpicker",
     "label": "Background color:",
-    "value": "rgba(0,0,0,0)",
+    "value": "#333",
     "group": "Settings"
   },
   "animationIn": {

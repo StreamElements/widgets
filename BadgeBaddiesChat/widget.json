@@ -1,10 +1,4 @@
 {
-    "testMessage": {
-      "type": "button",
-      "label": "Test message",
-      "value": "Test message",
-      "group": "Test"
-    },
     "fontName": {
       "type": "text",
       "label": "Font name",
@@ -108,7 +102,7 @@
     "backgroundColor": {
       "type": "colorpicker",
       "label": "Background color:",
-      "value": "rgba(0,0,0,0)",
+      "value": "#333",
       "group": "Settings"
     },
     "animationIn": {
@@ -196,20 +190,15 @@
     },
     "widgetName": {
       "type": "hidden",
-      "value": "Custom chat"
+      "value": "Badge Baddies Chat"
     },
     "widgetAuthor": {
       "type": "hidden",
-      "value": "lx"
+      "value": "Badge Badies"
     },
     "widgetVersion": {
       "type": "hidden",
       "value": "1.0"
-    },
-    "widgetUpdateUrl": {
-      "type": "hidden",
-      "value": "https://github.com/StreamElements/widgets/blob/master/CustomChat/"
     }
-  
   }
   
