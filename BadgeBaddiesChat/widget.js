@@ -135,7 +135,7 @@ function addEvent(username, badges, message, isAction, color) {
   const element = $.parseHTML(`
     <div class="message {animationIn}" id="msg-${totalMessages}">
         <div class="message__badges ${actionClass}">${badges}</div>
-        <span class="message__username" style="color: ${color}">${username}</span>
+        <span class="message__username" style="color: ${color}">${username}:</span>
         <span class="message__text ${actionClass}">${message}</span>
     </div>`
   );

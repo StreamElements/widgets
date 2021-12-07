@@ -17,17 +17,24 @@ html,body {
 .message {
   font-size: {fontSize}px;
   color: {fontColor};
+  margin-bottom: 10px;
 }
 
 .message__badges {
-  display: inline;
-  height: {fontSize}px;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0 5px;
+  height: {fontSize};
 }
 
 .message__badge {
   height: {fontSize}px;
+  margin-right: 5px;
 }
 
-.message__username {}
+.message__username {
+  font-weight: bold;
+  margin-right: 10px;
+}
 
 .message__text {}
