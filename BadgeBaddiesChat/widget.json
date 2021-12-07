@@ -1,0 +1,215 @@
+{
+    "testMessage": {
+      "type": "button",
+      "label": "Test message",
+      "value": "Test message",
+      "group": "Test"
+    },
+    "fontName": {
+      "type": "text",
+      "label": "Font name",
+      "value": "Montserrat",
+      "group": "Typography"
+    },
+    "fontSize": {
+      "type": "number",
+      "label": "Font size",
+      "value": 24,
+      "group": "Typography"
+    },
+    "fontWeight": {
+      "label": "Font Weight",
+      "type": "dropdown",
+      "value": "400",
+      "options": {
+        "100": "Thin (100)",
+        "300": "Light (300)",
+        "400": "Regular (400)",
+        "500": "Medium (500)",
+        "700": "Bold (700)",
+        "900": "Black (900)"
+      },
+      "group": "Typography"
+    },
+    "fontColor": {
+      "type": "colorpicker",
+      "label": "Font Color",
+      "value": "rgba(255,255,255,1)",
+      "group": "Typography"
+    },
+    "textShadow": {
+      "type": "text",
+      "label": "Text shadow",
+      "value": "rgb(0, 0, 0) 1px 1px 1px",
+      "group": "Typography"
+    },
+    "emoteSize": {
+      "type": "number",
+      "label": "Emote size",
+      "value": 24,
+      "group": "Typography"
+    },
+    "alignMessages": {
+      "label": "Align Messages",
+      "type": "dropdown",
+      "value": "flex",
+      "options": {
+        "flex": "Bottom",
+        "block": "Top"
+      },
+      "group": "Typography"
+    },
+    "nickColor": {
+      "type": "dropdown",
+      "label": "Nickname color:",
+      "value": "user",
+      "options": {
+        "user": "as on twitch",
+        "messagecolor": "same as message text",
+        "custom": "specified below",
+        "remove": "Remove username"
+      },
+      "group": "Typography"
+    },
+    "customNickColor": {
+      "type": "colorpicker",
+      "label": "Custom nickname color:",
+      "value": "rgba(0,255,0,1)",
+      "group": "Typography"
+    },
+    "messagesLimit": {
+      "type": "number",
+      "label": "Messages limit",
+      "value": 4,
+      "group": "Settings"
+    },
+    "hideAfter": {
+      "type": "number",
+      "label": "Hide after seconds (999 to disable)",
+      "value": 999,
+      "group": "Settings"
+    },
+    "hideCommands": {
+      "label": "Hide lines starting with ! (!command)",
+      "type": "dropdown",
+      "value": "yes",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "group": "Settings"
+    },
+    "ignoredUsers": {
+      "label": "Ignored users (comma separated)",
+      "type": "text",
+      "value": "StreamElements,OtherBot",
+      "group": "Settings"
+    },
+    "backgroundColor": {
+      "type": "colorpicker",
+      "label": "Background color:",
+      "value": "rgba(0,0,0,0)",
+      "group": "Settings"
+    },
+    "animationIn": {
+      "type": "dropdown",
+      "label": "Animation In:",
+      "value": "none",
+      "options": {
+        "none": "None",
+        "bounceIn": "bounceIn",
+        "bounceInDown": "bounceInDown",
+        "bounceInLeft": "bounceInLeft",
+        "bounceInRight": "bounceInRight",
+        "bounceInUp": "bounceInUp",
+        "fadeIn": "fadeIn",
+        "fadeInDown": "fadeInDown",
+        "fadeInDownBig": "fadeInDownBig",
+        "fadeInLeft": "fadeInLeft",
+        "fadeInLeftBig": "fadeInLeftBig",
+        "fadeInRight": "fadeInRight",
+        "fadeInRightBig": "fadeInRightBig",
+        "fadeInUp": "fadeInUp",
+        "fadeInUpBig": "fadeInUpBig",
+        "flipInX": "flipInX",
+        "flipInY": "flipInY",
+        "lightSpeedIn": "lightSpeedIn",
+        "rotateIn": "rotateIn",
+        "rotateInDownLeft": "rotateInDownLeft",
+        "rotateInDownRight": "rotateInDownRight",
+        "rotateInUpLeft": "rotateInUpLeft",
+        "rotateInUpRight": "rotateInUpRight",
+        "slideInUp": "slideInUp",
+        "slideInDown": "slideInDown",
+        "slideInLeft": "slideInLeft",
+        "slideInRight": "slideInRight",
+        "zoomIn": "zoomIn",
+        "zoomInDown": "zoomInDown",
+        "zoomInLeft": "zoomInLeft",
+        "zoomInRight": "zoomInRight",
+        "zoomInUp": "zoomInUp",
+        "jackInTheBox": "jackInTheBox",
+        "rollIn": "rollIn"
+      },
+      "group": "Settings"
+    },
+    "animationOut": {
+      "type": "dropdown",
+      "label": "Animation Out:",
+      "value": "none",
+      "options": {
+        "none": "None",
+        "bounceOut": "bounceOut",
+        "bounceOutDown": "bounceOutDown",
+        "bounceOutLeft": "bounceOutLeft",
+        "bounceOutRight": "bounceOutRight",
+        "bounceOutUp": "bounceOutUp",
+        "fadeOut": "fadeOut",
+        "fadeOutDown": "fadeOutDown",
+        "fadeOutDownBig": "fadeOutDownBig",
+        "fadeOutLeft": "fadeOutLeft",
+        "fadeOutLeftBig": "fadeOutLeftBig",
+        "fadeOutRight": "fadeOutRight",
+        "fadeOutRightBig": "fadeOutRightBig",
+        "fadeOutUp": "fadeOutUp",
+        "fadeOutUpBig": "fadeOutUpBig",
+        "flipOutX": "flipOutX",
+        "flipOutY": "flipOutY",
+        "lightSpeedOut": "lightSpeedOut",
+        "rotateOut": "rotateOut",
+        "rotateOutDownLeft": "rotateOutDownLeft",
+        "rotateOutDownRight": "rotateOutDownRight",
+        "rotateOutUpLeft": "rotateOutUpLeft",
+        "rotateOutUpRight": "rotateOutUpRight",
+        "slideOutUp": "slideOutUp",
+        "slideOutDown": "slideOutDown",
+        "slideOutLeft": "slideOutLeft",
+        "slideOutRight": "slideOutRight",
+        "zoomOut": "zoomOut",
+        "zoomOutDown": "zoomOutDown",
+        "zoomOutLeft": "zoomOutLeft",
+        "zoomOutRight": "zoomOutRight",
+        "zoomOutUp": "zoomOutUp",
+        "rollOut": "rollOut"
+      },
+      "group": "Settings"
+    },
+    "widgetName": {
+      "type": "hidden",
+      "value": "Custom chat"
+    },
+    "widgetAuthor": {
+      "type": "hidden",
+      "value": "lx"
+    },
+    "widgetVersion": {
+      "type": "hidden",
+      "value": "1.0"
+    },
+    "widgetUpdateUrl": {
+      "type": "hidden",
+      "value": "https://github.com/StreamElements/widgets/blob/master/CustomChat/"
+    }
+  
+  }
+  
