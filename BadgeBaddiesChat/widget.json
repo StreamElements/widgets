@@ -82,6 +82,16 @@
       "value": "moderator,partner,vip,sub",
       "group": "Settings"
     },
+    "hideDefaults": {
+      "label": "Hide some (or all) of the default badges",
+      "type": "dropdown",
+      "value": "No",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "group": "Settings"
+    },
     "backgroundColor": {
       "type": "colorpicker",
       "label": "Background color:",
@@ -210,5 +220,5 @@
       "value": "1.0",
       "group": "Settings"
     }
-}
+  }
   

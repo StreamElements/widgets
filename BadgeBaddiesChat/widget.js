@@ -5,6 +5,7 @@ let hideAfter = 60;
 let hideCommands = 'no';
 let ignoredUsers = [];
 let allowedDefaults = [];
+let hideDefaults = 'no';
 let peerPressure = 0;
 let peerPressureThreshold = 20;
 let peerPressureCommand = '!pressure'
@@ -82,11 +83,12 @@ window.addEventListener('onEventReceived', async function (obj) {
 
   if (obj.detail.listener !== 'message') return;
   let data = obj.detail.event.data;
+  console.log({data})
 
   // Check for and handle commands
   if (data.text.startsWith("!")) {
     const command = data.text.split(" ")[0];
-    console.log({ peerPressure, peerPressureCommand, peerPressureThreshold })
+
     // Handle peer pressure
     if (command === peerPressureCommand) {
       peerPressure++;
@@ -125,7 +127,7 @@ window.addEventListener('onEventReceived', async function (obj) {
   // Load default twitch badges
   for (let i = 0; i < data.badges.length; i++) {
     badge = data.badges[i];
-    if (allowedDefaults.includes(badge.type)) {
+    if (hideDefaults === 'no' || allowedDefaults.includes(badge.type)) {
       badges += `<img alt="" src="${badge.url}" class="message__badge ${peerPressureBadgeClass}">`;
     }
   }
@@ -160,6 +162,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
   hideCommands = fieldData.hideCommands;
   ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
   allowedDefaults = fieldData.allowedDefaults.toLowerCase().replace(" ", "").split(",");
+  hideDefaults = fieldData.hideDefaults.toLowerCase();
   peerPressureCommand = fieldData.peerPressureCommand;
   peerPressureThreshold = fieldData.peerPressureThreshold;
   peerPressureDuration = fieldData.peerPressureDuration;
@@ -278,7 +281,7 @@ function getUserBadges() {
       return fetch(`https://badgies-v2.herokuapp.com/find/${username}`, { method: 'GET' })
         .then(response => response.json())
         .then(({ data }) => {
-          const value = data.multiple_image || [];
+          const value = data ? data.multiple_image : [];
           cache[username] = value;
           return value;
       })
