@@ -181,15 +181,47 @@ html,body {
   margin-right: 10px;
 }
 
-.message__username--peer_pressure {
-  text-decoration: underline;
-}
+.message__username--peer_pressure {}
 
 .message__text {}
 
-
 .message__emote {
-    height: {emoteSize}px;
-    vertical-align: middle;
-    background-repeat:no-repeat;
+  height: {emoteSize}px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
 }
+
+.progress {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+}
+
+.progress__wrapper {
+  background-color: {progressEmptyBarColor};
+}
+
+.progress__label {
+  color: {progressLabelColor};
+  position: relative;
+  font-weight: bold;
+  font-size: 35px;
+  margin: 0;
+  top: 55px;
+  transform: rotate(-5deg);
+  transform-origin: 12px 12px;
+}
+
+.progress__bar {
+  width: 1%;
+  height: 60px;
+  background-color: {progressBarColor};
+  transition: width 0.2s ease-in-out;
+}
+
+.progress__image {
+  height: 120px;
+}
+
+

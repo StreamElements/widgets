@@ -83,7 +83,6 @@ window.addEventListener('onEventReceived', async function (obj) {
 
   if (obj.detail.listener !== 'message') return;
   let data = obj.detail.event.data;
-  console.log({data})
 
   // Check for and handle commands
   if (data.text.startsWith("!")) {
@@ -92,7 +91,10 @@ window.addEventListener('onEventReceived', async function (obj) {
     // Handle peer pressure
     if (command === peerPressureCommand) {
       peerPressure++;
-	  
+      
+      // Advance progress bar
+      changeProgressBar(peerPressure, peerPressureThreshold)      
+
       if (peerPressure === peerPressureThreshold) {
         $('#chips').addClass('chips--show');
       }
@@ -102,6 +104,7 @@ window.addEventListener('onEventReceived', async function (obj) {
         clearTimeout(peerPressureTimer);
         peerPressureTimer = setTimeout(() => {
           peerPressure = 0;
+          changeProgressBar(peerPressure, peerPressureThreshold)
           $('#chips').removeClass('chips--show');
         }, peerPressureDuration * 1000)
       }
@@ -115,13 +118,14 @@ window.addEventListener('onEventReceived', async function (obj) {
   if (ignoredUsers.indexOf(data.nick) !== -1) return;
   let message = attachEmotes(data);
   let username = data.displayName;
-  const color = data.displayColor;
+  let color = data.displayColor;
   let showPeerPressure = peerPressure >= peerPressureThreshold;
   let peerPressureBadgeClass = ''
   if (showPeerPressure) {
     peerPressureBadgeClass = 'message__badge--peer_pressure'
   }
-  let userBadges = await memoizedGetUserBadges(username);
+  let user = await memoizedGetUserBadges(username);
+  let userBadges = user["multiple_image"];
   let badges = '', badge;
   
   // Load default twitch badges
@@ -139,12 +143,22 @@ window.addEventListener('onEventReceived', async function (obj) {
     }
   }
   
+  // Insert role badges
+  if (!!user.role) {
+    if (user.role === 'SE_Staff') {
+      color = '#ff3cc7';
+      badges += `<img alt="" src="https://cdn.streamelements.com/uploads/5bb1219c-4ac2-4b94-bfab-4604f15de600.png" class="message__badge ${peerPressureBadgeClass}">`
+    }
+    if (user.role === 'DreamTeam') {
+      badges += `<img alt="" src="https://res.cloudinary.com/dbh1atwnz/image/upload/v1638998122/dreamteam_ewgpya.png" class="message__badge ${peerPressureBadgeClass}">`
+    }
+  }
+  
   // Insert peer pressure badges
   if (showPeerPressure) {
     badges += `<img alt="" src="{peerPressureImage}" class="message__badge ${peerPressureBadgeClass}">`;
   }
   
-
   addEvent(username, badges, message, data.isAction, color, showPeerPressure);
 });
 
@@ -281,7 +295,7 @@ function getUserBadges() {
       return fetch(`https://badgies-v2.herokuapp.com/find/${username}`, { method: 'GET' })
         .then(response => response.json())
         .then(({ data }) => {
-          const value = data ? data.multiple_image : [];
+          const value = data ? data : [];
           cache[username] = value;
           return value;
       })
@@ -290,3 +304,38 @@ function getUserBadges() {
 }
 
 const memoizedGetUserBadges = getUserBadges();
+
+/**
+ * Handle changes to the progress bar
+ * @param {number} val 
+ * @param {number} threshold 
+ * @returns 
+ */
+function changeProgressBar(val, threshold) {
+  const number = (100 * val) / threshold;
+  const percentage = `${number}%`;
+  
+  if (val <= threshold) {
+    $(".progress__bar").css('width', percentage);  
+  }
+  // Change image by percentage
+  if (number >= 100) {
+    $(".progress__image").attr("src", "{peerPressureProgressImage3}");
+    return;
+  }
+
+  if (number >= 50) {
+    $(".progress__image").attr("src", "{peerPressureProgressImage2}");
+    return;  
+  }
+  
+  if (number >= 1) {
+    $(".progress__image").attr("src", "{peerPressureProgressImage1}");
+    return;  
+  }
+  
+  if (number === 0) {
+    $(".progress__image").attr("src", "");
+    return;  
+  }
+}

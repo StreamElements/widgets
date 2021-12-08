@@ -205,6 +205,42 @@
       "label": "Badge replacement image:",
       "group": "Peer Pressure"
     },
+    "peerPressureProgressImage1": {
+      "type": "image-input",
+      "value": "",
+      "label": "Empty bar image:",
+      "group": "Peer Pressure"
+    },
+    "peerPressureProgressImage2": {
+      "type": "image-input",
+      "value": "",
+      "label": "50% full image:",
+      "group": "Peer Pressure"
+    },
+    "peerPressureProgressImage3": {
+      "type": "image-input",
+      "value": "",
+      "label": "100% full image:",
+      "group": "Peer Pressure"
+    },
+    "progressLabelColor": {
+      "type": "colorpicker",
+      "value": "#ff3cc7",
+      "label": "Peer pressure progress bar label color:",
+      "gruop": "Peer Pressure"
+    },
+    "progressBarColor": {
+      "type": "colorpicker",
+      "value": "#0fff95",
+      "label": "Peer pressure progress bar color:",
+      "group": "Peer Pressure"
+    },
+    "progressEmptyBarColor": {
+      "type": "colorpicker",
+      "value": "#8cfbde",
+      "label": "Peer pressure empty bar color:",
+      "group": "Peer Pressure"
+    },
     "widgetName": {
       "type": "hidden",
       "value": "Badge Baddies Chat",
