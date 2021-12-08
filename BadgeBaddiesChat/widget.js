@@ -5,6 +5,11 @@ let hideAfter = 60;
 let hideCommands = 'no';
 let ignoredUsers = [];
 let allowedDefaults = [];
+let peerPressure = 0;
+let peerPressureThreshold = 20;
+let peerPressureCommand = '!pressure'
+let peerPressureDuration = 20;
+let peerPressureTimer;
 
 window.addEventListener('onEventReceived', function (obj) {
   // Test Button - remove as and when required
@@ -48,7 +53,8 @@ window.addEventListener('onEventReceived', function (obj) {
                                 description: "Verified"
                             }],
                             channel: channelName,
-                            text: "Howdy! My name is Bill and I am here to serve Kappa",
+                            // text: "Howdy! My name is Bill and I am here to serve Kappa",
+                            text: '!doritos',
                             isAction: !1,
                             emotes: [{
                                 type: "twitch",
@@ -73,20 +79,44 @@ window.addEventListener('onEventReceived', function (obj) {
         }
         return;
     }
+
   if (obj.detail.listener !== 'message') return;
   let data = obj.detail.event.data;
-  if (data.text.startsWith("!") && hideCommands === 'yes') return;
+
+  // Check for and handle commands
+  if (data.text.startsWith("!")) {
+    const command = data.text.split(" ")[0];
+    // Handle peer pressure
+    if (command === peerPressureCommand) {
+      peerPressure++;
+      if (peerPressure >= peerPressureThreshold) {
+        peerPressureTimer = setTimeout(() => {
+            peerPressure = 0;
+        }, peerPressureDuration * 1000)
+      }
+    }
+    
+    if (hideCommands === 'yes') {
+      return;
+    }
+  }
+
   if (ignoredUsers.indexOf(data.nick) !== -1) return;
   let message = attachEmotes(data);
   let username = data.displayName;
   const color = data.displayColor;
+  let showPeerPressure = peerPressure >= peerPressureThreshold;
+  let peerPressureBadgeClass = ''
+  if (showPeerPressure) {
+    peerPressureBadgeClass = 'message__badge--peer_pressure'
+  }
   let badges = '', badge;
   
   // Load default twitch badges
   for (let i = 0; i < data.badges.length; i++) {
     badge = data.badges[i];
     if (allowedDefaults.includes(badge.type)) {
-      badges += `<img alt="" src="${badge.url}" class="message__badge">`;
+      badges += `<img alt="" src="${badge.url}" class="message__badge ${peerPressureBadgeClass}">`;
     }
   }
   
@@ -95,9 +125,13 @@ window.addEventListener('onEventReceived', function (obj) {
     badges += `<img alt="" src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" class="message__badge">`
   }
 
-  addEvent(username, badges, message, data.isAction, color);
+  addEvent(username, badges, message, data.isAction, color, showPeerPressure);
 });
 
+/**
+ * Actions to perform when the widget first loads
+ * Set variables based on fieldData values, fetch config, etc.
+ */
 window.addEventListener('onWidgetLoad', function (obj) {
   const fieldData = obj.detail.fieldData;
   animationIn = fieldData.animationIn;
@@ -108,6 +142,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
   hideCommands = fieldData.hideCommands;
   ignoredUsers = fieldData.ignoredUsers.toLowerCase().replace(" ", "").split(",");
   allowedDefaults = fieldData.allowedDefaults.toLowerCase().replace(" ", "").split(",");
+  peerPressureCommand = fieldData.peerPressureCommand;
+  peerPressureThreshold = fieldData.peerPressureThreshold;
+  peerPressureDuration = fieldData.peerPressureDuration;
   channelName = obj.detail.channel.username;
 });
 
@@ -135,19 +172,33 @@ function html_encode(e) {
   });
 }
 
-function addEvent(username, badges, message, isAction, color) {
+/**
+ * Add chat messages to #log
+ * @param {string} username 
+ * @param {array} badges - badge object from Twitch 
+ * @param {string} message 
+ * @param {boolean} isAction 
+ * @param {string} color - color attached to the user, from Twitch
+ * @param {boolean} showPeerPressure - true if message was created while peerPressure is active
+ */
+function addEvent(username, badges, message, isAction, color, showPeerPressure) {
   totalMessages += 1;
   let actionClass = '';
+  let peerPressureNameClass = '';
 
   if (isAction) {
     actionClass = 'action';
   }
 
+  if (showPeerPressure) {
+    peerPressureNameClass = 'message__username--peer_pressure'
+  }
+
   const element = $.parseHTML(`
     <div class="message {animationIn}" id="msg-${totalMessages}">
         <div class="message__badges ${actionClass}">${badges}</div>
-        <span class="message__username" style="color: ${color}">${username}:</span>
-        <span class="message__text ${actionClass}">${message}</span>
+        <span class="message__username ${peerPressureNameClass}" style="color: ${color}">${username}:</span>
+        <span class="message__text ${actionClass}">${message}${peerPressure}${showPeerPressure.toString()}</span>
     </div>`
   );
 

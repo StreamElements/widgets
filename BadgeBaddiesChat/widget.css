@@ -38,6 +38,10 @@ html,body {
   margin-right: 10px;
 }
 
+.message__username--peer_pressure {
+  text-decoration: underline;
+}
+
 .message__text {}
 
 

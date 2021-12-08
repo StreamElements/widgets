@@ -2,8 +2,7 @@
     "testMessage": {
       "type": "button",
       "label": "Test message",
-      "value": "Test message",
-      "group": "Test"
+      "value": "Test message"
     },
     "fontName": {
       "type": "googleFont",
@@ -172,17 +171,38 @@
       },
       "group": "Settings"
     },
+    "peerPressureCommand": {
+      "type": "text",
+      "value": "!doritos",
+      "label": "Peer pressure command (must include \"!\")",
+      "group": "Peer Pressure"
+    },
+    "peerPressureThreshold": {
+      "type": "number",
+      "value": 20,
+      "label": "Number of triggers required to fire peer pressure event",
+      "group": "Peer Pressure"
+    },
+    "peerPressureDuration": {
+      "type": "number",
+      "value": 20,
+      "label": "Number of seconds to maintain peer pressure event",
+      "group": "Peer Pressure"
+    },
     "widgetName": {
       "type": "hidden",
-      "value": "Badge Baddies Chat"
+      "value": "Badge Baddies Chat",
+      "group": "Settings"
     },
     "widgetAuthor": {
       "type": "hidden",
-      "value": "Badge Baddies"
+      "value": "Badge Baddies",
+      "group": "Settings"
     },
     "widgetVersion": {
       "type": "hidden",
-      "value": "1.0"
+      "value": "1.0",
+      "group": "Settings"
     }
   }
   
