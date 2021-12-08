@@ -198,7 +198,7 @@ function addEvent(username, badges, message, isAction, color, showPeerPressure) 
     <div class="message {animationIn}" id="msg-${totalMessages}">
         <div class="message__badges ${actionClass}">${badges}</div>
         <span class="message__username ${peerPressureNameClass}" style="color: ${color}">${username}:</span>
-        <span class="message__text ${actionClass}">${message}${peerPressure}${showPeerPressure.toString()}</span>
+        <span class="message__text ${actionClass}">${message}</span>
     </div>`
   );
 
