@@ -14,6 +14,48 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+@keyframes falling { 
+  0% {
+    transform:
+      translate3d(300,0,0)
+      rotate(0deg);
+  }
+  100% {
+    transform:
+      translate3d(-350px,700px,0)
+      rotate(90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes falling3 {
+  0% {
+    transform:
+      translate3d(0,0,0)
+      rotate(-20deg);
+  }
+  100% {
+    transform:
+      translate3d(-230px,640px,0)
+      rotate(-70deg);
+      opacity: 0;
+  }
+}
+
+@keyframes falling2 {
+  0% {
+    transform:
+      translate3d(0,0,0)
+      rotate(90deg);
+  }
+  100% {
+    transform:
+      translate3d(-400px,680px,0)
+      rotate(0deg);
+    opacity: 0;
+  }
+}
+
 html,body {
   margin: 0;
   padding: 0;
@@ -26,7 +68,89 @@ html,body {
   background: {backgroundColor};
 }
 
-.log {}
+.chips {
+  position: absolute;
+  top: -150px;
+  width: 100%;
+  text-align: right;
+  z-index: 2;
+  display: none;
+}
+
+.chips--show {
+  display: block;
+}
+
+.chips i {
+  display: inline-block;
+  width: 200px;
+  height: 150px;
+  background: url({peerPressureImage});
+  transform: skew(20deg);
+  animation: falling 5s 0s infinite;
+}
+
+.chips i:nth-of-type(2n) { 
+  animation: falling2 5s 0s infinite;
+}
+
+.chips i:nth-of-type(2n) { 
+  animation: falling3 5s 0s infinite;
+}
+
+.chips i:nth-of-type(n) { height:73px; width:80px; }
+.chips i:nth-of-type(n):before { width: 57px; height:55px; top:67px; right:51px; }
+.chips i:nth-of-type(n):after { width: 52px; height: 67px; left: 62px; top:50px; }
+
+.chips i:nth-of-type(2n+1)    { height: 61px; width:66px; }
+.chips i:nth-of-type(2n+1):before { width: 54px; height: 53px; top:57px; right:50px; }
+.chips i:nth-of-type(2n+1):after { width: 52px; height: 56px; left: 55px; top:51px; }
+
+.chips i:nth-of-type(3n+2)  { height:67px; width:73px; }
+.chips i:nth-of-type(3n+2):before  { height: 54px; width: 54px; top:62px; right:51px; }
+.chips i:nth-of-type(3n+2):after  { height: 60px; width: 52px; top:51px; left:58px; }
+
+.chips i:nth-of-type(n)   { animation-delay: 1.9s;}
+.chips i:nth-of-type(2n)  { animation-delay: 3.9s;}
+.chips i:nth-of-type(3n)  { animation-delay: 2.3s;}
+.chips i:nth-of-type(4n)  { animation-delay: 4.4s;}
+.chips i:nth-of-type(5n)  { animation-delay: 5s;  }
+.chips i:nth-of-type(6n)  { animation-delay: 3.5s;}
+.chips i:nth-of-type(7n)  { animation-delay: 2.8s;}
+.chips i:nth-of-type(8n)  { animation-delay: 1.5s;}
+.chips i:nth-of-type(9n)  { animation-delay: 3.3s;}
+.chips i:nth-of-type(10n) { animation-delay: 2.5s;}
+.chips i:nth-of-type(11n) { animation-delay: 1.2s;}
+.chips i:nth-of-type(12n) { animation-delay: 4.1s;}
+.chips i:nth-of-type(13n) { animation-delay: 1s;  }
+.chips i:nth-of-type(14n) { animation-delay: 4.7s;}
+.chips i:nth-of-type(15n) { animation-delay: 3s;  }
+
+.chips i:nth-of-type(n)     { 
+  background: url({peerPressureImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.chips i:nth-of-type(2n+2)  { 
+  background: url({peerPressureImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.chips i:nth-of-type(4n+1)  { 
+  background: url({peerPressureImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.chips i:nth-of-type(n) { opacity: .7;}
+.chips i:nth-of-type(3n+1) { opacity: .5;}
+.chips i:nth-of-type(3n+2) { opacity: .3;}
+.chips i:nth-of-type(n) {transform: rotate(180deg);}
+.chips i:nth-of-type(n) { animation-timing-function:ease-in-out; }
+
+.log {
+  z-index: 1;
+}
 
 .message {
   font-size: {fontSize}px;

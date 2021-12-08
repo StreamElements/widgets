@@ -89,9 +89,16 @@ window.addEventListener('onEventReceived', async function (obj) {
     // Handle peer pressure
     if (command === peerPressureCommand) {
       peerPressure++;
+	  
+      if (peerPressure === peerPressureThreshold) {
+        $('#chips').addClass('chips--show');
+      }
+      
+      // Set (or reset) timer for peer pressure
       if (peerPressure >= peerPressureThreshold) {
         peerPressureTimer = setTimeout(() => {
-            peerPressure = 0;
+          peerPressure = 0;
+          $('#chips').removeClass('chips--show');
         }, peerPressureDuration * 1000)
       }
     }
@@ -205,9 +212,9 @@ async function addEvent(username, badges, message, isAction, color, showPeerPres
 
   const element = $.parseHTML(`
     <div class="message {animationIn}" id="msg-${totalMessages}">
-        <div class="message__badges ${actionClass}">${badges}</div>
-        <span class="message__username ${peerPressureNameClass}" style="color: ${color}">${username}:</span>
-        <span class="message__text ${actionClass}">${message}</span>
+      <div class="message__badges ${actionClass}">${badges}</div>
+      <span class="message__username ${peerPressureNameClass}" style="color: ${color}">${username}:</span>
+      <span class="message__text ${actionClass}">${message}</span>
     </div>`
   );
 
@@ -263,7 +270,6 @@ function getUserBadges() {
   return (username) => {
     if (username in cache) {
       console.log(`${username}'s badges were cached: '`, cache[username]);
-      
       return cache[username]
     } else {
       console.log(`${username}'s badges were not cached - fetching!'`)
