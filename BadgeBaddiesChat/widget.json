@@ -189,6 +189,12 @@
       "label": "Number of seconds to maintain peer pressure event",
       "group": "Peer Pressure"
     },
+    "peerPressureImage": {
+      "type": "image-input",
+      "value": "",
+      "label": "Badge replacement image:",
+      "group": "Peer Pressure"
+    },
     "widgetName": {
       "type": "hidden",
       "value": "Badge Baddies Chat",

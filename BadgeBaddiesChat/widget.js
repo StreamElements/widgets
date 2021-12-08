@@ -11,7 +11,7 @@ let peerPressureCommand = '!pressure'
 let peerPressureDuration = 20;
 let peerPressureTimer;
 
-window.addEventListener('onEventReceived', function (obj) {
+window.addEventListener('onEventReceived', async function (obj) {
   // Test Button - remove as and when required
   if (obj.detail.event.listener === 'widget-button') {
         if (obj.detail.event.field === 'testMessage') {
@@ -110,6 +110,7 @@ window.addEventListener('onEventReceived', function (obj) {
   if (showPeerPressure) {
     peerPressureBadgeClass = 'message__badge--peer_pressure'
   }
+  let userBadges = await memoizedGetUserBadges(username);
   let badges = '', badge;
   
   // Load default twitch badges
@@ -120,10 +121,18 @@ window.addEventListener('onEventReceived', function (obj) {
     }
   }
   
-  // Handle badge additions
-  if (username === "the_party_bard") {
-    badges += `<img alt="" src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" class="message__badge">`
+  // Insert user badges
+  if (!!userBadges && Array.isArray(userBadges)) {
+    for (let i = 0; i < userBadges.length; i++) {
+      badges += `<img alt="" src="${userBadges[i]}" class="message__badge ${peerPressureBadgeClass}">`
+    }
   }
+  
+  // Insert peer pressure badges
+  if (showPeerPressure) {
+    badges += `<img alt="" src="{peerPressureImage}" class="message__badge ${peerPressureBadgeClass}">`;
+  }
+  
 
   addEvent(username, badges, message, data.isAction, color, showPeerPressure);
 });
@@ -181,7 +190,7 @@ function html_encode(e) {
  * @param {string} color - color attached to the user, from Twitch
  * @param {boolean} showPeerPressure - true if message was created while peerPressure is active
  */
-function addEvent(username, badges, message, isAction, color, showPeerPressure) {
+async function addEvent(username, badges, message, isAction, color, showPeerPressure) {
   totalMessages += 1;
   let actionClass = '';
   let peerPressureNameClass = '';
@@ -217,6 +226,11 @@ function addEvent(username, badges, message, isAction, color, showPeerPressure) 
   }
 }
 
+/**
+ * Remove a message from the #log
+ * @param {number} id message ID
+ * @returns 
+ */
 function removeRow(id) {
   const selector = `#msg-${id}`
   if (!$(selector).length) {
@@ -239,3 +253,29 @@ function removeRow(id) {
     $(selector).remove();
   })
 }
+
+/**
+ * Memoized function to fetch badges from the API
+ * @param {string} username 
+ */
+function getUserBadges() {
+  let cache = {};
+  return (username) => {
+    if (username in cache) {
+      console.log(`${username}'s badges were cached: '`, cache[username]);
+      
+      return cache[username]
+    } else {
+      console.log(`${username}'s badges were not cached - fetching!'`)
+      return fetch(`https://badgies-v2.herokuapp.com/find/${username}`, { method: 'GET' })
+        .then(response => response.json())
+        .then(data => {
+          const value = data?.data?.multiple_image || [];
+          cache[username] = value;
+          return value;
+      })
+    }
+  }
+}
+
+const memoizedGetUserBadges = getUserBadges();
