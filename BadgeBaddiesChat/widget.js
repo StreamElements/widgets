@@ -181,6 +181,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
   peerPressureThreshold = fieldData.peerPressureThreshold;
   peerPressureDuration = fieldData.peerPressureDuration;
   channelName = obj.detail.channel.username;
+  if (fieldData.showProgressBar.toLowerCase() === 'no') {
+    $('#progress').addClass('progress--hide');
+  }
 });
 
 function attachEmotes(msg) {
@@ -309,7 +312,6 @@ const memoizedGetUserBadges = getUserBadges();
  * Handle changes to the progress bar
  * @param {number} val 
  * @param {number} threshold 
- * @returns 
  */
 function changeProgressBar(val, threshold) {
   const number = (100 * val) / threshold;

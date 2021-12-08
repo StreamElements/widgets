@@ -198,6 +198,10 @@ html,body {
   width: calc(100% - 20px);
 }
 
+.progress--hide {
+  display: none;
+}
+
 .progress__wrapper {
   background-color: {progressEmptyBarColor};
 }

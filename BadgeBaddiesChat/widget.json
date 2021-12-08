@@ -241,6 +241,16 @@
       "label": "Peer pressure empty bar color:",
       "group": "Peer Pressure"
     },
+    "showProgressBar": {
+        "label": "Show progress bar:",
+        "type": "dropdown",
+        "value": "No",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "group": "Peer Pressure"
+      },
     "widgetName": {
       "type": "hidden",
       "value": "Badge Baddies Chat",
