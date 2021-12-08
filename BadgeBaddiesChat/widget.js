@@ -86,6 +86,7 @@ window.addEventListener('onEventReceived', async function (obj) {
   // Check for and handle commands
   if (data.text.startsWith("!")) {
     const command = data.text.split(" ")[0];
+    console.log({ peerPressure, peerPressureCommand, peerPressureThreshold })
     // Handle peer pressure
     if (command === peerPressureCommand) {
       peerPressure++;
@@ -96,6 +97,7 @@ window.addEventListener('onEventReceived', async function (obj) {
       
       // Set (or reset) timer for peer pressure
       if (peerPressure >= peerPressureThreshold) {
+        clearTimeout(peerPressureTimer);
         peerPressureTimer = setTimeout(() => {
           peerPressure = 0;
           $('#chips').removeClass('chips--show');
@@ -275,8 +277,8 @@ function getUserBadges() {
       console.log(`${username}'s badges were not cached - fetching!'`)
       return fetch(`https://badgies-v2.herokuapp.com/find/${username}`, { method: 'GET' })
         .then(response => response.json())
-        .then(data => {
-          const value = data?.data?.multiple_image || [];
+        .then(({ data }) => {
+          const value = data.multiple_image || [];
           cache[username] = value;
           return value;
       })
