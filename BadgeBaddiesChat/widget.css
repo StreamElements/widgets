@@ -228,4 +228,13 @@ html,body {
   height: 120px;
 }
 
+.progress__wrapper--peer_pressure {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.progress__image--peer_pressure {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
 
