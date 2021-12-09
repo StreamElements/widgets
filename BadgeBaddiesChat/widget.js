@@ -86,18 +86,19 @@ window.addEventListener('onEventReceived', async function (obj) {
 
   if (obj.detail.listener !== 'message') return;
   let data = obj.detail.event.data;
+  let username = data.displayName;
 
   // Check for and handle commands
   if (data.text.startsWith("!")) {
     const command = data.text.split(" ")[0];
     
     // Handle peer pressure commands
-    if (command === startPeerPressureCommand && allowPeerPressure === "no") {
+    if (command === startPeerPressureCommand && allowPeerPressure === "no" && username === channelName) {
       allowPeerPressure = "yes";
       $('.progress').removeClass('progress--hide')
     }
     
-    if (command === endPeerPressureCommand && allowPeerPressure === "yes") {
+    if (command === endPeerPressureCommand && allowPeerPressure === "yes" && username === channelName) {
       allowPeerPressure = "no";
       $('.progress').addClass('progress--hide')
     }
@@ -130,7 +131,6 @@ window.addEventListener('onEventReceived', async function (obj) {
 
   if (ignoredUsers.indexOf(data.nick) !== -1) return;
   let message = attachEmotes(data);
-  let username = data.displayName;
   let color = data.displayColor;
   let showPeerPressure = peerPressure >= peerPressureThreshold;
   let peerPressureBadgeClass = ''
