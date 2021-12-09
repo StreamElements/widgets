@@ -1,16 +1,19 @@
-let totalMessages = 0, messagesLimit = 0, nickColor = 'user';
+let totalMessages = 0, messagesLimit = 0, nickColor = "user";
 let animationIn = 'bounceIn';
 let animationOut = 'bounceOut';
 let hideAfter = 60;
-let hideCommands = 'no';
+let hideCommands = "no";
 let ignoredUsers = [];
 let allowedDefaults = [];
-let hideDefaults = 'no';
+let hideDefaults = "no";
 let peerPressure = 0;
 let peerPressureThreshold = 20;
-let peerPressureCommand = '!pressure'
+let peerPressureCommand = "!pressure";
 let peerPressureDuration = 20;
 let peerPressureTimer;
+let allowPeerPressure = false;
+let startPeerPressureCommand = "!start";
+let endPeerPressureCommand = "!finish";
 
 window.addEventListener('onEventReceived', async function (obj) {
   // Test Button - remove as and when required
@@ -87,9 +90,19 @@ window.addEventListener('onEventReceived', async function (obj) {
   // Check for and handle commands
   if (data.text.startsWith("!")) {
     const command = data.text.split(" ")[0];
+    
+    // Handle peer pressure commands
+    if (command === startPeerPressureCommand && allowPeerPressure === "no") {
+      allowPeerPressure = "yes";
+      $('.progress').removeClass('progress--hide')
+    }
+    
+    if (command === endPeerPressureCommand && allowPeerPressure === "yes") {
+      allowPeerPressure = "no";
+      $('.progress').addClass('progress--hide')
+    }
 
-    // Handle peer pressure
-    if (command === peerPressureCommand) {
+    if (command === peerPressureCommand && allowPeerPressure === "yes") {
       peerPressure++;
       
       // Advance progress bar
@@ -180,8 +193,11 @@ window.addEventListener('onWidgetLoad', function (obj) {
   peerPressureCommand = fieldData.peerPressureCommand;
   peerPressureThreshold = fieldData.peerPressureThreshold;
   peerPressureDuration = fieldData.peerPressureDuration;
+  allowPeerPressure = fieldData.allowPeerPressure.toLowerCase();
+  startPeerPressureCommand = fieldData.startPeerPressureCommand;
+  endPeerPressureCommand = fieldData.endPeerPressureCommand;
   channelName = obj.detail.channel.username;
-  if (fieldData.showProgressBar.toLowerCase() === 'no') {
+  if (fieldData.showProgressBar.toLowerCase() === 'no' || allowPeerPressure === 'no') {
     $('#progress').addClass('progress--hide');
   }
 });
@@ -289,7 +305,8 @@ function removeRow(id) {
  */
 function getUserBadges() {
   let cache = {};
-  return (username) => {
+  return (user) => {
+    const username = user.toLowerCase();
     if (username in cache) {
       console.log(`${username}'s badges were cached: '`, cache[username]);
       return cache[username]
@@ -322,7 +339,11 @@ function changeProgressBar(val, threshold) {
   }
   // Change image by percentage
   if (number >= 100) {
-    $(".progress__image").attr("src", "{peerPressureProgressImage3}");
+    $(".progress__image")
+      .attr("src", "{peerPressureProgressImage3}")
+      .addClass('progress__image--peer_pressure');
+    $(".progress__wrapper")
+      .addClass("progress__wrapper--peer_pressure");
     return;
   }
 
@@ -337,7 +358,11 @@ function changeProgressBar(val, threshold) {
   }
   
   if (number === 0) {
-    $(".progress__image").attr("src", "");
+    $(".progress__image")
+      .attr("src", "")
+      .removeClass('progress__image--peer_pressure');
+    $(".progress__wrapper")
+      .removeClass("progress__wrapper--peer_pressure");
     return;  
   }
 }

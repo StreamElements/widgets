@@ -181,6 +181,28 @@
       },
       "group": "Settings"
     },
+    "allowPeerPressure": {
+        "label": "Allow peer pressure event:",
+        "type": "dropdown",
+        "value": "No",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "group": "Peer Pressure"
+     },
+    "startPeerPressureCommand": {
+      "type": "text",
+      "value": "!startPressure",
+      "label": "Command to start the peer pressure event (must include \"!\")",
+      "group": "Peer Pressure"
+    },
+    "endPeerPressureCommand": {
+      "type": "text",
+      "value": "!endPressure",
+      "label": "Command to end the peer pressure event (must include \"!\")",
+      "group": "Peer Pressure"
+    },
     "peerPressureCommand": {
       "type": "text",
       "value": "!doritos",
@@ -250,7 +272,7 @@
           "no": "No"
         },
         "group": "Peer Pressure"
-      },
+     },
     "widgetName": {
       "type": "hidden",
       "value": "Badge Baddies Chat",
