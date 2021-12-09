@@ -41,9 +41,9 @@ window.addEventListener('onEventReceived', async function (obj) {
                                 "user-id": "100135110",
                                 "user-type": "mod"
                             },
-                            nick: channelName,
+                            nick: getBaddie(),
                             userId: "100135110",
-                            displayName: channelName,
+                            displayName: getBaddie(),
                             displayColor: "#5B99FF",
                             badges: [{
                                 type: "moderator",
@@ -305,14 +305,14 @@ function removeRow(id) {
  */
 function getUserBadges() {
   let cache = {};
-  return (user) => {
+  return async (user) => {
     const username = user.toLowerCase();
     if (username in cache) {
       console.log(`${username}'s badges were cached: '`, cache[username]);
       return cache[username]
     } else {
       console.log(`${username}'s badges were not cached - fetching!'`)
-      return fetch(`https://badgies-v2.herokuapp.com/find/${username}`, { method: 'GET' })
+      return await fetch(`https://badgies-v2.herokuapp.com/find/${username}`, { method: 'GET' })
         .then(response => response.json())
         .then(({ data }) => {
           const value = data ? data : [];
@@ -365,4 +365,51 @@ function changeProgressBar(val, threshold) {
       .removeClass("progress__wrapper--peer_pressure");
     return;  
   }
+}
+
+// Return random username for test function
+function getBaddie() {
+  const baddies = [
+    "julio",
+    "the_party_bard",
+    "st0lie",
+    "tomuhara",
+    "d4rth_bane",
+    "tundric",
+    "diiplomat",
+    "lovelylexyy",
+    "eglorian",
+    "mud_osrs",
+    "terrabuck",
+    "cbenni",
+    "acrooooo",
+    "lord_scalper",
+    "mcgahan",
+    "ikuorai",
+    "chase",
+    "sidstyler916",
+    "grichoner",
+    "doronir",
+    "soma",
+    "cookievscookie",
+    "local248",
+    "matfrenki",
+    "nuuls",
+    "se_sean",
+    "ninjives",
+    "freakdevil",
+    "rispig",
+    "inormous",
+    "bessied23",
+    "jansuesq",
+    "mattyg514",
+    "queeg",
+    "sparky",
+    "toughguy",
+    "shiney",
+    "sinzzg",
+    "beefcake",
+    "hellz"
+  ];
+  return baddies[Math.floor(Math.random()*baddies.length)];
 }
