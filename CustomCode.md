@@ -28,7 +28,7 @@ At this point we support all of HTML5 input types (except of file - use library 
 There are some reserved field names (all future reserved words will start with `widget`):
 * `widgetName` - Used to set the display name of the widget
 * `widgetAuthor` - Set the author name of the widget (adds a "(by Author)" to the widget name)
-* `widgetDuration` - maximum event queue hold time (seconds) - for Custom Widget (as alertboxes have their own timers). Explained in section below
+* `widgetDuration` - maximum event queue hold time (seconds) - for Custom Widget (as alertboxes have their own timers). Explained in [resumeQueue section](#resumequeue-method-and-widgetduration-property) below
 #### Example
 ##### JSON
 ```JSON
@@ -145,19 +145,21 @@ window.addEventListener('onWidgetLoad', function (obj) {
 });
 ```
 ## Alert widget
-`{{name}}` - will be replaced with a person who is in subject of event. For example `{{name}} just followed stream!`<br>
-`{{amount}}` - will be replaced with amount if event supports it - amount of bits, months (as resub), viewers (when hosted, raided). For example `{{name}} just cheered with 1000 bits!`<br>
-`{{announcement}}` - message attached to event (sub, cheer, tip). For example `{name} is our sub for {amount}`<br>
-`{{message}}` - HTML user message attached to event (sub, cheer, tip). Example value `  <span class="cheermote-1"><img class="alertbox-message-emote" alt="cheer1" src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/1/2.gif"/>1</span> Hi!`. Remember to provide proper styling for `.alertbox-message-emote` class<br>
-`{{messageRaw}}` - plain text user message attached to event (sub, cheer, tip). Example value `Hi Kappa!`.<br>
-`{{sender}}` - if an action is a sub, `{sender}` is replaced with a person who gave it. For example `{{sender}} just gifted a sub for {{name}}`<br>
-`{{currency}}` - replaced with currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
-`{{image}}` - replaced with image attached to alert URL. For example `<img src="{{image}}"/>`<br>
-`{{video}}` - will be replaced with URL of video attached to alert . For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`<br>
-`{{videoVolume}}` - video volume (from 0 to 1)<br>
-`{{audio}}` - will be replaced with URL of audio attached to alert . For example `<audio id="audio" playsinline autoplay ><source id="alertsound" src="{{audio}}" type="audio/ogg"></audio>`<br>
-`{{audioVolume}}` - audio volume (from 0 to 1)<br>
-`{{widgetDuration}}` - widget duration in seconds, so you can create exit animation timed perfectly like on examples below:
+`{{name}}` - Person who is in subject of event. For example `{{name}} just followed stream!`<br>
+`{{amount}}` -Amount if event supports it - amount of bits, months (as resub, can be replaced with (`{{months}}`)), viewers (when hosted, raided). For example `{{name}} just cheered with 1000 bits!`<br>
+`{{tier}}` - Sub tier (sub events only)<br>
+`{{announcement}}` - Message attached to event (sub, cheer, tip). For example `{name} is our sub for {amount}` (alias: `{{messageTemplate}}`)<br>
+`{{items}}` - List of items in Merch event <br>
+`{{message}}` - HTML user message attached to event (sub, cheer, tip). Example value `  <span class="cheermote-1"><img class="alertbox-message-emote" alt="cheer1" src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/1/2.gif"/>1</span> Hi!`. Remember to provide proper styling for `.alertbox-message-emote` class (alias: `{{userMessage}}`)<br>
+`{{messageRaw}}` - Plain text user message attached to event (sub, cheer, tip). Example value `Hi Kappa!`.<br>
+`{{sender}}` - If an action is a sub, `{sender}` is replaced with a person who gave it. For example `{{sender}} just gifted a sub for {{name}}`<br>
+`{{currency}}` - Currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
+`{{image}}` - URL of image attached to alert. For example `<img src="{{image}}"/>`<br>
+`{{video}}` - URL of video attached to alert . For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`<br>
+`{{videoVolume}}` - Video volume (from 0 to 1). If alerts are muted in activity feed this value is set to 0<br>
+`{{audio}}` - URL of audio attached to alert . For example `<audio id="audio" playsinline autoplay ><source id="alertsound" src="{{audio}}" type="audio/ogg"></audio>`<br>
+`{{audioVolume}}` - Audio volume (from 0 to 1). If alerts are muted in activity feed this value is set to 0<br>
+`{{widgetDuration}}` - Widget duration in seconds, so you can create exit animation timed perfectly like on examples below:
 ```js
 const hideAfter=parseInt("{widgetDuration}")-1000;
 const playHideAnimation=()=>{
@@ -176,7 +178,7 @@ Or CSS:
 ## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
 Note:
-> You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api) or SE_API store (described below).
+> You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api) or [SE_API](#se-api) store.
 
 ### On event:
 ```javascript
@@ -196,7 +198,8 @@ In the example above you have obj forwarded to that function, which has two inte
     * `delete-message` - Chat message removed
     * `delete-messages` - Chat messages by userId removed
     * `event:skip` - User clicked "skip alert" button in activity feed
-    * `bot:counter` - Update to bot counter
+    * `bot:counter` - Update of bot counter
+    * `kvstore:update` - Update of [SE_API](#se-api) store value.
     * `widget-button` - User clicked custom field button in widget properties 
 
 * `obj.detail.event`: Will provide you information about event details. It contains few keys. For `-latest` events it is:
@@ -230,7 +233,7 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 ```
 #### Message
-For every message on Twitch chat there is an object forwarded with every details there:
+For message events, there is an additional object that's accessible at `obj.detail.event.data`, which looks like this:
 ```json
 {
   "time": 1552400352142,
@@ -505,7 +508,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 	* `data["supporter-latest"]["name"]` - Username
 	* `data["supporter-latest"]["amount"]` - Amount
 * `data["supporter-recent"]`    - An array of latest supporter events with each element structure as in `supporter-latest`
-* `data["supporter-goal"]["amount"]` - Amount of  videolike goal
+* `data["videolike-goal"]["amount"]` - Amount of videolike goal
 * `data["videolike-session"]["count"]` - Videolikes since session start
 * `data["videolike-week"]["count"]` - Videolikes this week
 * `data["videolike-month"]["count"]` - Videolikes this month
@@ -634,7 +637,7 @@ window.addEventListener('onSessionUpdate', function (obj) {
 `data` is the same as in `onWidgetLoad` so every property is listed in section above.
 
 ### SE API
-A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more advanced functionality.
+A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more direct REST API calls to be used as authorization header.
 
 ```javascript
 SE_API.store.set('keyName', obj); // stores an object into our database under this keyName (multiple widgets using the same keyName will share the same data. keyName can be an alphanumeric string only).
@@ -656,7 +659,32 @@ SE_API.sanitize({ message: "Hello SomeVulgarWorld"}).then(sanityResult => {
 */  
 });
 
+SE_API.cheerFilter(message).then(cheerResult => {
+	// cheerResult = "message but without any cheers in it";
+});
+
 SE_API.setField('key', 'value'); // Set's the fieldData[key] = value. This does not save, so should be used with Editor Mode so the user can save.
+```
+`SE_API.store.set` method emits an event received by every custom widget. Example payload:
+```json
+{
+	"detail": {
+		"listener": "kvstore:update",
+		"event": {
+			"data": {
+				"key": "customWidget.keyName",
+				"value": {
+					"array": [
+						33,
+						"foobar"
+					],
+					"date": "2021-03-15T08:46:10.919Z",
+					"test": 15
+				}
+			}
+		}
+	}
+}
 ```
 #### resumeQueue method and widgetDuration property
 widgetDuration property defines maximum event queue hold time (execution time of widget) by widget in seconds (default 0). For example you want to show animations by this widget and don't want them overlap, so instead building your own queue you can use this. This property is defined in JSON (as mentioned above)
@@ -680,7 +708,7 @@ Code:
 ```
 ##### JS:
 ```js
-let skippable=["bot:counter","event:test","event:skip","message"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
+let skippable=["bot:counter","event:test","event:skip","message","kvstore:update"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
 let playAnimation=(event)=>{
     $("container").html(`<div id="sender">${event.sender}</div><div class="amount">${event.amount} subs!</div>`)
     return Math.floor(Math.random()*8)+7;

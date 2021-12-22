@@ -108,6 +108,13 @@
     "step": 0.01,
     "group": "Event time settings"
   },
+  "merchSeconds": {
+    "type": "number",
+    "label": "Seconds multiplied by merch order amount:",
+    "value": 300,
+    "step": 0.01,
+    "group": "Event time settings"
+  },
   "hostSeconds": {
     "type": "number",
     "label": "Seconds per viewer from host:",
@@ -190,21 +197,5 @@
     "label": "Stroke size",
     "value": 2,
     "group": "Typography"
-  },
-  "widgetName": {
-    "type": "hidden",
-    "value": "Stream Marathon"
-  },
-  "widgetAuthor": {
-    "type": "hidden",
-    "value": "lx"
-  },
-  "widgetVersion": {
-    "type": "hidden",
-    "value": "1.0"
-  },
-  "widgetUpdateUrl": {
-    "type": "hidden",
-    "value": "https://github.com/StreamElements/widgets/blob/master/StreamMarathon/"
   }
 }

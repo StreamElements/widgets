@@ -8,6 +8,7 @@ let stopOnZero = false;
 let start;
 
 function countdown(seconds) {
+    if (seconds == 0) return;
     let toCountDown = start;
     if (stopOnZero && toCountDown < new Date()) return;
     if (addOnZero) {
@@ -28,7 +29,9 @@ function countdown(seconds) {
         if (event.type === "finish") $(this).html(fieldData.onComplete);
         else $(this).html(event.strftime('%I:%M:%S'));
     });
+
     saveState();
+
 }
 
 window.addEventListener('onEventReceived', function (obj) {
@@ -41,7 +44,7 @@ window.addEventListener('onEventReceived', function (obj) {
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
                 start = minTime;
-                countdown(0);
+                countdown(1);
             }
             if (obj.detail.event.field === 'addTime') {
                 countdown(60);
@@ -85,6 +88,11 @@ window.addEventListener('onEventReceived', function (obj) {
             return;
         }
         countdown(parseInt(fieldData.tipSeconds * data["amount"]));
+    } else if (listener === 'merch-latest') {
+        if (fieldData.merchSeconds === 0) {
+            return;
+        }
+        countdown(parseInt(fieldData.merchSeconds * data["amount"]));
     }
 
 
@@ -111,6 +119,7 @@ function loadState() {
                 maxTime = new Date(obj.maxTime);
             } else if (fieldData.preserveTime === "restart") {
                 minTime = new Date();
+                current = minTime;
                 minTime.setMinutes(minTime.getMinutes() + fieldData.minTime);
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
@@ -119,7 +128,7 @@ function loadState() {
             if (current > 0) {
                 current = Math.max(current, minTime);
                 start = new Date(current);
-                countdown(0);
+                countdown(1);
             } else {
                 start = minTime;
                 countdown(0);
