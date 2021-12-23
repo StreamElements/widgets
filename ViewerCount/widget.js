@@ -30,9 +30,9 @@ function getData() {
             $(".odometer").html(count);
         });
     } else if (provider === "trovo") {
-        fetch(`https://seapitest.pjonp.repl.co/api/trovo/viewers/${providerId}`) //temporary middleman; use official SE API call
+        fetch(`https://seapitest.pjonp.repl.co/api/trovo/info/${providerId}`) //temporary middleman; use official SE API call
         .then(response => response.json()).then(obj => {
-          let count = obj.total;
+          let count = obj.current_viewers;
           $(".odometer").html(count);
         });
     };
