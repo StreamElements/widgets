@@ -1,0 +1,50 @@
+{
+  "APIKey": {
+    "type": "text",
+    "label": "TTS API Key",
+    "value": "",
+    "group": "TTS API Settings"
+  },
+  "Region": {
+    "type": "text",
+    "label": "TTS API Region",
+    "value": "",
+    "group": "TTS API Settings"
+  },
+  "VoiceName": {
+    "type": "text",
+    "label": "Voice name",
+    "value": "",
+    "group": "TTS API Settings"
+  },
+  "follower_latest": {
+    "type": "text",
+    "label": "New follower",
+    "value": "{name} is now following!",
+    "group": "Event settings"
+  },
+  "subscriber_latest": {
+    "type": "text",
+    "label": "New Sub",
+    "value": "{name} just subscribed!",
+    "group": "Event settings"
+  },
+  "subscriber_latest_RESub": {
+    "type": "text",
+    "label": "RESub",
+    "value": "{name} just resubscribed for {amount} months! {message}",
+    "group": "Event settings"
+  },
+  "raid_latest": {
+    "type": "text",
+    "label": "New Raid",
+    "value": "{name} raided with {amount} viewers!",
+    "group": "Event settings"
+  },
+  "host_latest": {
+    "type": "text",
+    "label": "New Host",
+    "value": "{name} is now hosting with {amount} viewers!",
+    "group": "Event settings"
+  }
+}
