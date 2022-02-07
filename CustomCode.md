@@ -708,7 +708,7 @@ Code:
 ```
 ##### JS:
 ```js
-let skippable=["bot:counter","event:test","event:skip","message","kvstore:update"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
+let skippable=["bot:counter","event","event:test","event:skip","alertService:toggleSound","message","delete-message","delete-messages","kvstore:update"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
 let playAnimation=(event)=>{
     $("container").html(`<div id="sender">${event.sender}</div><div class="amount">${event.amount} subs!</div>`)
     return Math.floor(Math.random()*8)+7;
