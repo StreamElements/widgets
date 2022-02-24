@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    
+    background: url('https://cdn.streamelements.com/custom-widgets/kreekcraft/bgcontainer.png') no-repeat;
+}
+
+.progress-container {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    height: 49px;
+    width: 748px;
+    background: url('https://cdn.streamelements.com/custom-widgets/kreekcraft/progressbar.png') no-repeat;
+}
+
+.progress-bar {
+    display: grid;
+    place-content: end;
+    position: relative;
+}
+
+.progress-bar-indicator {
+    position: absolute;
+    /* margin-left: -70px; */
+    left: 0;
+    transition: left 1s ease-in-out;
+    z-index: 1;
+}
+
+video.razor {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -150px;
+    left: -155px;
+    transition: opacity 1s ease-in-out;
+}
+
+.razor-cut {
+    opacity: 0;
+}
+
+.hairs-container {
+    display: grid;
+    place-content: end;
+    margin-right: -73px;
+    margin-top: -24px;
+    height: 100px;
+    width: 850px;
+    overflow: hidden;
+
+    transition: width 1s ease-in-out;
+}
+
+.hairs-container video.hairs {
+    margin: 0;
+    padding: 0;
+    width: 850px;
+    height: 100px;
+}
+
+.goals {
+    position: absolute;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    place-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: -10px;
+}
+
+.goal {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0px 1px 1px #000000,
+                1px 2px 1px #000000,
+                2px 3px 1px #000000,
+                3px 4px 1px #000000,
+                4px 5px 1px #000000;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+.goal::before {
+    content: ' ';
+    display: block;
+    width: 1px;
+    margin-left: 25px;
+    height: 70px;
+    margin-bottom: 5px;
+    border-right: 3px dashed #FEFF04;
+    opacity: 0.8;
+}
+
+.goal.end-goal {
+    color: #FEFF04;
+}

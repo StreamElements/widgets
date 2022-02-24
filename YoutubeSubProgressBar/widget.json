@@ -1,0 +1,44 @@
+{
+    "rangeLowValue": {
+        "label": "Goal start",
+        "type": "number",
+        "description": "The start value for the goal",
+        "value": 3500000
+    },
+    "rangeHighValue": {
+        "label": "Goal end",
+        "type": "number",
+        "description": "The end goal value",
+        "value": 4000000
+    },
+    "backgroundImageSrc": {
+        "label": "Background image",
+        "type": "string",
+        "description": "The background image for the goal (888x175 PX)",
+        "value": "https://cdn.streamelements.com/custom-widgets/kreekcraft/bgcontainer.png"
+    },
+    "progressBarBackgroundImageSrc": {
+        "label": "Progress bar background image",
+        "type": "text",
+        "description": "The background image for the progress bar (748x49 PX)",
+        "value": "https://cdn.streamelements.com/custom-widgets/kreekcraft/progressbar.png"
+    },
+    "progressBarForegroundVideoSrc": {
+        "label": "Progress bar foreground video",
+        "type": "text",
+        "description": "The foreground video for the progress bar (1080x70 PX)",
+        "value": "https://cdn.streamelements.com/custom-widgets/kreekcraft/hairs_idle_anim.webm"
+    },
+    "progressIndicatorIdleVideoSrc": {
+        "label": "Progress indicator idle video",
+        "type": "text",
+        "description": "The idle video for the progress indicator (1080x70 PX)",
+        "value": "https://cdn.streamelements.com/custom-widgets/kreekcraft/razor_idle_anim.webm"
+    },
+    "progressIndicatorActiveVideoSrc": {
+        "label": "Progress indicator active video",
+        "type": "text",
+        "description": "The active video for the progress indicator (1080x70 PX)",
+        "value": "https://cdn.streamelements.com/custom-widgets/kreekcraft/razor_cut_anim.webm"
+    }
+}
