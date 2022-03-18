@@ -139,7 +139,7 @@ async function instaDataByUser(username) {
             console.error("Instagram Error: It seems that the profile you are trying to recover has age restrictions");
             return;
         }
-        data = JSON.parse(data.substr(0, data.length - 1));
+        data = JSON.parse(data.slice(0, -1));
         data = data.entry_data.ProfilePage;
         if (typeof data === "undefined") {
             console.error(
