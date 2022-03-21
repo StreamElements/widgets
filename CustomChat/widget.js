@@ -97,7 +97,7 @@ window.addEventListener('onEventReceived', function (obj) {
     }
     let username = data.displayName + ":";
     if (nickColor === "user") {
-        const color = data.displayColor !== "" ? data.displayColor : "#" + (md5(username).substr(26));
+        const color = data.displayColor !== "" ? data.displayColor : "#" + (md5(username).slice(26));
         username = `<span style="color:${color}">${username}</span>`;
     }
     else if (nickColor === "custom") {
