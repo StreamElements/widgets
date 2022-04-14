@@ -19,7 +19,7 @@ You can use regular CSS syntax - including animations, transitions
 ### JS
 You can use pure JavaScript or include external libraries/frameworks to ease your work, however everything will be running in protected sandbox, so you won’t be able to access cookies, `console.*` methods or IndexedDB storage.
 ### JSON
-You can create custom variables, so enduser doesn’t have to interact with code, those fields will be displayed under “OPEN EDITOR” in left panel.
+You can create custom variables, so end user doesn’t have to interact with code, those fields will be displayed under “OPEN EDITOR” in left panel.
 
 This data can be also called by `{{variableName}}` or `{variableName}` within HTML/CSS/JS code (however for better readibility we suggest using those calls only in HTML/CSS).
 
@@ -106,7 +106,9 @@ There are some reserved field names (all future reserved words will start with `
 }
 ```
 
-Fields of type `image-input`, `video-input`, `sound-input` may use additional parameter `"multiple":true` which allows end user to provide multiple media files within single field. Output will result in array of urls. 
+Fields of type `image-input`, `video-input`, `sound-input` may use additional parameter `"multiple":true` which allows end user to provide multiple media files within single field. Output will result in array of urls.
+
+If you want to group some fields into a collapsible menu in the left panel, you can add to them the same parameter `"group": "Some group name"`.
 
 ##### Input on left panel construction
 Input field on left panel will look like:
@@ -198,6 +200,7 @@ In the example above you have obj forwarded to that function, which has two inte
     * `delete-message` - Chat message removed
     * `delete-messages` - Chat messages by userId removed
     * `event:skip` - User clicked "skip alert" button in activity feed
+    * `alertService:toggleSound` - User clicked "mute/unmute alerts" button in activity feed
     * `bot:counter` - Update of bot counter
     * `kvstore:update` - Update of [SE_API](#se-api) store value.
     * `widget-button` - User clicked custom field button in widget properties 
@@ -663,7 +666,8 @@ SE_API.cheerFilter(message).then(cheerResult => {
 	// cheerResult = "message but without any cheers in it";
 });
 
-SE_API.setField('key', 'value'); // Set's the fieldData[key] = value. This does not save, so should be used with Editor Mode so the user can save.
+SE_API.setField('key', 'value'); // Sets the fieldData[key] = value. This does not save, so should be used with Editor Mode so the user can save.
+SE_API.getOverlayStatus(); // { isEditorMode: true/false, muted: true/false }
 ```
 `SE_API.store.set` method emits an event received by every custom widget. Example payload:
 ```json
