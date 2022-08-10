@@ -52,6 +52,28 @@
     "value": "Done!",
     "group": "Timer settings"
   },
+  "addTimeCommand": {
+    "type": "text",
+    "label": "Add time command",
+    "value": "!addtime",
+    "group": "Chat command settings"
+  },
+  "managePermissions": {
+    "type": "dropdown",
+    "label": "Who can manage time:",
+    "value": "mods",
+    "options": {
+      "streamer": "Streamer",
+      "mods": "Mods"
+    },
+    "group": "Chat command settings"
+  },
+  "additionalUsers": {
+    "type": "text",
+    "label": "Additional users, comma separated",
+    "value": "userA,userB",
+    "group": "Chat command settings"
+  },
   "followSeconds": {
     "type": "number",
     "label": "Seconds per follower:",

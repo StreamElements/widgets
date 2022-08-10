@@ -8,7 +8,7 @@ let stopOnZero = false;
 let start;
 
 function countdown(seconds) {
-    if (seconds == 0) return;
+    if (seconds === 0) return;
     let toCountDown = start;
     if (stopOnZero && toCountDown < new Date()) return;
     if (addOnZero) {
@@ -36,6 +36,27 @@ function countdown(seconds) {
 
 window.addEventListener('onEventReceived', function (obj) {
     const listener = obj.detail.listener;
+    // Handling chat message
+    if (listener === 'message') {
+        console.log(obj.detail.event);
+        const {text, nick, tags, channel} = obj.detail.event.data;
+        const userstate = {
+            'mod': parseInt(tags.mod),
+            'sub': parseInt(tags.subscriber),
+            'vip': (tags.badges.indexOf("vip") !== -1),
+            'badges': {
+                'broadcaster': (nick === channel),
+            }
+        };
+        if (!(userstate.mod && fieldData['managePermissions'] === 'mods' || userstate.badges.broadcaster || fieldData.additionalUsers.includes(nick.toLowerCase()))) return;
+        if (text.startsWith(fieldData.addTimeCommand)) {
+            const seconds = parseFloat(text.split(' ')[1]) * 60;
+            if (isNaN(seconds)) return;
+            countdown(seconds);
+        }
+        return;
+    }
+    // Handling widget buttons
     if (obj.detail.event) {
         if (obj.detail.event.listener === 'widget-button') {
             if (obj.detail.event.field === 'resetTimer') {
@@ -101,6 +122,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
     addOnZero = (fieldData.addOnZero === "add");
     stopOnZero = (fieldData.addOnZero === "stop");
+    fieldData.additionalUsers = fieldData.additionalUsers.toLowerCase().split(',').map(el => el.trim());
     loadState();
 });
 
