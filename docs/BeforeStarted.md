@@ -4,5 +4,3 @@ This documentation will demonstrate you how to work with our Overlays and Widget
 
 ## Creating an Overlay
 Navigate to the [Overlays](https://streamelements.com/dashboard/overlays) section and click the "NEW OVERLAY" button.
-
-![](https://i.imgur.com/qXqQq.png)

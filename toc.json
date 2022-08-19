@@ -4,22 +4,24 @@
     {
       "type": "item",
       "title": "Creating a Custom Widget",
-      "uri": "/docs/readme.md"
+      "uri": "/docs/CustomWidget.md",
+      "items": [
+        {
+          "type": "item",
+          "title": "Widget Events",
+          "uri": "/docs/CustomWidgetEvents.md",
+        }
+      ]
     },
     {
       "type": "item",
       "title": "Customizing an Alert Box",
-      "uri": "/docs/readme.md"
+      "uri": "/docs/CustomCodeInAlertbox.md"
     },
     {
       "type": "item",
       "title": "Widget Structure",
-      "uri": "/docs/readme.md"
-    },
-    {
-      "type": "item",
-      "title": "Widget Events",
-      "uri": "/docs/readme.md"
+      "uri": "/docs/WidgetStructure.md"
     },
     {
       "type": "item",
