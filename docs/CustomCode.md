@@ -1,4 +1,4 @@
-# Stream Elements Variable list
+# Custom Widget Structure
 In each of paragraph you will find information, what variables you can use, to achieve expected result.
 ## Fields
 ### HTML
