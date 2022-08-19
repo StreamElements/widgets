@@ -1,0 +1,15 @@
+{
+  "collapseTableOfContents": false,
+  "items": [
+    {
+      "type": "item",
+      "title": "Custom Widget Structure",
+      "uri": "/docs/CustomCode.md"
+    },
+    {
+      "type": "item",
+      "title": "Test",
+      "uri": "/docs/readme.md"
+    }
+  ]
+}
