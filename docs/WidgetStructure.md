@@ -1,6 +1,8 @@
-## CODE EDITOR
+# Widget Structure
 
-This section describes the StreamElements Custom Code Editor. It is a simple text editor that allows you to write code, styling, definitions.
+## Custom Code Editor
+
+The Overlay custom code editor is a simple text editor that allows you to write code, styling, definitions - the files described in this document.
 
 ### HTML
 You can use any HTML tags possible, you can even import external JS if you feel such need. For example if you want to have `$("#selector").toggle('explode');` from jQueryUI, just add
