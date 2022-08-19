@@ -1,188 +1,9 @@
 # Custom Widget Structure
-In each of paragraph you will find information, what variables you can use, to achieve expected result.
-## Fields
-### HTML
-You can use any HTML tags possible, you can even import external JS if you feel such need. For example if you want to have `$("#selector").toggle('explode');` from jQueryUI, just add
-```HTML
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-```
-And if you want use Google font in your CSS, just call them by:
-```HTML
-<link href="https://fonts.googleapis.com/css?family=Chelsea+Market" rel="stylesheet">
-```
-This also can be done within CSS Field by importing stylesheet
-```css
-@import url('https://fonts.googleapis.com/css?family=Chelsea+Market');
-```
-### CSS
-You can use regular CSS syntax - including animations, transitions
-### JS
-You can use pure JavaScript or include external libraries/frameworks to ease your work, however everything will be running in protected sandbox, so you won’t be able to access cookies, `console.*` methods or IndexedDB storage.
-### JSON
-You can create custom variables, so end user doesn’t have to interact with code, those fields will be displayed under “OPEN EDITOR” in left panel.
-
-This data can be also called by `{{variableName}}` or `{variableName}` within HTML/CSS/JS code (however for better readibility we suggest using those calls only in HTML/CSS).
-
-At this point we support all of HTML5 input types (except of file - use library inputs such as `video-input` instead), as well as a handful of custom inputs: `colorpicker`, `audio-input`, `sound-input`, `video-input`, `googleFont`, `dropdown`, and `slider`.
-
-There are some reserved field names (all future reserved words will start with `widget`):
-* `widgetName` - Used to set the display name of the widget
-* `widgetAuthor` - Set the author name of the widget (adds a "(by Author)" to the widget name)
-* `widgetDuration` - maximum event queue hold time (seconds) - for Custom Widget (as alertboxes have their own timers). Explained in [resumeQueue section](#resumequeue-method-and-widgetduration-property) below
-#### Example
-##### JSON
-```JSON
-{
-  "someText": {
-    "type": "text",
-    "label": "Some Text",
-    "value": "Default text"
-  },
-  "someCheckbox": {
-    "type": "checkbox",
-    "label": "Some checkbox"
-  },
-  "someColorPicker": {
-    "type": "colorpicker",
-    "label": "Some color",
-    "value": "#0000FF"
-  },
-  "someNumber": {
-    "type": "number",
-    "label": "Count",
-    "value": 10,
-    "min": 0,
-    "max": 100,
-    "step": 1
-  },
-  "someSlider": {
-    "type": "slider",
-    "label": "Counter",
-    "value": 10,
-    "min": 0,
-    "max": 100,
-    "step": 1
-  },
-  "someDropdown": {
-    "type": "dropdown",
-    "label": "Choose an option:",
-    "value": "blue",
-    "options": {
-      "blue": "Blue thing",
-      "apple": "Some apple",
-      "7": "Lucky number"
-    }
-  },
-  "someImage": {
-     "type": "image-input",
-     "label": "Some Image"
-   },
- "someVideo": {
-   "type": "video-input",
-   "label": "Some Video"
- },
- "someSound": {
-   "type": "sound-input",
-   "label": "Some Audio"
- },
-  "fontName": {
-      "type": "googleFont",
-      "label": "Select a font:",
-      "value": "Roboto"
-    },
-  "someButton": {
-    "type": "button",
-    "label": "Click me!",
-    "value": "Thanks"
-  },
-  "widgetName": {
-    "type": "hidden",
-    "value": "My Custom Widget"
-  },
-  "widgetDuration": {
-      "type": "hidden",
-      "value": 15
-    }
-}
-```
-
-Fields of type `image-input`, `video-input`, `sound-input` may use additional parameter `"multiple":true` which allows end user to provide multiple media files within single field. Output will result in array of urls.
-
-If you want to group some fields into a collapsible menu in the left panel, you can add to them the same parameter `"group": "Some group name"`.
-
-##### Input on left panel construction
-Input field on left panel will look like:
-```html
-<input type="TYPE_FROM_JSON" name="FIELD_NAME" value="USER_VALUE_OR_DEFAULT_VALUE"/>
-```
-or for  dropdown (based on example above)
-```html
-<select name="someDropdown">
-    <option value="blue" selected>Blue thing</option>
-    <option value="apple">Some apple</option>
-    <option value="7">Lucky number</option>
-</select>
-```
-##### Usage example
-Result of those custom fields can be used like:
-###### HTML
-```html
-<div class="message">{{someDropdown}} is an option for today!<span id="additional">{{someText}}</span></div>
-```
-###### CSS
-```css
-.message {
-    font-size:{{someSlider}}px;
-    color: {{someColorPicker}};
-}
-```
-###### JS
-```javascript
-let someVariable,magicNumber;
-window.addEventListener('onWidgetLoad', function (obj) {
-    const fieldData = obj.detail.fieldData;
-    someVariable=fieldData["someText"];
-    // OR
-    magicNumber=fieldData.someNumber;    
-});
-```
-## Alert widget
-`{{name}}` - Person who is in subject of event. For example `{{name}} just followed stream!`<br>
-`{{amount}}` -Amount if event supports it - amount of bits, months (as resub, can be replaced with (`{{months}}`)), viewers (when hosted, raided). For example `{{name}} just cheered with 1000 bits!`<br>
-`{{tier}}` - Sub tier (sub events only)<br>
-`{{announcement}}` - Message attached to event (sub, cheer, tip). For example `{name} is our sub for {amount}` (alias: `{{messageTemplate}}`)<br>
-`{{items}}` - List of items in Merch event <br>
-`{{message}}` - HTML user message attached to event (sub, cheer, tip). Example value `  <span class="cheermote-1"><img class="alertbox-message-emote" alt="cheer1" src="https://d3aqoihi2n8ty8.cloudfront.net/actions/cheer/dark/animated/1/2.gif"/>1</span> Hi!`. Remember to provide proper styling for `.alertbox-message-emote` class (alias: `{{userMessage}}`)<br>
-`{{messageRaw}}` - Plain text user message attached to event (sub, cheer, tip). Example value `Hi Kappa!`.<br>
-`{{sender}}` - If an action is a sub, `{sender}` is replaced with a person who gave it. For example `{{sender}} just gifted a sub for {{name}}`<br>
-`{{currency}}` - Currency if event is a donation. For example {{name}} just tipped us {{currency}} {{amount}} !<br>
-`{{image}}` - URL of image attached to alert. For example `<img src="{{image}}"/>`<br>
-`{{video}}` - URL of video attached to alert . For example `<video id="video" playsinline autoplay muted style="width:100%; height:100%"><source id="webm" src="{{video}}" type="video/webm"></video>`<br>
-`{{videoVolume}}` - Video volume (from 0 to 1). If alerts are muted in activity feed this value is set to 0<br>
-`{{audio}}` - URL of audio attached to alert . For example `<audio id="audio" playsinline autoplay ><source id="alertsound" src="{{audio}}" type="audio/ogg"></audio>`<br>
-`{{audioVolume}}` - Audio volume (from 0 to 1). If alerts are muted in activity feed this value is set to 0<br>
-`{{widgetDuration}}` - Widget duration in seconds, so you can create exit animation timed perfectly like on examples below:
-```js
-const hideAfter=parseInt("{widgetDuration}")-1000;
-const playHideAnimation=()=>{
-  timeline.reverse(); //or any other thing that will make your alert fancy exit
-}
-setTimeout(playHideAnimation,hideAfter);
-```
-Or CSS:
-```css
-#alertbox {
-  animation: hide forwards 1s;
-  animation-delay: calc({widgetDuration}s - 1s);
-}
-```
-
-## Custom Widget
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
 Note:
 > You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api) or [SE_API](#se-api) store.
 
-### On event:
+## On event:
 ```javascript
 window.addEventListener('onEventReceived', function (obj) {
     // fancy stuff here
@@ -235,7 +56,7 @@ window.addEventListener('onEventReceived', function (obj) {
     document.getElementById("amount").innerHTML=data["amount"]
 });
 ```
-#### Message
+### Message
 For message events, there is an additional object that's accessible at `obj.detail.event.data`, which looks like this:
 ```json
 {
@@ -291,14 +112,14 @@ For message events, there is an additional object that's accessible at `obj.deta
 Every emote displayed on chat is within array of objects `emotes` with start/end index of `text` you can replace with image
 NOTE: if you are creating chat widget, remember to store `msgId` and `userId` of each message (for example `<div class="message" data-msgId="${msgId}" data-userId="${userId}"></div>`) for message deletion events handling.
 
-#### Message deletion
+### Message deletion
 When user message is removed by channel moderator there is an event emited either:
 - `delete-message` - with msgId of message to be removed
 - `delete-messages` - with userId of user whose messages have to be removed
 This functionality is to prevent abusive content displayed in chat widget.  
 
 
-#### Bot counter
+### Bot counter
 Contains two elements counter name (`counter`) and current value (`value`)
 ```javascript
 window.addEventListener('onEventReceived', function (obj) {
@@ -311,7 +132,7 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 ```
 
-#### Button click
+### Button click
 Contains two elements - field name (`field`) and value (`value`). Example below will send simplified event to test your chat widget
 ```javascript
 window.addEventListener('onEventReceived', function (obj) {
@@ -338,7 +159,7 @@ window.addEventListener('onEventReceived', function (obj) {
 
 
 
-### On Widget load
+## On Widget load
 ```javascript
 window.addEventListener('onWidgetLoad', function (obj) {
     //fancy stuff here
@@ -355,9 +176,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
     let fieldData=obj["detail"]["fieldData"];
 });
 ```
-#### Possible keys within `data`:
+### Possible keys within `data`:
 
-##### Common
+#### Common
 * `data["merch-goal-items"]["amount"]` - Merch items goal progress
 * `data["merch-goal-orders"]["amount"]` - Merch orders goal progress
 * `data["merch-goal-total"]["amount"]` - Merch total goal progress
@@ -396,7 +217,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 * `data["tip-count"]["count"]` - Number of tip events
 * `data["tip-goal"]["amount"]` - Donation goal
 
-##### Twitch
+#### Twitch
 * `data["follower-latest"]["name"]` - Name of latest follower
 * `data["follower-session"]["count"]` - Followers since session start
 * `data["follower-week"]["count"]` - Followers this week
@@ -471,7 +292,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     * `data["cheer-alltime-top-donator"]["name"]` - Username
     * `data["cheer-alltime-top-donator"]["amount"]` - Sum of the cheer amounts
 
-##### Facebook
+#### Facebook
 * `data["fan-latest"]["name"]` - Name of latest fan
 * `data["fan-session"]["count"]` - Fans since session start
 * `data["fan-week"]["count"]` - Fans this week
@@ -521,7 +342,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
 	* `data["videolike-latest"]["amount"]` - Amount
 * `data["videolike-recent"]`    - An array of latest videolike events with each element structure as in `videolike-latest`
 
-##### YouTube
+#### YouTube
 * `data["sponsor-goal"]["amount"]` - Amount of  sponsor goal
 * `data["sponsor-session"]["count"]` - Sponsors since session start
 * `data["sponsor-week"]["count"]` - Sponsors this week
@@ -557,18 +378,18 @@ There is a difference between:
 
 Example for better understanding:
 
-User | Amount
------|-------
-UserA|10
-UserB|15
-UserA|10
+| User  | Amount |
+|-------|--------|
+| UserA | 10     |
+| UserB | 15     |
+| UserA | 10     |
 
 Then calling each scope will result:
 
-tip-alltime- | amount | name
--------------|--------|-----
--donator|20|UserA
--donation|15|UserB
+| tip-alltime- | amount | name  |
+|--------------|--------|-------|
+| -donator     | 20     | UserA |
+| -donation    | 15     | UserB |
 
 Recent events:
 You can access recent events of each type by calling:
@@ -619,7 +440,7 @@ The last element of `obj` is currency, which contains:
 * `name` - currency name (for example "U.S. Dollar)
 * `symbol` - currency symbol (for example “$”)
 
-### On Session Update
+## On Session Update
 ```javascript
 window.addEventListener('onSessionUpdate', function (obj) {
     const data = obj.detail.session;
@@ -639,7 +460,7 @@ window.addEventListener('onSessionUpdate', function (obj) {
 ```
 `data` is the same as in `onWidgetLoad` so every property is listed in section above.
 
-### SE API
+## SE API
 A global object is provided to access basic API functionality. The overlay's API token is also provided (via the `onWidgetLoad` event below) for more direct REST API calls to be used as authorization header.
 
 ```javascript
@@ -690,7 +511,7 @@ SE_API.getOverlayStatus(); // { isEditorMode: true/false, muted: true/false }
 	}
 }
 ```
-#### resumeQueue method and widgetDuration property
+### resumeQueue method and widgetDuration property
 widgetDuration property defines maximum event queue hold time (execution time of widget) by widget in seconds (default 0). For example you want to show animations by this widget and don't want them overlap, so instead building your own queue you can use this. This property is defined in JSON (as mentioned above)
 Premature queue resume can be called by `SE_API.resumeQueue();`
 
@@ -701,7 +522,7 @@ Scenario:
 
   
 Code:
-##### Fields:
+#### Fields:
 ```json
 {
     "widgetDuration":{
@@ -710,7 +531,7 @@ Code:
     }
 }
 ```
-##### JS:
+#### JS:
 ```js
 let skippable=["bot:counter","event","event:test","event:skip","alertService:toggleSound","message","delete-message","delete-messages","kvstore:update"]; //Array of events coming to widget that are not queued so they can come even queue is on hold
 let playAnimation=(event)=>{
@@ -740,19 +561,3 @@ window.addEventListener('onEventReceived', function (obj) {
      }
 });
 ```
-   
-## Overlay Editor shortcuts
-
-Key | Action
------|-------
-Del|Delete selected widget
-Shift + d|Duplicate selected widget
-Arrow|Move widget 1px
-Shift + arrow|Move widget 10px
-Esc|Unselect widgets
-Ctrl/Command + z|Undo last action
-Ctrl/Command + y|Redo last undo action
-Alt + x|Reset zoom
-Alt + f|Fit to screen
-Shift + g|Group selected widgets
-Shift + u|Ungroup selected widget group
