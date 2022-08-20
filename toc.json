@@ -2,14 +2,14 @@
   "collapseTableOfContents": false,
   "items": [
     {
-      "type": "item",
+      "type": "group",
       "title": "Creating a Custom Widget",
       "uri": "/docs/CustomWidget.md",
       "items": [
         {
           "type": "item",
           "title": "Widget Events",
-          "uri": "/docs/CustomWidgetEvents.md",
+          "uri": "/docs/CustomWidgetEvents.md"
         }
       ]
     },
