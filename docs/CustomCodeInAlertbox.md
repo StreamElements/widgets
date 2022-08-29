@@ -1,6 +1,11 @@
 # Custom Code in Alertboxes
 
-Once you create Alertbox you can enable custom code in it. Use the left panel to "Enable CSS" and open Editor.
+## Before Starting
+### Prerequisites
+This article requires you to have an Overlay created with an AlerBox with "Custom CSS" enabled. To do so follow the steps in the [Before Starting](BeforeStarting.md) article.
+### Custom Code Editor
+The Custom Code Editor is a powerful tool that allows you to write custom code in the Overlay Editor. To get more 
+information about the Custom Code Editor, please refer to the [Widget Structure](WidgetStructure.md) article.
 
 
 ## Inline Variables available

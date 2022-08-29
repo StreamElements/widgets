@@ -1,6 +1,7 @@
-# CODE EDITOR
+# CODE EDITOR AND WIDGET STRUCTURE
 
-This section describes the StreamElements Custom Code Editor. It is a simple text editor that allows you to write code, styling, field definitions.
+This section describes the StreamElements Custom Code Editor and Widget's Structure. 
+Custom code editor is a simple text editor that allows you to write code, styling, field definitions.
 
 ## HTML
 You can use any HTML tags possible, you can even import external JS if you feel such need. For example if you want to have `$("#selector").toggle('explode');` from jQueryUI, just add
@@ -142,8 +143,10 @@ Result of those custom fields can be used like:
 let someVariable,magicNumber;
 window.addEventListener('onWidgetLoad', function (obj) {
     const {fieldData} = obj.detail;
-    someVariable=fieldData["someText"];
+    someVariable = fieldData["someText"];
     // OR
-    magicNumber=fieldData.someNumber;    
+    magicNumber = fieldData.someNumber;
+    // OR use internal templating variables
+    magicNumber = parseFloat("{{someNumber}}");
 });
 ```

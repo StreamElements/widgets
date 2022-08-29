@@ -1,7 +1,14 @@
-# Custom Widget Structure
+# Custom Widget 
 This is the most powerful tool in SE Overlay editor. You can do a lot of things within this widget using HTML/CSS/JavaScript and accessing variables<br>
 Note:
 > You cannot access `document.cookie` nor `IndexedDB` via it (security reasons), so you need to keep your data elsewhere (accessible via HTTP api) or [SE_API](#se-api) store.
+
+## Before Starting
+### Prerequisites
+This article requires you to have an Overlay created with a Custom Widget added there. To do so follow the steps in the [Before Starting](BeforeStarting.md) article.
+### Custom Code Editor
+The Custom Code Editor is a powerful tool that allows you to write custom code in the Overlay Editor. To get more
+information about the Custom Code Editor, please refer to the [Widget Structure](WidgetStructure.md) article.
 
 
 ## SE API

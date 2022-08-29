@@ -1,5 +1,5 @@
 # Custom Widget events
-Widget receives few types of events during lifetime.
+Widget receives few types of native events during lifetime.
 
 ## On Widget load
 
