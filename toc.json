@@ -25,16 +25,6 @@
     },
     {
       "type": "item",
-      "title": "Testing your widget",
-      "uri": "/docs/readme.md"
-    },
-    {
-      "type": "item",
-      "title": "Sharing your widget with others",
-      "uri": "/docs/readme.md"
-    },
-    {
-      "type": "item",
       "title": "Overlay Editor Shortcuts",
       "uri": "/docs/OverlayEditorShortcuts.md"
     }
