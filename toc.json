@@ -2,6 +2,11 @@
   "collapseTableOfContents": false,
   "items": [
     {
+      "type": "item",
+      "title": "Before Starting",
+      "uri": "/docs/BeforeStarting.md"
+    },
+    {
       "type": "group",
       "title": "Creating a Custom Widget",
       "uri": "/docs/CustomWidget.md",
