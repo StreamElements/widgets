@@ -1,12 +1,21 @@
 # Before Starting
 
-This documentation will demonstrate you how to work with our Overlays and Widgets. We will start by creating an Overlay.
-This overlay will contain an Alert Box and Custom Widget we will use in other articles.
+Before Starting explains how to create a Custom Widget or Custom Code Alert Box, using StreamElements' the Overlay Editor UI.
+
+We will start by creating an Overlay first and then the widgets, an Alert Box and a Custom Widget, which you'll be able edit.
 
 ## Creating an Overlay
-Navigate to the [Overlays](https://streamelements.com/dashboard/overlays) section and click the "NEW OVERLAY" button.
+
+Navigate to the [Overlays](https://streamelements.com/dashboard/overlays) section and click the **NEW OVERLAY** button.
+
+![img/new-overlay-button.png](img/new-overlay-button.png)
+
+Pick your resolution.
+
+> Overlay size: Usually it should match your stream's resolution, or be smaller than it  - if you'd like to do the repositioning in your broadcasting software.
 
 ### Alert Box
+
 The Alert Box is a native widget that displays live events from the queue in a popup-like behavior.
 
 To create an alertbox use ![img/plus.png](img/plus.png) button in overlay editor and select "AlertBox" in ALERTS section
