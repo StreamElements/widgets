@@ -1,4 +1,4 @@
-# CODE EDITOR AND WIDGET STRUCTURE
+# Code Editor 
 
 This section describes the StreamElements Custom Code Editor and Widget's Structure. 
 Custom code editor is a simple text editor that allows you to write code, styling, field definitions.

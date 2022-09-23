@@ -41,7 +41,7 @@ SE_API.cheerFilter(message).then(cheerResult => {
 SE_API.setField('key', 'value'); // Sets the fieldData[key] = value. This does not save, so should be used with Editor Mode so the user can save.
 SE_API.getOverlayStatus(); // { isEditorMode: true/false, muted: true/false }
 ```
-`SE_API.store.set` method emits an event received by every custom widget. Example payload:
+`SE_API.store.set` method emits an event received by every Custom Widget. Example payload:
 ```json
 {
 	"detail": {

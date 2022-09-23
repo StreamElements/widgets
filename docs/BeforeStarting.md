@@ -1,8 +1,8 @@
 # Before Starting
 
-Before Starting explains how to create a Custom Widget or Custom Code Alert Box, using StreamElements' the Overlay Editor UI.
+Before Starting explains how to create a Custom Widget or Custom Code AlertBox, using StreamElements' the Overlay Editor UI.
 
-We will start by creating an Overlay first and then the widgets, an Alert Box and a Custom Widget, which you'll be able edit.
+We will start by creating an Overlay first and then the widgets, an AlertBox and a Custom Widget, which you'll be able edit.
 
 ## Creating an Overlay
 
@@ -14,11 +14,11 @@ Next you'll neeed to pick your resolution and click the **START** button.
 
 > Overlay size: Usually it should match your stream's resolution, or be smaller than it  - if you'd like to do the repositioning in your broadcasting software.
 
-## Alert Box
+## AlertBox
 
-The Alert Box is a native widget that displays live events from the queue in a popup-like behavior.
+The AlertBox is a native widget that displays live events from the queue in a popup-like behavior.
 
-To create an alertbox:
+To create an AlertBox:
 
 1. Click the **+** button in overlay editor
   ![img/new-widget-plus-button.png](img/new-widget-plus-button.png)
@@ -26,10 +26,10 @@ To create an alertbox:
 2. Select **AlertBox** in the **ALERTS** section
   ![img/new-widget-alert-box.png](img/new-widget-alert-box.png)
 
-### Enabling Custom code for alert box
+### Enabling Custom code for AlertBox
 
-You can enable custom code for alert box by toggling the "Enable custom CSS" option for alert type you want to use.
-For example open options for alertbox, go to "Followers" tab and enable custom code as on screenshot below
+You can enable custom code for AlertBox by toggling the "Enable custom CSS" option for alert type you want to use.
+For example open options for AlertBox, go to "Followers" tab and enable custom code as on screenshot below
 
 ![img/alert-box-css-editor.gif](img/alert-box-css-editor.gif)
 
@@ -39,7 +39,7 @@ The Custom Widget is a native widget that you can use to display any content you
 It is a good way to display your own content in overlay. It can consume local events (like tips, follows etc.) as well
 as remote events read from a websocket or from a REST API.
 
-To create a custom widget:
+To create a Custom Widget:
 
 1. Click the **+** button in overlay editor
   ![img/new-widget-plus-button.png](img/new-widget-plus-button.png)
