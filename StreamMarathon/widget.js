@@ -5,14 +5,24 @@ let maxTime = new Date(); // Time cap you want to use
 let minTime = new Date();
 let addOnZero = false;
 let stopOnZero = false;
-let start;
+let endTime;
+let pauseTime; // If non-nil, the Date that the timer was paused.
+
+function logState(label) {
+    console.log(`${label}: pause:${pauseTime}, end:${endTime}`);
+}
 
 function countdown(seconds) {
-    if (seconds === 0) return;
-    let toCountDown = start;
-    if (stopOnZero && toCountDown < new Date()) return;
+    logState('countdown');
+    // if (seconds == 0) return;
+    let toCountDown = endTime;
+    let basisTime = pauseTime || new Date();
+    if (stopOnZero && toCountDown < basisTime) {
+        console.log(`countdown returning at zero`);
+        return;
+    }
     if (addOnZero) {
-        let a = [toCountDown, new Date()];
+        let a = [toCountDown, basisTime];
         a.sort(function (a, b) {
             return Date.parse(a) - Date.parse(b);
         });
@@ -24,14 +34,51 @@ function countdown(seconds) {
         return Date.parse(a) - Date.parse(b);
     });
     toCountDown = new Date(a[0].getTime());
-    start = toCountDown;
+    endTime = toCountDown;
+    if (pauseTime) {
+        recalculateEndTime();
+    }
+    logState('continuing countdown');
     $('#countdown').countdown(toCountDown, function (event) {
         if (event.type === "finish") $(this).html(fieldData.onComplete);
         else $(this).html(event.strftime('%I:%M:%S'));
     });
+    if (pauseTime) {
+        console.log(`countdown pausing`);
+        let cd = $('#countdown');
+
+        // Stop the counter
+        cd.countdown('pause');
+    }
 
     saveState();
 
+}
+
+function pauseTimer() {
+    logState('pause');
+    if (pauseTime) return;
+    pauseTime = new Date();
+    countdown(0);
+}
+
+function recalculateEndTime() {
+    if (!pauseTime) return;
+    logState('before recalc');
+    let now = new Date();
+    let timePaused = Math.max(0, now.getTime() - pauseTime.getTime());
+    endTime.setMilliseconds( endTime.getMilliseconds() + timePaused);
+    pauseTime = now;
+    logState('after  recalc');
+}
+
+function resumeTimer() {
+    logState('resumeTimer');
+    if (!pauseTime) return;
+    recalculateEndTime();
+    pauseTime = null;
+    countdown(0);
+    $('#countdown').countdown('resume');
 }
 
 window.addEventListener('onEventReceived', function (obj) {
@@ -48,11 +95,19 @@ window.addEventListener('onEventReceived', function (obj) {
                 'broadcaster': (nick === channel),
             }
         };
+        // Verify chat command permissions
         if (!(userstate.mod && fieldData['managePermissions'] === 'mods' || userstate.badges.broadcaster || fieldData.additionalUsers.includes(nick.toLowerCase()))) return;
+        
         if (text.startsWith(fieldData.addTimeCommand)) {
             const seconds = parseFloat(text.split(' ')[1]) * 60;
             if (isNaN(seconds)) return;
             countdown(seconds);
+        }
+        if (text.startsWith(fieldData.pauseCommand)) {
+            pauseTimer();
+        }
+        if (text.startsWith(fieldData.resumeCommand)) {
+            resumeTimer();
         }
         return;
     }
@@ -60,15 +115,23 @@ window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.event) {
         if (obj.detail.event.listener === 'widget-button') {
             if (obj.detail.event.field === 'resetTimer') {
+                pauseTime = null;
                 minTime = new Date();
                 minTime.setMinutes(minTime.getMinutes() + fieldData.minTime);
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
-                start = minTime;
+                endTime = minTime;
+                logState('reset');
                 countdown(1);
             }
             if (obj.detail.event.field === 'addTime') {
                 countdown(60);
+            }
+            if (obj.detail.event.field === 'pause') {
+                pauseTimer();
+            }
+            if (obj.detail.event.field === 'resume') {
+                resumeTimer();
             }
             return;
         }
@@ -128,7 +191,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
 
 
 function saveState() {
-    SE_API.store.set('marathon', {current: start, maxTime: maxTime, minTime: minTime});
+    logState('saving');
+    let state = {current: endTime, maxTime: maxTime, minTime: minTime, pauseTime: pauseTime};
+    SE_API.store.set('marathon', state);
 }
 
 function loadState() {
@@ -137,26 +202,40 @@ function loadState() {
             let current = new Date();
             if (fieldData.preserveTime === "save") {
                 current = new Date(obj.current);
+                console.log(`save current = ${current}`);
                 minTime = new Date(obj.minTime);
                 maxTime = new Date(obj.maxTime);
+                endTime = new Date(current);
+                if (obj.pauseTime) {
+                    pauseTime = new Date(obj.pauseTime);
+                    recalculateEndTime();
+                } else {
+                    pauseTime = null;
+                }
+                logState('loaded');
             } else if (fieldData.preserveTime === "restart") {
+                pauseTime = null;
                 minTime = new Date();
                 current = minTime;
                 minTime.setMinutes(minTime.getMinutes() + fieldData.minTime);
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
-                start = minTime;
+                endTime = minTime;
             }
+
+            // Make sure the end time is at least after the minimum time.
             if (current > 0) {
+                console.log(`oldCurrent = ${current}`);
                 current = Math.max(current, minTime);
-                start = new Date(current);
+                endTime = new Date(current);
+                logState('mintime');
                 countdown(1);
             } else {
-                start = minTime;
+                endTime = minTime;
                 countdown(0);
             }
         } else {
-            start = minTime;
+            endTime = minTime;
             countdown(0);
         }
     });

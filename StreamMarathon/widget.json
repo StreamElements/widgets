@@ -24,6 +24,18 @@
     "value": "Add 60s",
     "group": "Timer settings"
   },
+  "pause": {
+    "type": "button",
+    "label": "Pause",
+    "value": "Pause",
+    "group": "Timer settings"
+  },
+  "resume": {
+    "type": "button",
+    "label": "Resume",
+    "value": "Resume",
+    "group": "Timer settings"
+  },
   "preserveTime": {
     "type": "dropdown",
     "label": "Overlay reload behaviour",
@@ -56,6 +68,18 @@
     "type": "text",
     "label": "Add time command",
     "value": "!addtime",
+    "group": "Chat command settings"
+  },
+  "pauseCommand": {
+    "type": "text",
+    "label": "Pause timer command",
+    "value": "!pause",
+    "group": "Chat command settings"
+  },
+  "resumeCommand": {
+    "type": "text",
+    "label": "Unpause/resume timer command",
+    "value": "!resume",
     "group": "Chat command settings"
   },
   "managePermissions": {
