@@ -1,14 +1,23 @@
-let index, goal, fieldData, currency, userLocale, prevCount, timeout;
+let index, goal, fieldData, currency, userLocale, prevCount, timeout, outputCurrency;
+
+async function convertCurrency(amount) {
+    if (outputCurrency === currency) return amount;
+    let response = await fetch(`https://decapi.me/misc/currency?from=${currency}&to=${outputCurrency}&value=${amount}`);
+    let data = await response.text();
+    data = data.split(" = ")[1].replace(/[^0-9.]/g, "")
+    return data;
+}
 
 function setGoal() {
     if (fieldData['eventType'] === 'tip') {
+        console.log("Output currency: " + outputCurrency);
         if (goal % 1) {
-            $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
+            $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: outputCurrency}));
         } else {
             $("#goal").html(goal.toLocaleString(userLocale, {
                 minimumFractionDigits: 0,
                 style: 'currency',
-                currency: currency
+                currency: outputCurrency
             }));
         }
     } else {
@@ -21,6 +30,7 @@ window.addEventListener('onWidgetLoad', async function (obj) {
         goal = fieldData["goal"];
         userLocale = fieldData["userLocale"];
         currency = obj["detail"]["currency"]["code"];
+        outputCurrency = fieldData.overrideCurrency === 'yes' ? fieldData.overrideCurrencyCode : currency;
         index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
         if (fieldData['eventType'] === "subscriber-points") {
             index = fieldData['eventType'];
@@ -79,7 +89,10 @@ window.addEventListener('onEventReceived', function (obj) {
 });
 
 
-function updateBar(count) {
+async function updateBar(count) {
+    if (fieldData['eventType'] === 'tip') {
+        count = await convertCurrency(count);
+    }
     if (count === prevCount) return;
     if (count >= goal) {
         if (fieldData['autoIncrement'] > 0 && fieldData.onGoalReach === "increment") {
@@ -99,9 +112,9 @@ function updateBar(count) {
     $("#bar").css('width', percentage + "%");
     if (fieldData['eventType'] === 'tip') {
         if (count % 1) {
-            count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
+            count = count.toLocaleString(userLocale, {style: 'currency', currency: outputCurrency})
         } else {
-            count = count.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: currency})
+            count = count.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: outputCurrency})
         }
     }
     $("#count").html(count);

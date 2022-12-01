@@ -2,159 +2,13 @@
   "goal": {
     "type": "number",
     "label": "Goal",
-    "value": 32
+    "value": 32,
+    "group": "Goal & Currency"
   },
-  "onGoalReach": {
-    "type": "dropdown",
-    "label": "On goal reach",
-    "value": "nothing",
-    "options": {
-      "nothing": "Do nothing",
-      "increment": "Increment by value below",
-      "reset": "Reset goal"
-    }
-  },
-  "autoIncrement": {
-    "type": "number",
-    "label": "Auto increment goal when reached by",
-    "value": 0
-  },
-  "botCounter": {
-    "type": "checkbox",
-    "label": "Use 'goal' bot counter as goal number?",
-    "value": false
-  },
-  "titleText": {
-    "type": "text",
-    "label": "Title text",
-    "value": "Follower goal:"
-  },
-  "fontName": {
-    "type": "googleFont",
-    "label": "Font name",
-    "value": "Montserrat"
-  },
-  "shadow": {
-    "type": "text",
-    "label": "Font shadow",
-    "value": "1px 1px 1px #000000"
-  },
-  "fontWeight": {
-    "label": "Font Weight",
-    "type": "dropdown",
-    "value": "400",
-    "options": {
-      "100": "Thin (100)",
-      "300": "Light (300)",
-      "400": "Regular (400)",
-      "500": "Medium (500)",
-      "700": "Bold (700)",
-      "900": "Black (900)"
-    }
-  },
-  "titleColor": {
-    "type": "colorpicker",
-    "label": "Title font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "titleSize": {
-    "type": "number",
-    "label": "Title font Size",
-    "value": 24
-  },
-  "eventType": {
-    "type": "dropdown",
-    "label": "Pick event type:",
-    "value": "follower",
-    "options": {
-      "follower": "Follower",
-      "subscriber": "Subscriber",
-      "subscriber-new": "Subscriber new (session only)",
-      "subscriber-resub": "Subscriber resub (session only)",
-      "subscriber-gifted": "Subscriber gifted (session only)",
-      "tip": "Tip amount",
-      "cheer": "Bits amount",
-      "subscriber-points": "Subscriber points"
-    }
-  },
-  "eventPeriod": {
-    "type": "dropdown",
-    "label": "Pick period: (doesn't work with sub points)",
-    "value": "session",
-    "options": {
-      "session": "Session",
-      "week": "Week",
-      "month": "Month",
-      "total": "Total",
-      "goal": "Amount from goal data"
-    }
-  },
-  "displayBar": {
-    "type": "dropdown",
-    "label": "Display bar",
-    "value": "block",
-    "options": {
-      "block": "Yes",
-      "none": "No"
-    }
-  },
-  "displayLabels": {
-    "type": "dropdown",
-    "label": "Display labels",
-    "value": "block",
-    "options": {
-      "block": "Yes",
-      "none": "No"
-    }
-  },
-  "backgroundColor": {
-    "type": "colorpicker",
-    "label": "Background color",
-    "value": "rgb(55, 55, 55)"
-  },
-  "barColor1": {
-    "type": "colorpicker",
-    "label": "Bar color",
-    "value": "rgb(63, 63, 195)"
-  },
-  "barColor2": {
-    "type": "colorpicker",
-    "label": "Bar color2",
-    "value": "rgb(85, 33, 195)"
-  },
-  "divider": {
-    "type": "text",
-    "label": "Divider",
-    "value": "/"
-  },
-  "dividerColor": {
-    "type": "colorpicker",
-    "label": "Divider font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "valueColor": {
-    "type": "colorpicker",
-    "label": "Current value font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "goalColor": {
-    "type": "colorpicker",
-    "label": "Goal font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "labelSize": {
-    "type": "number",
-    "label": "Label font Size",
-    "value": 24
-  },
-  "fadeoutAfter": {
-    "type": "number",
-    "label": "Fadeout after (s) - 0 to disable",
-    "value": 0
-  },
+
   "userLocale": {
     "type": "dropdown",
-    "label": "Locale",
+    "label": "Display locale for numbers",
     "value": "en-US",
     "options": {
       "af-NA": "Afrikaans (Namibia)",
@@ -591,7 +445,195 @@
       "yo": "Yoruba",
       "zu-ZA": "Zulu (South Africa)",
       "zu": "Zulu"
-    }
+    },
+    "group": "Goal & Currency"
+  },
+  "overrideCurrency": {
+    "type": "dropdown",
+    "label": "Override currency",
+    "value": "no",
+    "options": {
+      "no": "No",
+      "yes": "Yes"
+    },
+    "group": "Goal & Currency"
+  },
+  "overrideCurrencyCode": {
+    "type": "text",
+    "label": "Currency code (e.g. USD)",
+    "value": "USD",
+    "group": "Goal & Currency"
+  },
+  "onGoalReach": {
+    "type": "dropdown",
+    "label": "On goal reach",
+    "value": "nothing",
+    "options": {
+      "nothing": "Do nothing",
+      "increment": "Increment by value below",
+      "reset": "Reset goal"
+    },
+    "group": "Goal & Currency"
+  },
+  "autoIncrement": {
+    "type": "number",
+    "label": "Auto increment goal when reached by",
+    "value": 0,
+    "group": "Goal & Currency"
+  },
+  "botCounter": {
+    "type": "checkbox",
+    "label": "Use 'goal' bot counter as goal number?",
+    "value": false,
+    "group": "Goal & Currency"
+  },
+  "eventType": {
+    "type": "dropdown",
+    "label": "Pick event type:",
+    "value": "follower",
+    "options": {
+      "follower": "Follower",
+      "subscriber": "Subscriber",
+      "subscriber-new": "Subscriber new (session only)",
+      "subscriber-resub": "Subscriber resub (session only)",
+      "subscriber-gifted": "Subscriber gifted (session only)",
+      "tip": "Tip amount",
+      "cheer": "Bits amount",
+      "subscriber-points": "Subscriber points"
+    },
+    "group": "Goal Event Settings"
+  },
+  "eventPeriod": {
+    "type": "dropdown",
+    "label": "Pick period: (doesn't work with sub points)",
+    "value": "session",
+    "options": {
+      "session": "Session",
+      "week": "Week",
+      "month": "Month",
+      "total": "Total",
+      "goal": "Amount from goal data"
+    },
+    "group": "Goal Event Settings"
+  },
+  "titleText": {
+    "type": "text",
+    "label": "Title text",
+    "value": "Follower goal:",
+    "group": "Text Settings"
+  },
+  "fontName": {
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Montserrat",
+    "group": "Text Settings"
+  },
+  "shadow": {
+    "type": "text",
+    "label": "Font shadow",
+    "value": "1px 1px 1px #000000",
+    "group": "Text Settings"
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)",
+      "group": "Text Settings"
+    },
+    "group": "Text Settings"
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title font color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Text Settings"
+  },
+  "titleSize": {
+    "type": "number",
+    "label": "Title font Size",
+    "value": 24,
+    "group": "Text Settings"
+  },
+  "displayBar": {
+    "type": "dropdown",
+    "label": "Display bar",
+    "value": "block",
+    "options": {
+      "block": "Yes",
+      "none": "No"
+    },
+    "group": "Styling"
+  },
+  "displayLabels": {
+    "type": "dropdown",
+    "label": "Display labels",
+    "value": "block",
+    "options": {
+      "block": "Yes",
+      "none": "No"
+    },
+    "group": "Styling"
+  },
+  "backgroundColor": {
+    "type": "colorpicker",
+    "label": "Background color",
+    "value": "rgb(55, 55, 55)",
+    "group": "Styling"
+  },
+  "barColor1": {
+    "type": "colorpicker",
+    "label": "Bar color",
+    "value": "rgb(63, 63, 195)",
+    "group": "Styling"
+  },
+  "barColor2": {
+    "type": "colorpicker",
+    "label": "Bar color2",
+    "value": "rgb(85, 33, 195)",
+    "group": "Styling"
+  },
+  "divider": {
+    "type": "text",
+    "label": "Divider",
+    "value": "/",
+    "group": "Styling"
+  },
+  "dividerColor": {
+    "type": "colorpicker",
+    "label": "Divider font color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Styling"
+  },
+  "valueColor": {
+    "type": "colorpicker",
+    "label": "Current value font color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Styling"
+  },
+  "goalColor": {
+    "type": "colorpicker",
+    "label": "Goal font color",
+    "value": "rgb(255, 255, 255)",
+    "group": "Styling"
+  },
+  "labelSize": {
+    "type": "number",
+    "label": "Label font Size",
+    "value": 24,
+    "group": "Styling"
+  },
+  "fadeoutAfter": {
+    "type": "number",
+    "label": "Fadeout after (s) - 0 to disable",
+    "value": 0,
+    "group": "Styling"
   },
   "widgetName": {
     "type": "hidden",
