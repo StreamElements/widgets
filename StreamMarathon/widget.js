@@ -5,10 +5,12 @@ let maxTime = new Date(); // Time cap you want to use
 let minTime = new Date();
 let addOnZero = false;
 let stopOnZero = false;
+let paused = false;
+let pausedSeconds = 0;
 let start;
 
-function countdown(seconds) {
-    if (seconds === 0) return;
+function countdown(seconds, forced = false) {
+    if (seconds === 0 && !forced) return;
     let toCountDown = start;
     if (stopOnZero && toCountDown < new Date()) return;
     if (addOnZero) {
@@ -18,7 +20,12 @@ function countdown(seconds) {
         });
         toCountDown = a[1];
     }
-    toCountDown.setSeconds(toCountDown.getSeconds() + seconds);
+    if (pausedSeconds) {
+        toCountDown = new Date();
+        toCountDown.setSeconds(toCountDown.getSeconds() + pausedSeconds + seconds);
+    } else {
+        toCountDown.setSeconds(toCountDown.getSeconds() + seconds);
+    }
     let a = [toCountDown, maxTime];
     a.sort(function (a, b) {
         return Date.parse(a) - Date.parse(b);
@@ -29,16 +36,32 @@ function countdown(seconds) {
         if (event.type === "finish") $(this).html(fieldData.onComplete);
         else $(this).html(event.strftime('%I:%M:%S'));
     });
+    if (paused) {
+        $('#countdown').countdown('pause');
+    }
 
     saveState();
 
+}
+
+const pauseTimer = () => {
+    if (paused) return;
+    paused = true;
+    $('#countdown').countdown('pause');
+    saveState();
+}
+
+const resumeTimer = () => {
+    if (!paused) return;
+    start = new Date();
+    paused = false;
+    countdown(0, true);
 }
 
 window.addEventListener('onEventReceived', function (obj) {
     const listener = obj.detail.listener;
     // Handling chat message
     if (listener === 'message') {
-        console.log(obj.detail.event);
         const {text, nick, tags, channel} = obj.detail.event.data;
         const userstate = {
             'mod': parseInt(tags.mod),
@@ -54,6 +77,12 @@ window.addEventListener('onEventReceived', function (obj) {
             if (isNaN(seconds)) return;
             countdown(seconds);
         }
+        if (text === fieldData.pauseCommand){
+            pauseTimer();
+        }
+        if (text === fieldData.resumeCommand){
+            resumeTimer();
+        }
         return;
     }
     // Handling widget buttons
@@ -65,10 +94,18 @@ window.addEventListener('onEventReceived', function (obj) {
                 maxTime = new Date();
                 maxTime.setMinutes(maxTime.getMinutes() + fieldData.maxTime);
                 start = minTime;
-                countdown(1);
+                pausedSeconds = 0;
+                paused = false;
+                countdown(0, true);
             }
             if (obj.detail.event.field === 'addTime') {
                 countdown(60);
+            }
+            if (obj.detail.event.field === 'pauseTimer') {
+                pauseTimer();
+            }
+            if (obj.detail.event.field === 'resumeTimer') {
+                resumeTimer();
             }
             return;
         }
@@ -128,17 +165,35 @@ window.addEventListener('onWidgetLoad', function (obj) {
 
 
 function saveState() {
-    SE_API.store.set('marathon', {current: start, maxTime: maxTime, minTime: minTime});
+    if (paused) {
+        pausedSeconds = Math.round((start - new Date()) / 1000);
+    } else {
+        pausedSeconds = 0;
+    }
+    SE_API.store.set('marathon', {
+        current: start,
+        maxTime: maxTime,
+        minTime: minTime,
+        seconds: pausedSeconds,
+        paused: paused
+    });
 }
 
 function loadState() {
     SE_API.store.get('marathon').then(obj => {
         if (obj !== null) {
             let current = new Date();
+
             if (fieldData.preserveTime === "save") {
                 current = new Date(obj.current);
                 minTime = new Date(obj.minTime);
                 maxTime = new Date(obj.maxTime);
+                if (obj.paused === true) {
+                    paused = true;
+                    pausedSeconds = obj.seconds;
+                    current = new Date();
+                    current.setSeconds(current.getSeconds() + pausedSeconds);
+                }
             } else if (fieldData.preserveTime === "restart") {
                 minTime = new Date();
                 current = minTime;
@@ -150,14 +205,14 @@ function loadState() {
             if (current > 0) {
                 current = Math.max(current, minTime);
                 start = new Date(current);
-                countdown(1);
+                countdown(0,true);
             } else {
                 start = minTime;
-                countdown(0);
+                countdown(0,true);
             }
         } else {
             start = minTime;
-            countdown(0);
+            countdown(0,true);
         }
     });
 }

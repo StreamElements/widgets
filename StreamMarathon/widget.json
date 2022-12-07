@@ -1,4 +1,28 @@
 {
+  "resetTimer": {
+    "type": "button",
+    "label": "Start/Reset timer",
+    "value": "Start/Reset timer",
+    "group": "Buttons"
+  },
+  "addTime": {
+    "type": "button",
+    "label": "Add 60s",
+    "value": "Add 60s",
+    "group": "Buttons"
+  },
+  "pauseTimer": {
+    "type": "button",
+    "label": "Pause timer",
+    "value": "Pause timer",
+    "group": "Buttons"
+  },
+  "resumeTimer": {
+    "type": "button",
+    "label": "Resume timer",
+    "value": "Resume timer",
+    "group": "Buttons"
+  },
   "minTime": {
     "type": "number",
     "label": "Initial marathon duration (minutes)",
@@ -10,18 +34,6 @@
     "type": "number",
     "label": "Maximum marathon duration (minutes):",
     "value": 1440,
-    "group": "Timer settings"
-  },
-  "resetTimer": {
-    "type": "button",
-    "label": "Start/Reset timer",
-    "value": "Start/Reset timer",
-    "group": "Timer settings"
-  },
-  "addTime": {
-    "type": "button",
-    "label": "Add 60s",
-    "value": "Add 60s",
     "group": "Timer settings"
   },
   "preserveTime": {
@@ -51,6 +63,18 @@
     "label": "Message on complete",
     "value": "Done!",
     "group": "Timer settings"
+  },
+  "pauseCommand": {
+    "type": "text",
+    "label": "Pause command",
+    "value": "!pausemarathon",
+    "group": "Chat command settings"
+  },
+  "resumeCommand": {
+    "type": "text",
+    "label": "Resume command",
+    "value": "!resumemarathon",
+    "group": "Chat command settings"
   },
   "addTimeCommand": {
     "type": "text",
