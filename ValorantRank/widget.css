@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family={fontName}');
+
+body {
+  padding: 10px;
+  margin: 10px;
+}
+
+#image-id {
+    width: 85%;
+    height: 85%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#points {
+  font-size: {fontSize}px;
+  color: {fontColor};
+  font-family: {fontName};
+  text-align: center;
+}
