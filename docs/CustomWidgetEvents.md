@@ -196,7 +196,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
   * `data["sponsor-latest"]["name"]` - Username
   * `data["sponsor-latest"]["amount"]` - amount
 * `data["sponsor-recent"]`    - An array of latest sponsor events with each element structure as in `sponsor-latest`
-* `data["sponsor-gifted-latest"]`- An Array of
+* `data["sponsor-gifted-latest"]`- An Array of a gifted sponsors 
   * `data["sponsor-gifted-latest"]["name"]`- Username getting the gift
   * `data["sponsor-gifted-latest"]["amount"]` - Amount of sponsor gifts
   * `data["sponsor-gifted-latest"]["tier"]` - Tier of sponsor gifts
