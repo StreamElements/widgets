@@ -196,6 +196,12 @@ window.addEventListener('onWidgetLoad', function (obj) {
   * `data["sponsor-latest"]["name"]` - Username
   * `data["sponsor-latest"]["amount"]` - amount
 * `data["sponsor-recent"]`    - An array of latest sponsor events with each element structure as in `sponsor-latest`
+* `data["sponsor-gifted-latest"]`- An Array of
+  * `data["sponsor-gifted-latest"]["name"]`- Username getting the gift
+  * `data["sponsor-gifted-latest"]["amount"]` - Amount of sponsor gifts
+  * `data["sponsor-gifted-latest"]["tier"]` - Tier of sponsor gifts
+  * `data["sponsor-gifted-latest"]["message"]`  - Message from gifter
+  * `data["sponsor-gifted-latest"]["sender"]` - username giving the gift
 * `data["subscriber-latest"]["name"]` - Name of latest subscriber
 * `data["subscriber-session"]["count"]` - Subscribers since session start
 * `data["subscriber-week"]["count"]` - Subscribers this week

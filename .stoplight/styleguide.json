@@ -1,0 +1,34 @@
+{
+  "name": "Widgets & Overlays",
+  "description": "",
+  "spectralExtends": [],
+  "extends": [
+    "cHJqOjEyMzU4Ng"
+  ],
+  "formats": [
+    "oas2",
+    "oas3",
+    "oas3.0",
+    "oas3.1"
+  ],
+  "aliases": {},
+  "rules": {},
+  "extendedStyleguides": [
+    {
+      "id": "cHJqOjEyMzU4Ng",
+      "name": "Stoplight Style Guide",
+      "slug": "stoplight-style-guide",
+      "workspace": {
+        "slug": "apistylebook",
+        "name": "API Stylebook"
+      },
+      "icon": "robot",
+      "color": "#3898ff",
+      "description": "Default rules for Stoplight projects",
+      "latestRelease": {
+        "release": 37
+      }
+    }
+  ],
+  "extendedDefault": true
+}
