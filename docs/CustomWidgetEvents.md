@@ -313,7 +313,6 @@ In the example above you have obj forwarded to that function, which has two inte
     * `alertService:toggleSound` - User clicked "mute/unmute alerts" button in activity feed
     * `bot:counter` - Update of bot counter
     * `kvstore:update` - Update of [SE_API](#se-api) store value.
-    * `widget-button` - User clicked custom field button in widget properties
 
 * `obj.detail.event`: Will provide you information about event details. It contains few keys. For `-latest` events it is:
     * `.name` - user who triggered action
