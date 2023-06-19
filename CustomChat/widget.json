@@ -77,6 +77,16 @@
     "value": "rgba(0,255,0,1)",
     "group": "Typography"
   },
+  "displayBadges": {
+    "type": "dropdown",
+    "label": "Display Badges",
+    "value": "inline",
+    "options": {
+      "inline": "Yes",
+      "none": "No"
+    },
+    "group": "Settings"
+  },
   "messagesLimit": {
     "type": "number",
     "label": "Messages limit",

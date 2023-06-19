@@ -30,7 +30,7 @@
 }
 
 .badge{
-    display:inline;
+    display:{{displayBadges}};
     height:{{fontSize}}px;
 }
 
