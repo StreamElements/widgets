@@ -88,14 +88,11 @@ window.addEventListener('onEventReceived', function (obj) {
     if (ignoredUsers.indexOf(data.nick) !== -1) return;
     let message = attachEmotes(data);
     let badges = "", badge;
-    if (provider === 'mixer') {
-        data.badges.push({url: data.avatar});
-    }
     for (let i = 0; i < data.badges.length; i++) {
         badge = data.badges[i];
         badges += `<img alt="" src="${badge.url}" class="badge ${badge.type}-icon"> `;
     }
-    let username = data.displayName + ":";
+    let username = ((showColon) ? data.displayName + ":" : data.displayName);
     if (nickColor === "user") {
         const color = data.displayColor !== "" ? data.displayColor : "#" + (md5(username).slice(26));
         username = `<span style="color:${color}">${username}</span>`;
@@ -119,6 +116,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     nickColor = fieldData.nickColor;
     customNickColor = fieldData.customNickColor;
     hideCommands = fieldData.hideCommands;
+    showColon = fieldData.showColon;
     channelName = obj.detail.channel.username;
     fetch('https://api.streamelements.com/kappa/v2/channels/' + obj.detail.channel.id + '/').then(response => response.json()).then((profile) => {
         provider = profile.provider;
@@ -166,15 +164,6 @@ function attachEmotes(message) {
                         let width = "{emoteSize}px";
                         let height = "auto";
 
-                        if (provider === "mixer") {
-                            console.log(result[0]);
-                            if (result[0].coords.width) {
-                                width = `${result[0].coords.width}px`;
-                            }
-                            if (result[0].coords.height) {
-                                height = `${result[0].coords.height}px`;
-                            }
-                        }
                         return `<div class="emote" style="width: ${width}; height:${height}; display: inline-block; background-image: url(${url}); background-position: -${x}px -${y}px;"></div>`;
                     }
                 } else return key;
