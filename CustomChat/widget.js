@@ -92,7 +92,7 @@ window.addEventListener('onEventReceived', function (obj) {
         badge = data.badges[i];
         badges += `<img alt="" src="${badge.url}" class="badge ${badge.type}-icon"> `;
     }
-    let username = ((showColon) ? data.displayName + ":" : data.displayName);
+    let username = ((showColon == "true") ? data.displayName + ":" : data.displayName);
     if (nickColor === "user") {
         const color = data.displayColor !== "" ? data.displayColor : "#" + (md5(username).slice(26));
         username = `<span style="color:${color}">${username}</span>`;
