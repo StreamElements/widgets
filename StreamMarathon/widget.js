@@ -1,4 +1,3 @@
-//MULTIPLIERS:
 let fieldData;
 
 let maxTime = new Date(); // Time cap you want to use
@@ -39,9 +38,7 @@ function countdown(seconds, forced = false) {
     if (paused) {
         $('#countdown').countdown('pause');
     }
-
     saveState();
-
 }
 
 const pauseTimer = () => {
@@ -115,6 +112,9 @@ window.addEventListener('onEventReceived', function (obj) {
     if (listener === 'follower-latest') {
         if (fieldData.followSeconds !== 0) countdown(fieldData.followSeconds);
     } else if (listener === 'subscriber-latest') {
+        if (data.sender && fieldData.subIgnoreGifts) {
+            return;
+        }
         if (data.bulkGifted) { // Ignore gifting event and count only real subs
             return;
         }
@@ -125,12 +125,6 @@ window.addEventListener('onEventReceived', function (obj) {
         } else {
             if (fieldData.sub1Seconds !== 0) countdown(fieldData.sub1Seconds);
         }
-
-    } else if (listener === 'host-latest') {
-        if (data['amount'] < fieldData.hostMin || fieldData.hostSeconds === 0) {
-            return;
-        }
-        countdown(fieldData.hostSeconds * data["amount"]);
     } else if (listener === 'raid-latest') {
         if (data['amount'] < fieldData.raidMin || fieldData.raidSeconds === 0) {
             return;
@@ -152,8 +146,6 @@ window.addEventListener('onEventReceived', function (obj) {
         }
         countdown(parseInt(fieldData.merchSeconds * data["amount"]));
     }
-
-
 });
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
@@ -162,7 +154,6 @@ window.addEventListener('onWidgetLoad', function (obj) {
     fieldData.additionalUsers = fieldData.additionalUsers.toLowerCase().split(',').map(el => el.trim());
     loadState();
 });
-
 
 function saveState() {
     if (paused) {

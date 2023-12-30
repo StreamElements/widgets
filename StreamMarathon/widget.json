@@ -103,91 +103,83 @@
     "label": "Seconds per follower:",
     "value": 1,
     "step": 1,
-    "group": "Event time settings"
+    "group": "Follower time settings"
   },
   "sub1Seconds": {
     "type": "number",
     "label": "Seconds per T1/Prime subscriber:",
     "value": 60,
     "step": 1,
-    "group": "Event time settings"
+    "group": "Sub time settings"
   },
   "sub2Seconds": {
     "type": "number",
     "label": "Seconds per T2 subscriber:",
     "value": 120,
     "step": 1,
-    "group": "Event time settings"
+    "group": "Sub time settings"
   },
   "sub3Seconds": {
     "type": "number",
     "label": "Seconds per T3 subscriber:",
     "value": 180,
     "step": 1,
-    "group": "Event time settings"
+    "group": "Sub time settings"
+  },
+  "subIgnoreGifts": {
+    "type": "checkbox",
+    "label": "Ignore gifted subs",
+    "value": false,
+    "group": "Sub time settings"
   },
   "cheerSeconds": {
     "type": "number",
     "label": "Seconds per 100 Bits:",
     "value": 60,
     "step": 0.1,
-    "group": "Event time settings"
+    "group": "Cheer time settings"
   },
   "cheerMin": {
     "type": "number",
     "label": "Minimum bits to trigger:",
     "value": 100,
     "step": 1,
-    "group": "Event time settings"
+    "group": "Cheer time settings"
   },
   "tipSeconds": {
     "type": "number",
     "label": "Seconds multiplied by tip amount:",
     "value": 300,
     "step": 0.01,
-    "group": "Event time settings"
+    "group": "Tip time settings"
   },
   "tipMin": {
     "type": "number",
     "label": "Minimum tip to trigger:",
     "value": 1,
     "step": 0.01,
-    "group": "Event time settings"
+    "group": "Tip time settings"
   },
   "merchSeconds": {
     "type": "number",
     "label": "Seconds multiplied by merch order amount:",
     "value": 300,
     "step": 0.01,
-    "group": "Event time settings"
-  },
-  "hostSeconds": {
-    "type": "number",
-    "label": "Seconds per viewer from host:",
-    "value": 1,
-    "step": 0.01,
-    "group": "Event time settings"
-  },
-  "hostMin": {
-    "type": "number",
-    "label": "Minimum viewers in host:",
-    "value": 100,
-    "step": 1,
-    "group": "Event time settings"
+    "group": "Merch time settings"
   },
   "raidSeconds": {
     "type": "number",
     "label": "Seconds per viewer from raid:",
     "value": 0,
     "step": 0.01,
-    "group": "Event time settings"
+    "group": "Raid time settings"
   },
   "raidMin": {
     "type": "number",
     "label": "Minimum viewers in raid:",
     "value": 100,
     "step": 1,
-    "group": "Event time settings"
+    "group": "Raid time settings"
   },
   "textAlign": {
     "label": "Text align",
