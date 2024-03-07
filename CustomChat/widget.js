@@ -5,6 +5,8 @@ let animationOut = 'bounceOut';
 let hideAfter = 60;
 let hideCommands = "no";
 let ignoredUsers = [];
+let previousSender = "";
+let mergeMessages = false;
 window.addEventListener('onEventReceived', function (obj) {
     if (obj.detail.event.listener === 'widget-button') {
 
@@ -74,7 +76,7 @@ window.addEventListener('onEventReceived', function (obj) {
     }
     if (obj.detail.listener === "delete-message") {
         const msgId = obj.detail.event.msgId;
-        $(`.message-row[data-msgid=${msgId}]`).remove();
+        $(`[data-msgid=${msgId}]`).remove();
         return;
     } else if (obj.detail.listener === "delete-messages") {
         const sender = obj.detail.event.userId;
@@ -108,6 +110,7 @@ window.addEventListener('onEventReceived', function (obj) {
         username = '';
     }
     addMessage(username, badges, message, data.isAction, data.userId, data.msgId);
+    previousSender = data.userId;
 });
 
 window.addEventListener('onWidgetLoad', function (obj) {
@@ -120,6 +123,7 @@ window.addEventListener('onWidgetLoad', function (obj) {
     customNickColor = fieldData.customNickColor;
     hideCommands = fieldData.hideCommands;
     channelName = obj.detail.channel.username;
+    mergeMessages = fieldData.mergeMessages === "yes";
     fetch('https://api.streamelements.com/kappa/v2/channels/' + obj.detail.channel.id + '/').then(response => response.json()).then((profile) => {
         provider = profile.provider;
     });
@@ -195,6 +199,16 @@ function addMessage(username, badges, message, isAction, uid, msgId) {
     if (isAction) {
         actionClass = "action";
     }
+    if (mergeMessages && previousSender === uid) {
+        const lastMessage = document.querySelector('.main-container').lastElementChild;
+        const messageElement = document.createElement('span');
+        messageElement.innerHTML = `&nbsp;${message}`; // Use `messageText` or your actual message content variable here
+        messageElement.dataset.sender = uid;
+        messageElement.dataset.msgid = msgId;
+        lastMessage.querySelector('.user-message').appendChild(messageElement);
+        return;
+    }
+
     const element = $.parseHTML(`
     <div data-sender="${uid}" data-msgid="${msgId}" class="message-row {animationIn} animated" id="msg-${totalMessages}">
         <div class="user-box ${actionClass}">${badges}${username}</div>

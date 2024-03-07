@@ -109,6 +109,16 @@
     },
     "group": "Settings"
   },
+  "mergeMessages": {
+    "label": "Merge consecutive messages from the same user",
+    "type": "dropdown",
+    "value": "no",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "group": "Settings"
+  },
   "ignoredUsers": {
     "label": "Ignored users (comma separated)",
     "type": "text",
