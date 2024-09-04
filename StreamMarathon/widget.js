@@ -115,7 +115,7 @@ window.addEventListener('onEventReceived', function (obj) {
         if (data.sender && fieldData.subIgnoreGifts) {
             return;
         }
-        if (data.bulkGifted) { // Ignore gifting event and count only real subs
+        if (data.bulkGifted && data.name == data.sender) { // Ignore gifting event and count only real subs
             return;
         }
         if (parseInt(data.tier) === 2000) {
