@@ -483,9 +483,15 @@
   },
   "botCounter": {
     "type": "checkbox",
-    "label": "Use 'goal' bot counter as goal number?",
+    "label": "Use bot counter as goal number?",
     "value": false,
-    "group": "Goal & Currency"
+    "group": "Bot counter"
+  },
+  "botCounterName": {
+    "type": "text",
+    "label": "Bot counter name",
+    "value": "goal",
+    "group": "Bot counter"
   },
   "eventType": {
     "type": "dropdown",

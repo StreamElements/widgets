@@ -59,8 +59,8 @@ let getCounterValue = apiKey => {
                 "authorization": `apikey ${apiKey}`
             }, "method": "GET"
         }).then(response => response.json()).then(obj => {
-            fetch(`https://api.streamelements.com/kappa/v2/bot/${obj._id}/counters/goal`).then(response => response.json()).then(data => {
-                resolve(data.value)
+            fetch(`https://api.streamelements.com/kappa/v2/bot/${obj._id}/counters/${fieldData.botCounterName}`).then(response => response.json()).then(data => {
+                resolve(data.count)
             })
         });
     })
@@ -81,19 +81,19 @@ window.addEventListener('onEventReceived', function (obj) {
     const listener = obj.detail.listener;
     const data = obj.detail.event;
 
-    if (listener === 'bot:counter' && data.counter === "goal") {
+    if (listener === 'bot:counter' && data.counter === fieldData.botCounterName) {
         goal = data.value;
         setGoal();
-        updateBar(count);
+        updateBar(prevCount, true);
     }
 });
 
 
-async function updateBar(count) {
+async function updateBar(count, force = false) {
     if (fieldData['eventType'] === 'tip') {
         count = await convertCurrency(count);
     }
-    if (count === prevCount) return;
+    if (count === prevCount && !force) return;
     if (count >= goal) {
         if (fieldData['autoIncrement'] > 0 && fieldData.onGoalReach === "increment") {
             goal += fieldData['autoIncrement'];
