@@ -8,6 +8,27 @@ let paused = false;
 let pausedSeconds = 0;
 let start;
 
+const throttle = (func, limit) => {
+    let inThrottle;
+    let waitingExecution = false;
+    
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => {
+                inThrottle = false;
+                if (waitingExecution) {
+                    waitingExecution = false;
+                    func.apply(this, args);
+                }
+            }, limit);
+        } else {
+            waitingExecution = true;
+        }
+    };
+}
+
 function countdown(seconds, forced = false) {
     if (seconds === 0 && !forced) return;
     let toCountDown = start;
@@ -38,7 +59,7 @@ function countdown(seconds, forced = false) {
     if (paused) {
         $('#countdown').countdown('pause');
     }
-    saveState();
+    throttledSaveState();
 }
 
 const pauseTimer = () => {
@@ -169,6 +190,7 @@ function saveState() {
         paused: paused
     });
 }
+const throttledSaveState = throttle(() => saveState(), 3000);
 
 function loadState() {
     SE_API.store.get('marathon').then(obj => {
