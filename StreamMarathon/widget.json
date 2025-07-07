@@ -167,6 +167,13 @@
     "step": 0.01,
     "group": "Merch time settings"
   },
+  "purchaseSeconds": {
+    "type": "number",
+    "label": "Seconds multiplied by purchase amount:",
+    "value": 300,
+    "step": 0.01,
+    "group": "3rd party purchase time settings"
+  },
   "raidSeconds": {
     "type": "number",
     "label": "Seconds per viewer from raid:",

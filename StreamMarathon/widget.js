@@ -166,6 +166,11 @@ window.addEventListener('onEventReceived', function (obj) {
             return;
         }
         countdown(parseInt(fieldData.merchSeconds * data["amount"]));
+    } else if (listener === 'purchase-latest') {
+        if (fieldData.purchaseSeconds === 0) {
+            return;
+        }
+        countdown(parseInt(fieldData.purchaseSeconds * data["amount"]));
     }
 });
 window.addEventListener('onWidgetLoad', function (obj) {
