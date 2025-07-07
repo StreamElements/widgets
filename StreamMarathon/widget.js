@@ -76,8 +76,84 @@ const resumeTimer = () => {
     countdown(0, true);
 }
 
+// Event handlers configuration
+const eventHandlers = {
+    'follower-latest': (data) => {
+        if (fieldData.followSeconds !== 0) {
+            countdown(fieldData.followSeconds);
+        }
+    },
+    
+    'subscriber-latest': (data) => {
+        // Skip gift subscriptions if configured
+        if (data.sender && fieldData.subIgnoreGifts) {
+            return;
+        }
+        // Skip bulk gifted events (count only real subs)
+        if (data.bulkGifted && data.name === data.sender) {
+            return;
+        }
+        
+        const tier = parseInt(data.tier);
+        const secondsMap = {
+            2000: fieldData.sub2Seconds,
+            3000: fieldData.sub3Seconds,
+            1000: fieldData.sub1Seconds
+        };
+        
+        const seconds = secondsMap[tier] || fieldData.sub1Seconds;
+        if (seconds !== 0) {
+            countdown(seconds);
+        }
+    },
+    
+    'raid-latest': (data) => {
+        if (data.amount < fieldData.raidMin || fieldData.raidSeconds === 0) {
+            return;
+        }
+        countdown(fieldData.raidSeconds * data.amount);
+    },
+    
+    'cheer-latest': (data) => {
+        if (data.amount < fieldData.cheerMin || fieldData.cheerSeconds === 0) {
+            return;
+        }
+        countdown(parseInt(fieldData.cheerSeconds * data.amount / 100));
+    },
+    
+    'tip-latest': (data) => {
+        if (data.amount < fieldData.tipMin || fieldData.tipSeconds === 0) {
+            return;
+        }
+        countdown(parseInt(fieldData.tipSeconds * data.amount));
+    },
+    
+    'merch-latest': (data) => {
+        if (fieldData.merchSeconds === 0) {
+            return;
+        }
+        countdown(parseInt(fieldData.merchSeconds * data.amount));
+    },
+    
+    'purchase-latest': (data) => {
+        if (fieldData.purchaseSeconds === 0) {
+            return;
+        }
+        countdown(parseInt(fieldData.purchaseSeconds * data.amount));
+    }
+};
+
+
+const handleEvent = (listener, data) => {
+    const handler = eventHandlers[listener];
+    if (handler) {
+        handler(data);
+    }
+};
+
 window.addEventListener('onEventReceived', function (obj) {
     const listener = obj.detail.listener;
+    
     // Handling chat message
     if (listener === 'message') {
         const {text, nick, tags, channel} = obj.detail.event.data;
@@ -103,6 +179,7 @@ window.addEventListener('onEventReceived', function (obj) {
         }
         return;
     }
+    
     // Handling widget buttons
     if (obj.detail.event) {
         if (obj.detail.event.listener === 'widget-button') {
@@ -127,51 +204,11 @@ window.addEventListener('onEventReceived', function (obj) {
             }
             return;
         }
-    } else if (listener.indexOf("-latest") === -1) return;
+    } 
+    
+    if (listener.indexOf("-latest") === -1) return;
 
-    const data = obj.detail.event;
-    if (listener === 'follower-latest') {
-        if (fieldData.followSeconds !== 0) countdown(fieldData.followSeconds);
-    } else if (listener === 'subscriber-latest') {
-        if (data.sender && fieldData.subIgnoreGifts) {
-            return;
-        }
-        if (data.bulkGifted && data.name == data.sender) { // Ignore gifting event and count only real subs
-            return;
-        }
-        if (parseInt(data.tier) === 2000) {
-            if (fieldData.sub2Seconds !== 0) countdown(fieldData.sub2Seconds);
-        } else if (parseInt(data.tier) === 3000) {
-            if (fieldData.sub3Seconds !== 0) countdown(fieldData.sub3Seconds);
-        } else {
-            if (fieldData.sub1Seconds !== 0) countdown(fieldData.sub1Seconds);
-        }
-    } else if (listener === 'raid-latest') {
-        if (data['amount'] < fieldData.raidMin || fieldData.raidSeconds === 0) {
-            return;
-        }
-        countdown(fieldData.raidSeconds * data["amount"]);
-    } else if (listener === 'cheer-latest') {
-        if (data['amount'] < fieldData.cheerMin || fieldData.cheerSeconds === 0) {
-            return;
-        }
-        countdown(parseInt(fieldData.cheerSeconds * data["amount"] / 100));
-    } else if (listener === 'tip-latest') {
-        if (data['amount'] < fieldData.tipMin || fieldData.tipSeconds === 0) {
-            return;
-        }
-        countdown(parseInt(fieldData.tipSeconds * data["amount"]));
-    } else if (listener === 'merch-latest') {
-        if (fieldData.merchSeconds === 0) {
-            return;
-        }
-        countdown(parseInt(fieldData.merchSeconds * data["amount"]));
-    } else if (listener === 'purchase-latest') {
-        if (fieldData.purchaseSeconds === 0) {
-            return;
-        }
-        countdown(parseInt(fieldData.purchaseSeconds * data["amount"]));
-    }
+    handleEvent(listener, obj.detail.event);
 });
 window.addEventListener('onWidgetLoad', function (obj) {
     fieldData = obj.detail.fieldData;
