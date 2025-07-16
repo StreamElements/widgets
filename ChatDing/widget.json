@@ -1,0 +1,31 @@
+{
+  "widgetName": {
+    "type": "hidden",
+    "value": "Chat Message Dings"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "Freedbot"
+  },
+  "dingSound": {
+    "type": "text",
+    "label": "Audio File URL (must end in .mp3)",
+    "value": "https://freesound.org/data/previews/235/235911_2391840-lq.mp3"
+  },
+  "dingVolume": {
+    "type": "slider",
+    "label": "Ding Volume",
+    "value": 70,
+    "min": 0,
+    "max": 100,
+    "step": 1
+  },
+  "coolDown": {
+    "type": "number",
+    "label": "Cooldown in seconds before new dings can be triggered",
+    "value": 5,
+    "min": 1,
+    "max": 10000,
+    "step": 1
+  }
+}
