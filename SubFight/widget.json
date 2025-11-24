@@ -1,0 +1,200 @@
+{
+  "demoBattle": {
+    "type": "button",
+    "label": "Demo Battle: Pineapple vs Ketchup",
+    "value": "Demo Battle",
+    "group": "Demo"
+  },
+  "managePermissions": {
+    "type": "dropdown",
+    "label": "Who can start battles:",
+    "value": "mods",
+    "options": {
+      "streamer": "Streamer",
+      "mods": "Mods"
+    },
+    "group": "Chat command settings"
+  },
+  "additionalUsers": {
+    "type": "text",
+    "label": "Additional users, comma separated",
+    "value": "userA,userB",
+    "group": "Chat command settings"
+  },
+  "followPoints": {
+    "type": "number",
+    "label": "Points per follower:",
+    "value": 1,
+    "step": 1,
+    "group": "Follower points settings"
+  },
+  "sub1Points": {
+    "type": "number",
+    "label": "Points per T1/Prime subscriber:",
+    "value": 10,
+    "step": 1,
+    "group": "Sub points settings"
+  },
+  "sub2Points": {
+    "type": "number",
+    "label": "Points per T2 subscriber:",
+    "value": 20,
+    "step": 1,
+    "group": "Sub points settings"
+  },
+  "sub3Points": {
+    "type": "number",
+    "label": "Points per T3 subscriber:",
+    "value": 30,
+    "step": 1,
+    "group": "Sub points settings"
+  },
+  "subIgnoreGifts": {
+    "type": "checkbox",
+    "label": "Ignore gifted subs",
+    "value": false,
+    "group": "Sub points settings"
+  },
+  "cheerPoints": {
+    "type": "number",
+    "label": "Points per 100 Bits:",
+    "value": 5,
+    "step": 0.1,
+    "group": "Cheer points settings"
+  },
+  "cheerMin": {
+    "type": "number",
+    "label": "Minimum bits to trigger:",
+    "value": 100,
+    "step": 1,
+    "group": "Cheer points settings"
+  },
+  "tipPoints": {
+    "type": "number",
+    "label": "Points multiplied by tip amount:",
+    "value": 2,
+    "step": 0.01,
+    "group": "Tip points settings"
+  },
+  "tipMin": {
+    "type": "number",
+    "label": "Minimum tip to trigger:",
+    "value": 1,
+    "step": 0.01,
+    "group": "Tip points settings"
+  },
+  "merchPoints": {
+    "type": "number",
+    "label": "Points multiplied by merch order amount:",
+    "value": 2,
+    "step": 0.01,
+    "group": "Merch points settings"
+  },
+  "purchasePoints": {
+    "type": "number",
+    "label": "Points multiplied by purchase amount:",
+    "value": 2,
+    "step": 0.01,
+    "group": "3rd party purchase points settings"
+  },
+  "raidPoints": {
+    "type": "number",
+    "label": "Points per viewer from raid:",
+    "value": 0,
+    "step": 0.01,
+    "group": "Raid points settings"
+  },
+  "raidMin": {
+    "type": "number",
+    "label": "Minimum viewers in raid:",
+    "value": 100,
+    "step": 1,
+    "group": "Raid points settings"
+  },
+  "textAlign": {
+    "label": "Text align",
+    "type": "dropdown",
+    "value": "left",
+    "options": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    },
+    "group": "Typography"
+  },
+  "fontName": {
+    "type": "text",
+    "label": "Font name",
+    "value": "Montserrat",
+    "group": "Typography"
+  },
+  "fontSize": {
+    "type": "number",
+    "label": "Font size",
+    "value": 24,
+    "group": "Typography"
+  },
+  "fontWeight": {
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "group": "Typography"
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Font Color",
+    "value": "rgba(255,255,255,1)",
+    "group": "Typography"
+  },
+  "strokeColor": {
+    "type": "colorpicker",
+    "label": "Stroke Color",
+    "value": "rgba(255,0,0,0)",
+    "group": "Typography"
+  },
+  "strokeSize": {
+    "type": "number",
+    "label": "Stroke size",
+    "value": 2,
+    "group": "Typography"
+  },
+  "optionAColor": {
+    "type": "colorpicker",
+    "label": "Option A Bar Color",
+    "value": "rgba(255,0,0,0.8)",
+    "group": "Battle Visual Settings"
+  },
+  "optionBColor": {
+    "type": "colorpicker",
+    "label": "Option B Bar Color",
+    "value": "rgba(0,0,255,0.8)",
+    "group": "Battle Visual Settings"
+  },
+  "barBackgroundColor": {
+    "type": "colorpicker",
+    "label": "Bar Background Color",
+    "value": "rgba(255,255,255,0.2)",
+    "group": "Battle Visual Settings"
+  },
+  "barHeight": {
+    "type": "number",
+    "label": "Bar Height (px)",
+    "value": 40,
+    "step": 1,
+    "group": "Battle Visual Settings"
+  },
+  "vsCommand": {
+    "type": "text",
+    "label": "Battle command",
+    "value": "!vs",
+    "group": "Chat command settings"
+  }
+}

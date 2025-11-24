@@ -1,0 +1,31 @@
+<link href="https://fonts.googleapis.com/css?family={{fontName}}:400,{{fontWeight}}" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="battle-container" id="battleContainer" style="display: none;">
+    <div class="connected-bar-container">
+        <div class="connected-bar">
+            <div class="bar-segment bar-left" id="bar1">
+                <div class="points-display points-left" id="pointsA">0</div>
+            </div>
+            <div class="bar-center">
+                <div class="vs-overlay">
+                    <img src="https://cdn.streamelements.com/assets/campari/Images/Logos/SE.png" alt="VS" class="vs-logo">
+                </div>
+            </div>
+            <div class="bar-segment bar-right" id="bar2">
+                <div class="points-display points-right" id="pointsB">0</div>
+            </div>
+        </div>
+    </div>
+    <div class="info-section">
+        <div class="timer-wrapper">
+            <div class="timer-display" id="countdown">0:00</div>
+        </div>
+        <div class="option-labels">
+            <div class="option-label" id="labelA">Option A</div>
+            <div class="option-label" id="labelB">Option B</div>
+        </div>
+    </div>
+    <div class="helper-text" id="helperText" style="display: none;">
+        Use !vs [seconds] [option A]; [option B] to start a battle
+    </div>
+</div>
