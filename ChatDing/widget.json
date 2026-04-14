@@ -8,9 +8,9 @@
     "value": "Freedbot"
   },
   "dingSound": {
-    "type": "text",
-    "label": "Audio File URL (must end in .mp3)",
-    "value": "https://freesound.org/data/previews/235/235911_2391840-lq.mp3"
+    "type": "sound-input",
+    "label": "Audio file:",
+    "value": "https://cdn.streamelements.com/uploads/01kp63hgn9wmtnwhxewe2hk2y2.mp3"
   },
   "dingVolume": {
     "type": "slider",
