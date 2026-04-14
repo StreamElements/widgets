@@ -1,29 +1,21 @@
 // twitch and youtube message events
-var eventList = ["message", "youtube#liveChatMessage"];
-var cooling = null;
+let eventList = ["message", "youtube#liveChatMessage"];
+let cooling = null;
+let audio = new Audio("{dingSound}");
+audio.volume = parseInt("{dingVolume}") / 100;
+let cooldown = parseInt("{coolDown}") * 1000;
 
-var audio, coolDown;
-// on widget load, apply settings variables and load sound file
-window.addEventListener('onWidgetLoad', (obj) => {
-    const {fieldData} = obj.detail;
-    audio = new Audio(fieldData.dingSound);
-    audio.volume = fieldData.dingVolume / 100;
-    audio.autoplay = false;
-    coolDown = fieldData.coolDown;
-})
 // on message recieved, stop any existing ding, play ding, and apply cooldown
 // message events are ignored entirely while on cooldown
-window.addEventListener('onEventReceived', (obj) => {
-    if (cooling === null) {
-        if (eventList.includes(obj.detail.listener))
+window.addEventListener('onEventReceived', function (obj) {
+    if (!eventList.includes(obj.detail.listener)) return;
+    if (cooling !== null) return;
+    if (!audio.paused)
         {
-            if (!audio.paused)
-            {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-            audio.play();
-            cooling = setTimeout(() => {cooling = null;}, coolDown * 1000)
+            audio.pause();
+            audio.currentTime = 0;
         }
-    }
+    console.log("ChatDing");
+    audio.play();
+    cooling = setTimeout(() => {cooling = null;}, cooldown);
 });
