@@ -59,6 +59,16 @@
     },
     "group": "Typography"
   },
+  "showColon": {
+    "type": "dropdown",
+    "label": "Show colon in usernames",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "group": "Typography"
+  },
   "nickColor": {
     "type": "dropdown",
     "label": "Nickname color:",
