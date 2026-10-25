@@ -1,0 +1,32 @@
+{
+  "questionPrefix": {
+    "type": "text",
+    "label": "Question prefix (1\u201320 characters)",
+    "value": "?",
+    "group": "Queue"
+  },
+  "nextQuestion": {
+    "type": "button",
+    "label": "Show next question",
+    "value": "Next question",
+    "group": "Controls"
+  },
+  "clearQueue": {
+    "type": "button",
+    "label": "Clear all questions",
+    "value": "Clear queue",
+    "group": "Controls"
+  },
+  "widgetName": {
+    "type": "hidden",
+    "value": "Moderated question queue"
+  },
+  "widgetAuthor": {
+    "type": "hidden",
+    "value": "Kasamila"
+  },
+  "widgetVersion": {
+    "type": "hidden",
+    "value": "0.1.0"
+  }
+}

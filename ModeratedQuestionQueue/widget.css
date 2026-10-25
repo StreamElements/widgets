@@ -1,0 +1,6 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: transparent; }
+.question-card { padding: 24px; max-width: 800px; background: #142332; color: #fff; border: 2px solid #64dac6; border-radius: 16px; }
+#question-name { margin: 0 0 12px; font-size: 22px; font-weight: bold; overflow-wrap: anywhere; }
+#question-text { margin: 0; font-size: 30px; line-height: 1.35; white-space: pre-wrap; overflow-wrap: anywhere; }
+#question-count { margin: 18px 0 0; font-size: 16px; color: #d1e4ec; }
